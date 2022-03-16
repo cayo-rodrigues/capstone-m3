@@ -1,5 +1,5 @@
 const Input = () => {
-  return <></>;
+    return <div></div>;
 };
 
 export default Input;
