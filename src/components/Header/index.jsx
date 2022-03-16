@@ -5,7 +5,7 @@ import { useHistory } from "react-router-dom";
 const Header = ({ className }) => {
   const history = useHistory();
   const authenticated = false; //Autenticação feita para teste
-  console.log(authenticated);
+  
   return (
     <Container>
       <ContainerHeader>
