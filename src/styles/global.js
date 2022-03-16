@@ -16,6 +16,7 @@ export const GlobalStyle = createGlobalStyle`
 
     --white: #fff;
     --black: #000;
+    --error: #E4266F;
 
     --font-text:'Inter', sans-serif;;
     --font-title:'Montserrat', sans-serif;
