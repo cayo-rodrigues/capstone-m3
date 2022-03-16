@@ -13,15 +13,20 @@ export const GlobalStyle = createGlobalStyle`
     --color-secondary: #43568d;
     --color-aux: #04164d;
     --color-bg: #8396cd;
+
     --white: #fff;
+    --black: #000;
+
+    --font-text:'Inter', sans-serif;;
+    --font-title:'Montserrat', sans-serif;
   }
 
   body, button, input, ::placeholder {
-    font-family: 'Inter', sans-serif;
+    font-family: var(--font-text);
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Montserrat', sans-serif;
+    font-family: var(--font-title);
   }
 
   button {
