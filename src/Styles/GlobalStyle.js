@@ -29,6 +29,7 @@ export const GlobalStyle= createGlobalStyle`
         --corFonteBranca:#fff;
         --corFontePreta:#000;
     }
+    cursor: pointer;
 `
 
 /*
