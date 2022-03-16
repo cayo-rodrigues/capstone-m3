@@ -19,11 +19,9 @@ export const ContainerHeader = styled.header`
   justify-content: space-between;
   padding-top: 15px;
   padding-right: 10px;
-
   img {
     cursor: pointer;
   }
-
   @media (max-width: 910px) {
   }
 `;
@@ -45,10 +43,11 @@ export const Button = styled.button`
     background: #002d9b;
   }
   @media (max-width: 910px) {
-    width: 120px;
+    width: 140px;
   }
-  @media (max-width: 695px) {
+  @media (max-width: 753px) {
     background-color: black;
+    width: 140px;
   }
 `;
 
