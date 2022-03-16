@@ -30,12 +30,6 @@ const Header = ({ className }) => {
             <>
               <Button
                 className={`Button-${className}`}
-                onClick={() => history.push("/home")}
-              >
-                Serviços
-              </Button>
-              <Button
-                className={`Button-${className}`}
                 onClick={() => history.push("/login")}
               >
                 Login
