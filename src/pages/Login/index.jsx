@@ -1,8 +1,24 @@
+
+import Form from "../../components/Form";
+import { LoginContainer } from "./styles";
+
 const Login = () => {
   return (
-    <>
-      <h1>Login</h1>
-    </>
+      <>
+      
+      <LoginContainer>
+          <div className="col-left">
+            <div></div>
+          </div>
+
+          <div className="col-right">
+            <Form isLogin />
+
+          </div>
+
+      </LoginContainer>
+      </>
+
   );
 };
 
