@@ -1,15 +1,19 @@
-import { GlobalStyle } from "./Styles/GlobalStyle";
-import Router from "./Routes";
 
-function App() {
+import { ToastContainer } from "react-toastify";
+import Routes from "./routes";
+import { GlobalStyle } from "./styles/global";
+
+
+const App = () => {
   return (
     <>
 
-      <GlobalStyle/>
-      <Router/>
+      <ToastContainer />
+      <GlobalStyle />
+      <Routes />
 
     </>
   );
-}
+};
 
 export default App;
