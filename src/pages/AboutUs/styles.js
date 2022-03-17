@@ -5,52 +5,52 @@ import bg from "../../assets/background/bg.svg";
 export const Container = styled.div`
   background-image: url(${bg});
   background-size: cover;
+  min-height: 100vh;
   height: 100%;
   color: #fff;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 190px;
+  flex-direction: column;
   h1 {
-    position: relative;
-    left: 10px;
-    top: 10px;
+    padding-top: 20px;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
   }
   img {
     display: none;
   }
   @media (min-width: 768px) {
-    img {
-      display: flex;
+    .time {
+      display: block;
       width: 640px;
-      height: auto;
     }
-    height: 100vh;
+    height: 100%;
+    margin-top: 100px;
+    flex-direction: row;
   }
 `;
 
 export const Box = styled.div`
   margin: 0 auto;
-  position: relative;
-  top: 2rem;
   width: 90vw;
   height: auto;
   border-radius: 12px;
   background-color: #fff;
   box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.5);
   padding: 10px;
+  margin-bottom: 20px;
   @media (min-width: 768px) {
-    padding: 30px;
-    position: absolute;
+    padding: 10px;
+    margin-top: 50px;
     width: auto;
     height: auto;
-    right: 100px;
-    top: 90px;
-    display: grid;
-    grid: 200px / 1fr 1fr;
+    column-count: 2;
   }
 `;
 
 export const Card = styled.div`
   width: 260px;
-  height: 180px;
+  max-height: 300px;
   background-color: var(--color-secondary);
   margin: 0 auto;
   box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.5);
@@ -58,11 +58,18 @@ export const Card = styled.div`
   margin-bottom: 20px;
   line-height: 2.5em;
   padding: 5px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   @media (min-width: 768px) {
     margin: 30px;
+    height: 200px;
+  }
+  div {
+    display: flex;
+    justify-content: space-between;
   }
   h1 {
-    max-width: 220px;
     font-size: 20px;
     top: 0;
     left: 0;
@@ -75,10 +82,8 @@ export const Card = styled.div`
   }
 
   img {
-    width: 50px;
+    width: 60px;
     display: block;
-    position: relative;
-    left: 190px;
-    bottom: 80px;
+    padding-right: 10px;
   }
 `;

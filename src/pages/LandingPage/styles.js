@@ -5,6 +5,7 @@ import bg from "../../assets/background/bg.svg";
 export const Container = styled.div`
   background-image: url(${bg});
   background-size: cover;
-  height: 100vh;
+  height: 100%;
+  min-height: 95vh;
   color: #fff;
 `;
