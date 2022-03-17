@@ -1,9 +1,16 @@
+import Footer from "../../components/Footer";
+import Header from "../../components/Header";
+import { Container } from "./styles";
+
 const LandingPage = () => {
-  return (
-    <>
-      <h1>Landing Page</h1>
-    </>
-  );
+  <>
+  <Header />
+  <Container>
+    <h1>Funcionamento da page</h1>
+  </Container>
+  <Footer />
+</>
+);
 };
 
 export default LandingPage;
