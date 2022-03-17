@@ -9,7 +9,6 @@ export const Container = styled.div`
   position: sticky;
   width: 100%;
   justify-content: center;
-  
 `;
 
 export const ContainerHeader = styled.header`
@@ -20,16 +19,32 @@ export const ContainerHeader = styled.header`
   justify-content: space-between;
   padding-top: 15px;
   padding-right: 10px;
-  .currentPage{
+
+  .currentPage {
     font-weight: bold;
   }
+
   img {
     cursor: pointer;
   }
-  @media (max-width: 910px) {
+
+  @media (min-width: 550px) {
+    figure {
+      margin-right: 5%;
+    }
+  }
+
+  @media (max-width: 925px) {
+    figure {
+      margin-right: unset;
+    }
   }
 `;
 
 export const Nav = styled.nav`
   padding-top: 10px;
+
+  @media (max-width: 925px) {
+    display: none;
+  }
 `;

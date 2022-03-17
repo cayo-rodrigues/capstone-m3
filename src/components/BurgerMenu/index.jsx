@@ -1,6 +1,6 @@
 import { slide as Menu } from "react-burger-menu";
 import { Container } from "./styles";
-import logo from "../../assets/logoProWorking 2.svg";
+import logo from "../../assets/svg/logoProWorking 2.svg";
 
 const BurgerMenu = ({ children }) => {
   return (

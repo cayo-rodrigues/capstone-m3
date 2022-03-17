@@ -13,8 +13,8 @@ export const Container = styled.div`
     position: fixed;
     width: 50px;
     height: 42px;
-    left: 15px;
-    top: 15px;
+    left: 20px;
+    top: 30px;
   }
 
   /* Color/shape of burger icon bars */
@@ -73,5 +73,9 @@ Note: Beware of modifying this element as it can break the animations - you shou
   /* Styling of overlay */
   .bm-overlay {
     background: rgba(0, 0, 0, 0.3);
+  }
+
+  @media screen and (min-width: 925px) {
+    display: none;
   }
 `;
