@@ -41,6 +41,8 @@ const CardBox = () => {
         "Carregador portatil",
         "Não aperte a mão dele",
         "Vou dar choque no seu sistema",
+        "teste",
+        "teste2"
       ],
     },
     {

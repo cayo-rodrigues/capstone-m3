@@ -49,6 +49,10 @@ export const Container = styled.div`
       text-align: left;
       width: 80%;
     }
+    > p {
+      width: 80%;
+      text-align: left;
+    }
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
