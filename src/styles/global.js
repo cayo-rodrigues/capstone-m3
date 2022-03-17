@@ -42,9 +42,6 @@ export const GlobalStyle = createGlobalStyle`
     text-decoration: none;
   }
 
-  ul {
-    list-style: none;
-  }
   @keyframes fadeIn {
     from{
       opacity: 0;

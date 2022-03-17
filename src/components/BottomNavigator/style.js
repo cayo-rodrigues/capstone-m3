@@ -18,6 +18,7 @@ export const NavigatorContainerDiv = styled.div`
   ul {
     display: flex;
     justify-content: space-around;
+    list-style: none;
     transition: 0.5s;
     align-items: flex-start;
     padding: 10px;

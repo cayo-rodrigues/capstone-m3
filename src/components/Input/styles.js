@@ -17,7 +17,7 @@ export const Container = styled.div`
 export const Content = styled.div`
     background: var(--color-secondary);
     border: 2px solid var(--color-secondary);
-    padding: 8px 16px 8px;
+    padding: 8px 16px;
     border-radius: 32px;
     box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.5);
     display: flex;
@@ -37,6 +37,9 @@ export const Content = styled.div`
         button,
         svg {
             color: var(--color-aux);
+            ::placeholder {
+                color: var(--color-aux);
+            }
         }
     }
 
@@ -47,7 +50,7 @@ export const Content = styled.div`
         width: 100%;
         font-size: 14px;
         margin: 0px 10px;
-        ::placeholder{
+        ::placeholder {
             color: var(--white);
         }
     }
