@@ -36,6 +36,7 @@ const Input = ({
                         {!!Icon && <Icon />}
                         <input
                             type={type === "password" ? typePassword : type}
+                            {...register(name)}
                             {...rest}
                         />
                         {type === "password" && (

@@ -34,6 +34,9 @@ export const Content = styled.div`
         button,
         svg {
             color: var(--color-aux);
+            ::placeholder {
+                color: var(--color-aux);
+            }
         }
     }
 
@@ -44,6 +47,9 @@ export const Content = styled.div`
         width: 100%;
         font-size: 14px;
         margin: 0px 10px;
+        ::placeholder {
+            color: var(--white);
+        }
     }
 
     button {
