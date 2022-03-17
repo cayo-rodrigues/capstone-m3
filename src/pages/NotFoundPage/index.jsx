@@ -1,5 +1,5 @@
 import { Container, ImgContainer } from "./styles";
-import Img404 from "../../assets/404.svg";
+import Img404 from "../../assets/svg/404.svg";
 
 const NotFoundPage = () => {
   return (
