@@ -3,11 +3,12 @@ import { Container, ContainerHeader, Nav } from "./styles";
 import Button from "../Button/index.jsx";
 import logo from "../../assets/svg/logoProWorking 2.svg";
 import { useHistory, useLocation } from "react-router-dom";
+import { useAuthenticated } from "../../providers/authenticated";
 
 const Header = ({ className }) => {
     const history = useHistory();
     const location = useLocation();
-    const authenticated = false; //Autenticação feita para teste
+    const { authenticated } = useAuthenticated();
 
     return (
         <Container>

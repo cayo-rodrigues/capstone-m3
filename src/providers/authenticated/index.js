@@ -4,7 +4,7 @@ const AuthenticatedContext = createContext();
 
 export const AuthenticatedProvider = ({ children }) => {
     const [authenticated, setAuthenticated] = useState(
-        localStorage.getItem("@ProWorkin:user") ? true : false
+        localStorage.getItem("@ProWorking:token") ? true : false
     );
 
     return (

@@ -7,7 +7,8 @@ export const UserProvider = ({ children }) => {
 
     const handleUser = (userInfo) => {
         setUser({ ...userInfo });
-        localStorage.setItem("@ProWorkin:user", JSON.stringify(userInfo));
+        localStorage.setItem("@ProWorking:user", JSON.stringify(userInfo.user));
+        localStorage.setItem("@ProWorking:token", userInfo.accessToken);
     };
 
     return (
