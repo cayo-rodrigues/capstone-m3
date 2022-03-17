@@ -8,7 +8,13 @@ export const FooterContainer = styled.footer`
     margin: 0 auto ;
     width: 98%;
     
-
+    @media (max-width:660px){
+        width: 100%;
+        border-radius: 0;
+        .footer-pages{
+            display: none;
+        }
+    }
 
     .footer-contato{
         ul{
@@ -44,6 +50,12 @@ export const FooterContainer = styled.footer`
         width: 60px;
         height:60px ;
         background-color: var(--color-primary);
+        @media (max-width:660px){
+            left: 10%;
+            bottom: 75px;
+            width: 30px;
+            height:30px ;
+        }
     }
 
     p{
@@ -73,12 +85,13 @@ export const FooterContainer = styled.footer`
                 }
             }
         }
-        @media (max-width:500px){
+        @media (max-width:660px){
             flex-direction: column;
             text-align: center;
             padding: 20px 0;
+            border-radius: 0;
             ul{
-                margin: 10px;
+                margin: 20px;
                 list-style: none;
             }
 
