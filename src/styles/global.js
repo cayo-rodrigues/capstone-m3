@@ -51,9 +51,9 @@ export const GlobalStyle = createGlobalStyle`
     }
     to{
       opacity: 1;
-
     }
   }
+
 
 
 `;

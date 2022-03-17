@@ -3,8 +3,11 @@ import styled from "styled-components";
 // lembre-se de usar html semântico
 export const Container = styled.div`
     p {
+        margin-bottom: 3px;
         padding-left: 16px;
-        margin-bottom: 10px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
         span {
             color: var(--error);
         }

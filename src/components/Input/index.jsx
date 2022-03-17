@@ -40,10 +40,7 @@ const Input = ({
                             {...rest}
                         />
                         {type === "password" && (
-                            <button onClick={(e) => {
-                                e.preventDefault()
-                                handleTypePassword()
-                                }}>
+                            <button type="button" onClick={handleTypePassword}>
                                 {typePassword === "password" ? (
                                     <HiEye />
                                 ) : (

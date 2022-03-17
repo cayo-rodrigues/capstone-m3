@@ -16,30 +16,33 @@ import {yupResolver} from '@hookform/resolvers/yup'
 const Form = ({isLogin,isRegister,handleSubmitCallBack})=>{
 
     const schemaLogin = yup.object().shape({
-        email:yup.string().required('Campo Obrigatório').email('precisa ser um email válido'),
+        email:yup.string().required('Campo Obrigatório').email('Email inválido'),
         password:yup.string().required('Campo Obrigatório'),
     })
     const schemaRegister = yup.object().shape({
         name:yup.string().required('Campo Obrigatório'),
-        email:yup.string().required('Campo Obrigatório').email('precisa ser um email válido'),
+        email:yup.string().required('Campo Obrigatório').email('Email inválido'),
         password:yup.string().required('Campo Obrigatório'),
         confirm_password:yup.string().required('Campo Obrigatório').oneOf([yup.ref('password'),null ],'senhas devem ser iguais'),
     })
 
-    const { register,handleSubmit,formState:{errors} } = useForm({
+    const { register,handleSubmit,formState:{errors},reset } = useForm({
         resolver:yupResolver(isLogin ? schemaLogin : schemaRegister)
     })
 
     console.log(errors)
 
     return(
-        <form  onSubmit={ handleSubmit(handleSubmitCallBack) }>
+        <form  onSubmit={ handleSubmit((data)=>{
+            reset()
+            handleSubmitCallBack(data)}
+            ) }>
         {isLogin && (
             <FormContainer>
                 <h1>Login</h1>
                 <Input error={errors.email?.message} register={register} name='email' icon={AiOutlineMail} label='Email' placeholder='Email' />
                 <Input error={errors.password?.message} register={register} name='password'   icon={FiLock} label='Senha' placeholder='Senha' type={'password'} />
-                <Button  type="submit">Logar</Button>
+                <Button type="submit">Logar</Button>
             </FormContainer>
         )}
         {isRegister && (

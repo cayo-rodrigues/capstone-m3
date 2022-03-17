@@ -1,10 +1,11 @@
 import { Link } from "react-router-dom";
 import { NavigatorContainerDiv } from "./style.js";
 
-import { AiOutlineHome } from "react-icons/ai";
-import { MdWorkOutline } from "react-icons/md";
+import { AiOutlineHome,AiFillDashboard } from "react-icons/ai";
+import { MdWorkOutline ,MdNotifications} from "react-icons/md";
 import { FiLogIn } from "react-icons/fi";
 import { BiRegistered } from "react-icons/bi";
+
 import { useLocation } from "react-router-dom";
 
 const BottomNavigator = () => {
@@ -26,8 +27,8 @@ const BottomNavigator = () => {
           </li>
           <li>
             <Link
-              to={"/dashboard"}
-              className={location.pathname === "/dashboard" && "selected"}
+              to={"/home"}
+              className={location.pathname === "/home" && "selected"}
             >
               <div>
                 <p>
@@ -37,6 +38,22 @@ const BottomNavigator = () => {
               <span>Services</span>
             </Link>
           </li>
+
+          <li>
+            <Link
+              to={"/dashboard"}
+              className={location.pathname === "/dashboard" && "selected"}
+            >
+              <div>
+                <p>
+                  <AiFillDashboard />
+                </p>
+              </div>
+              <span>Dashboard</span>
+            </Link>
+          </li>
+
+
           <li>
             <Link
               to={"/login"}
@@ -50,6 +67,8 @@ const BottomNavigator = () => {
               <span>Login</span>
             </Link>
           </li>
+
+
           <li>
             <Link
               to={"/register"}
@@ -57,12 +76,19 @@ const BottomNavigator = () => {
             >
               <div>
                 <p>
-                  <BiRegistered />
+                <MdNotifications />
                 </p>
               </div>
               <span>Cadastro</span>
             </Link>
           </li>
+
+
+
+
+
+
+
         </ul>
       </nav>
     </NavigatorContainerDiv>
