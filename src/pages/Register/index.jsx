@@ -1,11 +1,24 @@
+import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 import Form from "../../components/Form";
+import { proWorkingApi } from "../../services/api";
 
 import { RegisterContainer } from "./styles";
 
 const Register = () => {
-    const handleSubmitCallBack = (data) => {
+    const history = useHistory();
 
-      console.log("alo")
+    const handleSubmitCallBack = (data) => {
+        delete data.confirm_password;
+        proWorkingApi
+            .post("/register", data)
+            .then(() => {
+                toast.success("Conta criada com sucesso!");
+                history.push("/login");
+            })
+            .catch(() => {
+                toast.error("OPS! Email ja cadastrado!");
+            });
     };
 
     return (
