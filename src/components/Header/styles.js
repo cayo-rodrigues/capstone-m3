@@ -4,9 +4,6 @@ import styled from "styled-components";
 export const Container = styled.div`
   background-color: #04164d;
   display: flex;
-  top: 0;
-  left: 0;
-  position: fixed;
   width: 100%;
   justify-content: center;
 `;
