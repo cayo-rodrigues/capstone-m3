@@ -43,6 +43,7 @@ const Card = ({ nome, img, especialidades, id }) => {
     setIsOpen(false);
   }
 
+const Card = ({ nome, img, especialidades }) => {
   return (
     <Container>
       <Modal
@@ -79,9 +80,14 @@ const Card = ({ nome, img, especialidades, id }) => {
         </div>
 
         <ul>
-          {especialidades.map((especialidade) => (
-            <li>{especialidade}</li>
-          ))}
+          {especialidades.map((especialidade, index) => {
+            if (index < 4) {
+              return <li>{especialidade}</li>;
+            }
+            if(index === 4){
+              return <p>...</p>
+            }
+          })}
         </ul>
         <span>
           <button>
