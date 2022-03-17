@@ -54,7 +54,7 @@ const Form = ({isLogin,isRegister,handleSubmitCallBack})=>{
             </FormContainer>
         )}
             <FormFooter>
-                {isLogin && <span>Não possui Cadastro? <Link to={'/register'}>Cadastre-se aqui</Link> </span>}
+                {isLogin && <span>Não possui Login? <Link to={'/register'}>Cadastre-se aqui</Link> </span>}
                 {isRegister && <span>Já possui Login? <Link to={'/login'}>Clique aqui</Link> </span>}
                 <Link to={'/'} >Voltar a página principal</Link>
             </FormFooter>

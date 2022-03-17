@@ -26,7 +26,11 @@ export const ContainerHeader = styled.header`
   img {
     cursor: pointer;
   }
+
   @media (max-width: 910px) {
+    button{
+      display: none;
+    }
   }
 `;
 

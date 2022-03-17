@@ -1,3 +1,4 @@
+import BottomNavigator from "../../components/BottomNavigator";
 import Header from "../../components/Header";
 
 const Dashboard = () => {
@@ -5,6 +6,7 @@ const Dashboard = () => {
     <>
       <Header/>
       <h1>Dashboard</h1>
+      <BottomNavigator/>
     </>
   );
 };

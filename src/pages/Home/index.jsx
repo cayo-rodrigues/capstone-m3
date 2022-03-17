@@ -1,3 +1,4 @@
+import BottomNavigator from "../../components/BottomNavigator";
 import Header from "../../components/Header";
 
 const Home = () => {
@@ -5,6 +6,7 @@ const Home = () => {
     <>
       <Header/>
       <h1>Home</h1>
+      <BottomNavigator/>
     </>
   );
 };
