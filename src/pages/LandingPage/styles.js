@@ -12,7 +12,6 @@ export const Container = styled.div`
   flex-direction: row;
   align-items: center;
   text-align: center;
-  margin-top: 40px;
   h1 {
     color: #fff;
     font-weight: normal;

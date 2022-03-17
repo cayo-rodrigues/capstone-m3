@@ -9,7 +9,6 @@ export const Container = styled.div`
   background-position: center;
   min-height: 100vh;
   height: 100%;
-  margin-top: 30vh;
 
   h1 {
     color: #fff;
@@ -25,7 +24,6 @@ export const Container = styled.div`
     text-shadow: 0.2px 0.5px 2px black;
   }
   @media (min-width: 850px) {
-    margin-top: 10vh;
     h1 {
       font-size: 32px;
       text-shadow: 0.2px 0.5px 2px black;

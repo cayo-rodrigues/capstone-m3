@@ -10,7 +10,6 @@ export const Container = styled.div`
   color: #fff;
   display: flex;
   justify-content: space-between;
-  margin-top: 190px;
   flex-direction: column;
   h1 {
     padding-top: 20px;
@@ -44,7 +43,7 @@ export const Box = styled.div`
     margin-top: 50px;
     width: auto;
     height: auto;
-    column-count: 2;
+    display: flex;
   }
 `;
 

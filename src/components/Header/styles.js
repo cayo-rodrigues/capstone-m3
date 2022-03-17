@@ -6,7 +6,7 @@ export const Container = styled.div`
   display: flex;
   top: 0;
   left: 0;
-  position: fixed;
+  position: sticky;
   width: 100%;
   justify-content: center;
 `;
