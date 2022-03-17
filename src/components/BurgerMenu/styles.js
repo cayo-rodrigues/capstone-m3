@@ -53,6 +53,17 @@ Note: Beware of modifying this element as it can break the animations - you shou
     background: var(--color-aux);
     padding: 2.5em 1.5em 0;
     font-size: 1.15em;
+
+    a {
+      color: var(--white);
+      background: var(--color-secondary);
+      padding: 12px 15px;
+      border-radius: 8px;
+
+      :hover {
+        background: var(--color-primary);
+      }
+    }
   }
 
   /* Wrapper for item list */

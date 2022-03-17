@@ -55,8 +55,9 @@ export const ContainerHeader = styled.header`
 
 export const Nav = styled.nav`
   padding-top: 10px;
+  display: none;
 
-  @media (max-width: 759px) {
-    display: none;
+  @media (min-width: 760px) {
+    display: unset;
   }
 `;

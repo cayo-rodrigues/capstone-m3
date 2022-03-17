@@ -4,18 +4,22 @@ import Button from "../Button/index.jsx";
 import logo from "../../assets/svg/logoProWorking 2.svg";
 import { useHistory, useLocation } from "react-router-dom";
 import BurgerMenu from "../BurgerMenu";
+import { Link } from "react-router-dom";
 
 const Header = ({ className }) => {
   const history = useHistory();
   const location = useLocation();
   const authenticated = false; //Autenticação feita para teste
 
-  console.log(location.pathname);
-
   return (
     <Container>
       <ContainerHeader>
-        <BurgerMenu></BurgerMenu>
+        <BurgerMenu>
+          <Link to="/home">Serviços</Link>
+          {authenticated && <Link to="/dashboard">Dashboard</Link>}
+          <Link to="/login">Login</Link>
+          <Link to="/register">Cadastre-se</Link>
+        </BurgerMenu>
         <figure>
           <img src={logo} alt="Logo" onClick={() => history.push("/")} />
         </figure>
