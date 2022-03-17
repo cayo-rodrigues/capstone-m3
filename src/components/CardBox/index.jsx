@@ -55,17 +55,19 @@ const CardBox = () => {
         },
     ];
 
-    return (
-        <Container>
-            {pessoas.map((pessoa) => (
-                <Card
-                    nome={pessoa.nome}
-                    img={pessoa.img}
-                    especialidades={pessoa.especialidades}
-                />
-            ))}
-        </Container>
-    );
+  return (
+    <Container>
+      {pessoas.map((pessoa, index) => (
+        <Card
+          id={index}
+          key={index}
+          nome={pessoa.nome}
+          img={pessoa.img}
+          especialidades={pessoa.especialidades}
+        />
+      ))}
+    </Container>
+  );
 };
 
 export default CardBox;
