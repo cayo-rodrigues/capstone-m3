@@ -1,10 +1,11 @@
-import CardBox from "../../components/CardBox"
+import { Container } from "./styles";
 
 const Dashboard = () => {
   return (
     <>
-      <h1>Dashboard</h1>
-      <CardBox/>
+      <Container>
+        <h1>Dashboard</h1>
+      </Container>
     </>
   );
 };

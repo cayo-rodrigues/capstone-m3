@@ -2,6 +2,7 @@ import Card from "../Card";
 import { Container } from "./styles";
 
 const CardBox = () => {
+
   const pessoas = [
     {
       nome: "Cirilão",
@@ -59,8 +60,10 @@ const CardBox = () => {
 
   return (
     <Container>
-      {pessoas.map((pessoa) => (
+      {pessoas.map((pessoa, index) => (
         <Card
+          id={index}
+          key={index}
           nome={pessoa.nome}
           img={pessoa.img}
           especialidades={pessoa.especialidades}

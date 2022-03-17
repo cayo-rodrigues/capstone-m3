@@ -7,6 +7,10 @@ export const GlobalStyle = createGlobalStyle`
     outline: 0;
     box-sizing: border-box;
   }
+  body{
+    min-height: 100vh;
+    height: 100%;
+  }
 
   :root {
     --color-primary: #002d9b;
@@ -16,6 +20,7 @@ export const GlobalStyle = createGlobalStyle`
 
     --white: #fff;
     --black: #000;
+    --error: #E4266F;
 
     --font-text:'Inter', sans-serif;;
     --font-title:'Montserrat', sans-serif;
@@ -37,4 +42,13 @@ export const GlobalStyle = createGlobalStyle`
     text-decoration: none;
   }
 
+  @keyframes fadeIn {
+    from{
+      opacity: 0;
+    }
+    to{
+      opacity: 1;
+
+    }
+  }
 `;
