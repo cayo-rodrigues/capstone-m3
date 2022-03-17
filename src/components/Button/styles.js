@@ -27,4 +27,5 @@ export const Container = styled.button`
   @media (max-width: 400px) {
     width: ${(props) => props.mobile};
   }
+
 `;

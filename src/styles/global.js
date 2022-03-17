@@ -45,5 +45,15 @@ export const GlobalStyle = createGlobalStyle`
   ul {
     list-style: none;
   }
+  @keyframes fadeIn {
+    from{
+      opacity: 0;
+    }
+    to{
+      opacity: 1;
+
+    }
+  }
+
 
 `;

@@ -35,11 +35,15 @@ const Input = ({
                     <Content>
                         {!!Icon && <Icon />}
                         <input
+                            {...register(name)}
                             type={type === "password" ? typePassword : type}
                             {...rest}
                         />
                         {type === "password" && (
-                            <button onClick={() => handleTypePassword()}>
+                            <button onClick={(e) => {
+                                e.preventDefault()
+                                handleTypePassword()
+                                }}>
                                 {typePassword === "password" ? (
                                     <HiEye />
                                 ) : (
