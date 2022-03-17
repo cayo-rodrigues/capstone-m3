@@ -28,6 +28,14 @@ export const ContainerHeader = styled.header`
     cursor: pointer;
   }
 
+  @media screen and (max-width: 360px) {
+    figure {
+      img {
+        width: 240px;
+      }
+    }
+  }
+
   @media (min-width: 550px) {
     figure {
       margin-right: 5%;
@@ -38,13 +46,17 @@ export const ContainerHeader = styled.header`
     figure {
       margin-right: unset;
     }
+
+    button {
+      width: 140px;
+    }
   }
 `;
 
 export const Nav = styled.nav`
   padding-top: 10px;
 
-  @media (max-width: 925px) {
+  @media (max-width: 759px) {
     display: none;
   }
 `;

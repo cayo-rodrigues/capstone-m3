@@ -11,10 +11,10 @@ export const Container = styled.div`
   /* Position and sizing of burger button */
   .bm-burger-button {
     position: fixed;
-    width: 50px;
-    height: 42px;
-    left: 20px;
-    top: 30px;
+    width: 40px;
+    height: 32px;
+    left: 15px;
+    top: 33px;
   }
 
   /* Color/shape of burger icon bars */
@@ -75,7 +75,16 @@ Note: Beware of modifying this element as it can break the animations - you shou
     background: rgba(0, 0, 0, 0.3);
   }
 
-  @media screen and (min-width: 925px) {
+  @media screen and (min-width: 360px) {
+    .bm-burger-button {
+      width: 50px;
+      height: 42px;
+      left: 20px;
+      top: 30px;
+    }
+  }
+
+  @media screen and (min-width: 760px) {
     display: none;
   }
 `;
