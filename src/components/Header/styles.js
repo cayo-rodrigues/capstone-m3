@@ -4,8 +4,12 @@ import styled from "styled-components";
 export const Container = styled.div`
   background-color: #04164d;
   display: flex;
+  top: 0;
+  left: 0;
+  position: sticky;
   width: 100%;
   justify-content: center;
+  
 `;
 
 export const ContainerHeader = styled.header`
@@ -16,35 +20,13 @@ export const ContainerHeader = styled.header`
   justify-content: space-between;
   padding-top: 15px;
   padding-right: 10px;
+  .currentPage{
+    font-weight: bold;
+  }
   img {
     cursor: pointer;
   }
   @media (max-width: 910px) {
-  }
-`;
-export const Button = styled.button`
-  margin: 0px 9px 0px 9px;
-  text-transform: uppercase;
-  font-family: var(--font-title);
-  font-weight: 500;
-  width: 189.55px;
-  background: #43568d;
-  border-width: initial;
-  border-style: none;
-  border-radius: 28.75px;
-  cursor: pointer;
-  height: 57.49px;
-  font-size: 16px;
-  color: white;
-  &:hover {
-    background: #002d9b;
-  }
-  @media (max-width: 910px) {
-    width: 140px;
-  }
-  @media (max-width: 753px) {
-    background-color: black;
-    width: 140px;
   }
 `;
 
