@@ -1,7 +1,11 @@
+import { Container } from "./styles";
+
 const Dashboard = () => {
   return (
     <>
-      <h1>Dashboard</h1>
+      <Container>
+        <h1>Dashboard</h1>
+      </Container>
     </>
   );
 };
