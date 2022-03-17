@@ -19,7 +19,7 @@ export const Container = styled.div`
   img {
     display: none;
   }
-  @media (min-width: 768px) {
+  @media (max-width: 850px) {
     .time {
       display: block;
       width: 640px;

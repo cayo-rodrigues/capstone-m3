@@ -6,5 +6,7 @@ export const Container = styled.div`
   background-image: url(${bg});
   background-size: cover;
   height: 100vh;
-  color: #fff;
+  display: flex;
+  
 `;
+
