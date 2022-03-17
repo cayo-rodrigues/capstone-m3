@@ -2,7 +2,6 @@ import { Container, Imagem, ModalContainer } from "./styles";
 import whatsapp from "../../assets/Whatsapp.png";
 import email from "../../assets/Email.png";
 import React from "react";
-import ReactDOM from "react-dom";
 import Modal from "react-modal";
 import { useState } from "react";
 
@@ -24,23 +23,19 @@ const customStyles = {
 };
 
 const Card = ({ nome, img, especialidades, id }) => {
-  let subtitle;
   const [modalIsOpen, setIsOpen] = useState(false);
 
   function openModal(e) {
     if (e.target.tagName === "SECTION") {
       setIsOpen(true);
-      console.log(e.target);
     } else if (
       e.target.tagName === "LI" ||
       e.target.tagName === "IMG" ||
       e.target.tagName === "H2"
     ) {
-      console.log(e.target.parentElement.parentElement);
       setIsOpen(true);
     } else {
       setIsOpen(true);
-      console.log(e.target.parentElement);
     }
   }
 
