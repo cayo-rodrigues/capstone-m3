@@ -6,15 +6,15 @@ import Login from "../pages/Login";
 import Register from "../pages/Register";
 
 const Routes = () => {
-  return (
-    <Switch>
-      <Route exact path="/" component={LandingPage} />
-      <Route exact path="/home" component={Home} />
-      <Route exact path="/dashboard" component={Dashboard} />
-      <Route exact path="/login" component={Login} />
-      <Route exact path="/register" component={Register} />
-    </Switch>
-  );
+    return (
+        <Switch>
+            <Route exact path='/' component={LandingPage} />
+            <Route exact path='/home' component={Home} />
+            <Route exact path='/dashboard' component={Dashboard} />
+            <Route exact path='/login' component={Login} />
+            <Route exact path='/register' component={Register} />
+        </Switch>
+    );
 };
 
 export default Routes;
