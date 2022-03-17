@@ -9,7 +9,6 @@ export const Container = styled.div`
   position: sticky;
   width: 100%;
   justify-content: center;
-  
 `;
 
 export const ContainerHeader = styled.header`
@@ -20,7 +19,7 @@ export const ContainerHeader = styled.header`
   justify-content: space-between;
   padding-top: 15px;
   padding-right: 10px;
-  .currentPage{
+  .currentPage {
     font-weight: bold;
   }
   img {
@@ -31,5 +30,5 @@ export const ContainerHeader = styled.header`
 `;
 
 export const Nav = styled.nav`
-  padding-top: 10px;
+    padding-top: 10px;
 `;
