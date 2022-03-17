@@ -1,4 +1,3 @@
-import { act } from "react-dom/test-utils";
 import { Container } from "./styles";
 
 const Button = ({
@@ -19,7 +18,7 @@ const Button = ({
       heigth={heigth}
       color={color}
       type="button"
-      active = {active}
+      active={active}
       {...rest}
     >
       {children}
