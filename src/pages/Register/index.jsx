@@ -1,26 +1,19 @@
 import Form from "../../components/Form";
-import Header from "../../components/Header";
 
 import { RegisterContainer } from "./styles";
 
 const Register = () => {
   return (
     <>
-
-    <RegisterContainer>
-
+      <RegisterContainer>
         <div className="col-left">
-          <Form isRegister handleSubmitCallBack={data=>console.log(data) } />
+          <Form isRegister handleSubmitCallBack={(data) => console.log(data)} />
         </div>
-
 
         <div className="col-right">
-
           <div></div>
-
         </div>
-
-    </RegisterContainer>
+      </RegisterContainer>
     </>
   );
 };
