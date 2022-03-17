@@ -35,12 +35,14 @@ const Input = ({
                     <Content>
                         {!!Icon && <Icon />}
                         <input
-                            {...register(name)}
                             type={type === "password" ? typePassword : type}
+                            {...register(name)}
                             {...rest}
                         />
                         {type === "password" && (
-                            <button type="button" onClick={handleTypePassword}>
+                            <button
+                                type='button'
+                                onClick={() => handleTypePassword()}>
                                 {typePassword === "password" ? (
                                     <HiEye />
                                 ) : (

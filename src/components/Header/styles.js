@@ -30,5 +30,5 @@ export const ContainerHeader = styled.header`
 `;
 
 export const Nav = styled.nav`
-  padding-top: 10px;
+    padding-top: 10px;
 `;
