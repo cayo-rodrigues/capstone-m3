@@ -1,3 +1,4 @@
+import BottomNavigator from "../../components/BottomNavigator";
 import Form from "../../components/Form";
 
 import { proWorkingApi } from "../../services/api";

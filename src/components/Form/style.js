@@ -23,7 +23,7 @@ export const FormContainer = styled.div`
     }
 `;
 export const FormFooter = styled.p`
-    margin: 20px 0 0;
+    margin: 20px 0 80px;
     text-align: center;
     font-size: 10x;
     span {
