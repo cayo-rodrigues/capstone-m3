@@ -3,7 +3,7 @@ import Input from "../../components/Input";
 import { Container } from "./styles";
 import home from "../../assets/svg/home.svg";
 
-const Home = () => {
+const ServicesPage = () => {
   return (
     <>
       <Container>
@@ -11,7 +11,7 @@ const Home = () => {
           Bem vindo ao <span>PROWORKING</span>
         </h1>
         <p>Encontre o serviço que você precisa aqui!</p>
-        <Input isSearch/>
+        <Input isSearch />
         <Button />
         <img src={home} alt="homeimg" />
       </Container>
@@ -19,4 +19,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default ServicesPage;
