@@ -1,23 +1,49 @@
-import BottomNavigator from "../../components/BottomNavigator";
+import { useHistory } from "react-router-dom";
+import { toast } from "react-toastify";
 import Form from "../../components/Form";
+import { proWorkingApi } from "../../services/api";
+import { useAuthenticated } from "../../providers/authenticated";
+import { Redirect } from "react-router-dom";
 
 import { RegisterContainer } from "./styles";
 
 const Register = () => {
-  return (
-    <>
-      <RegisterContainer>
-        <div className="col-left">
-          <Form isRegister handleSubmitCallBack={(data) => console.log(data)} />
-        </div>
+    const history = useHistory();
+    const { authenticated } = useAuthenticated();
 
-        <div className="col-right">
-          <div></div>
-        </div>
-      </RegisterContainer>
-      <BottomNavigator/>
-    </>
-  );
+    const handleSubmitCallBack = (data) => {
+        delete data.confirm_password;
+        proWorkingApi
+            .post("/register", data)
+            .then(() => {
+                toast.success("Conta criada com sucesso!");
+                history.push("/login");
+            })
+            .catch(() => {
+                toast.error("OPS! Email ja cadastrado!");
+            });
+    };
+
+    if (authenticated) {
+        return <Redirect to={"/dashboard"} />;
+    }
+
+    return (
+        <>
+            <RegisterContainer>
+                <div className='col-left'>
+                    <Form
+                        isRegister
+                        handleSubmitCallBack={handleSubmitCallBack}
+                    />
+                </div>
+
+                <div className='col-right'>
+                    <div></div>
+                </div>
+            </RegisterContainer>
+        </>
+    );
 };
 
 export default Register;
