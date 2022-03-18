@@ -11,10 +11,10 @@ export const Container = styled.div`
   /* Position and sizing of burger button */
   .bm-burger-button {
     position: fixed;
-    width: 50px;
-    height: 42px;
+    width: 40px;
+    height: 32px;
     left: 15px;
-    top: 15px;
+    top: 33px;
   }
 
   /* Color/shape of burger icon bars */
@@ -59,6 +59,22 @@ Note: Beware of modifying this element as it can break the animations - you shou
   .bm-item-list {
     color: var(--white);
     padding: 0.8em;
+    margin-top: 10px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    a {
+      color: var(--white);
+      background: var(--color-secondary);
+      padding: 12px 15px;
+      border-radius: 8px;
+
+      :hover {
+        background: var(--color-primary);
+      }
+    }
   }
 
   /* Individual item */
@@ -73,5 +89,18 @@ Note: Beware of modifying this element as it can break the animations - you shou
   /* Styling of overlay */
   .bm-overlay {
     background: rgba(0, 0, 0, 0.3);
+  }
+
+  @media screen and (min-width: 360px) {
+    .bm-burger-button {
+      width: 50px;
+      height: 42px;
+      left: 20px;
+      top: 30px;
+    }
+  }
+
+  @media screen and (min-width: 760px) {
+    display: none;
   }
 `;

@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-// lembre-se de usar html semântico
 export const FooterContainer = styled.footer`
     max-width: 1400px;
     position: relative;

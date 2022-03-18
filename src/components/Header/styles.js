@@ -9,7 +9,6 @@ export const Container = styled.div`
   position: sticky;
   width: 100%;
   justify-content: center;
-  
 `;
 
 export const ContainerHeader = styled.header`
@@ -20,20 +19,45 @@ export const ContainerHeader = styled.header`
   justify-content: space-between;
   padding-top: 15px;
   padding-right: 10px;
-  .currentPage{
+
+  .currentPage {
     font-weight: bold;
   }
+
   img {
     cursor: pointer;
   }
 
-  @media (max-width: 910px) {
-    button{
-      display: none;
+  @media screen and (max-width: 360px) {
+    figure {
+      img {
+        width: 240px;
+      }
+    }
+  }
+
+  @media (min-width: 550px) {
+    figure {
+      margin-right: 5%;
+    }
+  }
+
+  @media (max-width: 925px) {
+    figure {
+      margin-right: unset;
+    }
+
+    button {
+      width: 140px;
     }
   }
 `;
 
 export const Nav = styled.nav`
   padding-top: 10px;
+  display: none;
+
+  @media (min-width: 760px) {
+    display: unset;
+  }
 `;
