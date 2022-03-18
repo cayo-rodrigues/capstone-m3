@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 
 import { LoginContainer } from "./styles";
 
+
 const Login = () => {
     const { handleUser } = useUser();
     const { authenticated, setAuthenticated } = useAuthenticated();

@@ -1,4 +1,5 @@
 import { ToastContainer } from "react-toastify";
+import Loading from "./components/Loading";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import Routes from "./routes";
@@ -11,7 +12,8 @@ const App = () => {
     <>
       <ToastContainer />
       <GlobalStyle />
-      <Header />
+      <Loading/>
+      <Header/>
       <Routes />
       <Footer />
     </>
