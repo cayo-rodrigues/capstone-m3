@@ -25,6 +25,7 @@ export const Content = styled.div`
   svg {
     color: var(--white);
     transform: translateY(2px) scale(1.3);
+    transition: all 0.25s ease-in-out;
   }
 
   :focus-within {

@@ -3,6 +3,9 @@ import { Container, ContainerHeader, Nav } from "./styles";
 import Button from "../Button/index.jsx";
 import logo from "../../assets/svg/logoProWorking 2.svg";
 import { useHistory, useLocation } from "react-router-dom";
+
+import BurgerMenu from "../BurgerMenu";
+import BurgerMenuLink from "../BurgerMenuLink";
 import { useAuthenticated } from "../../providers/authenticated";
 
 const Header = ({ className }) => {
@@ -13,6 +16,14 @@ const Header = ({ className }) => {
     return (
         <Container>
             <ContainerHeader>
+                <BurgerMenu>
+                  <BurgerMenuLink to="/home">Serviços</BurgerMenuLink>
+                  {authenticated && (
+                    <BurgerMenuLink to="/dashboard">Dashboard</BurgerMenuLink>
+                  )}
+                  <BurgerMenuLink to="/login">Login</BurgerMenuLink>
+                  <BurgerMenuLink to="/register">Cadastre-se</BurgerMenuLink>
+                </BurgerMenu>
                 <figure>
                     <img
                         src={logo}
