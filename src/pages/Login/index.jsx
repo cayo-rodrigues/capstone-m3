@@ -10,7 +10,6 @@ import { toast } from "react-toastify";
 
 import { LoginContainer } from "./styles";
 
-
 const Login = () => {
     const { handleUser } = useUser();
     const { authenticated, setAuthenticated } = useAuthenticated();
@@ -26,7 +25,11 @@ const Login = () => {
                 setAuthenticated(true);
                 history.push("/dashboard");
             })
-            .catch(() => toast.error("Email ou senha errados!"));
+            .catch(() =>
+                toast.error("Email ou senha incorretos!", {
+                    toastId: "toastError",
+                })
+            );
     };
 
     if (authenticated) {

@@ -16,11 +16,15 @@ const Register = () => {
         proWorkingApi
             .post("/register", data)
             .then(() => {
-                toast.success("Conta criada com sucesso!");
+                toast.success("Conta criada com sucesso!", {
+                    toastId: "toastSuccess",
+                });
                 history.push("/login");
             })
             .catch(() => {
-                toast.error("OPS! Email ja cadastrado!");
+                toast.error("OPS! Email ja cadastrado!", {
+                    toastId: "toastError",
+                });
             });
     };
 
