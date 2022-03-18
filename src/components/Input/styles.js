@@ -73,7 +73,7 @@ export const ContainerInputSearch = styled.input`
   transition: 0.5s;
   width: 90%;
   max-width: 654px;
-  font-size: 20px;
+  /* font-size: 20px; */
   color: var(--color-secondary);
 
   ::placeholder {
