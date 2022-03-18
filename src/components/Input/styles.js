@@ -2,89 +2,90 @@ import styled from "styled-components";
 
 // lembre-se de usar html semântico
 export const Container = styled.div`
-    p {
-        padding-left: 16px;
-        margin-bottom: 10px;
-        span {
-            color: var(--error);
-        }
+  p {
+    padding-left: 16px;
+    margin-bottom: 10px;
+    span {
+      color: var(--error);
     }
+  }
 `;
 
 export const Content = styled.div`
-    background: var(--color-secondary);
-    border: 2px solid var(--color-secondary);
-    padding: 8px 16px;
-    border-radius: 32px;
-    box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    transition: 0.5s;
+  background: var(--color-secondary);
+  border: 2px solid var(--color-secondary);
+  padding: 8px 16px;
+  border-radius: 32px;
+  box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  transition: 0.5s;
 
+  svg {
+    color: var(--white);
+    transform: translateY(2px) scale(1.3);
+    transition: all 0.25s ease-in-out;
+  }
+
+  :focus-within {
+    border-color: var(--color-primary);
+    background: var(--white);
+    input,
+    button,
     svg {
-        color: var(--white);
-        transform: translateY(2px) scale(1.3);
+      color: var(--color-aux);
+      ::placeholder {
+        color: var(--color-aux);
+      }
     }
+  }
 
-    :focus-within {
-        border-color: var(--color-primary);
-        background: var(--white);
-        input,
-        button,
-        svg {
-            color: var(--color-aux);
-            ::placeholder {
-                color: var(--color-aux);
-            }
-        }
+  input {
+    background: transparent;
+    border: none;
+    color: var(--white);
+    width: 100%;
+    font-size: 14px;
+    margin: 0px 10px;
+    ::placeholder {
+      color: var(--white);
     }
+  }
 
-    input {
-        background: transparent;
-        border: none;
-        color: var(--white);
-        width: 100%;
-        font-size: 14px;
-        margin: 0px 10px;
-        ::placeholder {
-            color: var(--white);
-        }
+  button {
+    margin-left: 12px;
+    background: transparent;
+    border: none;
+    color: var(--white);
+    svg {
+      transform: translateY(3px) scale(1.5);
     }
-
-    button {
-        margin-left: 12px;
-        background: transparent;
-        border: none;
-        color: var(--white);
-        svg {
-            transform: translateY(3px) scale(1.5);
-        }
-    }
+  }
 `;
 
 export const ContainerInputSearch = styled.input`
-    text-align: center;
-    padding: 12px;
-    border: 1.8px solid transparent;
-    border-radius: 26px;
-    box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.5);
+  text-align: center;
+  padding: 12px;
+  border: 1.8px solid transparent;
+  border-radius: 26px;
+  box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.5);
+  transition: 0.5s;
+  width: 90%;
+  max-width: 654px;
+  /* font-size: 20px; */
+  color: var(--color-secondary);
+
+  ::placeholder {
     transition: 0.5s;
-    width: 90%;
-    max-width: 654px;
-    font-size: 20px;
     color: var(--color-secondary);
+  }
 
+  :focus {
+    border-color: var(--black);
     ::placeholder {
-        transition: 0.5s;
-        color: var(--color-secondary);
+      transition: 0.5s;
+      color: var(--white);
     }
-
-    :focus {
-        border-color: var(--black);
-        ::placeholder {
-            transition: 0.5s;
-            color: var(--white);
-        }
-    }
+  }
 `;
