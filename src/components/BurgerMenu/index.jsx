@@ -6,12 +6,25 @@ import { Children, cloneElement, isValidElement, useState } from "react";
 const BurgerMenu = ({ children }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const hideSvgs = (isOpen) => {
+    const svgs = document.querySelectorAll("svg");
+
+    svgs.forEach((svg) => {
+      const coords = svg.getBoundingClientRect();
+
+      if (coords.left <= 300) {
+        svg.style.color = isOpen ? "transparent" : "";
+      }
+    });
+  };
+
   const handleCloseMenu = () => {
     setIsMenuOpen(false);
   };
 
   const handleStateChange = (state) => {
     setIsMenuOpen(state.isOpen);
+    hideSvgs(state.isOpen);
   };
 
   const childrenWithProps = Children.map(children, (child) => {
