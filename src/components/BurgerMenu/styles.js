@@ -53,6 +53,17 @@ Note: Beware of modifying this element as it can break the animations - you shou
     background: var(--color-aux);
     padding: 2.5em 1.5em 0;
     font-size: 1.15em;
+  }
+
+  /* Wrapper for item list */
+  .bm-item-list {
+    color: var(--white);
+    padding: 0.8em;
+    margin-top: 10px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
 
     a {
       color: var(--white);
@@ -64,12 +75,6 @@ Note: Beware of modifying this element as it can break the animations - you shou
         background: var(--color-primary);
       }
     }
-  }
-
-  /* Wrapper for item list */
-  .bm-item-list {
-    color: var(--white);
-    padding: 0.8em;
   }
 
   /* Individual item */
