@@ -40,10 +40,10 @@ const Footer = () => {
               <Link to="/">Services</Link>{" "}
             </li>
             <li>
-              <Link to="/">Sobre nós</Link>{" "}
+              <Link to="/aboutus">Sobre nós</Link>{" "}
             </li>
             <li>
-              <Link to="/">Como funciona</Link>{" "}
+              <Link to="/how">Como funciona</Link>{" "}
             </li>
           </ul>
         </div>
@@ -57,6 +57,7 @@ const Footer = () => {
               <AiFillMail /> cavalo@mail.com.com.com
             </li>
             <li> <GoLocation/> Curitipa, Paraná </li>
+            <li> Kenzie Academy Brasil </li>
 
           </ul>
         </div>
@@ -65,7 +66,7 @@ const Footer = () => {
           <Button>Entre em contato</Button>
         </div>
       </div>
-      <p>Desenvolvido por ProWorking 💜 | 2022 Todos os direitos Reservados </p>
+      <p>Desenvolvido por ProWorking 💜 | &copy; 2022 Todos os direitos Reservados </p>
     </FooterContainer>
   );
 };
