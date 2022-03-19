@@ -22,13 +22,13 @@ const BottomNavigator = () => {
                   <AiOutlineHome />
                 </p>
               </div>
-              <span>Home</span>
+              <span>Serviços</span>
             </Link>
           </li>
           <li>
             <Link
-              to={"/home"}
-              className={location.pathname === "/home" && "selected"}
+              to={"/services"}
+              className={location.pathname === "/services" && "selected"}
             >
               <div>
                 <p>

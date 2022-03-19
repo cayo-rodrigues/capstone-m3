@@ -18,13 +18,12 @@ export const Container = styled.div`
   img {
     display: none;
   }
-  @media (max-width: 850px) {
+  @media (min-width: 768px) {
     .time {
       display: block;
       width: 640px;
     }
     height: 100%;
-    margin-top: 100px;
     flex-direction: row;
   }
 `;

@@ -3,7 +3,7 @@ import Input from "../../components/Input";
 import { Container } from "./styles";
 import home from "../../assets/svg/home.svg";
 
-const Home = () => {
+const Services = () => {
   return (
     <>
       <Container>
@@ -19,4 +19,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Services;

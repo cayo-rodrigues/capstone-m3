@@ -7,10 +7,9 @@ import {
   AiFillInstagram,
   AiFillFacebook,
   AiFillPhone,
-  AiFillMail
+  AiFillMail,
 } from "react-icons/ai";
-import {GoLocation} from 'react-icons/go'
-
+import { GoLocation } from "react-icons/go";
 
 const Footer = () => {
   return (
@@ -28,22 +27,22 @@ const Footer = () => {
         <div className="footer-pages">
           <ul>
             <li>
-              <Link to="/home">Home</Link>{" "}
+              <Link to="/services">Serviços</Link>
             </li>
             <li>
-              <Link to="/login">Login</Link>{" "}
+              <Link to="/login">Login</Link>
             </li>
             <li>
-              <Link to="/register">Register</Link>{" "}
+              <Link to="/register">Register</Link>
             </li>
             <li>
-              <Link to="/">Services</Link>{" "}
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <Link to="/aboutus">Sobre nós</Link>{" "}
+              <Link to="/aboutus">Sobre nós</Link>
             </li>
             <li>
-              <Link to="/how">Como funciona</Link>{" "}
+              <Link to="/how">Como funciona</Link>
             </li>
           </ul>
         </div>
@@ -56,9 +55,11 @@ const Footer = () => {
             <li>
               <AiFillMail /> cavalo@mail.com.com.com
             </li>
-            <li> <GoLocation/> Curitipa, Paraná </li>
+            <li>
+              {" "}
+              <GoLocation /> Curitipa, Paraná
+            </li>
             <li> Kenzie Academy Brasil </li>
-
           </ul>
         </div>
 
@@ -66,7 +67,10 @@ const Footer = () => {
           <Button>Entre em contato</Button>
         </div>
       </div>
-      <p>Desenvolvido por ProWorking 💜 | &copy; 2022 Todos os direitos Reservados </p>
+      <p>
+        Desenvolvido por ProWorking 💜 | &copy; 2022 Todos os direitos
+        Reservados{" "}
+      </p>
     </FooterContainer>
   );
 };

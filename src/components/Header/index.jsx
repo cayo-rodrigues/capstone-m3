@@ -17,7 +17,7 @@ const Header = ({ className }) => {
     <Container>
       <ContainerHeader>
         <BurgerMenu>
-          <BurgerMenuLink to="/home">Serviços</BurgerMenuLink>
+          <BurgerMenuLink to="/services">Serviços</BurgerMenuLink>
           {authenticated ? (
             <BurgerMenuLink to="/dashboard">Dashboard</BurgerMenuLink>
           ) : (
@@ -32,8 +32,8 @@ const Header = ({ className }) => {
         </figure>
         <Nav>
           <Button
-            className={location.pathname === "/home" && "currentPage"}
-            onClick={() => history.push("/home")}
+            className={location.pathname === "/services" && "currentPage"}
+            onClick={() => history.push("/services")}
           >
             Serviços
           </Button>

@@ -19,7 +19,7 @@ export const Content = styled.div`
   box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  width: 90%;
   transition: 0.5s;
 
   svg {
@@ -45,7 +45,7 @@ export const Content = styled.div`
     background: transparent;
     border: none;
     color: var(--white);
-    width: 100%;
+    width: 90%;
     font-size: 14px;
     margin: 0px 10px;
     ::placeholder {
@@ -72,6 +72,7 @@ export const ContainerInputSearch = styled.input`
   box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.5);
   transition: 0.5s;
   width: 90%;
+  min-width: 215px;
   max-width: 654px;
   /* font-size: 20px; */
   color: var(--color-secondary);

@@ -21,7 +21,7 @@ export const Container = styled.div`
     margin-bottom: 10px;
     padding: 20px;
     span {
-      font-size: 55px;
+      font-size: 35px;
     }
   }
   p {
@@ -29,7 +29,8 @@ export const Container = styled.div`
     padding-bottom: 30px;
   }
   img {
-    width: 640px;
+    max-width: 640px;
+    width: 60vw;
   }
   .item1 {
     order: 3;
@@ -48,8 +49,8 @@ export const Container = styled.div`
   button {
     margin-top: 10px;
   }
-  @media (max-width: 850px) {
-    margin-top: 10px;
+  @media (max-width: 768px) {
+    /* margin-top: 8px; */
     flex-direction: column;
     justify-content: center;
     h1 {

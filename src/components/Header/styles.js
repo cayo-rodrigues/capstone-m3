@@ -8,18 +8,17 @@ export const Container = styled.div`
   left: 0;
   position: sticky;
   width: 100%;
+  max-width: 100vw;
   justify-content: center;
 `;
 
 export const ContainerHeader = styled.header`
   display: flex;
   width: 100%;
-  max-width: 1440px;
+  max-width: 100vw;
   border-top: 96px;
   justify-content: space-between;
   padding-top: 15px;
-  padding-right: 10px;
-
   .currentPage {
     font-weight: bold;
   }
@@ -28,21 +27,7 @@ export const ContainerHeader = styled.header`
     cursor: pointer;
   }
 
-  @media screen and (max-width: 360px) {
-    figure {
-      img {
-        width: 240px;
-      }
-    }
-  }
-
-  @media (min-width: 550px) {
-    figure {
-      margin-right: 5%;
-    }
-  }
-
-  @media (max-width: 925px) {
+  @media (min-width: 768px) {
     figure {
       margin-right: unset;
     }
@@ -54,10 +39,9 @@ export const ContainerHeader = styled.header`
 `;
 
 export const Nav = styled.nav`
-  padding-top: 10px;
   display: none;
 
-  @media (min-width: 760px) {
+  @media (min-width: 768px) {
     display: unset;
   }
 `;
