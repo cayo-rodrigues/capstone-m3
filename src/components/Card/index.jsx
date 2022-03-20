@@ -58,6 +58,7 @@ const Card = ({ nome, img, especialidades, id }) => {
           </div>
 
           <ul>
+            <p>Especialidade:</p>
             {especialidades.map((especialidade) => (
               <li>{especialidade}</li>
             ))}
@@ -79,7 +80,8 @@ const Card = ({ nome, img, especialidades, id }) => {
         </div>
 
         <ul>
-          {especialidades.map((especialidade, index) => {
+        <p><strong>Especialidade:</strong> </p>
+          {especialidades.map((especialidade, index)=>{
             if (index < 4) {
               return <li>{especialidade}</li>;
             }

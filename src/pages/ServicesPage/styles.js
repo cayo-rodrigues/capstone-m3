@@ -10,3 +10,18 @@ export const Container = styled.div`
   
 `;
 
+export const ServicePageContainer = styled.main`
+  margin: 60px auto;
+  h1{
+    font-size: 40px;
+    margin:  30px 0;
+    text-align: center;
+    @media (max-width:768px) {
+      font-size: 29px;
+    }
+  }
+  p{
+
+  }
+
+`

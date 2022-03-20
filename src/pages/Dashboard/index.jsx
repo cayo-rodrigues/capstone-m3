@@ -50,7 +50,7 @@ const Dashboard = () => {
                 <input type="text" placeholder="example@example.com" />
               </ContainerEmail>
               <ContainerCheckin>
-                <input classeName="checkin" type="checkbox" />
+                <input className="checkin" type="checkbox" />
                 <p>
                   Deixe esta caixa selecionada se deseja que os serviços
                   prestados por você apareçam nos resultados das buscas.

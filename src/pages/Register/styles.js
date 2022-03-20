@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import bg from "../../assets/background/bg.svg";
+import bg from "../../assets/svg/whiteBg.svg";
 import RegisterSvg from "../../assets/svg/Cadastro.svg";
 
 // lembre-se de usar html semântico

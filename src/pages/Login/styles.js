@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import LoginSvg from "../../assets/svg/Login.svg";
-import bg from "../../assets/background/bg.svg";
+import bg from "../../assets/svg/whiteBg.svg";
 
 // lembre-se de usar html semântico
 export const LoginContainer = styled.main`

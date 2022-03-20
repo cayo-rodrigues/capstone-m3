@@ -10,7 +10,7 @@ export const Container = styled.div`
     font-size: 30px;
     width: fit-content;
     margin: 0 auto;
-    color: var(--white);
+    color: #000;
     text-shadow: 0px 3px 3px var(--color-aux);
   }
 

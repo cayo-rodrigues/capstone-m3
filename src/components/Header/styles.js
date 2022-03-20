@@ -3,12 +3,13 @@ import styled from "styled-components";
 // lembre-se de usar html semântico
 export const Container = styled.div`
   background-color: #04164d;
-  display: flex;
+  display: ${({currentPage})=> (currentPage ==="/login"||currentPage==='/register') ? "none":"flex" };
   top: 0;
   left: 0;
   position: sticky;
   width: 100%;
   justify-content: center;
+  z-index: 100;
 `;
 
 export const ContainerHeader = styled.header`
@@ -56,6 +57,10 @@ export const ContainerHeader = styled.header`
 export const Nav = styled.nav`
   padding-top: 10px;
   display: none;
+  a{
+    color: white;
+    padding: 20px 30px;
+  }
 
   @media (min-width: 760px) {
     display: unset;
