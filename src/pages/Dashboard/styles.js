@@ -3,8 +3,13 @@ import bg from "../../assets/background/bg.svg";
 
 // lembre-se de usar html semântico
 export const Container = styled.main`
-  background-color: #8396cd;
-  height: 87vh;
+  background-image: url(${bg});
+  background-size: cover;
+  display: flex;
+  justify-content: space-between;
+  max-height: 100vh;
+  height: 100%;
+  flex-direction: column;
   h1 {
     font-size: 24px;
     margin-left: 78px;
@@ -13,7 +18,7 @@ export const Container = styled.main`
     font-weight: 400;
     text-transform: uppercase;
   }
-  @media (max-width: 881px) {
+  @media (max-width: 768px) {
     display: grid;
     h1 {
       margin-left: 0px;
@@ -33,18 +38,11 @@ export const ContainerNamePicture = styled.div`
   display: flex;
 
   justify-content: space-between;
-  width: 96%;
-  padding-left: 28px;
+  width: 85%;
+  position: inherit;
   align-items: center;
   flex-direction: row;
   margin-top: 10px;
-  @media (max-width: 881px) {
-    padding-left: 0px;
-    width: 90%;
-    img {
-      position: inherit;
-    }
-  }
 `;
 
 export const ContainerAdicionarServicos = styled.div`
@@ -52,12 +50,13 @@ export const ContainerAdicionarServicos = styled.div`
     color: #04164d;
     font-weight: 400;
   }
-  margin-right: 16px;
-  margin-left: 16px;
+  margin: 50px;
   box-shadow: 9px 6px #16191940;
   border-radius: 8px;
   background-color: white;
-  @media (max-width: 881px) {
+  position: unset;
+  padding: 20px;
+  @media (max-width: 768px) {
     position: unset;
     .inputService {
       height: 23px;
@@ -92,6 +91,7 @@ export const ContainerRegisterProfession = styled.div`
     color: white;
     font-weight: 400;
     font-size: 20px;
+    width: 80%;
   }
   input {
     border-radius: 5px;
@@ -102,15 +102,11 @@ export const ContainerRegisterProfession = styled.div`
   height: 100%;
   padding-top: 10px;
   padding-bottom: 39px;
-  width: 70%;
-  margin-top: 14px;
-  margin-bottom: 10px;
-  margin-left: 25px;
-  @media (max-width: 881px) {
-    margin-left: 0px;
+  margin: 0 auto;
+  @media (max-width: 768px) {
     width: 90%;
     input {
-      width: 60%;
+      width: 70%;
     }
   }
 `;
@@ -140,7 +136,7 @@ export const ContainerContact = styled.div`
     color: white;
   }
   margin-left: 26px;
-  @media (max-width: 881px) {
+  @media (max-width: 768px) {
     width: 90%;
     margin-left: 0px;
     display: flex;
@@ -179,7 +175,7 @@ export const ContainerCheckin = styled.div`
     font-weight: 400;
     font-family: var(--font-text);
   }
-  @media (max-width: 881px) {
+  @media (max-width: 768px) {
     align-items: center;
     input {
       margin-left: 11px;
@@ -201,7 +197,8 @@ export const ContainerImage = styled.div`
     width: 400px;
   }
   padding-right: 25px;
-  @media (max-width: 881px) {
+  margin-top: 5px;
+  @media (max-width: 768px) {
     img {
       display: none;
     }

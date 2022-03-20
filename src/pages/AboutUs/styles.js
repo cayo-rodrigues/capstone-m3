@@ -21,7 +21,8 @@ export const Container = styled.div`
   @media (min-width: 768px) {
     .time {
       display: block;
-      width: 640px;
+      max-width: 640px;
+      width: 60vw;
     }
     height: 100%;
     flex-direction: row;
@@ -30,19 +31,23 @@ export const Container = styled.div`
 
 export const Box = styled.div`
   margin: 0 auto;
-  width: 90vw;
+  width: auto;
   height: auto;
   border-radius: 12px;
   background-color: #fff;
   box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.5);
   padding: 10px;
-  margin-bottom: 20px;
   @media (min-width: 768px) {
     padding: 10px;
     margin-top: 50px;
-    width: auto;
+    margin-bottom: 100px;
+    max-width: 50vw;
     height: auto;
     display: flex;
+  }
+  @media (max-width: 1260px) {
+    flex-direction: column;
+    width: auto;
   }
 `;
 
@@ -62,6 +67,7 @@ export const Card = styled.div`
   @media (min-width: 768px) {
     margin: 30px;
     height: 200px;
+    min-width: 15em;
   }
   div {
     display: flex;

@@ -6,8 +6,10 @@ const AboutUs = () => {
   return (
     <>
       <Container>
-        <h1>SOBRE NÓS</h1>
-        <img src={us} alt="time" className="time" />
+        <div className="left">
+          <h1>SOBRE NÓS</h1>
+          <img src={us} alt="time" className="time" />
+        </div>
         <Box>
           <div>
             <Card>

@@ -35,7 +35,7 @@ const Dashboard = () => {
                   <input
                     className="inputService"
                     type="text"
-                    placeholder="Adicione suas profissões"
+                    placeholder="Adicionar serviço"
                   />
                 </li>
               </ul>
