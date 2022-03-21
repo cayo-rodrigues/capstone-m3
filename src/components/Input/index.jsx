@@ -26,7 +26,7 @@ const Input = ({
     return (
         <>
             {isSearch ? (
-                <ContainerInputSearch placeholder='PESQUISE AQUI POR UM SERVIÇO' />
+                <ContainerInputSearch {...rest} placeholder='PESQUISE AQUI POR UM SERVIÇO' />
             ) : (
                 <Container>
                     <p>

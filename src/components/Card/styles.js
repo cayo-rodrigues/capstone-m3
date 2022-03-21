@@ -26,7 +26,7 @@ export const Container = styled.div`
         object-fit: cover;
       }
     }
-    > 
+     
   }
   section img {
     width: 50px;
@@ -44,6 +44,7 @@ export const Container = styled.div`
     align-items: center;
     width: 80%;
     margin: 0 auto;
+    list-style: none;
     color: var( --color-secondary);
     > li {
       text-align: left;

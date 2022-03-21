@@ -20,7 +20,7 @@ export const WorkersProvider = ({ children }) => {
             });
         }
     }, []);
-
+    console.log(workers)
     const refreshWorkers = () => {
         proWorkingApi.get("/workers").then(({ data }) => setWorkers(data));
     };

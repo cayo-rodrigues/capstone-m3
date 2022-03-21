@@ -1,4 +1,4 @@
-import BottomNavigator from "../../components/BottomNavigator";
+
 import Form from "../../components/Form";
 
 import { proWorkingApi } from "../../services/api";
@@ -10,7 +10,6 @@ import { toast } from "react-toastify";
 
 import { LoginContainer } from "./styles";
 
-
 const Login = () => {
     const { handleUser } = useUser();
     const { authenticated, setAuthenticated } = useAuthenticated();
@@ -18,7 +17,7 @@ const Login = () => {
     const history = useHistory();
 
     const handleSubmitCallBack = (dataUser) => {
-        console.log(dataUser);
+
         proWorkingApi
             .post("/login", dataUser)
             .then(({ data }) => {
@@ -26,7 +25,11 @@ const Login = () => {
                 setAuthenticated(true);
                 history.push("/dashboard");
             })
-            .catch(() => toast.error("Email ou senha errados!"));
+            .catch(() =>
+                toast.error("Email ou senha incorretos!", {
+                    toastId: "toastError",
+                })
+            );
     };
 
     if (authenticated) {

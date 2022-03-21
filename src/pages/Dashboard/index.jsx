@@ -83,7 +83,16 @@ const Dashboard = () => {
     const mail = e.target[0].value;
     setEmail(mail);
   };
-  // console.log(email);
+  
+import { useAuthenticated } from "../../providers/authenticated";
+import { Redirect } from "react-router-dom";
+
+const Dashboard = () => {
+  const { authenticated } = useAuthenticated();
+
+  if (!authenticated) {
+    return <Redirect to={"/"} />;
+  }
 
   return (
     <>
@@ -99,7 +108,6 @@ const Dashboard = () => {
               <p>Insira a baixo os serviços que voce realiza</p>
               <ul>
                 <TodoList List={List} handleTodo={handleTodo} />
-                {/* {console.log(List)} */}
                 <Form addTodo={addTodo} />
               </ul>
             </ContainerRegisterProfession>

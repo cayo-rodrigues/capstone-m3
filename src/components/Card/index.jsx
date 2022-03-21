@@ -5,6 +5,22 @@ import React from "react";
 import Modal from "react-modal";
 import { useState } from "react";
 
+import AOS from "aos";
+import "aos/dist/aos.css"; // You can also use <link> for styles
+
+import DefaultUserImg from '../../assets/profile 1.png'
+import { Link } from "react-router-dom";
+
+AOS.init({
+  offset: 120, // offset (in px) from the original trigger point
+  delay: 0, // values from 0 to 3000, with step 50ms
+  duration: 1000, // values from 0 to 3000, with step 50ms
+  easing: "ease", // default easing for AOS animations
+  once: false, // whether animation should happen only once - while scrolling down
+  mirror: false, // whether elements should animate out while scrolling past them
+  anchorPlacement: "top-bottom", // defines which position of the element regarding to window should trigger the animation
+});
+
 const customStyles = {
   content: {
     top: "50%",
@@ -54,13 +70,14 @@ const Card = ({ nome, img, especialidades, id }) => {
         <ModalContainer id={id} onClick={(e) => openModal(e)}>
           <div>
             <h2>{nome}</h2>
-            <Imagem src={img} alt="Imagem" />
+            <Imagem src={DefaultUserImg} alt="Imagem" />
           </div>
 
           <ul>
-            {especialidades.map((especialidade) => (
-              <li>{especialidade}</li>
-            ))}
+            <p>Especialidade:</p>
+          
+            <li>{especialidades}</li>
+            <Link to={`/services/${id}/${nome}`} onClick={()=>window.scrollTo(0,0)} >Ver o perfil completo</Link>
           </ul>
           <span>
             <button>
@@ -72,21 +89,30 @@ const Card = ({ nome, img, especialidades, id }) => {
           </span>
         </ModalContainer>
       </Modal>
-      <section id={id} onClick={(e) => openModal(e)}>
+      <section
+        data-aos="fade-in"
+        data-aos-delay="150"
+        id={id}
+        onClick={(e) => openModal(e)}
+      >
         <div>
           <h2>{nome}</h2>
-          <img src={img} alt="Imagem" />
+          <img src={DefaultUserImg} alt="Imagem" />
         </div>
 
         <ul>
-          {especialidades.map((especialidade, index) => {
+          <p>
+            <strong>Especialidade:</strong>{" "}
+          </p>
+          <li>{especialidades}</li>
+          {/* {especialidades.map((especialidade, index) => {
             if (index < 4) {
-              return <li>{especialidade}</li>;
+              return <li key={especialidade}>{especialidade}</li>;
             }
             if (index === 4) {
               return <p>...</p>;
             }
-          })}
+          })} */}
         </ul>
         <span>
           <button>

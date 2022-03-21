@@ -13,7 +13,8 @@ export const NavigatorContainerDiv = styled.div`
   span {
     font-size: 10px;
     transition: 0.5s;
-    display: none;
+    margin: 0 0 10px;
+    display: block;
   }
   ul {
     display: flex;
@@ -28,7 +29,7 @@ export const NavigatorContainerDiv = styled.div`
       :hover {
         span {
           transition: 0.5s;
-          display: block;
+         
         }
       }
       svg {
@@ -43,12 +44,16 @@ export const NavigatorContainerDiv = styled.div`
   }
   .selected {
     transition: 0.5s;
+    position: relative;
+
     div {
       background-color: white;
       padding: 5px;
       transform: translateY(-35px);
       transition: 0.5s;
       border-radius: 50%;
+      position: relative;
+      z-index:12;
     }
     p {
       border-radius: 50%;
