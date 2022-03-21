@@ -1,12 +1,15 @@
 import styled from "styled-components";
 
 import bgHome from "../../assets/svg/home.svg";
+import bg from '../../assets/background/bg.svg'
 
 // lembre-se de usar html semântico
 export const LandPageContainer = styled.div`
 
-  background-size: contain;
+  /* background-size: cover;
   background-repeat: no-repeat;
+  background:url(${bg}) ; */
+
   margin: 0;
 `;
 
@@ -16,7 +19,6 @@ export const Container = styled.div`
   display: flex;
   justify-content: space-between;
   min-height: 80vh;
-
   height: 100%;
   flex-direction: row;
   align-items: center;
@@ -67,7 +69,7 @@ export const Container = styled.div`
     flex-basis: 60%;
     height: 100%;
     padding: 0 0 0 40px;
-
+    animation: fadeInRight 1s;
 
     input {
       border-radius: 26px 0 0 26px;
@@ -75,6 +77,8 @@ export const Container = styled.div`
     }
     @media (max-width: 868px) {
       flex-basis: 100%;
+      animation: fadeIn 1s ;
+
     }
   }
   .col-right {
@@ -84,6 +88,7 @@ export const Container = styled.div`
     background-position: center;
     background-size: 90%;
     height: 100%;
+    animation: fadeInLeft 1s;
 
     min-height: 90vh;
     @media (max-width: 868px) {
