@@ -18,10 +18,10 @@ import { useAuthenticated } from "../../providers/authenticated";
 import { Redirect } from "react-router-dom";
 
 const Dashboard = () => {
-  const {authenticated} = useAuthenticated()
+  const { authenticated } = useAuthenticated();
 
-  if(authenticated===false){
-    return <Redirect to={'/'}/>
+  if (authenticated === false) {
+    return <Redirect to={"/"} />;
   }
 
   return (
