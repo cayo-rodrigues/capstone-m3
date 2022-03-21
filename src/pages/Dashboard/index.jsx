@@ -9,13 +9,82 @@ import {
   ContainerRegisterProfession,
   ContainerWhatsapp,
   ContainerDad,
+  ContainerServiceCities,
+  ContainerDescription,
 } from "./styles";
 import picture from "../../assets/profile 1.png";
 import pictureWhatsapp from "../../assets/Whatsapp.png";
 import pictureEmail from "../../assets/Email.png";
 import pictureBusiness from "../../assets/svg/Business_SVG.svg";
+import DropDownBrazilianCities from "../../components/DropDownBrazilianCities";
+import DropDownBrazilianStates from "../../components/DropDownBrazilianStates";
+import { useState } from "react";
+import Form from "../../components/FormService/Form";
+import TodoList from "../../components/FormService/TodoList";
 
 const Dashboard = () => {
+  const [List, setList] = useState([]);
+
+  const addTodo = (todo) => {
+    setList([...List, todo]);
+  };
+
+  const handleTodo = (todo) => {
+    const filterTodo = List.filter((filterTodo) => filterTodo !== todo);
+
+    setList(filterTodo);
+  };
+
+  // console.log(List);
+
+  const [formValues, setFormValues] = useState({});
+
+  const handleInputChange = (e) => {
+    e.preventDefault();
+    const { value, name } = e.target;
+    setFormValues({ ...formValues, [name]: value });
+  };
+
+  // console.log("formvalues", formValues);
+
+  const [cityServed, setCityServed] = useState([]);
+
+  const registerLocalService = (e) => {
+    e.preventDefault();
+    setCityServed([...cityServed, formValues]);
+  };
+
+  // console.log(cityServed);
+
+  const [bio, setBio] = useState([]);
+
+  const registerBio = (e) => {
+    const biografia = e.target[0].value;
+
+    e.preventDefault();
+    setBio(biografia);
+  };
+  // console.log(bio);
+
+  const [whatsapp, setWhatsApp] = useState([]);
+
+  const registerWhatsapp = (e) => {
+    e.preventDefault();
+    const whats = e.target[0].value;
+    setWhatsApp(whats);
+  };
+
+  // console.log(whatsapp);
+
+  const [email, setEmail] = useState([]);
+
+  const registerEmail = (e) => {
+    e.preventDefault();
+    const mail = e.target[0].value;
+    setEmail(mail);
+  };
+  // console.log(email);
+
   return (
     <>
       <Container>
@@ -29,28 +98,84 @@ const Dashboard = () => {
             <ContainerRegisterProfession>
               <p>Insira a baixo os serviços que voce realiza</p>
               <ul>
-                <li>Serviços gerais</li>
-                <li>Auxiliar de pedreiro</li>
-                <li className="inputClasse">
-                  <input
-                    className="inputService"
-                    type="text"
-                    placeholder="Adicione suas profissões"
-                  />
-                </li>
+                <TodoList List={List} handleTodo={handleTodo} />
+                {/* {console.log(List)} */}
+                <Form addTodo={addTodo} />
               </ul>
             </ContainerRegisterProfession>
             <ContainerContact>
               <ContainerWhatsapp>
-                <img src={pictureWhatsapp} alt="Logo WhatsApp" />
-                <input type="text" placeholder="Insira seu WhatsApp" />
+                <form onSubmit={registerWhatsapp}>
+                  <img src={pictureWhatsapp} alt="Logo WhatsApp" />
+                  <input type="text" placeholder="Insira seu WhatsApp" />
+                  <input onSubmit={registerWhatsapp} type="submit" value="+" />
+                </form>
               </ContainerWhatsapp>
               <ContainerEmail>
-                <img src={pictureEmail} alt="Logo Email" />
-                <input type="text" placeholder="example@example.com" />
+                <form onSubmit={registerEmail}>
+                  <img src={pictureEmail} alt="Logo Email" />
+                  <input type="text" placeholder="example@example.com" />
+                  <input onSubmit={registerEmail} type="submit" value="+" />
+                </form>
               </ContainerEmail>
+
+              <form className="labelStates">
+                <label>Selecione o estado que voce atende:</label>
+
+                <DropDownBrazilianStates
+                  id="state"
+                  name="state"
+                  onChange={handleInputChange}
+                ></DropDownBrazilianStates>
+              </form>
+              <form className="labelCities">
+                <label>Selecione as cidades que voce atende:</label>
+                <DropDownBrazilianCities
+                  id="city"
+                  name="city"
+                  state={formValues.state}
+                  onChange={handleInputChange}
+                ></DropDownBrazilianCities>
+                <button
+                  type="submit"
+                  value="Send"
+                  onClick={registerLocalService}
+                >
+                  adicionar
+                </button>
+                <div>
+                  <label>Cidades registradas:</label>
+                  {cityServed.map((item, index) => {
+                    console.log(cityServed);
+                    return (
+                      <li key={index} value={item}>
+                        {item.city}
+                      </li>
+                    );
+                  })}
+                </div>
+              </form>
+
+              <ContainerDescription>
+                <label htmlFor="w3review">
+                  Breve descrição de seus serviços:
+                </label>
+                <form onSubmit={registerBio}>
+                  <textarea
+                    id="w3review"
+                    name="w3review"
+                    rows="4"
+                    cols="50"
+                  ></textarea>
+                  <input
+                    onSubmit={registerBio}
+                    type="submit"
+                    value="Atualizar"
+                  />
+                </form>
+              </ContainerDescription>
               <ContainerCheckin>
-                <input classeName="checkin" type="checkbox" />
+                <input className="checkin" type="checkbox" />
                 <p>
                   Deixe esta caixa selecionada se deseja que os serviços
                   prestados por você apareçam nos resultados das buscas.
