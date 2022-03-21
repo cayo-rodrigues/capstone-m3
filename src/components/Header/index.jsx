@@ -32,7 +32,7 @@ const Header = ({ className }) => {
           {authenticated ? (
             <>
             <BurgerMenuLink onClick={()=>window.scrollTo(0,0)} to="/dashboard">Dashboard</BurgerMenuLink>
-            <BurgerMenuLink to="/" onClick={logOut}>Logout</BurgerMenuLink>
+            <BurgerMenuLink to={'/'} handleCloseMenu={logOut}>Logout</BurgerMenuLink>
             </>
           ) : (
             <>

@@ -18,8 +18,11 @@ import TechnologyService from "../../assets/svg/Service_icons/servicos_tecnologi
 import PeopleImg from "../../assets/svg/people_SVG.svg";
 import { AiOutlineSearch } from "react-icons/ai";
 
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+
 import AOS from 'aos';
 import 'aos/dist/aos.css'; // You can also use <link> for styles
+import { useState } from "react";
 
 AOS.init({
   offset: 120, // offset (in px) from the original trigger point
@@ -33,6 +36,9 @@ AOS.init({
 
 
 const LandingPage = () => {
+  const history = useHistory()
+  const [inputText,setInputText] = useState('')
+
   return (
     <LandPageContainer>
       <Container>
@@ -43,8 +49,8 @@ const LandingPage = () => {
           <p>Encontre o serviço que você precisa aqui!</p>
 
           <div className="item3">
-            <Input isSearch icon={AiOutlineSearch} className="input" />
-            <Button heigth="43px">
+            <Input isSearch icon={AiOutlineSearch} onChange={(e)=>setInputText(e.target.value)} className="input" />
+            <Button onClick={()=>history.push(`/services/${inputText}`)} heigth="43px">
               <span>BUSCAR</span>
             </Button>
           </div>
@@ -90,9 +96,9 @@ const LandingPage = () => {
           // height="680"
           src="https://www.youtube.com/embed/wzUVgfQQK_4"
           title="Proworkin"
-          // frameborder="0"
-          // allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          // allowfullscreen
+           frameBorder="0"
+           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+           allowFullScreen
         ></iframe> 
 
       </VideoSection>

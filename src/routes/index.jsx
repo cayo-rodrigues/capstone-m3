@@ -7,6 +7,8 @@ import NotFoundPage from "../pages/NotFoundPage";
 import Register from "../pages/Register";
 import AboutUs from "../pages/AboutUs";
 import How from "../pages/How";
+import ServiceProfilePage from "../pages/ServiceProfilePage";
+import SearchResults from "../pages/SearchResult";
 
 const Routes = () => {
   return (
@@ -15,6 +17,10 @@ const Routes = () => {
       <Route exact path="/aboutus" component={AboutUs} />
       <Route exact path="/how" component={How} />
       <Route exact path="/services" component={ServicesPage} />
+
+      <Route exact path={`/services/:id/:name`}><ServiceProfilePage /></Route>
+      <Route exact path={`/services/:search`}> <SearchResults/> </Route>
+
       <Route exact path="/dashboard" component={Dashboard} />
       <Route exact path="/login" component={Login} />
       <Route exact path="/register" component={Register} />
