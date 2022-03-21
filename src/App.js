@@ -6,6 +6,7 @@ import Routes from "./routes";
 import { GlobalStyle } from "./styles/global";
 
 import "react-toastify/dist/ReactToastify.css";
+import BottomNavigator from "./components/BottomNavigator";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
       <Header/>
       <Routes />
       <Footer />
+      <BottomNavigator/>
     </>
   );
 };

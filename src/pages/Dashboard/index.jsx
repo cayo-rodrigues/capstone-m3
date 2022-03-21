@@ -14,8 +14,16 @@ import picture from "../../assets/profile 1.png";
 import pictureWhatsapp from "../../assets/Whatsapp.png";
 import pictureEmail from "../../assets/Email.png";
 import pictureBusiness from "../../assets/svg/Business_SVG.svg";
+import { useAuthenticated } from "../../providers/authenticated";
+import { Redirect } from "react-router-dom";
 
 const Dashboard = () => {
+  const {authenticated} = useAuthenticated()
+
+  if(authenticated===false){
+    return <Redirect to={'/'}/>
+  }
+
   return (
     <>
       <Container>
@@ -50,7 +58,7 @@ const Dashboard = () => {
                 <input type="text" placeholder="example@example.com" />
               </ContainerEmail>
               <ContainerCheckin>
-                <input classeName="checkin" type="checkbox" />
+                <input className="checkin" type="checkbox" />
                 <p>
                   Deixe esta caixa selecionada se deseja que os serviços
                   prestados por você apareçam nos resultados das buscas.

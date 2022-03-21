@@ -3,7 +3,7 @@ import { useState } from "react";
 import logo from "../../assets/svg/logoProWorking 2.svg";
 
 const Loading = () => {
-  const interval = 1500
+  const interval = 900
   const [showModal,setShowModal] = useState(true)
 
     setTimeout(() => {

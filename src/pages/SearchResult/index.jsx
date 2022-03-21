@@ -1,14 +1,17 @@
-import Button from "../../components/Button";
-import Input from "../../components/Input";
-import { Container, ServicePageContainer } from "./styles";
+import { ServicePageContainer } from "./style";
 import home from "../../assets/svg/home.svg";
 import BottomNavigator from "../../components/BottomNavigator";
 
 import CardBox from "../../components/CardBox";
 import { useWorkers } from "../../providers/workers";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 
-const ServicesPage = () => {
-  const { workers } = useWorkers()
+const SearchResults = () => {
+    const {workers} = useWorkers()
+    const {search} = useParams()
+
+    console.log()
+    const filteredWorkers = workers.filter(worker=> worker.occupation_area.includes(search) ) 
   return (
     <ServicePageContainer>
       {/* <Container>
@@ -20,11 +23,11 @@ const ServicesPage = () => {
         <Button />
         <img src={home} alt="homeimg" />
       </Container> */}
-      <h1>Todos os serviços</h1>
-      <CardBox workers={workers}/>
+      <h1>Resultados para a pesquisa {search} </h1>
+      <CardBox workers={filteredWorkers}/>
 
     </ServicePageContainer>
   );
 };
 
-export default ServicesPage;
+export default SearchResults;

@@ -11,7 +11,7 @@ const NotFoundPage = () => {
           <img src={Img404} alt="404" />
         </ImgContainer>
       </Container>
-      <Footer />
+
     </>
   );
 };
