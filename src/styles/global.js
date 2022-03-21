@@ -37,6 +37,10 @@ export const GlobalStyle = createGlobalStyle`
     
   }
 
+  .Toastify__toast-container--top-right {
+    top: 110px;
+  }
+
   body, button, input, ::placeholder {
     font-family: var(--font-text);
   }
@@ -61,7 +65,4 @@ export const GlobalStyle = createGlobalStyle`
       opacity: 1;
     }
   }
-
-
-
 `;
