@@ -9,49 +9,49 @@ export const Container = styled.div`
   position: sticky;
   width: 100%;
   justify-content: center;
-  z-index: 100;
+  z-index: 99999;
 `;
 
 export const ContainerHeader = styled.header`
-  display: flex;
-  width: 100%;
-  max-width: 1440px;
-  border-top: 96px;
-  justify-content: space-between;
-  padding-top: 15px;
-  padding-right: 10px;
+    display: flex;
+    width: 100%;
+    max-width: 1440px;
+    border-top: 96px;
+    justify-content: space-between;
+    padding-top: 15px;
+    padding-right: 10px;
 
-  .currentPage {
-    font-weight: bold;
-  }
-
-  img {
-    cursor: pointer;
-  }
-
-  @media screen and (max-width: 360px) {
-    figure {
-      img {
-        width: 240px;
-      }
-    }
-  }
-
-  @media (min-width: 550px) {
-    figure {
-      margin-right: 5%;
-    }
-  }
-
-  @media (max-width: 925px) {
-    figure {
-      margin-right: unset;
+    .currentPage {
+        font-weight: bold;
     }
 
-    button {
-      width: 140px;
+    img {
+        cursor: pointer;
     }
-  }
+
+    @media screen and (max-width: 360px) {
+        figure {
+            img {
+                width: 240px;
+            }
+        }
+    }
+
+    @media (min-width: 550px) {
+        figure {
+            margin-right: 5%;
+        }
+    }
+
+    @media (max-width: 925px) {
+        figure {
+            margin-right: unset;
+        }
+
+        button {
+            width: 140px;
+        }
+    }
 `;
 
 export const Nav = styled.nav`
@@ -62,7 +62,7 @@ export const Nav = styled.nav`
     padding: 20px 30px;
   }
 
-  @media (min-width: 760px) {
-    display: unset;
-  }
+    @media (min-width: 760px) {
+        display: unset;
+    }
 `;
