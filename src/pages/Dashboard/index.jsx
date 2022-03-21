@@ -21,6 +21,8 @@ import DropDownBrazilianStates from "../../components/DropDownBrazilianStates";
 import { useState } from "react";
 import Form from "../../components/FormService/Form";
 import TodoList from "../../components/FormService/TodoList";
+import { useAuthenticated } from "../../providers/authenticated";
+import { Redirect } from "react-router-dom";
 
 const Dashboard = () => {
   const [List, setList] = useState([]);
@@ -35,8 +37,6 @@ const Dashboard = () => {
     setList(filterTodo);
   };
 
-  // console.log(List);
-
   const [formValues, setFormValues] = useState({});
 
   const handleInputChange = (e) => {
@@ -45,16 +45,13 @@ const Dashboard = () => {
     setFormValues({ ...formValues, [name]: value });
   };
 
-  // console.log("formvalues", formValues);
-
   const [cityServed, setCityServed] = useState([]);
 
   const registerLocalService = (e) => {
     e.preventDefault();
-    setCityServed([...cityServed, formValues]);
+    const cities = [...cityServed, formValues];
+    setCityServed([...new Set(cities)]);
   };
-
-  // console.log(cityServed);
 
   const [bio, setBio] = useState([]);
 
@@ -64,7 +61,6 @@ const Dashboard = () => {
     e.preventDefault();
     setBio(biografia);
   };
-  // console.log(bio);
 
   const [whatsapp, setWhatsApp] = useState([]);
 
@@ -74,8 +70,6 @@ const Dashboard = () => {
     setWhatsApp(whats);
   };
 
-  // console.log(whatsapp);
-
   const [email, setEmail] = useState([]);
 
   const registerEmail = (e) => {
@@ -83,11 +77,7 @@ const Dashboard = () => {
     const mail = e.target[0].value;
     setEmail(mail);
   };
-  
-import { useAuthenticated } from "../../providers/authenticated";
-import { Redirect } from "react-router-dom";
 
-const Dashboard = () => {
   const { authenticated } = useAuthenticated();
 
   if (!authenticated) {
@@ -154,7 +144,6 @@ const Dashboard = () => {
                 <div>
                   <label>Cidades registradas:</label>
                   {cityServed.map((item, index) => {
-                    console.log(cityServed);
                     return (
                       <li key={index} value={item}>
                         {item.city}
