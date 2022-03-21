@@ -41,7 +41,7 @@ const LandingPage = () => {
   return (
     <LandPageContainer>
       <Container>
-        <div data-aos="fade-left" className="col-left">
+        <div    className="col-left">
           <h1>
             Bem vindo ao <span>PROWORKING</span>
           </h1>
@@ -63,7 +63,7 @@ const LandingPage = () => {
           </div>
         </div>
 
-        <div data-aos="fade-right" className="col-right"></div>
+        <div    className="col-right"></div>
       </Container>
 
       <HowItWorks>
