@@ -3,9 +3,24 @@ import bg from "../../assets/background/bg.svg";
 
 // lembre-se de usar html semântico
 export const Container = styled.main`
+  margin: 0 auto;
+
   background-color: #8396cd;
-  height: 87vh;
+  min-height: 100vh;
+  .labelStates {
+    max-width: 350px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+  }
+  .labelCities {
+    max-width: 350px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+  }
   h1 {
+    padding-left: 29px;
     font-size: 24px;
     margin-left: 78px;
     text-shadow: #000 2px 3px 2px;
@@ -27,8 +42,8 @@ export const Container = styled.main`
 
 export const ContainerNamePicture = styled.div`
   img {
-    position: relative;
-    top: 69px;
+    /* position: relative;
+    top: 69px; */
   }
   display: flex;
 
@@ -111,6 +126,7 @@ export const ContainerRegisterProfession = styled.div`
     width: 90%;
     input {
       width: 60%;
+      min-width: 160px;
     }
   }
 `;
@@ -150,6 +166,7 @@ export const ContainerContact = styled.div`
     input {
       margin-left: 6px;
       width: 100%;
+      min-width: 160px;
     }
     div {
       margin-top: 15px;
@@ -169,6 +186,7 @@ export const ContainerCheckin = styled.div`
     margin-left: 0px;
     margin-right: 5px;
     max-width: 40px;
+    min-width: 20px;
   }
   p {
     margin-left: 25px;
@@ -207,6 +225,26 @@ export const ContainerImage = styled.div`
     }
   }
 `;
+
+export const ContainerDescription = styled.div`
+  textarea {
+    width: 70%;
+  }
+  text-transform: uppercase;
+  font-family: var(--font-title);
+  color: #04164d;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  @media (max-width: 881px) {
+    textarea {
+      width: 90%;
+      min-width: 200px;
+    }
+  }
+`;
+
+export const ContainerServiceCities = styled.div``;
 
 export const ContainerDad = styled.div`
   display: flex;

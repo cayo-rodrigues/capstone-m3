@@ -12,8 +12,8 @@ const App = () => {
     <>
       <ToastContainer />
       <GlobalStyle />
-      <Loading/>
-      <Header/>
+      <Loading />
+      <Header />
       <Routes />
       <Footer />
     </>

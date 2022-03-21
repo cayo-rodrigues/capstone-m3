@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 // lembre-se de usar html semântico
 export const Container = styled.div`
+  margin: 0 auto;
   background-color: #04164d;
   display: flex;
   top: 0;
