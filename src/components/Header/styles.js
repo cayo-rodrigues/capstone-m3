@@ -3,7 +3,8 @@ import styled from "styled-components";
 // lembre-se de usar html semântico
 export const Container = styled.div`
   background-color: #04164d;
-  display: ${({currentPage})=> (currentPage ==="/login"||currentPage==='/register') ? "none":"flex" };
+  display: ${({ currentPage }) =>
+    currentPage === "/login" || currentPage === "/register" ? "none" : "flex"};
   top: 0;
   left: 0;
   position: sticky;
@@ -13,56 +14,87 @@ export const Container = styled.div`
 `;
 
 export const ContainerHeader = styled.header`
-    display: flex;
-    width: 100%;
-    max-width: 1440px;
-    border-top: 96px;
-    justify-content: space-between;
-    padding-top: 15px;
-    padding-right: 10px;
+  display: flex;
+  width: 100%;
+  max-width: 1440px;
+  border-top: 96px;
+  justify-content: space-between;
+  padding-top: 6px;
+  padding-right: 10px;
 
-    .currentPage {
-        font-weight: bold;
-    }
+  .currentPage {
+    background: var(--color-primary);
+  }
 
+  img {
+    cursor: pointer;
+  }
+
+  figure {
     img {
-        cursor: pointer;
+      width: 220px;
+    }
+  }
+
+  @media (max-width: 424px) {
+    padding: 0;
+
+    figure {
+      margin-bottom: -10px;
+    }
+  }
+
+  @media (min-width: 550px) {
+    figure {
+      margin-right: 5%;
+    }
+  }
+
+  @media (max-width: 940px) {
+    figure {
+      margin-right: unset;
     }
 
-    @media screen and (max-width: 360px) {
-        figure {
-            img {
-                width: 240px;
-            }
-        }
+    button {
+      width: 140px;
     }
-
-    @media (min-width: 550px) {
-        figure {
-            margin-right: 5%;
-        }
-    }
-
-    @media (max-width: 925px) {
-        figure {
-            margin-right: unset;
-        }
-
-        button {
-            width: 140px;
-        }
-    }
+  }
 `;
 
 export const Nav = styled.nav`
   padding-top: 10px;
   display: none;
-  a{
+
+  a {
     color: white;
-    padding: 20px 30px;
+    padding: 10px 15px;
+    background: var(--color-secondary);
+    width: 125px;
+    text-align: center;
+    border-radius: 26px;
+    text-transform: uppercase;
+    font-size: 13px;
+    letter-spacing: 0.2px;
+    transition: all 0.25s ease-in-out;
+
+    :hover {
+      background: var(--color-primary);
+    }
   }
 
-    @media (min-width: 760px) {
-        display: unset;
+  @media (min-width: 760px) {
+    display: flex;
+    padding-top: 0;
+    margin-top: -10px;
+    margin-right: 10px;
+    gap: 10px;
+    align-items: center;
+  }
+
+  @media (min-width: 900px) {
+    a {
+      font-size: 14px;
+      width: 140px;
     }
+  }
 `;
