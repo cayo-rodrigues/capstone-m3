@@ -24,6 +24,21 @@ export const GlobalStyle = createGlobalStyle`
 
     --font-text:'Inter', sans-serif;;
     --font-title:'Montserrat', sans-serif;
+
+    --toastify-icon-color-success: var(--color-bg);
+    --toastify-icon-color-warning: var(--error);
+    --toastify-color-progress-success: var(--color-bg);
+    --toastify-color-progress-warning: var(--error);
+
+    --toastify-toast-width: 300px;
+    --toastify-toast-min-height: 54px;
+    --toastify-toast-max-height: 54px;
+    --toastify-font-family: var(--font-text);
+    
+  }
+
+  .Toastify__toast-container--top-right {
+    top: 110px;
   }
 
   body, button, input, ::placeholder {
@@ -71,5 +86,4 @@ export const GlobalStyle = createGlobalStyle`
       opacity: 1;
     }
   }
-
 `;
