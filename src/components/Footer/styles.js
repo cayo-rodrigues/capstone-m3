@@ -6,6 +6,7 @@ export const FooterContainer = styled.footer`
     min-height: 200px;
     margin: 0 auto ;
     width: 98%;
+    display: ${({currentPage})=> (currentPage ==="/login"||currentPage==='/register') ? "none" : "block" };
     
     @media (max-width:660px){
         width: 100%;
@@ -50,8 +51,10 @@ export const FooterContainer = styled.footer`
         height:60px ;
         background-color: var(--color-primary);
         @media (max-width:660px){
+            content: '';
+            position: absolute;
             left: 10%;
-            bottom: 75px;
+            bottom: 50px;
             width: 30px;
             height:30px ;
         }

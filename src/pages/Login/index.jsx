@@ -1,4 +1,4 @@
-import BottomNavigator from "../../components/BottomNavigator";
+
 import Form from "../../components/Form";
 
 import { proWorkingApi } from "../../services/api";
@@ -17,7 +17,7 @@ const Login = () => {
     const history = useHistory();
 
     const handleSubmitCallBack = (dataUser) => {
-        console.log(dataUser);
+
         proWorkingApi
             .post("/login", dataUser)
             .then(({ data }) => {

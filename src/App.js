@@ -6,19 +6,22 @@ import Routes from "./routes";
 import { GlobalStyle } from "./styles/global";
 
 import "react-toastify/dist/ReactToastify.css";
+
 import { Zoom } from "react-toastify";
+import BottomNavigator from "./components/BottomNavigator";
 
 const App = () => {
-    return (
-        <>
-            <ToastContainer transition={Zoom} autoClose={2000} limit={1} />
-            <GlobalStyle />
-            <Loading />
-            <Header />
-            <Routes />
-            <Footer />
-        </>
-    );
+  return (
+    <>
+      <ToastContainer transition={Zoom} autoClose={2000} limit={1} />
+      <GlobalStyle />
+      <Loading/>
+      <Header/>
+      <Routes />
+      <Footer />
+      <BottomNavigator/>
+    </>
+  );
 };
 
 export default App;

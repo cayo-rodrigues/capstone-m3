@@ -65,4 +65,25 @@ export const GlobalStyle = createGlobalStyle`
       opacity: 1;
     }
   }
+  @keyframes fadeInLeft {
+    from{
+      opacity: 0;
+      transform: translateX(-200px);
+    }
+    to{
+      transform: translateX(0px);
+      opacity: 1;
+    }
+  }
+
+  @keyframes fadeInRight {
+    from{
+      opacity: 0;
+      transform: translateX(200px);
+    }
+    to{
+      transform: translateX(0px);
+      opacity: 1;
+    }
+  }
 `;
