@@ -83,9 +83,6 @@ const Header = ({ className }) => {
                 Dashboard
               </Link>
               <Link
-                className={
-                  location.pathname === "/services" ? "currentPage" : ""
-                }
                 onClick={() => logOut()}
                 to={"/"}
               >
