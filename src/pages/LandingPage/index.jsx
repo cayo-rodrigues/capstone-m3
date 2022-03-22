@@ -41,7 +41,7 @@ const LandingPage = () => {
   return (
     <LandPageContainer>
       <Container>
-        <div    className="col-left">
+        <div className="col-left">
           <h1>
             Bem vindo ao <span>PROWORKING</span>
           </h1>
@@ -63,7 +63,7 @@ const LandingPage = () => {
           </div>
         </div>
 
-        <div    className="col-right"></div>
+        <div className="col-right"></div>
       </Container>
 
       <HowItWorks>
@@ -77,19 +77,21 @@ const LandingPage = () => {
             <h4>É novo por aqui?</h4>
             <p>
               Sem problema, tentaremos explicar brevemente como você pode tirar
-              o maior aproveitamento do nosso sistema. A primeira facilidade é
-              que você não precisa se cadastrar para utilizar nossa plataforma,
-              você pode simplesmente pesquisar por um serviço no qual estiver
-              precisando contratar algum profissional bem qualificado, assim que
-              visualizar o prestador de seu interesse basta clicar no card
-              apresentado e estarão disponíveis alguns botões que facilitarão o
-              seu contato direto com essa pessoa. A outra facilidade é que para
-              se cadastrar e utilizar o sistema de anúncio das suas habilidades,
-              além de ser fácil e rápido é gratuito, você só precisa de um
-              email, uma senha que você se lembre e um telefone de preferência
-              whatsapp para facilitar o contato das pessoas com você. Simples
-              não? E então? Vamos lá utilizar, qualquer dúvida clique no rodapé,
-              em "SOBRE NÓS" que estaremos à disposição para ajudar.
+              o maior proveito de nosso sistema. A primeira facilidade é que
+              <strong> você não precisa se cadastrar</strong> para utilizar
+              nossa plataforma, você pode simplesmente pesquisar por um serviço
+              que estiver precisando e contratar algum profissional bem
+              qualificado. Assim que visualizar o prestador de seu interesse
+              basta clicar no card apresentado e estarão disponíveis alguns
+              botões que facilitarão o seu contato direto com essa pessoa. A
+              outra facilidade é que você pode se cadastrar para poder
+              <strong> anunciar seu trabalho no site</strong>, tudo isso de
+              forma rápida, fácil e <strong>gratuita</strong>! Você só precisa
+              de um email, uma senha que você se lembre e um telefone de
+              preferência que tenha <em>whatsapp</em> para facilitar o contato
+              das pessoas com você. Simples, não é? Fique a vontade para usar
+              nosso site, qualquer dúvida clique no botão "SOBRE NÓS" que
+              estaremos à disposição para ajudar.
             </p>
           </div>
         </div>

@@ -9,10 +9,65 @@ import TodoList from "../../components/FormService/TodoList";
 
 import { proWorkingApi } from "../../services/api";
 
+import { useAuthenticated } from "../../providers/authenticated";
+
 import { Redirect } from "react-router-dom";
 import { useAuthenticated } from "../../providers/authenticated";
 
 const Dashboard = () => {
+  const [List, setList] = useState([]);
+
+  const addTodo = (todo) => {
+    setList([...List, todo]);
+  };
+
+  const handleTodo = (todo) => {
+    const filterTodo = List.filter((filterTodo) => filterTodo !== todo);
+
+    setList(filterTodo);
+  };
+
+  const [formValues, setFormValues] = useState({});
+
+  const handleInputChange = (e) => {
+    e.preventDefault();
+    const { value, name } = e.target;
+    setFormValues({ ...formValues, [name]: value });
+  };
+
+  const [cityServed, setCityServed] = useState([]);
+
+  const registerLocalService = (e) => {
+    e.preventDefault();
+    const cities = [...cityServed, formValues];
+    setCityServed([...new Set(cities)]);
+  };
+
+  const [bio, setBio] = useState([]);
+
+  const registerBio = (e) => {
+    const biografia = e.target[0].value;
+
+    e.preventDefault();
+    setBio(biografia);
+  };
+
+  const [whatsapp, setWhatsApp] = useState([]);
+
+  const registerWhatsapp = (e) => {
+    e.preventDefault();
+    const whats = e.target[0].value;
+    setWhatsApp(whats);
+  };
+
+  const [email, setEmail] = useState([]);
+
+  const registerEmail = (e) => {
+    e.preventDefault();
+    const mail = e.target[0].value;
+    setEmail(mail);
+  };
+
   const { authenticated } = useAuthenticated();
   const user = JSON.parse(localStorage.getItem("@ProWorking:user"));
 
@@ -99,6 +154,7 @@ const Dashboard = () => {
                 >
                   adicionar
                 </button>
+
                 <div className="cidades-registradas">
                   {cityServed.length !== 0 && (
                     <label>Cidades registradas:</label>

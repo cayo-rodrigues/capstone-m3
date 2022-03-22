@@ -1,5 +1,65 @@
 import styled from "styled-components";
 
+// lembre-se de usar html semântico
+export const Container = styled.main`
+  margin: 0 auto;
+
+  background-color: #8396cd;
+  min-height: 100vh;
+  .labelStates {
+    max-width: 350px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+  }
+  .labelCities {
+    max-width: 350px;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+  }
+  h1 {
+    padding-left: 29px;
+    font-size: 24px;
+    margin-left: 78px;
+    text-shadow: #000 2px 3px 2px;
+    color: white;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+  @media (max-width: 881px) {
+    display: grid;
+    h1 {
+      margin-left: 0px;
+      position: unset;
+      padding-left: 20px;
+    }
+    justify-content: center;
+    height: 82vh;
+  }
+`;
+
+export const ContainerNamePicture = styled.div`
+  img {
+    /* position: relative;
+    top: 69px; */
+  }
+  display: flex;
+
+  justify-content: space-between;
+  width: 96%;
+  padding-left: 28px;
+  align-items: center;
+  flex-direction: row;
+  margin-top: 10px;
+  @media (max-width: 881px) {
+    padding-left: 0px;
+    width: 90%;
+    img {
+      position: inherit;
+    }
+  }
+`;
 
 export const Container = styled.main`
   margin: 40px auto 100px;
@@ -124,7 +184,6 @@ export const Container = styled.main`
     color: black;
     font-weight: 700;
     text-transform: uppercase;
-
     padding: 5px;
     width: 100%;
     max-width: 400px;
@@ -149,4 +208,30 @@ export const Container = styled.main`
     }
     justify-content: center;
   }
+`;
+
+export const ContainerDescription = styled.div`
+  textarea {
+    width: 70%;
+  }
+  text-transform: uppercase;
+  font-family: var(--font-title);
+  color: #04164d;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  @media (max-width: 881px) {
+    textarea {
+      width: 90%;
+      min-width: 200px;
+    }
+  }
+`;
+
+export const ContainerServiceCities = styled.div``;
+
+export const ContainerDad = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 `;
