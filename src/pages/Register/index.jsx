@@ -1,7 +1,7 @@
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import Form from "../../components/Form";
-import { proWorkingApi } from "../../services/api";
+import { proWorkingApi, chatApi } from "../../services/api";
 import { useAuthenticated } from "../../providers/authenticated";
 import { Redirect } from "react-router-dom";
 
@@ -26,6 +26,16 @@ const Register = () => {
                     toastId: "toastError",
                 });
             });
+
+        chatApi
+            .post("/users", {
+                headers: {
+                    "private-key": "904cdef3-09bc-4891-80b2-6b3de0b6b1f8",
+                },
+                data: { username: "2@1.com", secret: "1" },
+            })
+            .then((res) => console.log(res))
+            .catch((err) => console.log(err));
     };
 
     if (authenticated) {

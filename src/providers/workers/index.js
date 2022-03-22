@@ -12,7 +12,6 @@ export const WorkersProvider = ({ children }) => {
         if (!!localStorage.getItem("@ProWorking:workers") === false) {
             proWorkingApi.get("/workers/?_expand=user").then(({ data }) => {
                 setWorkers(data);
-                console.log(data);
                 localStorage.setItem(
                     "@ProWorking:workers",
                     JSON.stringify(data)
@@ -20,7 +19,6 @@ export const WorkersProvider = ({ children }) => {
             });
         }
     }, []);
-    console.log(workers)
     const refreshWorkers = () => {
         proWorkingApi.get("/workers").then(({ data }) => setWorkers(data));
     };
