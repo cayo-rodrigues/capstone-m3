@@ -68,7 +68,7 @@ const BottomNavigator = () => {
 
   return (
     <NavigatorContainerDiv>
-      <nav>
+      <nav onScroll={(e)=>console.log(e)}>
         <ul>
           {
             authenticated ? (
@@ -100,73 +100,6 @@ const BottomNavigator = () => {
             )
           }
 
-          {/* <li>
-            <Link to={"/"} className={location.pathname === "/" && "selected"}>
-              <div>
-                <p>
-                  <AiOutlineHome />
-                </p>
-              </div>
-              <span>Home</span>
-            </Link>
-          </li>
-          <li>
-            <Link
-              to={"/services"}
-              className={location.pathname === "/services" && "selected"}
-            >
-              <div>
-                <p>
-                  <MdWorkOutline />
-                </p>
-              </div>
-              <span>Services</span>
-            </Link>
-          </li>
-
-          <li>
-            <Link
-              to={"/dashboard"}
-              className={location.pathname === "/dashboard" && "selected"}
-            >
-              <div>
-                <p>
-                  <AiFillDashboard />
-                </p>
-              </div>
-              <span>Dashboard</span>
-            </Link>
-          </li>
-
-
-          <li>
-            <Link
-              to={"/login"}
-              className={location.pathname === "/login" && "selected"}
-            >
-              <div>
-                <p>
-                  <FiLogIn />
-                </p>
-              </div>
-              <span>Login</span>
-            </Link>
-          </li>
-
-
-          <li>
-            <Link
-              to={"/register"}
-              className={location.pathname === "/register" && "selected"}
-            >
-              <div>
-                <p>
-                <BiRegistered />
-                </p>
-              </div>
-              <span>Cadastro</span>
-            </Link>
-          </li> */}
         </ul>
       </nav>
     </NavigatorContainerDiv>
