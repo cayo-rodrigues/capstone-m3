@@ -25,11 +25,11 @@ const Dashboard = () => {
 
   const [wrongNumber, setWrongNumber]  = useState(false)
   const [error,setError]               = useState(false)
-  const [List, setList]                = useState([]);
-  const [cityServed, setCityServed]    = useState([]); //array com as cidades
+  const [List, setList]                = useState(JSON.parse( localStorage.getItem('@Proworking:List') ) || []);
+  const [cityServed, setCityServed]    = useState(JSON.parse( localStorage.getItem('@Proworking:city') ) || []); //array com as cidades
   const [formValues, setFormValues]    = useState({}); // retorna obj da cidade
-  const [bio, setBio]                  = useState([]);
-  const [whatsapp, setWhatsApp]        = useState([]);
+  const [bio, setBio]                  = useState(localStorage.getItem('@Proworking:bio') || "");
+  const [whatsapp, setWhatsApp]        = useState(localStorage.getItem('@Proworking:whatsapp') || "");
   const [isWorker, setIsWorker]        = useState(false);
 
   
@@ -65,8 +65,8 @@ const Dashboard = () => {
 
   const registerBio = (e) => {
     e.preventDefault();
-    const biografia = e.target[0].value;
-    setBio(biografia);
+    // const biografia = e.target[0].value;
+    // setBio(biografia);
   };
 
   if (!authenticated) {
@@ -147,9 +147,12 @@ const Dashboard = () => {
                 <form onSubmit={registerBio}>
                   <label>Insira seu número de Whatsapp</label>
                   {wrongNumber && <div className="error">Número errado!</div>}
+                  
+                  
                   <input
                     name="whatsapp"
                     placeholder="whatsapp"
+                    value={whatsapp}
                     onChange={(e) =>{
                       setWhatsApp(e.target.value)
                       if( !!(e.target.value).match(/^\(?[1-9]{2}\)? ?(?:[2-8]|9[1-9])[0-9]{3}\-?[0-9]{4}$/) ){
@@ -157,20 +160,31 @@ const Dashboard = () => {
                       }else{
                         setWrongNumber(true) 
                       }
-                      console.log(isNaN(e.target.value)===false)
                     }}
                   />
+
+
                   <label htmlFor="w3review">
                     Breve descrição de seus serviços:
                   </label>
+
+
                   <textarea
                     id="w3review"
                     name="w3review"
                     rows="4"
                     cols="50"
                     placeholder="Escreva uma descrição dos seus serviços"
-                    onChange={(e) => setBio(e.target.value)}
+                    value={bio}
+                    
+                    onChange={(e) =>{
+                      console.log(e.target.value)
+                       setBio(e.target.value)
+                    }}
                   ></textarea>
+
+
+
                   <input
                     onClick={() => {
                       //----------Aqui ocorre a requisição----------------
@@ -181,6 +195,13 @@ const Dashboard = () => {
                         wrongNumber===false
                       ) {
                         setError(false)
+
+                        //Guarda no local storage
+                        localStorage.setItem("@Proworking:List",JSON.stringify(List) )
+                        localStorage.setItem("@Proworking:city",JSON.stringify(cityServed) )
+                        localStorage.setItem("@Proworking:bio",bio )
+                        localStorage.setItem("@Proworking:whatsapp",whatsapp )
+
 
                         const requisition = {//------Objeto Req--------------
                           id:profile.id,

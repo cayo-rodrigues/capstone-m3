@@ -21,5 +21,4 @@ const SearchResults = () => {
     </ServicePageContainer>
   );
 };
-
 export default SearchResults;
