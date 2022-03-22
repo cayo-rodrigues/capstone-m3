@@ -16,12 +16,14 @@ const ServiceProfilePage = () => {
   const { authenticated } = useAuthenticated();
 
   const userProfile = workers.find(
-    (worker) => worker.user.name === name && worker.user.id === Number(id)
+    (worker) => worker.name === name && worker.id === Number(id)
   );
 
-  const { user, occupation_area, summary, whatsapp } = userProfile;
-  const { email, is_worker } = user;
+  const { occupation_areas, summary, whatsapp } = userProfile;
+  const { email } = userProfile;
   const history = useHistory();
+
+
 
   return (
     <ServiceContainer>
@@ -35,7 +37,17 @@ const ServiceProfilePage = () => {
         <div className="profile-tittle">
           <div>
             <h1>Olá 👋, meu nome é {name}</h1>
-            <p>Eu ofereço serviços de {occupation_area}</p>
+            <p>{occupation_areas && occupation_areas.join(", ")}</p>
+            <div className="cities">
+              <ul>
+                <h2>Cidades de Atendimento:</h2>
+                {userProfile.cities!==undefined && userProfile.cities.map(({ state, city }, index) => (
+                  <li key={`${city}-${index}`} className="locationInfo">
+                    {state} {city}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
 
@@ -70,7 +82,7 @@ const ServiceProfilePage = () => {
 
         <h2>Informações do Perfil</h2>
         <p>
-          <strong>Bio:</strong> {summary}
+          <strong>Descrição do serviço:</strong> {summary}
         </p>
         <p>
           <strong>Email:</strong> {email}
@@ -81,7 +93,9 @@ const ServiceProfilePage = () => {
         <h2>Comentários:</h2>
 
         <div className="comments">
-          <div className="profile-pic"><p>F</p></div>
+          <div className="profile-pic">
+            <p>F</p>
+          </div>
           <div className="profile-comment">
             <h3>Fulaninho</h3>
             <p>

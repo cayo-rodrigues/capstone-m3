@@ -8,6 +8,31 @@ export const ServiceContainer = styled.main`
   
             margin: 10px auto 0px;
     }
+    .cities{
+        list-style: none;
+        margin: 10px 0 20px;
+        h2{
+            margin: 0;
+        }
+        .locationInfo,.locationTitle{
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 20px;
+            margin:  5px;
+            background-color: lightblue;
+            color: var(--color-primary);
+            padding: 10px 15px;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: 1s all;
+            :hover{
+                transition: 1s all;
+                border: 2px solid blue;
+            }
+        }
+
+    }
     .profile-header{
         display: flex;
         justify-content: center;
@@ -71,11 +96,12 @@ export const ServiceContainer = styled.main`
         .profile-tittle{
             margin:0px 0 50px;
             h1{
-                font-size: 55px;
+                font-size: 35px;
             }
             p{
                 font-size: 30px;
                 font-weight: 300;
+                text-transform: capitalize;
             }
             @media (max-width:710px) {
                 margin: 0px 0 10px ;

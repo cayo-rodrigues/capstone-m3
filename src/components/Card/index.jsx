@@ -1,8 +1,7 @@
-import { Container, Imagem, ModalContainer } from "./styles";
-import whatsapp from "../../assets/Whatsapp.png";
-import email from "../../assets/Email.png";
+import { Container } from "./styles";
+
 import React from "react";
-import Modal from "react-modal";
+
 import { useState } from "react";
 
 import AOS from "aos";
@@ -38,8 +37,8 @@ const customStyles = {
   },
 };
 
-const Card = ({ nome, img, especialidades, id }) => {
-  const [modalIsOpen, setIsOpen] = useState(false);
+const Card = ({ nome, img, especialidades,locais, id }) => {
+  const [ setIsOpen] = useState(false);
 
   function openModal(e) {
     if (e.target.tagName === "SECTION") {
@@ -55,13 +54,11 @@ const Card = ({ nome, img, especialidades, id }) => {
     }
   }
 
-  function closeModal() {
-    setIsOpen(false);
-  }
+
 
   return (
     <Container>
-      <Modal
+      {/* <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         style={customStyles}
@@ -69,7 +66,7 @@ const Card = ({ nome, img, especialidades, id }) => {
       >
         <ModalContainer id={id} onClick={(e) => openModal(e)}>
           <div>
-            <h2>{nome}</h2>
+            <h2>{especialidades.join(', ')}</h2>
             <Imagem src={DefaultUserImg} alt="Imagem" />
           </div>
 
@@ -88,40 +85,34 @@ const Card = ({ nome, img, especialidades, id }) => {
             </button>
           </span>
         </ModalContainer>
-      </Modal>
+      </Modal> */}
       <section
         data-aos="fade-in"
         data-aos-delay="150"
         id={id}
         onClick={(e) => openModal(e)}
       >
-        <div>
-          <h2>{nome}</h2>
+        <div className="titleAndImg">
+          <h2 className="title">{especialidades.join(', ')}</h2>
           <img src={DefaultUserImg} alt="Imagem" />
         </div>
 
-        <ul>
+        <ul className="location">
           <p>
-            <strong>Especialidade:</strong>{" "}
+            Locais de atendimento:
           </p>
-          <li>{especialidades}</li>
-          {/* {especialidades.map((especialidade, index) => {
-            if (index < 4) {
-              return <li key={especialidade}>{especialidade}</li>;
-            }
-            if (index === 4) {
-              return <p>...</p>;
-            }
-          })} */}
+          {locais.slice(0,4).map((local,index)=> <li className="locationDiv" key={`${local}-${index}`}>{local.state}- {local.city}</li>)}
+
         </ul>
-        <span>
+        <p className="link"><Link to={`/services/${id}/${nome}`} onClick={()=>window.scrollTo(0,0)} >Ver o perfil Completo</Link></p>
+        {/* <span>
           <button>
             <img src={email} alt="" />
           </button>
           <button>
             <img src={whatsapp} alt="" />
           </button>
-        </span>
+        </span> */}
       </section>
     </Container>
   );

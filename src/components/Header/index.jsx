@@ -87,7 +87,12 @@ const Header = ({ className }) => {
               >
                 Dashboard
               </Link>
+              <Link to={'/'}  onClick={() =>{
+                 window.scrollTo(0, 0)
+                logOut()   
+              }}>
               Logout
+              </Link>
             </>
           ) : (
             <>

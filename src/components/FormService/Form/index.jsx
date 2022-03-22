@@ -9,7 +9,7 @@ const Form = ({ addTodo }) => {
         onChange={(e) => setTodo(e.target.value)}
         placeholder="Adicionar serviços"
       />
-      <button onClick={() => addTodo(todo)}>Cadastrar serviço</button>
+      <button onClick={() =>{todo.length!==0 && addTodo(todo)}}>Cadastrar serviço</button>
     </div>
   );
 };

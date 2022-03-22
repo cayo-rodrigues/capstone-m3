@@ -12,21 +12,36 @@ import { proWorkingApi } from "../../services/api";
 import { Redirect } from "react-router-dom";
 import { useAuthenticated } from "../../providers/authenticated";
 
+import { useWorkers } from "../../providers/workers";
+import { toast } from "react-toastify";
+
 const Dashboard = () => {
   const { authenticated } = useAuthenticated();
-  const user = JSON.parse(localStorage.getItem("@ProWorking:user"));
 
-  const [List, setList] = useState([]);
-  const [cityServed, setCityServed] = useState([]); //array com as cidades
-  const [formValues, setFormValues] = useState({}); // retorna obj da cidade
-  const [bio, setBio] = useState([]);
-  const [whatsapp, setWhatsApp] = useState([]);
-  const [isWorker, setIsWorker] = useState(false);
+  // ----------------Pegando do local storage----------------
+  const profile = JSON.parse(localStorage.getItem("@ProWorking:user"));
+  const token = localStorage.getItem('@ProWorking:token')    
+  //const workers = JSON.parse(localStorage.getItem("@ProWorking:workers"))
+
+  const [wrongNumber, setWrongNumber]  = useState(false)
+  const [error,setError]               = useState(false)
+  const [List, setList]                = useState([]);
+  const [cityServed, setCityServed]    = useState([]); //array com as cidades
+  const [formValues, setFormValues]    = useState({}); // retorna obj da cidade
+  const [bio, setBio]                  = useState([]);
+  const [whatsapp, setWhatsApp]        = useState([]);
+  const [isWorker, setIsWorker]        = useState(false);
+
+  
+  const  {refreshWorkers}   = useWorkers()
 
   const addTodo = (todo) => {
-    setList([...List, todo]);
+    if(todo.length!==0){
+      const arr = [...List,todo]
+      setList( [...new Set(arr)] );
+    }
   };
-
+  
   const handleTodo = (todo) => {
     const filterTodo = List.filter((filterTodo) => filterTodo !== todo);
     setList(filterTodo);
@@ -35,13 +50,16 @@ const Dashboard = () => {
   const handleInputChange = (e) => {
     e.preventDefault();
     const { value, name } = e.target;
-    setFormValues({ ...formValues, [name]: value });
+    if(value){
+      setFormValues({ ...formValues, [name]: value });
+    }
   };
 
   const registerLocalService = (e) => {
     e.preventDefault();
     if (formValues.state !== undefined) {
-      setCityServed([...cityServed, formValues]);
+      const arr = [...cityServed, formValues]
+      setCityServed([...new Set(arr)]);
     }
   };
 
@@ -62,7 +80,7 @@ const Dashboard = () => {
         <div className="dadContainer">
           <div className="childContainer">
             <div className="profile">
-              <h3>Olá 👋 {user.name}, falta completar uma etapa do cadastro</h3>
+              <h3>Olá 👋 {profile.name}, atualize ou insira as suas informações</h3>
               <img src={picture} alt="Foto de perfil" />
             </div>
             <div className="profession">
@@ -128,10 +146,19 @@ const Dashboard = () => {
               <div className="description">
                 <form onSubmit={registerBio}>
                   <label>Insira seu número de Whatsapp</label>
+                  {wrongNumber && <div className="error">Número errado!</div>}
                   <input
                     name="whatsapp"
                     placeholder="whatsapp"
-                    onChange={(e) => setWhatsApp(e.target.value)}
+                    onChange={(e) =>{
+                      setWhatsApp(e.target.value)
+                      if( !!(e.target.value).match(/^\(?[1-9]{2}\)? ?(?:[2-8]|9[1-9])[0-9]{3}\-?[0-9]{4}$/) ){
+                        setWrongNumber(false)
+                      }else{
+                        setWrongNumber(true) 
+                      }
+                      console.log(isNaN(e.target.value)===false)
+                    }}
                   />
                   <label htmlFor="w3review">
                     Breve descrição de seus serviços:
@@ -150,23 +177,34 @@ const Dashboard = () => {
                       if (
                         whatsapp.length !== 0 &&
                         List.length !== 0 &&
-                        bio.length !== 0
+                        bio.length !== 0 && 
+                        wrongNumber===false
                       ) {
-                        const requisition = {
-                          bio: bio,
-                          whatsapp: whatsapp,
-                          isWorker: isWorker,
-                          cities: cityServed,
-                          specialties: List,
-                        };
+                        setError(false)
 
-                        proWorkingApi
-                          .put("/workers", requisition)
-                          .then((res) => { console.log(res)})
-                          .catch((err) =>console.log(err));
-                      //---------------------------------------------
-                      } else {
-                        alert("Falta preencher alguns campos");
+                        const requisition = {//------Objeto Req--------------
+                          id:profile.id,
+                          is_admin:false,
+                          is_active:true,
+                          is_worker: isWorker,
+                          summary: bio,
+                          whatsapp: whatsapp,
+                          cities: cityServed,
+                          occupation_areas: List,
+                          userId:profile.id
+                        }//------------------------------------------------
+                        //-------------------PATCH-----------------------------
+                        proWorkingApi.patch(`/users/${profile.id}`,requisition,{
+                          headers: {
+                            Authorization: `Bearer ${token}`
+                          }
+                        }).then(()=>{
+                          toast.success('Perfil Atualizado')
+                          refreshWorkers()
+                        }).catch(err=>console.log(err))
+                      //--------------------------------------------
+                      }else{
+                        setError(true);
                       }
                     }}
                     type="submit"
@@ -175,6 +213,7 @@ const Dashboard = () => {
                   />
                 </form>
               </div>
+              {error && <div className="error">Falta preencher todos os campos!</div>}
               <div className=" checkin">
                 <input
                   className="checkin"

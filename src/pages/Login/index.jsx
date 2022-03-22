@@ -21,9 +21,11 @@ const Login = () => {
         proWorkingApi
             .post("/login", dataUser)
             .then(({ data }) => {
+                console.log(data)
                 handleUser(data);
                 setAuthenticated(true);
                 history.push("/dashboard");
+                toast.success('Login feito com sucesso')
             })
             .catch(() =>
                 toast.error("Email ou senha incorretos!", {

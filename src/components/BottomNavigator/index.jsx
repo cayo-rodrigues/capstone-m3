@@ -17,15 +17,6 @@ const BottomNavigator = () => {
   
   const location = useLocation();
   const { authenticated } = useAuthenticated()
-  const [previousOffset,setPreviousOffset] = useState(0)
-  
-  useEffect(()=>{
-    window.addEventListener('scroll',()=>{
-        console.log(window.scrollY)
-        setPreviousOffset(window.scrollY)
-    })
-
-  },[])
 
 
   const menuAuthenticated = [

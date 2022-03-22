@@ -1,7 +1,51 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  .titleAndImg{
+    align-items: flex-start;
+    .title{
+      text-overflow: ellipsis;
+      /* overflow: hidden;
+      white-space: nowrap; */
+      font-size: 13px;
+      line-height: 14px;
+      margin: 0;
+      padding: 3px 0 0;
+      text-align: start;
+      font-weight: bold;
+    }
+  }
+  .location{
+    color: black;
+    font-size: 14px;
+    margin: 15px auto;
+    padding:0 ;
+    width: 80%;
+    text-align: center;
+    cursor: pointer;
+    justify-content: flex-start;
+    .locationDiv{
+    text-align: center;
+      padding: 5px 8px;
+      background-color: lightblue;
+      border-radius: 20px;
+      margin: 3px 1px;
+      display: inline-block;
+      max-width: 110px;
+      color: var(--color-primary);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+  .link{
+    text-align: center;
+    margin:  5px;
+    line-height: 3px;
+    font-size: 13px;
+  }
   section {
+    text-align: center;
     -webkit-box-shadow: 4px 4px 11px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 4px 4px 11px 0px rgba(0, 0, 0, 0.75);
     box-shadow: 4px 4px 11px 0px rgba(0, 0, 0, 0.75);
@@ -10,9 +54,11 @@ export const Container = styled.div`
     border: none;
     width: 300px;
     height: 250px;
+    align-items: center;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding: 30px 0 ;
     > div {
       display: flex;
       justify-content: space-between;
@@ -39,7 +85,8 @@ export const Container = styled.div`
 
   ul {
     display: flex;
-    flex-direction: column;
+    /* flex-direction: column; */
+    flex-wrap: wrap;
     justify-content: center;
     align-items: center;
     width: 80%;
@@ -51,8 +98,8 @@ export const Container = styled.div`
       width: 80%;
     }
     > p {
-      width: 80%;
-      text-align: left;
+      width: 100%;
+      text-align: start;
     }
     text-overflow: ellipsis;
     overflow: hidden;
