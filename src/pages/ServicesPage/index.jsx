@@ -2,9 +2,15 @@ import { ServicePageContainer } from "./styles";
 
 import CardBox from "../../components/CardBox";
 import { useWorkers } from "../../providers/workers";
+import { useEffect } from "react";
 
 const ServicesPage = () => {
-  const { workers } = useWorkers();
+  const { workers, refreshWorkers } = useWorkers();
+
+  useEffect(() => {
+    refreshWorkers();
+  }, []);
+
   return (
     <ServicePageContainer>
       {/* <Container>
