@@ -1,14 +1,13 @@
-import {
-  Container
-} from "./styles";
+import { Container } from "./styles";
 import picture from "../../assets/profile 1.png";
-
 
 import DropDownBrazilianCities from "../../components/DropDownBrazilianCities";
 import DropDownBrazilianStates from "../../components/DropDownBrazilianStates";
 import { useState } from "react";
 import Form from "../../components/FormService/Form";
 import TodoList from "../../components/FormService/TodoList";
+
+import { proWorkingApi } from "../../services/api";
 
 import { Redirect } from "react-router-dom";
 import { useAuthenticated } from "../../providers/authenticated";
@@ -19,11 +18,10 @@ const Dashboard = () => {
 
   const [List, setList] = useState([]);
   const [cityServed, setCityServed] = useState([]); //array com as cidades
-  const [formValues, setFormValues] = useState({});// retorna obj da cidade
+  const [formValues, setFormValues] = useState({}); // retorna obj da cidade
   const [bio, setBio] = useState([]);
   const [whatsapp, setWhatsApp] = useState([]);
-  const [isWorker,setIsWorker] = useState(false)
-
+  const [isWorker, setIsWorker] = useState(false);
 
   const addTodo = (todo) => {
     setList([...List, todo]);
@@ -42,7 +40,7 @@ const Dashboard = () => {
 
   const registerLocalService = (e) => {
     e.preventDefault();
-    if(formValues.state!==undefined){
+    if (formValues.state !== undefined) {
       setCityServed([...cityServed, formValues]);
     }
   };
@@ -52,7 +50,6 @@ const Dashboard = () => {
     const biografia = e.target[0].value;
     setBio(biografia);
   };
-
 
   if (!authenticated) {
     return <Redirect to={"/"} />;
@@ -76,7 +73,6 @@ const Dashboard = () => {
             </div>
             <TodoList List={List} handleTodo={handleTodo} />
             <div className="contato">
-
               <form className="labelStates">
                 <label>Selecione o estado que voce atende:</label>
 
@@ -96,7 +92,7 @@ const Dashboard = () => {
                   onChange={handleInputChange}
                 ></DropDownBrazilianCities>
                 <button
-                 className="btn" 
+                  className="btn"
                   type="submit"
                   value="Send"
                   onClick={registerLocalService}
@@ -104,12 +100,23 @@ const Dashboard = () => {
                   adicionar
                 </button>
                 <div className="cidades-registradas">
-                  {cityServed.length!==0 && <label>Cidades registradas:</label>}
+                  {cityServed.length !== 0 && (
+                    <label>Cidades registradas:</label>
+                  )}
                   <ul>
                     {cityServed.map((item, index) => {
                       return (
                         <li key={index} value={item}>
-                          <button className="btn" onClick={()=>{setCityServed(cityServed.filter(elem=>elem!==item)) }}>x</button>
+                          <button
+                            className="btn"
+                            onClick={() => {
+                              setCityServed(
+                                cityServed.filter((elem) => elem !== item)
+                              );
+                            }}
+                          >
+                            x
+                          </button>
                           {item.city}
                         </li>
                       );
@@ -121,43 +128,59 @@ const Dashboard = () => {
               <div className="description">
                 <form onSubmit={registerBio}>
                   <label>Insira seu número de Whatsapp</label>
-                  <input name="whatsapp" placeholder="whatsapp" onChange={(e)=>setWhatsApp(e.target.value)} />
-                <label htmlFor="w3review">
-                  Breve descrição de seus serviços:
-                </label>
+                  <input
+                    name="whatsapp"
+                    placeholder="whatsapp"
+                    onChange={(e) => setWhatsApp(e.target.value)}
+                  />
+                  <label htmlFor="w3review">
+                    Breve descrição de seus serviços:
+                  </label>
                   <textarea
                     id="w3review"
                     name="w3review"
                     rows="4"
                     cols="50"
                     placeholder="Escreva uma descrição dos seus serviços"
-                    onChange={(e)=>setBio(e.target.value)}
+                    onChange={(e) => setBio(e.target.value)}
                   ></textarea>
                   <input
-                    onClick={()=>{
-                      if(whatsapp.length!==0 && List.length!==0 && bio.length!==0 ){
+                    onClick={() => {
+                      //----------Aqui ocorre a requisição----------------
+                      if (
+                        whatsapp.length !== 0 &&
+                        List.length !== 0 &&
+                        bio.length !== 0
+                      ) {
+                        const requisition = {
+                          bio: bio,
+                          whatsapp: whatsapp,
+                          isWorker: isWorker,
+                          cities: cityServed,
+                          specialties: List,
+                        };
 
-                        const requisition ={
-                          bio:bio,
-                          whatsapp:whatsapp,
-                          isWorker:isWorker,
-                          cities:cityServed,
-                          specialties:List
-                        } 
-                        console.log(requisition)
-                      }else{
-                        alert('Falta preencher alguns campos')
+                        proWorkingApi
+                          .put("/workers", requisition)
+                          .then((res) => { console.log(res)})
+                          .catch((err) =>console.log(err));
+                      //---------------------------------------------
+                      } else {
+                        alert("Falta preencher alguns campos");
                       }
-
                     }}
                     type="submit"
                     value="Atualizar"
-                    className="btn" 
+                    className="btn"
                   />
                 </form>
               </div>
               <div className=" checkin">
-                <input className="checkin" type="checkbox" onClick={(e)=>setIsWorker(e.target.checked) }  />
+                <input
+                  className="checkin"
+                  type="checkbox"
+                  onClick={(e) => setIsWorker(e.target.checked)}
+                />
                 <p>
                   Deixe esta caixa selecionada se deseja que os serviços
                   prestados por você apareçam nos resultados das buscas.

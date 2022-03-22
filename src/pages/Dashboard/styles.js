@@ -124,14 +124,14 @@ export const Container = styled.main`
     color: black;
     font-weight: 700;
     text-transform: uppercase;
-    border-bottom: 2px solid;
+
     padding: 5px;
     width: 100%;
     max-width: 400px;
     letter-spacing: -1px;
 
     @media (max-width:768px) {
-      font-size: 19px;
+      font-size: 26px;
       padding: 0;
     }
   }

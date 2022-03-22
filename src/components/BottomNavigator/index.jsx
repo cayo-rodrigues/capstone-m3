@@ -10,10 +10,23 @@ import { IoIosPeople } from "react-icons/io";
 
 import { useLocation } from "react-router-dom";
 import { useAuthenticated } from "../../providers/authenticated/index.js";
+import { useState } from "react";
+import { useEffect } from "react";
 
 const BottomNavigator = () => {
+  
   const location = useLocation();
   const { authenticated } = useAuthenticated()
+  const [previousOffset,setPreviousOffset] = useState(0)
+  
+  useEffect(()=>{
+    window.addEventListener('scroll',()=>{
+        console.log(window.scrollY)
+        setPreviousOffset(window.scrollY)
+    })
+
+  },[])
+
 
   const menuAuthenticated = [
     {
