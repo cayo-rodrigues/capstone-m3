@@ -52,7 +52,6 @@ const Card = ({ nome, img, especialidades, locais, id }) => {
   //     setIsOpen(true);
   //   }
   // }
-
   return (
     <Container>
       {/* <Modal
@@ -115,9 +114,16 @@ const Card = ({ nome, img, especialidades, locais, id }) => {
         // onClick={(e) => openModal(e)}
       >
         <div className="titleAndImg">
-          <h2 className="title">{especialidades.join(", ")}</h2>
+          <h2 className="title">{nome}</h2>
           <img src={DefaultUserImg} alt="Imagem" />
         </div>
+
+        <ul className="occupation_areas">
+          {especialidades.slice(0, 2).map((especialidade, index) => (
+            <li key={index}>{especialidade}</li>
+          ))}
+          {especialidades.length > 2 && <li>...</li>}
+        </ul>
 
         <ul className="location">
           <p>Locais de atendimento:</p>

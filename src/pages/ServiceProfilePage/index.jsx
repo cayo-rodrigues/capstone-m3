@@ -16,14 +16,12 @@ const ServiceProfilePage = () => {
   const { authenticated } = useAuthenticated();
 
   const userProfile = workers.find(
-    (worker) => worker.name === name && worker.id === Number(id)
+    (worker) => worker.user.name === name && worker.id === Number(id)
   );
 
   const { occupation_areas, summary, whatsapp } = userProfile;
   const { email } = userProfile;
   const history = useHistory();
-
-
 
   return (
     <ServiceContainer>
@@ -41,11 +39,12 @@ const ServiceProfilePage = () => {
             <div className="cities">
               <ul>
                 <h2>Cidades de Atendimento:</h2>
-                {userProfile.cities!==undefined && userProfile.cities.map(({ state, city }, index) => (
-                  <li key={`${city}-${index}`} className="locationInfo">
-                    {state} {city}
-                  </li>
-                ))}
+                {userProfile.cities !== undefined &&
+                  userProfile.cities.map(({ state, city }, index) => (
+                    <li key={`${city}-${index}`} className="locationInfo">
+                      {state} {city}
+                    </li>
+                  ))}
               </ul>
             </div>
           </div>

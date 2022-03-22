@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  .titleAndImg{
+  .titleAndImg {
     align-items: flex-start;
-    .title{
+    .title {
       text-overflow: ellipsis;
-      /* overflow: hidden;
-      white-space: nowrap; */
-      font-size: 13px;
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 16px;
       line-height: 14px;
       margin: 0;
       padding: 3px 0 0;
@@ -15,17 +15,27 @@ export const Container = styled.div`
       font-weight: bold;
     }
   }
-  .location{
+  .occupation_areas {
+    list-style: disc;
+    color: var(--color-aux);
+    margin-top: -20px;
+    text-transform: capitalize;
+
+    li + li {
+      margin-top: 5px;
+    }
+  }
+  .location {
     color: black;
     font-size: 14px;
     margin: 15px auto;
-    padding:0 ;
+    padding: 0;
     width: 80%;
     text-align: center;
     cursor: pointer;
     justify-content: flex-start;
-    .locationDiv{
-    text-align: center;
+    .locationDiv {
+      text-align: center;
       padding: 5px 8px;
       background-color: lightblue;
       border-radius: 20px;
@@ -38,9 +48,9 @@ export const Container = styled.div`
       overflow: hidden;
     }
   }
-  .link{
+  .link {
     text-align: center;
-    margin:  5px;
+    margin: 5px;
     line-height: 3px;
     font-size: 13px;
   }
@@ -59,7 +69,7 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding: 30px 0 ;
+    padding: 30px 0;
     > div {
       display: flex;
       justify-content: space-between;

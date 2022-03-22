@@ -14,17 +14,17 @@ AOS.init({
   anchorPlacement: "top-bottom", // defines which position of the element regarding to window should trigger the animation
 });
 
-const CardBox = ({workers}) => {
+const CardBox = ({ workers }) => {
   return (
     <Container>
-      {workers.filter(worker=>worker.is_worker && worker.cities ).map((pessoa, index) => (
-        <Card 
-          id={pessoa.id}
-          key={pessoa.id}
-          img={''}
-          nome={pessoa.name}
-          especialidades={pessoa.occupation_areas}
-          locais={pessoa.cities}
+      {workers.map((worker) => (
+        <Card
+          id={worker.id}
+          key={worker.id}
+          img={""}
+          nome={worker.user.name}
+          especialidades={worker.occupation_areas}
+          locais={worker.cities}
         />
       ))}
     </Container>
