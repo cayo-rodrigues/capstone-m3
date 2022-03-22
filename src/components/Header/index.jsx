@@ -1,6 +1,5 @@
 import { Container, ContainerHeader, Nav } from "./styles";
 
-import Button from "../Button/index.jsx";
 import logo from "../../assets/svg/logoProWorking 2.svg";
 import { useHistory, useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -8,8 +7,6 @@ import BurgerMenu from "../BurgerMenu";
 import BurgerMenuLink from "../BurgerMenuLink";
 import { useAuthenticated } from "../../providers/authenticated";
 import { toast } from "react-toastify";
-
-import { FiLogIn } from "react-icons/fi";
 
 const Header = ({ className }) => {
   const history = useHistory();
@@ -68,7 +65,6 @@ const Header = ({ className }) => {
         <Nav>
           <Link
             className={location.pathname === "/services" ? "currentPage" : ""}
-            //onClick={() => history.push("/services")}
             onClick={() => window.scrollTo(0, 0)}
             to={"/services"}
           >
@@ -81,13 +77,20 @@ const Header = ({ className }) => {
                 className={
                   location.pathname === "/dashboard" ? "currentPage" : ""
                 }
-                //onClick={() => history.push("/dashboard")}
                 onClick={() => window.scrollTo(0, 0)}
                 to={"/dashboard"}
               >
                 Dashboard
               </Link>
-              Logout
+              <Link
+                className={
+                  location.pathname === "/services" ? "currentPage" : ""
+                }
+                onClick={() => logOut()}
+                to={"/"}
+              >
+                Logout
+              </Link>
             </>
           ) : (
             <>
@@ -95,7 +98,6 @@ const Header = ({ className }) => {
                 className={location.pathname === "/login" ? "currentPage" : ""}
                 onClick={() => {
                   window.scrollTo(0, 0);
-                  // history.push("/login");
                 }}
                 to={"/login"}
               >
@@ -106,7 +108,6 @@ const Header = ({ className }) => {
                   location.pathname === "/register" ? "currentPage" : ""
                 }
                 onClick={() => {
-                  // history.push("/register");
                   window.scrollTo(0, 0);
                 }}
                 to={"/register"}
@@ -117,7 +118,6 @@ const Header = ({ className }) => {
                 className={
                   location.pathname === "/aboutus" ? "currentPage" : ""
                 }
-                //onClick={() => history.push("/aboutus")}
                 onClick={() => window.scrollTo(0, 0)}
                 to={"/aboutus"}
               >
