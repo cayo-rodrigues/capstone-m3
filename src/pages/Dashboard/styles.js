@@ -1,75 +1,14 @@
 import styled from "styled-components";
 
-// lembre-se de usar html semântico
-export const Container = styled.main`
-  margin: 0 auto;
-
-  background-color: #8396cd;
-  min-height: 100vh;
-  .labelStates {
-    max-width: 350px;
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-  }
-  .labelCities {
-    max-width: 350px;
-    width: 90%;
-    display: flex;
-    flex-direction: column;
-  }
-  h1 {
-    padding-left: 29px;
-    font-size: 24px;
-    margin-left: 78px;
-    text-shadow: #000 2px 3px 2px;
-    color: white;
-    font-weight: 400;
-    text-transform: uppercase;
-  }
-  @media (max-width: 881px) {
-    display: grid;
-    h1 {
-      margin-left: 0px;
-      position: unset;
-      padding-left: 20px;
-    }
-    justify-content: center;
-    height: 82vh;
-  }
-`;
-
-export const ContainerNamePicture = styled.div`
-  img {
-    /* position: relative;
-    top: 69px; */
-  }
-  display: flex;
-
-  justify-content: space-between;
-  width: 96%;
-  padding-left: 28px;
-  align-items: center;
-  flex-direction: row;
-  margin-top: 10px;
-  @media (max-width: 881px) {
-    padding-left: 0px;
-    width: 90%;
-    img {
-      position: inherit;
-    }
-  }
-`;
-
 export const Container = styled.main`
   margin: 40px auto 100px;
   max-width: 1000px;
   width: 90%;
   padding: 20px 40px;
   background-color: #eee;
-  @media (max-width:768px) {
+  @media (max-width: 768px) {
     padding: 20px 15px;
-    h3{
+    h3 {
       font-size: 15px;
     }
   }
@@ -99,7 +38,7 @@ export const Container = styled.main`
       background-color: var(--color-aux);
     }
   }
-  li{
+  li {
     display: inline-flex;
     align-items: center;
   }
@@ -164,7 +103,7 @@ export const Container = styled.main`
     justify-content: center;
     p {
       margin: 0;
-      @media (max-width:768px) {
+      @media (max-width: 768px) {
         font-size: 11px;
         width: 80%;
       }
@@ -189,7 +128,7 @@ export const Container = styled.main`
     max-width: 400px;
     letter-spacing: -1px;
 
-    @media (max-width:768px) {
+    @media (max-width: 768px) {
       font-size: 26px;
       padding: 0;
     }
@@ -227,8 +166,6 @@ export const ContainerDescription = styled.div`
     }
   }
 `;
-
-export const ContainerServiceCities = styled.div``;
 
 export const ContainerDad = styled.div`
   display: flex;
