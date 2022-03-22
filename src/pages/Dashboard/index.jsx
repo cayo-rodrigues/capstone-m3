@@ -13,32 +13,32 @@ import { useAuthenticated } from "../../providers/authenticated";
 
 import { useWorkers } from "../../providers/workers";
 import { toast } from "react-toastify";
+import { Redirect } from "react-router-dom";
 
 const Dashboard = () => {
   const { authenticated } = useAuthenticated();
 
   const profile = JSON.parse(localStorage.getItem("@ProWorking:user"));
-  const token = localStorage.getItem('@ProWorking:token')    
+  const token = localStorage.getItem("@ProWorking:token");
 
-  const [wrongNumber, setWrongNumber]  = useState(false)
-  const [error,setError]               = useState(false)
-  const [List, setList]                = useState([]);
-  const [cityServed, setCityServed]    = useState([]); 
-  const [formValues, setFormValues]    = useState({}); 
-  const [bio, setBio]                  = useState([]);
-  const [whatsapp, setWhatsApp]        = useState([]);
-  const [isWorker, setIsWorker]        = useState(false);
+  const [wrongNumber, setWrongNumber] = useState(false);
+  const [error, setError] = useState(false);
+  const [List, setList] = useState([]);
+  const [cityServed, setCityServed] = useState([]);
+  const [formValues, setFormValues] = useState({});
+  const [bio, setBio] = useState([]);
+  const [whatsapp, setWhatsApp] = useState([]);
+  const [isWorker, setIsWorker] = useState(false);
 
-  
-  const  {refreshWorkers}   = useWorkers()
+  const { refreshWorkers } = useWorkers();
 
   const addTodo = (todo) => {
-    if(todo.length!==0){
-      const arr = [...List,todo]
-      setList( [...new Set(arr)] );
+    if (todo.length !== 0) {
+      const arr = [...List, todo];
+      setList([...new Set(arr)]);
     }
   };
-  
+
   const handleTodo = (todo) => {
     const filterTodo = List.filter((filterTodo) => filterTodo !== todo);
     setList(filterTodo);
@@ -47,7 +47,7 @@ const Dashboard = () => {
   const handleInputChange = (e) => {
     e.preventDefault();
     const { value, name } = e.target;
-    if(value){
+    if (value) {
       setFormValues({ ...formValues, [name]: value });
     }
   };
@@ -55,7 +55,7 @@ const Dashboard = () => {
   const registerLocalService = (e) => {
     e.preventDefault();
     if (formValues.state !== undefined) {
-      const arr = [...cityServed, formValues]
+      const arr = [...cityServed, formValues];
       setCityServed([...new Set(arr)]);
     }
   };
@@ -91,7 +91,9 @@ const Dashboard = () => {
         <div className="dadContainer">
           <div className="childContainer">
             <div className="profile">
-              <h3>Olá 👋 {profile.name}, atualize ou insira as suas informações</h3>
+              <h3>
+                Olá 👋 {profile.name}, atualize ou insira as suas informações
+              </h3>
               <img src={picture} alt="Foto de perfil" />
             </div>
             <div className="profession">
@@ -162,14 +164,18 @@ const Dashboard = () => {
                   <input
                     name="whatsapp"
                     placeholder="whatsapp"
-                    onChange={(e) =>{
-                      setWhatsApp(e.target.value)
-                      if( !!(e.target.value).match(/^\(?[1-9]{2}\)? ?(?:[2-8]|9[1-9])[0-9]{3}\-?[0-9]{4}$/) ){
-                        setWrongNumber(false)
-                      }else{
-                        setWrongNumber(true) 
+                    onChange={(e) => {
+                      setWhatsApp(e.target.value);
+                      if (
+                        !!e.target.value.match(
+                          /^\(?[1-9]{2}\)? ?(?:[2-8]|9[1-9])[0-9]{3}\-?[0-9]{4}$/
+                        )
+                      ) {
+                        setWrongNumber(false);
+                      } else {
+                        setWrongNumber(true);
                       }
-                      console.log(isNaN(e.target.value)===false)
+                      console.log(isNaN(e.target.value) === false);
                     }}
                   />
                   <label htmlFor="w3review">
@@ -185,35 +191,36 @@ const Dashboard = () => {
                   ></textarea>
                   <input
                     onClick={() => {
-                      
                       if (
                         whatsapp.length !== 0 &&
                         List.length !== 0 &&
-                        bio.length !== 0 && 
-                        wrongNumber===false
+                        bio.length !== 0 &&
+                        wrongNumber === false
                       ) {
-                        setError(false)
+                        setError(false);
 
                         const requisition = {
-                          id:profile.id,
-                          is_admin:false,
-                          is_active:true,
+                          id: profile.id,
+                          is_admin: false,
+                          is_active: true,
                           is_worker: isWorker,
                           summary: bio,
                           whatsapp: whatsapp,
                           cities: cityServed,
                           occupation_areas: List,
-                          userId:profile.id
-                        }
-                        proWorkingApi.patch(`/users/${profile.id}`,requisition,{
-                          headers: {
-                            Authorization: `Bearer ${token}`
-                          }
-                        }).then(()=>{
-                          toast.success('Perfil Atualizado')
-                          refreshWorkers()
-                        }).catch(err=>console.log(err))
-                     
+                          userId: profile.id,
+                        };
+                        proWorkingApi
+                          .patch(`/users/${profile.id}`, requisition, {
+                            headers: {
+                              Authorization: `Bearer ${token}`,
+                            },
+                          })
+                          .then(() => {
+                            toast.success("Perfil Atualizado");
+                            refreshWorkers();
+                          })
+                          .catch((err) => console.log(err));
                       } else {
                         setError(true);
                       }
@@ -224,7 +231,9 @@ const Dashboard = () => {
                   />
                 </form>
               </div>
-              {error && <div className="error">Falta preencher todos os campos!</div>}
+              {error && (
+                <div className="error">Falta preencher todos os campos!</div>
+              )}
               <div className=" checkin">
                 <input
                   className="checkin"

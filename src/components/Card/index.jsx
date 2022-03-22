@@ -36,24 +36,22 @@ const customStyles = {
   },
 };
 
-const Card = ({ nome, img, especialidades,locais, id }) => {
-  const [ setIsOpen] = useState(false);
+const Card = ({ nome, img, especialidades, locais, id }) => {
+  // const [ setIsOpen] = useState(false);
 
-  function openModal(e) {
-    if (e.target.tagName === "SECTION") {
-      setIsOpen(true);
-    } else if (
-      e.target.tagName === "LI" ||
-      e.target.tagName === "IMG" ||
-      e.target.tagName === "H2"
-    ) {
-      setIsOpen(true);
-    } else {
-      setIsOpen(true);
-    }
-  }
-
-
+  // function openModal(e) {
+  //   if (e.target.tagName === "SECTION") {
+  //     setIsOpen(true);
+  //   } else if (
+  //     e.target.tagName === "LI" ||
+  //     e.target.tagName === "IMG" ||
+  //     e.target.tagName === "H2"
+  //   ) {
+  //     setIsOpen(true);
+  //   } else {
+  //     setIsOpen(true);
+  //   }
+  // }
 
   return (
     <Container>
@@ -114,21 +112,29 @@ const Card = ({ nome, img, especialidades,locais, id }) => {
         data-aos="fade-in"
         data-aos-delay="150"
         id={id}
-        onClick={(e) => openModal(e)}
+        // onClick={(e) => openModal(e)}
       >
         <div className="titleAndImg">
-          <h2 className="title">{especialidades.join(', ')}</h2>
+          <h2 className="title">{especialidades.join(", ")}</h2>
           <img src={DefaultUserImg} alt="Imagem" />
         </div>
 
         <ul className="location">
-          <p>
-            Locais de atendimento:
-          </p>
-          {locais.slice(0,4).map((local,index)=> <li className="locationDiv" key={`${local}-${index}`}>{local.state}- {local.city}</li>)}
-
+          <p>Locais de atendimento:</p>
+          {locais.slice(0, 4).map((local, index) => (
+            <li className="locationDiv" key={`${local}-${index}`}>
+              {local.state}- {local.city}
+            </li>
+          ))}
         </ul>
-        <p className="link"><Link to={`/services/${id}/${nome}`} onClick={()=>window.scrollTo(0,0)} >Ver o perfil Completo</Link></p>
+        <p className="link">
+          <Link
+            to={`/services/${id}/${nome}`}
+            onClick={() => window.scrollTo(0, 0)}
+          >
+            Ver o perfil Completo
+          </Link>
+        </p>
         {/* <span>
           <button>
             <img src={email} alt="" />
