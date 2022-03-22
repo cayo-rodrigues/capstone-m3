@@ -28,23 +28,8 @@ export const WorkersProvider = ({ children }) => {
       });
   };
 
-  const queryWorkers = (q) => {
-    proWorkingApi
-      .get("/workers", {
-        params: {
-          _expand: "user",
-          _embed: "ratings",
-          q: q.toLowerCase().trim(),
-        },
-      })
-      .then(({ data }) => {
-        localStorage.setItem("@ProWorking:workers", JSON.stringify(data));
-        setWorkers(data);
-      });
-  };
-
   return (
-    <WorkersContext.Provider value={{ workers, refreshWorkers, queryWorkers }}>
+    <WorkersContext.Provider value={{ workers, refreshWorkers }}>
       {children}
     </WorkersContext.Provider>
   );
