@@ -1,11 +1,9 @@
 import { ServicePageContainer } from "./style";
 
 import CardBox from "../../components/CardBox";
-import { useWorkers } from "../../providers/workers";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { proWorkingApi } from "../../services/api";
 import { useState } from "react";
-import { toast } from "react-toastify";
 
 const SearchResults = () => {
   const { search } = useParams();
