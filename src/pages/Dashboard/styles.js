@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const Container = styled.main`
   animation: fadeIn 1s;
   margin: 40px auto 100px;
@@ -8,9 +7,9 @@ export const Container = styled.main`
   width: 90%;
   padding: 20px 40px;
   background-color: #eee;
-  @media (max-width:768px) {
+  @media (max-width: 768px) {
     padding: 20px 15px;
-    h3{
+    h3 {
       font-size: 15px;
     }
   }
@@ -53,7 +52,7 @@ export const Container = styled.main`
       background-color: var(--color-aux);
     }
   }
-  li{
+  li {
     display: inline-flex;
     align-items: center;
     animation: fadeIn 1s;
@@ -125,7 +124,7 @@ export const Container = styled.main`
     justify-content: center;
     p {
       margin: 0;
-      @media (max-width:768px) {
+      @media (max-width: 768px) {
         font-size: 11px;
         width: 80%;
       }
@@ -145,13 +144,12 @@ export const Container = styled.main`
     color: black;
     font-weight: 700;
     text-transform: uppercase;
-
     padding: 5px;
     width: 100%;
     max-width: 400px;
     letter-spacing: -1px;
 
-    @media (max-width:768px) {
+    @media (max-width: 768px) {
       font-size: 26px;
       padding: 0;
     }
@@ -170,4 +168,28 @@ export const Container = styled.main`
     }
     justify-content: center;
   }
+`;
+
+export const ContainerDescription = styled.div`
+  textarea {
+    width: 70%;
+  }
+  text-transform: uppercase;
+  font-family: var(--font-title);
+  color: #04164d;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  @media (max-width: 881px) {
+    textarea {
+      width: 90%;
+      min-width: 200px;
+    }
+  }
+`;
+
+export const ContainerDad = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 `;

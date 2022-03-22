@@ -9,19 +9,17 @@ import TodoList from "../../components/FormService/TodoList";
 
 import { proWorkingApi } from "../../services/api";
 
-import { Redirect } from "react-router-dom";
 import { useAuthenticated } from "../../providers/authenticated";
 
 import { useWorkers } from "../../providers/workers";
 import { toast } from "react-toastify";
+import { Redirect } from "react-router-dom";
 
 const Dashboard = () => {
   const { authenticated } = useAuthenticated();
 
-  // ----------------Pegando do local storage----------------
   const profile = JSON.parse(localStorage.getItem("@ProWorking:user"));
   const token = localStorage.getItem('@ProWorking:token')    
-  //const workers = JSON.parse(localStorage.getItem("@ProWorking:workers"))
 
   const [wrongNumber, setWrongNumber]  = useState(false)
   const [error,setError]               = useState(false)
@@ -67,6 +65,20 @@ const Dashboard = () => {
     e.preventDefault();
     // const biografia = e.target[0].value;
     // setBio(biografia);
+  };
+
+  const registerWhatsapp = (e) => {
+    e.preventDefault();
+    const whats = e.target[0].value;
+    setWhatsApp(whats);
+  };
+
+  const [email, setEmail] = useState([]);
+
+  const registerEmail = (e) => {
+    e.preventDefault();
+    const mail = e.target[0].value;
+    setEmail(mail);
   };
 
   if (!authenticated) {
@@ -117,6 +129,7 @@ const Dashboard = () => {
                 >
                   adicionar
                 </button>
+
                 <div className="cidades-registradas">
                   {cityServed.length !== 0 && (
                     <label>Cidades registradas:</label>
@@ -187,7 +200,7 @@ const Dashboard = () => {
 
                   <input
                     onClick={() => {
-                      //----------Aqui ocorre a requisição----------------
+                      
                       if (
                         whatsapp.length !== 0 &&
                         List.length !== 0 &&
@@ -213,8 +226,7 @@ const Dashboard = () => {
                           cities: cityServed,
                           occupation_areas: List,
                           userId:profile.id
-                        }//------------------------------------------------
-                        //-------------------PATCH-----------------------------
+                        }
                         proWorkingApi.patch(`/users/${profile.id}`,requisition,{
                           headers: {
                             Authorization: `Bearer ${token}`
@@ -223,8 +235,8 @@ const Dashboard = () => {
                           toast.success('Perfil Atualizado')
                           refreshWorkers()
                         }).catch(err=>console.log(err))
-                      //--------------------------------------------
-                      }else{
+                     
+                      } else {
                         setError(true);
                       }
                     }}

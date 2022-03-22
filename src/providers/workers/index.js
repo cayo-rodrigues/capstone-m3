@@ -13,24 +13,15 @@ export const WorkersProvider = ({ children }) => {
 
 
   useEffect(() => {
-    //if (!!localStorage.getItem("@ProWorking:workers") === false) {
-
-
 
       proWorkingApi.get(pathUser).then(({ data }) => {
         console.log(data)
         setWorkers(data);
-        localStorage.setItem("@ProWorking:workers", JSON.stringify(data));
-        
+        localStorage.setItem("@ProWorking:workers", JSON.stringify(data));     
 
       });
 
-
-
-
-    //}
   }, []);
-
 
 
   const refreshWorkers = () => {
@@ -39,9 +30,6 @@ export const WorkersProvider = ({ children }) => {
       localStorage.setItem("@ProWorking:workers", JSON.stringify(data));
     });
   };
-
-
-
 
   return (
     <WorkersContext.Provider value={{ workers, refreshWorkers }}>

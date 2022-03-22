@@ -1,13 +1,11 @@
 import { Container } from "./styles";
-
 import React from "react";
 
 import { useState } from "react";
-
 import AOS from "aos";
 import "aos/dist/aos.css"; // You can also use <link> for styles
 
-import DefaultUserImg from '../../assets/profile 1.png'
+import DefaultUserImg from "../../assets/profile 1.png";
 import { Link } from "react-router-dom";
 
 AOS.init({
@@ -27,8 +25,9 @@ const customStyles = {
     right: "auto",
     bottom: "auto",
     marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-    width: "500px",
+    transform: "translate(-50%, -45%)",
+    width: "96%",
+    maxWidth: "600px",
     height: "500px",
     display: "flex",
     justifyContent: "space-around",
@@ -68,23 +67,48 @@ const Card = ({ nome, img, especialidades,locais, id }) => {
           <div>
             <h2>{especialidades.join(', ')}</h2>
             <Imagem src={DefaultUserImg} alt="Imagem" />
-          </div>
+          </Div>
 
           <ul>
-            <p>Especialidade:</p>
-          
+            <h3>Especialidade:</h3>
+
             <li>{especialidades}</li>
-            <Link to={`/services/${id}/${nome}`} onClick={()=>window.scrollTo(0,0)} >Ver o perfil completo</Link>
+            <div className="link">
+              <Link
+                to={`/services/${id}/${nome}`}
+                onClick={() => window.scrollTo(0, 0)}
+              >
+                Ver o perfil completo
+              </Link>
+            </div>
           </ul>
           <span>
-            <button>
+            <button
+              onClick={() => {
+                const subject = "Anúncio do site Proworking";
+                const body = "Gostaria de conversar sobre...";
+                window.open(`mailto:${email}?subject=${subject}&body=${body}`);
+              }}
+            >
               <Imagem src={email} alt="" />
             </button>
-            <button>
+            <button
+              onClick={() => {
+                const text =
+                  "Vi seu perfil na Proworking, gostaria de conversar sobre o trabalho";
+                const tel = whatsapp
+                  .split("")
+                  .filter((letter) => !isNaN(letter) && letter !== " ")
+                  .join("");
+
+                window.open(`https://wa.me/${tel}?text=${text}`);
+              }}
+            >
               <Imagem src={whatsapp} alt="" />
             </button>
           </span>
         </ModalContainer>
+
       </Modal> */}
       <section
         data-aos="fade-in"

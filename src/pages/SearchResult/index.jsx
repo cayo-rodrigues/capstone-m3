@@ -1,8 +1,10 @@
 import { ServicePageContainer } from "./style";
 
 import CardBox from "../../components/CardBox";
-import { useWorkers } from "../../providers/workers";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { useWorkers } from "../../providers/workers";
+import { useEffect } from "react";
+import { useState } from "react";
 
 const SearchResults = () => {
   const { workers } = useWorkers();
