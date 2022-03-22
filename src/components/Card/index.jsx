@@ -4,7 +4,6 @@ import email from "../../assets/Email.png";
 import React from "react";
 import Modal from "react-modal";
 import { useState } from "react";
-import * as Ripple from "react-flip-box";
 import AOS from "aos";
 import "aos/dist/aos.css"; // You can also use <link> for styles
 
