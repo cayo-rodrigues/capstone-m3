@@ -16,7 +16,7 @@ const ServiceProfilePage = () => {
   const { authenticated } = useAuthenticated();
 
   const userProfile = workers.find(
-    (worker) => worker.user.name === name && worker.user.id === Number(id)
+    (worker) => worker.user.name === name && worker.id === Number(id)
   );
 
   const { user, occupation_area, summary, whatsapp } = userProfile;
@@ -81,7 +81,9 @@ const ServiceProfilePage = () => {
         <h2>Comentários:</h2>
 
         <div className="comments">
-          <div className="profile-pic"><p>F</p></div>
+          <div className="profile-pic">
+            <p>F</p>
+          </div>
           <div className="profile-comment">
             <h3>Fulaninho</h3>
             <p>
