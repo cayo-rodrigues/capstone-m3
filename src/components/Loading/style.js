@@ -12,7 +12,7 @@ export const LoadingModal = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    z-index: 200;
+    z-index: 2000000;
 
     .blue-bar{
         background-color: var(--color-primary);

@@ -1,14 +1,14 @@
-import { Container, Imagem, ModalContainer } from "./styles";
+import { Container, Imagem, ModalContainer, Div, BotaoFechar } from "./styles";
 import whatsapp from "../../assets/Whatsapp.png";
 import email from "../../assets/Email.png";
 import React from "react";
 import Modal from "react-modal";
 import { useState } from "react";
-
+import * as Ripple from "react-flip-box";
 import AOS from "aos";
 import "aos/dist/aos.css"; // You can also use <link> for styles
 
-import DefaultUserImg from '../../assets/profile 1.png'
+import DefaultUserImg from "../../assets/profile 1.png";
 import { Link } from "react-router-dom";
 
 AOS.init({
@@ -28,8 +28,9 @@ const customStyles = {
     right: "auto",
     bottom: "auto",
     marginRight: "-50%",
-    transform: "translate(-50%, -50%)",
-    width: "500px",
+    transform: "translate(-50%, -45%)",
+    width: "96%",
+    maxWidth: "600px",
     height: "500px",
     display: "flex",
     justifyContent: "space-around",
@@ -68,26 +69,51 @@ const Card = ({ nome, img, especialidades, id }) => {
         contentLabel="Example Modal"
       >
         <ModalContainer id={id} onClick={(e) => openModal(e)}>
-          <div>
+          <Div>
             <h2>{nome}</h2>
             <Imagem src={DefaultUserImg} alt="Imagem" />
-          </div>
+          </Div>
 
           <ul>
-            <p>Especialidade:</p>
-          
+            <h3>Especialidade:</h3>
+
             <li>{especialidades}</li>
-            <Link to={`/services/${id}/${nome}`} onClick={()=>window.scrollTo(0,0)} >Ver o perfil completo</Link>
+            <div className="link">
+              <Link
+                to={`/services/${id}/${nome}`}
+                onClick={() => window.scrollTo(0, 0)}
+              >
+                Ver o perfil completo
+              </Link>
+            </div>
           </ul>
           <span>
-            <button>
+            <button
+              onClick={() => {
+                const subject = "Anúncio do site Proworking";
+                const body = "Gostaria de conversar sobre...";
+                window.open(`mailto:${email}?subject=${subject}&body=${body}`);
+              }}
+            >
               <Imagem src={email} alt="" />
             </button>
-            <button>
+            <button
+              onClick={() => {
+                const text =
+                  "Vi seu perfil na Proworking, gostaria de conversar sobre o trabalho";
+                const tel = whatsapp
+                  .split("")
+                  .filter((letter) => !isNaN(letter) && letter !== " ")
+                  .join("");
+
+                window.open(`https://wa.me/${tel}?text=${text}`);
+              }}
+            >
               <Imagem src={whatsapp} alt="" />
             </button>
           </span>
         </ModalContainer>
+        <BotaoFechar onClick={closeModal}>X</BotaoFechar>
       </Modal>
       <section
         data-aos="fade-in"
@@ -105,7 +131,7 @@ const Card = ({ nome, img, especialidades, id }) => {
             <strong>Especialidade:</strong>{" "}
           </p>
           <li>{especialidades}</li>
-          {/* {especialidades.map((especialidade, index) => {
+          {/* {especialidades?.map((especialidade, index) => {
             if (index < 4) {
               return <li key={especialidade}>{especialidade}</li>;
             }
@@ -115,7 +141,13 @@ const Card = ({ nome, img, especialidades, id }) => {
           })} */}
         </ul>
         <span>
-          <button>
+          <button
+            onClick={() => {
+              const subject = "Anúncio do site Proworking";
+              const body = "Gostaria de conversar sobre...";
+              window.open(`mailto:${email}?subject=${subject}&body=${body}`);
+            }}
+          >
             <img src={email} alt="" />
           </button>
           <button>

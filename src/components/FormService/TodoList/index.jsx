@@ -1,13 +1,16 @@
+import { Ul } from "./style";
+
 const TodoList = ({ List, handleTodo }) => {
   return (
-    <ul>
-      {List.map((todo) => (
-        <li key={todo}>
-          {todo}
+    <Ul>
+      {List.length!==0 && <h4>Especialidades</h4>}
+      {List.map((todo,index) => (
+        <li key={index}>
           <button onClick={() => handleTodo(todo)}>X</button>
+          {todo}
         </li>
       ))}
-    </ul>
+    </Ul>
   );
 };
 

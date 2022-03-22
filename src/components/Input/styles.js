@@ -19,6 +19,7 @@ export const Content = styled.div`
   box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: space-between;
+
   width: 100%;
   transition: 0.5s;
 

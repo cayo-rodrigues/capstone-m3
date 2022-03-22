@@ -1,228 +1,151 @@
 import styled from "styled-components";
-import bg from "../../assets/background/bg.svg";
 
-// lembre-se de usar html semântico
 export const Container = styled.main`
-  margin: 0 auto;
-
-  background-color: #8396cd;
-  min-height: 100vh;
+  margin: 40px auto 100px;
+  max-width: 1000px;
+  width: 90%;
+  padding: 20px 40px;
+  background-color: #eee;
+  @media (max-width: 768px) {
+    padding: 20px 15px;
+    h3 {
+      font-size: 15px;
+    }
+  }
+  input,
+  button,
+  select,
+  textarea {
+    width: 100%;
+    border: none;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 15px 10px;
+    margin: 10px 0;
+    text-transform: capitalize;
+    font-size: 14px;
+    font-weight: 300;
+    font-family: var(--font-text);
+  }
+  input[type="submit"],
+  button {
+    text-transform: capitalize;
+    font-weight: 800;
+    color: white;
+    cursor: pointer;
+    background-color: var(--color-primary);
+    :hover {
+      background-color: var(--color-aux);
+    }
+  }
+  li {
+    display: inline-flex;
+    align-items: center;
+  }
+  li > button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 20px;
+    height: 20px;
+    font-size: 11px;
+    height: 20px;
+    padding: 0 1px 2px 0;
+    margin: 0 6px 0 0;
+    border-radius: 50%;
+    font-weight: 600;
+    text-transform: lowercase;
+  }
   .labelStates {
-    max-width: 350px;
-    width: 90%;
     display: flex;
     flex-direction: column;
   }
   .labelCities {
-    max-width: 350px;
-    width: 90%;
     display: flex;
     flex-direction: column;
   }
-  h1 {
-    padding-left: 29px;
-    font-size: 24px;
-    margin-left: 78px;
-    text-shadow: #000 2px 3px 2px;
-    color: white;
-    font-weight: 400;
-    text-transform: uppercase;
+  .profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 20px;
   }
+  .cidades-registradas {
+    margin: 25px 0;
+    ul {
+      li {
+        display: inline-block;
+        padding: 10px 15px;
+        color: var(--color-primary);
+        margin: 10px;
+        background-color: lightblue;
+        border-radius: 10px;
+        cursor: pointer;
+        button {
+          display: inline-flex;
+          justify-content: center;
+          align-items: center;
+          width: 20px;
+          font-size: 12px;
+          height: 20px;
+          padding: 0;
+          margin: 0 6px 0 0;
+          border-radius: 50%;
+          font-weight: 600;
+          text-transform: lowercase;
+        }
+      }
+    }
+  }
+  .checkin {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    p {
+      margin: 0;
+      @media (max-width: 768px) {
+        font-size: 11px;
+        width: 80%;
+      }
+    }
+    input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      display: inline-block;
+      margin: 0 10px 0 0;
+      cursor: pointer;
+    }
+  }
+  h1 {
+    font-size: 26px;
+    text-align: center;
+    margin: 20px auto 40px;
+    color: black;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 5px;
+    width: 100%;
+    max-width: 400px;
+    letter-spacing: -1px;
+
+    @media (max-width: 768px) {
+      font-size: 26px;
+      padding: 0;
+    }
+  }
+  label,
+  p {
+    font-weight: 600;
+    margin: 20px 0 0;
+  }
+
   @media (max-width: 881px) {
     display: grid;
     h1 {
-      margin-left: 0px;
-      position: unset;
-      padding-left: 20px;
+      margin: 40px 0;
+      text-align: center;
     }
     justify-content: center;
-    height: 82vh;
-  }
-`;
-
-export const ContainerNamePicture = styled.div`
-  img {
-    /* position: relative;
-    top: 69px; */
-  }
-  display: flex;
-
-  justify-content: space-between;
-  width: 96%;
-  padding-left: 28px;
-  align-items: center;
-  flex-direction: row;
-  margin-top: 10px;
-  @media (max-width: 881px) {
-    padding-left: 0px;
-    width: 90%;
-    img {
-      position: inherit;
-    }
-  }
-`;
-
-export const ContainerAdicionarServicos = styled.div`
-  h3 {
-    color: #04164d;
-    font-weight: 400;
-  }
-  margin-right: 16px;
-  margin-left: 16px;
-  box-shadow: 9px 6px #16191940;
-  border-radius: 8px;
-  background-color: white;
-  @media (max-width: 881px) {
-    position: unset;
-    .inputService {
-      height: 23px;
-    }
-
-    width: 92%;
-    margin: 0px 0px 160px 23px;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-pack: space-around;
-    -webkit-justify-content: space-around;
-    -ms-flex-pack: space-around;
-    -webkit-align-items: center;
-    -ms-flex-align: center;
-    flex-direction: column;
-  }
-`;
-
-export const ContainerRegisterProfession = styled.div`
-  background-color: #8396cd;
-  border-radius: 7px;
-  padding-left: 24px;
-  padding-right: 24px;
-
-  ul {
-    font-size: 14.8732px;
-    font-family: var(--font-text);
-    color: white;
-  }
-  p {
-    font-family: var(--font-title);
-    color: white;
-    font-weight: 400;
-    font-size: 20px;
-  }
-  input {
-    border-radius: 5px;
-    border: none;
-    padding-left: 3px;
-  }
-
-  height: 100%;
-  padding-top: 10px;
-  padding-bottom: 39px;
-  width: 70%;
-  margin-top: 14px;
-  margin-bottom: 10px;
-  margin-left: 25px;
-  @media (max-width: 881px) {
-    margin-left: 0px;
-    width: 90%;
-    input {
-      width: 60%;
-      min-width: 160px;
-    }
-  }
-`;
-export const ContainerContact = styled.div`
-  img {
-    margin-right: 5px;
-    max-width: 40px;
-  }
-  input {
-    margin-left: 25px;
-
-    width: 40%;
-    font-family: var(--font-title);
-    font-weight: 400;
-    background-color: #43568d;
-    border-radius: 5px;
-    border: none;
-    height: 35px;
-    text-align: -webkit-center;
-  }
-  div {
-    margin-top: 25px;
-    width: 100%;
-    display: flex;
-  }
-  input::placeholder {
-    color: white;
-  }
-  margin-left: 26px;
-  @media (max-width: 881px) {
-    width: 90%;
-    margin-left: 0px;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
-    input {
-      margin-left: 6px;
-      width: 100%;
-      min-width: 160px;
-    }
-    div {
-      margin-top: 15px;
-    }
-  }
-`;
-export const ContainerWhatsapp = styled.div``;
-export const ContainerEmail = styled.div`
-  margin-top: 17px;
-`;
-
-export const ContainerCheckin = styled.div`
-  margin-top: 12px;
-  margin-bottom: 13px;
-
-  input {
-    margin-left: 0px;
-    margin-right: 5px;
-    max-width: 40px;
-    min-width: 20px;
-  }
-  p {
-    margin-left: 25px;
-    padding-right: 17px;
-    width: 100%;
-    color: #04164d;
-    font-size: 12px;
-    font-weight: 400;
-    font-family: var(--font-text);
-  }
-  @media (max-width: 881px) {
-    align-items: center;
-    input {
-      margin-left: 11px;
-      width: 5%;
-    }
-
-    p {
-      margin-left: 6px;
-      text-align: -webkit-center;
-    }
-    .checkin {
-      width: 62px;
-    }
-  }
-`;
-
-export const ContainerImage = styled.div`
-  img {
-    width: 400px;
-  }
-  padding-right: 25px;
-  @media (max-width: 881px) {
-    img {
-      display: none;
-    }
   }
 `;
 
@@ -243,8 +166,6 @@ export const ContainerDescription = styled.div`
     }
   }
 `;
-
-export const ContainerServiceCities = styled.div``;
 
 export const ContainerDad = styled.div`
   display: flex;
