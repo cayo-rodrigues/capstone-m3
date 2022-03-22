@@ -32,6 +32,9 @@ const Footer = () => {
 
   return (
     <FooterContainer currentPage={location.pathname}>
+      <div data-aos="fade-up" className="bolaMenor"></div>
+      <div data-aos="fade-up" className="bolaMaior"></div>
+      
       <div data-aos="fade-up" className="footer__box">
         <figure className="footer-logo">
           <img src={logo} alt="logo" />

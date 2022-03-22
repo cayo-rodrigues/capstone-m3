@@ -30,7 +30,7 @@ export const FooterContainer = styled.footer`
     a{
         color: white;
     }
-    ::after{
+    .bolaMenor{
         position: absolute;
         top: -20px;
         right: 20%;
@@ -40,7 +40,7 @@ export const FooterContainer = styled.footer`
         border-radius: 50%;
         background-color: var(--color-primary);
     }
-    ::before{
+    .bolaMaior{
         content: '';
         position: absolute;
         border-radius: 50%;
