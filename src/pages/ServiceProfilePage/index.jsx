@@ -19,7 +19,7 @@ const ServiceProfilePage = () => {
     (worker) => worker.user.name === name && worker.id === Number(id)
   );
 
-  const { user, occupation_area, summary, whatsapp } = userProfile;
+  const { user, occupation_areas, summary, whatsapp } = userProfile;
   const { email, is_worker } = user;
   const history = useHistory();
 
@@ -35,7 +35,12 @@ const ServiceProfilePage = () => {
         <div className="profile-tittle">
           <div>
             <h1>Olá 👋, meu nome é {name}</h1>
-            <p>Eu ofereço serviços de {occupation_area}</p>
+            <p>
+              Eu ofereço serviços de{" "}
+              <span className="occupation-areas">
+                {occupation_areas.join(", ")}
+              </span>
+            </p>
           </div>
         </div>
 
