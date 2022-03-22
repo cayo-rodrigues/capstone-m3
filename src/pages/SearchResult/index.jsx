@@ -2,29 +2,22 @@ import { ServicePageContainer } from "./style";
 
 import CardBox from "../../components/CardBox";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
-import { proWorkingApi } from "../../services/api";
-import { useState } from "react";
+import { useWorkers } from "../../providers/workers";
+import { useEffect } from "react";
 
 const SearchResults = () => {
   const { search } = useParams();
-  const [workersList, setWorkersList] = useState([]);
+  const { workers, queryWorkers } = useWorkers();
 
-  proWorkingApi
-    .get("/workers", {
-      params: {
-        _expand: "user",
-        _embed: "ratings",
-        q: search.toLowerCase().trim(),
-      },
-    })
-    .then((res) => {
-      setWorkersList(res.data);
-    });
+  useEffect(() => {
+    queryWorkers(search);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <ServicePageContainer>
       <h1>Resultados para a pesquisa "{search}" </h1>
-      <CardBox workers={workersList} />
+      <CardBox workers={workers} />
     </ServicePageContainer>
   );
 };
