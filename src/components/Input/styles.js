@@ -35,6 +35,16 @@ export const Content = styled.div`
     input,
     button,
     svg {
+      :-webkit-autofill {
+        -webkit-box-shadow: 0 0 0 30px var(--white) inset;
+        transition:  0.5s ;
+        color: white;
+      }
+      :-webkit-autofill {
+        transition:  0.5s ;
+        -webkit-text-fill-color: black !important;
+      }
+
       color: var(--color-aux);
       ::placeholder {
         color: var(--color-aux);
@@ -49,6 +59,14 @@ export const Content = styled.div`
     width: 100%;
     font-size: 14px;
     margin: 0px 10px;
+    /* Cor de fundo do autocomplete */
+    :-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 30px var(--color-secondary) inset;
+      color: white;
+    }
+    :-webkit-autofill {
+      -webkit-text-fill-color: white !important;
+    }
     ::placeholder {
       color: var(--white);
     }

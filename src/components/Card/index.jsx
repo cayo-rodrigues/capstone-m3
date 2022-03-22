@@ -1,8 +1,6 @@
-import { Container, Imagem, ModalContainer, Div, BotaoFechar } from "./styles";
-import whatsapp from "../../assets/Whatsapp.png";
-import email from "../../assets/Email.png";
+import { Container } from "./styles";
 import React from "react";
-import Modal from "react-modal";
+
 import { useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css"; // You can also use <link> for styles
@@ -38,8 +36,8 @@ const customStyles = {
   },
 };
 
-const Card = ({ nome, img, especialidades, id }) => {
-  const [modalIsOpen, setIsOpen] = useState(false);
+const Card = ({ nome, img, especialidades,locais, id }) => {
+  const [ setIsOpen] = useState(false);
 
   function openModal(e) {
     if (e.target.tagName === "SECTION") {
@@ -55,21 +53,19 @@ const Card = ({ nome, img, especialidades, id }) => {
     }
   }
 
-  function closeModal() {
-    setIsOpen(false);
-  }
+
 
   return (
     <Container>
-      <Modal
+      {/* <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Example Modal"
       >
         <ModalContainer id={id} onClick={(e) => openModal(e)}>
-          <Div>
-            <h2>{nome}</h2>
+          <div>
+            <h2>{especialidades.join(', ')}</h2>
             <Imagem src={DefaultUserImg} alt="Imagem" />
           </Div>
 
@@ -112,47 +108,35 @@ const Card = ({ nome, img, especialidades, id }) => {
             </button>
           </span>
         </ModalContainer>
-        <BotaoFechar onClick={closeModal}>X</BotaoFechar>
-      </Modal>
+
+      </Modal> */}
       <section
         data-aos="fade-in"
         data-aos-delay="150"
         id={id}
         onClick={(e) => openModal(e)}
       >
-        <div>
-          <h2>{nome}</h2>
+        <div className="titleAndImg">
+          <h2 className="title">{especialidades.join(', ')}</h2>
           <img src={DefaultUserImg} alt="Imagem" />
         </div>
 
-        <ul>
+        <ul className="location">
           <p>
-            <strong>Especialidade:</strong>{" "}
+            Locais de atendimento:
           </p>
-          <li>{especialidades}</li>
-          {/* {especialidades?.map((especialidade, index) => {
-            if (index < 4) {
-              return <li key={especialidade}>{especialidade}</li>;
-            }
-            if (index === 4) {
-              return <p>...</p>;
-            }
-          })} */}
+          {locais.slice(0,4).map((local,index)=> <li className="locationDiv" key={`${local}-${index}`}>{local.state}- {local.city}</li>)}
+
         </ul>
-        <span>
-          <button
-            onClick={() => {
-              const subject = "Anúncio do site Proworking";
-              const body = "Gostaria de conversar sobre...";
-              window.open(`mailto:${email}?subject=${subject}&body=${body}`);
-            }}
-          >
+        <p className="link"><Link to={`/services/${id}/${nome}`} onClick={()=>window.scrollTo(0,0)} >Ver o perfil Completo</Link></p>
+        {/* <span>
+          <button>
             <img src={email} alt="" />
           </button>
           <button>
             <img src={whatsapp} alt="" />
           </button>
-        </span>
+        </span> */}
       </section>
     </Container>
   );

@@ -82,11 +82,11 @@ const Header = ({ className }) => {
               >
                 Dashboard
               </Link>
-              <Link
-                onClick={() => logOut()}
-                to={"/"}
-              >
-                Logout
+              <Link to={'/'}  onClick={() =>{
+                 window.scrollTo(0, 0)
+                logOut()   
+              }}>
+              Logout
               </Link>
             </>
           ) : (

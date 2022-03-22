@@ -8,24 +8,27 @@ export const WorkersProvider = ({ children }) => {
     JSON.parse(localStorage.getItem("@ProWorking:workers")) || []
   );
 
+  const pathUser = "/users" // "/workers/?_expand=user"
+  //const pathWorkers = "/workers?_expand=user"  "/workers/?_expand=user"
+
+
   useEffect(() => {
-    if (!!localStorage.getItem("@ProWorking:workers") === false) {
-      proWorkingApi
-        .get("/workers?_expand=user&_embed=ratings")
-        .then(({ data }) => {
-          setWorkers(data);
-          localStorage.setItem("@ProWorking:workers", JSON.stringify(data));
-        });
-    }
+
+      proWorkingApi.get(pathUser).then(({ data }) => {
+        console.log(data)
+        setWorkers(data);
+        localStorage.setItem("@ProWorking:workers", JSON.stringify(data));     
+
+      });
+
   }, []);
 
+
   const refreshWorkers = () => {
-    proWorkingApi
-      .get("/workers?_expand=user&_embed=ratings")
-      .then(({ data }) => {
-        localStorage.setItem("@ProWorking:workers", JSON.stringify(data));
-        setWorkers(data);
-      });
+    proWorkingApi.get(pathUser).then(({ data }) => {
+      setWorkers(data);
+      localStorage.setItem("@ProWorking:workers", JSON.stringify(data));
+    });
   };
 
   return (

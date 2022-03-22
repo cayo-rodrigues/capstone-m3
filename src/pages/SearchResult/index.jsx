@@ -7,32 +7,19 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 const SearchResults = () => {
+  const { workers } = useWorkers();
   const { search } = useParams();
-  const { workers, refreshWorkers } = useWorkers();
-  const [workersList, setWorkersList] = useState([]);
-
-  useEffect(() => {
-    refreshWorkers();
-
-    const userInput = search.toLowerCase().trim();
-
-    const filteredWorkers = workers.filter(
-      ({ occupation_areas, summary, user }) =>
-        summary.toLowerCase().includes(userInput) ||
-        user.name.toLowerCase().includes(userInput) ||
-        occupation_areas.filter((occupation) =>
-          occupation.toLowerCase().includes(userInput)
-        ).length
-    );
-
-    setWorkersList(filteredWorkers);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
+  console.log(workers);
+  const filteredWorkers = workers.filter(
+    (worker) =>
+      worker.is_worker &&
+      worker.cities &&
+      worker.occupation_areas.some((area) => area.includes(search))
+  );
   return (
     <ServicePageContainer>
-      <h1>Resultados para a pesquisa "{search}" </h1>
-      <CardBox workers={workersList} />
+      <h1>Resultados para a pesquisa {search} </h1>
+      <CardBox workers={filteredWorkers} />
     </ServicePageContainer>
   );
 };

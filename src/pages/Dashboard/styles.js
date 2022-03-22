@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.main`
+  animation: fadeIn 1s;
   margin: 40px auto 100px;
   max-width: 1000px;
   width: 90%;
@@ -16,6 +17,7 @@ export const Container = styled.main`
   button,
   select,
   textarea {
+    
     width: 100%;
     border: none;
     background-color: #fff;
@@ -27,20 +29,33 @@ export const Container = styled.main`
     font-weight: 300;
     font-family: var(--font-text);
   }
+  textarea,input{
+    text-transform: initial;
+  }
+  textarea{
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 200px;
+    min-height: 150px;
+
+  }
   input[type="submit"],
   button {
+    transition: 1s all;
     text-transform: capitalize;
     font-weight: 800;
     color: white;
     cursor: pointer;
     background-color: var(--color-primary);
     :hover {
+    transition: 1s all;
       background-color: var(--color-aux);
     }
   }
   li {
     display: inline-flex;
     align-items: center;
+    animation: fadeIn 1s;
   }
   li > button {
     display: inline-flex;
@@ -55,6 +70,12 @@ export const Container = styled.main`
     border-radius: 50%;
     font-weight: 600;
     text-transform: lowercase;
+  }
+  .error{
+    display: inline-block;
+    color: red;
+    font-size: 10px;
+    padding: 0 10px;
   }
   .labelStates {
     display: flex;
