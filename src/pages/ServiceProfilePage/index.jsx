@@ -6,27 +6,33 @@ import { AiOutlineWhatsApp, AiOutlineMail } from "react-icons/ai";
 
 import Button from "../../components/Button/index.jsx";
 import { useAuthenticated } from "../../providers/authenticated";
-import { useHistory } from "react-router-dom";
 
 import DefaultUserImg from "../../assets/profile 1.png";
 import RatingStars from "../../components/RatingStars";
+import { toast } from "react-toastify";
+import { useState } from "react";
 
 const ServiceProfilePage = () => {
   const { workers } = useWorkers();
   const { id, name } = useParams();
   const { authenticated } = useAuthenticated();
 
-  const workerProfile = workers.find(
-    (worker) => worker.user.name === name && worker.id === Number(id)
+  const [workerProfile] = useState(
+    workers.find(
+      (worker) => worker.user.name === name && worker.id === Number(id)
+    )
   );
 
-  const userInfo = JSON.parse(localStorage.getItem("@ProWorking:user")) || {};
-  const userRating = workerProfile.ratings.find(
-    ({ userId }) => userId === userInfo.id
+  const [userInfo] = useState(
+    JSON.parse(localStorage.getItem("@ProWorking:user")) || {}
+  );
+  const [userRating] = useState(
+    workerProfile.ratings.find(({ userId }) => userId === userInfo.id) || {
+      stars: 0,
+    }
   );
 
   const { occupation_areas, summary, whatsapp, user } = workerProfile;
-  const history = useHistory();
 
   return (
     <ServiceContainer>
@@ -93,7 +99,7 @@ const ServiceProfilePage = () => {
 
         <RatingContainer>
           <h2>Rating:</h2>
-          <RatingStars workerId={2} isEditable value={userRating?.stars ?? 0} />
+          <RatingStars workerId={2} isEditable value={userRating.stars} />
         </RatingContainer>
 
         <h2>Comentários:</h2>
@@ -132,7 +138,7 @@ const ServiceProfilePage = () => {
           onClick={() => {
             if (authenticated) {
             } else {
-              history.push("/login");
+              toast.error("Faça login para poder deixar seu feedback!");
             }
           }}
         >
