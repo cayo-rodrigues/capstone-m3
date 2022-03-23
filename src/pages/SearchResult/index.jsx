@@ -1,9 +1,11 @@
-import { ServicePageContainer } from "./style";
+import { ServicePageContainer,NotFound } from "./style";
 
 import CardBox from "../../components/CardBox";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { useWorkers } from "../../providers/workers";
 import { useEffect, useState } from "react";
+import  NotFoundImg  from '../../assets/svg/not_found.svg'
+
 
 const SearchResults = () => {
   const { workers, refreshWorkers } = useWorkers();
@@ -38,7 +40,14 @@ const SearchResults = () => {
   return (
     <ServicePageContainer>
       <h1>Resultados para a pesquisa "{search}"  </h1>
-       <CardBox workers={filteredWorkers} />
+      {filteredWorkers.length!==0 ? <CardBox workers={filteredWorkers} /> : (
+        <NotFound>
+            <img src={NotFoundImg} alt='Não encontrado' />
+            <h2>Não foi encontrada a sua pesquisa</h2>
+        </NotFound>
+      )
+
+      }
     </ServicePageContainer>
   );
 };
