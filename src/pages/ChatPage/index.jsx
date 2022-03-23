@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react";
+import Button from "../../components/Button";
+import CardMessage from "../../components/CardMessage";
+import ChatCard from "../../components/ChatCard";
+import ChatMessages from "../../components/ChatMessages";
+import Chats from "../../components/Chats";
 import { useUser } from "../../providers/user";
 import { chatApi } from "../../services/api";
-import Button from "../Button";
-import CardMessage from "../CardMessage";
-import ChatCard from "../ChatCard";
 
-import { BoxChat, Container, BoxMessages, BoxInput } from "./styles";
+import { BoxChat, BoxInput, BoxMessages, Container } from "./styles";
 
-const Chat = () => {
+const ChatPage = () => {
     const { user } = useUser();
     const [chats, setChats] = useState([]);
     const [currentChat, setCurrentChat] = useState({});
     const [messages, setMessages] = useState([]);
 
     const [inputMessage, setInputMessage] = useState("");
+    const [messageIsOpen, setMessageIsOpen] = useState(false);
 
     const refreshChats = () => {
         const header = {
@@ -59,38 +62,26 @@ const Chat = () => {
             .then(() => refreshMessages(currentChat.id))
             .then(() => setInputMessage(""));
     };
-
     return (
         <Container>
-            <ul>
-                {chats.map((chat) => (
-                    <ChatCard
-                        key={chat.id}
-                        refreshMessages={refreshMessages}
-                        chat={chat}
-                        setCurrentChat={setCurrentChat}
-                    />
-                ))}
-            </ul>
-            <BoxChat>
-                <BoxMessages>
-                    {messages.map((message) => (
-                        <CardMessage key={message.id} message={message} />
-                    ))}
-                </BoxMessages>
-                <BoxInput>
-                    <input
-                        placeholder='Digite sua mensagem aqui...'
-                        value={inputMessage}
-                        onChange={(event) =>
-                            setInputMessage(event.target.value)
-                        }
-                    />
-                    <Button onClick={() => sendMessager()}>Enviar</Button>
-                </BoxInput>
-            </BoxChat>
+            {messageIsOpen ? (
+                <ChatMessages
+                    messages={messages}
+                    inputMessage={inputMessage}
+                    setInputMessage={setInputMessage}
+                    sendMessager={sendMessager}
+                    setMessageIsOpen={setMessageIsOpen}
+                />
+            ) : (
+                <Chats
+                    chats={chats}
+                    refreshMessages={refreshMessages}
+                    setCurrentChat={setCurrentChat}
+                    setMessageIsOpen={setMessageIsOpen}
+                />
+            )}
         </Container>
     );
 };
 
-export default Chat;
+export default ChatPage;

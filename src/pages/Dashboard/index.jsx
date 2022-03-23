@@ -14,7 +14,6 @@ import { useAuthenticated } from "../../providers/authenticated";
 import { useWorkers } from "../../providers/workers";
 import { toast } from "react-toastify";
 import { Redirect } from "react-router-dom";
-import Chat from "../../components/Chat";
 
 const Dashboard = () => {
   const { authenticated } = useAuthenticated();

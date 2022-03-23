@@ -9,28 +9,30 @@ import AboutUs from "../pages/AboutUs";
 import How from "../pages/How";
 import ServiceProfilePage from "../pages/ServiceProfilePage";
 import SearchResults from "../pages/SearchResult";
+import ChatPage from "../pages/ChatPage";
 
 const Routes = () => {
-  return (
-    <Switch>
-      <Route exact path="/" component={LandingPage} />
-      <Route exact path="/aboutus" component={AboutUs} />
-      <Route exact path="/how" component={How} />
-      <Route exact path="/services" component={ServicesPage} />
+    return (
+        <Switch>
+            <Route exact path='/' component={LandingPage} />
+            <Route exact path='/aboutus' component={AboutUs} />
+            <Route exact path='/how' component={How} />
+            <Route exact path='/services' component={ServicesPage} />
 
-      <Route
-        exact
-        path={`/services/:id/:name`}
-        component={ServiceProfilePage}
-      />
-      <Route exact path={`/services/:search`} component={SearchResults} />
+            <Route
+                exact
+                path={`/services/:id/:name`}
+                component={ServiceProfilePage}
+            />
+            <Route exact path={`/services/:search`} component={SearchResults} />
 
-      <Route exact path="/dashboard" component={Dashboard} />
-      <Route exact path="/login" component={Login} />
-      <Route exact path="/register" component={Register} />
-      <Route path="*" component={NotFoundPage} />
-    </Switch>
-  );
+            <Route exact path='/chat' component={ChatPage} />
+            <Route exact path='/dashboard' component={Dashboard} />
+            <Route exact path='/login' component={Login} />
+            <Route exact path='/register' component={Register} />
+            <Route path='*' component={NotFoundPage} />
+        </Switch>
+    );
 };
 
 export default Routes;
