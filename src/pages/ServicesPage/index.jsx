@@ -14,7 +14,7 @@ const ServicesPage = () => {
   return (
     <ServicePageContainer>
       <h1>Todos os serviços</h1>
-      <CardBox workers={workers} />
+      <CardBox workers={workers.filter(({ is_active }) => is_active)} />
     </ServicePageContainer>
   );
 };

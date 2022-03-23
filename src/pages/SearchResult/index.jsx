@@ -17,16 +17,17 @@ const SearchResults = () => {
 
     const filteredWorkers = workers.filter(
       (worker) =>
-        worker.user.name.toLowerCase().includes(userInput) ||
-        worker.summary.toLowerCase().includes(userInput) ||
-        worker.cities.filter(
-          ({ state, city }) =>
-            city.toLowerCase().includes(userInput) ||
-            state.toLowerCase().includes(userInput)
-        ).length ||
-        worker.occupation_areas.filter((occupation) =>
-          occupation.toLowerCase().includes(userInput)
-        ).length
+        (worker.user.name.toLowerCase().includes(userInput) ||
+          worker.summary.toLowerCase().includes(userInput) ||
+          worker.cities.filter(
+            ({ state, city }) =>
+              city.toLowerCase().includes(userInput) ||
+              state.toLowerCase().includes(userInput)
+          ).length ||
+          worker.occupation_areas.filter((occupation) =>
+            occupation.toLowerCase().includes(userInput)
+          ).length) &&
+        worker.is_active
     );
 
     setSearchResults(filteredWorkers);
