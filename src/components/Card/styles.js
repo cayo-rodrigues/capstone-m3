@@ -20,6 +20,15 @@ export const Container = styled.div`
     color: var(--color-aux);
     margin-top: -20px;
     text-transform: capitalize;
+    list-style-position: inside;
+    justify-content: flex-start;
+
+    li {
+      width: 200px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
 
     li + li {
       margin-top: 5px;
