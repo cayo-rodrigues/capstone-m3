@@ -21,17 +21,17 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 import AOS from "aos";
-import "aos/dist/aos.css"; // You can also use <link> for styles
+import "aos/dist/aos.css";
 import { useState } from "react";
 
 AOS.init({
-  offset: 120, // offset (in px) from the original trigger point
-  delay: 0, // values from 0 to 3000, with step 50ms
-  duration: 1000, // values from 0 to 3000, with step 50ms
-  easing: "ease", // default easing for AOS animations
-  once: false, // whether animation should happen only once - while scrolling down
-  mirror: false, // whether elements should animate out while scrolling past them
-  anchorPlacement: "top-bottom", // defines which position of the element regarding to window should trigger the animation
+  offset: 120,
+  delay: 0,
+  duration: 1000,
+  easing: "ease",
+  once: false,
+  mirror: false,
+  anchorPlacement: "top-bottom",
 });
 
 const LandingPage = () => {
@@ -108,8 +108,6 @@ const LandingPage = () => {
       <VideoSection>
         <iframe
           data-aos="fade-in"
-          // width="1077"
-          // height="680"
           src="https://www.youtube.com/embed/wzUVgfQQK_4"
           title="Proworkin"
           frameBorder="0"

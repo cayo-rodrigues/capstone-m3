@@ -64,7 +64,6 @@ const ServiceProfilePage = () => {
         >
           <AiOutlineWhatsApp /> Fale Comigo
         </div>
-        {/* https://wa.me/5524998913379?text=teste */}
 
         <div
           className="icon icon-mail"

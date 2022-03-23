@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
-// lembre-se de usar html semântico
 export const Container = styled.div`
-  background-color: #04164d;
+  background-color: var(--color-aux);
   display: ${({ currentPage }) =>
     currentPage === "/login" || currentPage === "/register" ? "none" : "flex"};
   top: 0;
@@ -66,7 +65,7 @@ export const Nav = styled.nav`
   display: none;
 
   a {
-    color: white;
+    color: var(--white);
     padding: 10px 15px;
     background: var(--color-secondary);
     width: 125px;

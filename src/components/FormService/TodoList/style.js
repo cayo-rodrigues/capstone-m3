@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Ul = styled.ul`
   margin: 0;
-  h4{
+  h4 {
     animation: fadeIn 0.5s;
     text-align: start;
   }
@@ -11,7 +11,7 @@ export const Ul = styled.ul`
     padding: 10px 15px;
     color: var(--color-primary);
     margin: 10px;
-    background-color: lightblue;
+    background-color: var(--lightblue);
     border-radius: 10px;
     cursor: pointer;
     animation: fadeIn 0.5s;

@@ -3,16 +3,15 @@ import { createContext, useState, useContext } from "react";
 const AuthenticatedContext = createContext();
 
 export const AuthenticatedProvider = ({ children }) => {
-    const [authenticated, setAuthenticated] = useState(
-        localStorage.getItem("@ProWorking:token") ? true : false
-    );
+  const [authenticated, setAuthenticated] = useState(
+    localStorage.getItem("@ProWorking:token") ? true : false
+  );
 
-    return (
-        <AuthenticatedContext.Provider
-            value={{ authenticated, setAuthenticated }}>
-            {children}
-        </AuthenticatedContext.Provider>
-    );
+  return (
+    <AuthenticatedContext.Provider value={{ authenticated, setAuthenticated }}>
+      {children}
+    </AuthenticatedContext.Provider>
+  );
 };
 
 export const useAuthenticated = () => useContext(AuthenticatedContext);
