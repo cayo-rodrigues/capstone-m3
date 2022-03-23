@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { NavigatorContainerDiv } from "./style.js";
 
-import { AiOutlineHome, AiFillDashboard } from "react-icons/ai";
+import { AiOutlineHome, AiFillDashboard,AiOutlineLogout } from "react-icons/ai";
 import { MdWorkOutline } from "react-icons/md";
 import { FiLogIn } from "react-icons/fi";
 import { BiRegistered } from "react-icons/bi";
@@ -9,10 +9,39 @@ import { IoIosPeople } from "react-icons/io";
 
 import { useLocation } from "react-router-dom";
 import { useAuthenticated } from "../../providers/authenticated/index.js";
+import { toast } from "react-toastify";
+import { useEffect, useState } from "react";
+
+
+let lastScrollTop =0
+
+
+const eventOnScroll = ()=>{
+  let scrollTop =window.pageYOffset || document.documentElement.scrollTop
+  let scrollType =false
+  if(scrollTop>lastScrollTop){
+    scrollType = true
+  }else{
+    scrollType = false
+  }
+  lastScrollTop = scrollTop
+  return scrollType
+}
+
+
 
 const BottomNavigator = () => {
   const location = useLocation();
-  const { authenticated } = useAuthenticated();
+  const { authenticated,setAuthenticated } = useAuthenticated();
+  const [upOrDown,setUpOrDown] = useState(false)
+
+
+  useEffect(()=>{
+    window.addEventListener("scroll",()=> setUpOrDown( eventOnScroll() ) )
+    return ()=>window.removeEventListener("scroll",()=> setUpOrDown( eventOnScroll() ))
+  },[])
+
+
 
   const menuAuthenticated = [
     {
@@ -34,6 +63,11 @@ const BottomNavigator = () => {
       title: "Dashboard",
       path: "/dashboard",
       Icon: AiFillDashboard,
+    },
+    {
+      title: "Logout",
+      path: "/",
+      Icon: AiOutlineLogout,
     },
   ];
   const menuNotAuthenticated = [
@@ -64,8 +98,9 @@ const BottomNavigator = () => {
     },
   ];
 
+
   return (
-    <NavigatorContainerDiv>
+    <NavigatorContainerDiv upOrDown={upOrDown} >
       <nav>
         <ul>
           {authenticated
@@ -73,8 +108,15 @@ const BottomNavigator = () => {
                 <li key={title}>
                   <Link
                     to={path}
-                    onClick={() => window.scrollTo(0, 0)}
-                    className={location.pathname === path ? "selected" : ""}
+                    onClick={() =>{
+                       window.scrollTo(0, 0)
+                       if(title==="Logout") {
+                        setAuthenticated(false)
+                        localStorage.clear()
+                        toast("Você foi deslogado")
+                       }
+                      }}
+                    className={title!=="Logout" && location.pathname === path ? "selected" : ""}
                   >
                     <div>
                       <p>
