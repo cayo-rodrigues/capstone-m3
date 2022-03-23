@@ -127,7 +127,7 @@ const Card = ({ nome, img, especialidades, locais, id }) => {
 
         <ul className="location">
           <p>Locais de atendimento:</p>
-          {locais.slice(0, 4).map((local, index) => (
+          {locais.slice(0, 2).map((local, index) => (
             <li className="locationDiv" key={`${local}-${index}`}>
               {local.state}- {local.city}
             </li>

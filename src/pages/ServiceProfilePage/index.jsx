@@ -15,12 +15,11 @@ const ServiceProfilePage = () => {
   const { id, name } = useParams();
   const { authenticated } = useAuthenticated();
 
-  const userProfile = workers.find(
+  const workerProfile = workers.find(
     (worker) => worker.user.name === name && worker.id === Number(id)
   );
 
-  const { occupation_areas, summary, whatsapp } = userProfile;
-  const { email } = userProfile;
+  const { occupation_areas, summary, whatsapp, user } = workerProfile;
   const history = useHistory();
 
   return (
@@ -39,8 +38,8 @@ const ServiceProfilePage = () => {
             <div className="cities">
               <ul>
                 <h2>Cidades de Atendimento:</h2>
-                {userProfile.cities !== undefined &&
-                  userProfile.cities.map(({ state, city }, index) => (
+                {workerProfile.cities !== undefined &&
+                  workerProfile.cities.map(({ state, city }, index) => (
                     <li key={`${city}-${index}`} className="locationInfo">
                       {state} {city}
                     </li>
@@ -73,7 +72,7 @@ const ServiceProfilePage = () => {
             const subject = "Anúncio do site Proworking";
             const body = "Gostaria de conversar sobre...";
 
-            window.open(`mailto:${email}?subject=${subject}&body=${body}`);
+            window.open(`mailto:${user.email}?subject=${subject}&body=${body}`);
           }}
         >
           <AiOutlineMail /> Envie um Email
@@ -84,7 +83,7 @@ const ServiceProfilePage = () => {
           <strong>Descrição do serviço:</strong> {summary}
         </p>
         <p>
-          <strong>Email:</strong> {email}
+          <strong>Email:</strong> {user.email}
         </p>
 
         <h2>Rating:</h2>
