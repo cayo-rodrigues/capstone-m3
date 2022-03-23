@@ -46,7 +46,7 @@ export const Container = styled.div`
     .locationDiv {
       text-align: center;
       padding: 5px 8px;
-      background-color: lightblue;
+      background-color: var(--lightblue);
       border-radius: 20px;
       margin: 3px 1px;
       display: inline-block;
@@ -69,7 +69,7 @@ export const Container = styled.div`
     -webkit-box-shadow: 4px 4px 11px 0px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: 4px 4px 11px 0px rgba(0, 0, 0, 0.75);
     box-shadow: 4px 4px 11px 0px rgba(0, 0, 0, 0.75);
-    background: #fff;
+    background: var(--white);
     border-radius: 8px;
     border: none;
     width: 300px;
@@ -105,7 +105,6 @@ export const Container = styled.div`
   ul {
     text-align: left;
     display: flex;
-    /* flex-direction: column; */
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;

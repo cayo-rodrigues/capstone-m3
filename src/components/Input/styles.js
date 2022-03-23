@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-// lembre-se de usar html semântico
 export const Container = styled.div`
   p {
     padding-left: 16px;
@@ -38,12 +37,13 @@ export const Content = styled.div`
     svg {
       :-webkit-autofill {
         -webkit-box-shadow: 0 0 0 30px var(--white) inset;
+        box-shadow: 0 0 0 30px var(--white) inset;
         transition: 0.5s;
-        color: white;
+        color: var(--white);
       }
       :-webkit-autofill {
         transition: 0.5s;
-        -webkit-text-fill-color: black !important;
+        -webkit-text-fill-color: var(--black) !important;
       }
 
       color: var(--color-aux);
@@ -60,13 +60,13 @@ export const Content = styled.div`
     width: 100%;
     font-size: 14px;
     margin: 0px 10px;
-    /* Cor de fundo do autocomplete */
     :-webkit-autofill {
       -webkit-box-shadow: 0 0 0 30px var(--color-secondary) inset;
-      color: white;
+      box-shadow: 0 0 0 30px var(--color-secondary) inset;
+      color: var(--white);
     }
     :-webkit-autofill {
-      -webkit-text-fill-color: white !important;
+      -webkit-text-fill-color: var(--white) !important;
     }
     ::placeholder {
       color: var(--white);
@@ -93,7 +93,6 @@ export const ContainerInputSearch = styled.input`
   transition: 0.5s;
   width: 90%;
   max-width: 654px;
-  /* font-size: 20px; */
   color: var(--color-secondary);
 
   ::placeholder {

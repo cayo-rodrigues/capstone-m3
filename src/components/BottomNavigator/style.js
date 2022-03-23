@@ -29,7 +29,6 @@ export const NavigatorContainerDiv = styled.div`
       :hover {
         span {
           transition: 0.5s;
-         
         }
       }
       svg {
@@ -47,13 +46,13 @@ export const NavigatorContainerDiv = styled.div`
     position: relative;
 
     div {
-      background-color: white;
+      background-color: var(--white);
       padding: 5px;
       transform: translateY(-35px);
       transition: 0.5s;
       border-radius: 50%;
       position: relative;
-      z-index:12;
+      z-index: 12;
     }
     p {
       border-radius: 50%;
