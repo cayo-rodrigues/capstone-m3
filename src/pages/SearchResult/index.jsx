@@ -1,31 +1,43 @@
 import { ServicePageContainer } from "./style";
-import home from "../../assets/svg/home.svg";
-import BottomNavigator from "../../components/BottomNavigator";
 
 import CardBox from "../../components/CardBox";
-import { useWorkers } from "../../providers/workers";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { useWorkers } from "../../providers/workers";
+import { useEffect, useState } from "react";
 
 const SearchResults = () => {
-    const {workers} = useWorkers()
-    const {search} = useParams()
+  const { workers, refreshWorkers } = useWorkers();
+  const { search } = useParams();
+  const [searchResults, setSearchResults] = useState([]);
 
-    console.log()
-    const filteredWorkers = workers.filter(worker=> worker.occupation_area.includes(search) ) 
+  useEffect(() => {
+    refreshWorkers();
+
+    const userInput = search.toLowerCase().trim();
+
+    const filteredWorkers = workers.filter(
+      (worker) =>
+        (worker.user.name.toLowerCase().includes(userInput) ||
+          worker.summary.toLowerCase().includes(userInput) ||
+          worker.cities.filter(
+            ({ state, city }) =>
+              city.toLowerCase().includes(userInput) ||
+              state.toLowerCase().includes(userInput)
+          ).length ||
+          worker.occupation_areas.filter((occupation) =>
+            occupation.toLowerCase().includes(userInput)
+          ).length) &&
+        worker.is_active
+    );
+
+    setSearchResults(filteredWorkers);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <ServicePageContainer>
-      {/* <Container>
-        <h1>
-          Bem vindo ao <span>PROWORKING</span>
-        </h1>
-        <p>Encontre o serviço que você precisa aqui!</p>
-        <Input isSearch />
-        <Button />
-        <img src={home} alt="homeimg" />
-      </Container> */}
-      <h1>Resultados para a pesquisa {search} </h1>
-      <CardBox workers={filteredWorkers}/>
-
+      <h1>Resultados para a pesquisa "{search}" </h1>
+      <CardBox workers={searchResults} />
     </ServicePageContainer>
   );
 };

@@ -15,12 +15,11 @@ const ServiceProfilePage = () => {
   const { id, name } = useParams();
   const { authenticated } = useAuthenticated();
 
-  const userProfile = workers.find(
+  const workerProfile = workers.find(
     (worker) => worker.user.name === name && worker.id === Number(id)
   );
 
-  const { user, occupation_area, summary, whatsapp } = userProfile;
-  const { email, is_worker } = user;
+  const { occupation_areas, summary, whatsapp, user } = workerProfile;
   const history = useHistory();
 
   return (
@@ -35,7 +34,18 @@ const ServiceProfilePage = () => {
         <div className="profile-tittle">
           <div>
             <h1>Olá 👋, meu nome é {name}</h1>
-            <p>Eu ofereço serviços de {occupation_area}</p>
+            <p>{occupation_areas && occupation_areas.join(", ")}</p>
+            <div className="cities">
+              <ul>
+                <h2>Cidades de Atendimento:</h2>
+                {workerProfile.cities !== undefined &&
+                  workerProfile.cities.map(({ state, city }, index) => (
+                    <li key={`${city}-${index}`} className="locationInfo">
+                      {state} {city}
+                    </li>
+                  ))}
+              </ul>
+            </div>
           </div>
         </div>
 
@@ -62,7 +72,7 @@ const ServiceProfilePage = () => {
             const subject = "Anúncio do site Proworking";
             const body = "Gostaria de conversar sobre...";
 
-            window.open(`mailto:${email}?subject=${subject}&body=${body}`);
+            window.open(`mailto:${user.email}?subject=${subject}&body=${body}`);
           }}
         >
           <AiOutlineMail /> Envie um Email
@@ -70,10 +80,10 @@ const ServiceProfilePage = () => {
 
         <h2>Informações do Perfil</h2>
         <p>
-          <strong>Bio:</strong> {summary}
+          <strong>Descrição do serviço:</strong> {summary}
         </p>
         <p>
-          <strong>Email:</strong> {email}
+          <strong>Email:</strong> {user.email}
         </p>
 
         <h2>Rating:</h2>

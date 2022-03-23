@@ -15,11 +15,11 @@ const App = () => {
     <>
       <ToastContainer transition={Zoom} autoClose={2000} limit={1} />
       <GlobalStyle />
-      <Loading/>
-      <Header/>
+      <Loading />
+      <Header />
       <Routes />
       <Footer />
-      <BottomNavigator/>
+      <BottomNavigator />
     </>
   );
 };

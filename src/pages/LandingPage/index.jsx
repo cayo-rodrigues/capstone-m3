@@ -38,6 +38,16 @@ const LandingPage = () => {
   const history = useHistory();
   const [inputText, setInputText] = useState("");
 
+  const handleTyping = (e) => {
+    if (e.key === "Enter") {
+      handleSearch();
+    }
+  };
+
+  const handleSearch = () => {
+    history.push(`/services/${inputText}`);
+  };
+
   return (
     <LandPageContainer>
       <Container>
@@ -51,13 +61,11 @@ const LandingPage = () => {
             <Input
               isSearch
               icon={AiOutlineSearch}
+              onKeyDown={handleTyping}
               onChange={(e) => setInputText(e.target.value)}
               className="input"
             />
-            <Button
-              onClick={() => history.push(`/services/${inputText}`)}
-              heigth="43px"
-            >
+            <Button onClick={handleSearch} heigth="43px">
               <span>BUSCAR</span>
             </Button>
           </div>
