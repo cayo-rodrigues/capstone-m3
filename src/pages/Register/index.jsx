@@ -11,14 +11,27 @@ const Register = () => {
     const history = useHistory();
     const { authenticated } = useAuthenticated();
 
+    const createChatUser = (username) => {
+        const privateKey = "904cdef3-09bc-4891-80b2-6b3de0b6b1f8";
+        const dataChat = { username: username, secret: "proworking2022" };
+
+        chatApi.post("/users", dataChat, {
+            headers: {
+                "PRIVATE-KEY": privateKey,
+            },
+        });
+    };
+
     const handleSubmitCallBack = (data) => {
         delete data.confirm_password;
+
         proWorkingApi
             .post("/register", data)
             .then(() => {
                 toast.success("Conta criada com sucesso!", {
                     toastId: "toastSuccess",
                 });
+                createChatUser(data.email);
                 history.push("/login");
             })
             .catch(() => {
@@ -26,16 +39,6 @@ const Register = () => {
                     toastId: "toastError",
                 });
             });
-
-        chatApi
-            .post("/users", {
-                headers: {
-                    "private-key": "904cdef3-09bc-4891-80b2-6b3de0b6b1f8",
-                },
-                data: { username: "2@1.com", secret: "1" },
-            })
-            .then((res) => console.log(res))
-            .catch((err) => console.log(err));
     };
 
     if (authenticated) {

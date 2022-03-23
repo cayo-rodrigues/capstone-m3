@@ -117,7 +117,7 @@ const Header = ({ className }) => {
                 className={
                   location.pathname === "/aboutus" ? "currentPage" : ""
                 }
-                //onClick={() => history.push("/aboutus")}
+                // onClick={() => history.push("/aboutus")}
                 onClick={() => window.scrollTo(0, 0)}
                 to={"/aboutus"}
               >
