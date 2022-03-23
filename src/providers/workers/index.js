@@ -4,7 +4,9 @@ import { proWorkingApi } from "../../services/api";
 const WorkersContext = createContext();
 
 export const WorkersProvider = ({ children }) => {
-  const [workers, setWorkers] = useState([]);
+  const [workers, setWorkers] = useState(
+    JSON.parse(localStorage.getItem("@ProWorking:workers")) || []
+  );
 
   useEffect(() => {
     refreshWorkers();
@@ -13,6 +15,7 @@ export const WorkersProvider = ({ children }) => {
   const refreshWorkers = () => {
     proWorkingApi.get("/workers?_expand=user").then(({ data }) => {
       setWorkers(data);
+      localStorage.setItem("@ProWorking:workers", JSON.stringify(data));
     });
   };
 
