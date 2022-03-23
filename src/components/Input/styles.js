@@ -27,6 +27,7 @@ export const Content = styled.div`
     color: var(--white);
     transform: translateY(2px) scale(1.3);
     transition: all 0.25s ease-in-out;
+    cursor: pointer;
   }
 
   :focus-within {
@@ -37,11 +38,11 @@ export const Content = styled.div`
     svg {
       :-webkit-autofill {
         -webkit-box-shadow: 0 0 0 30px var(--white) inset;
-        transition:  0.5s ;
+        transition: 0.5s;
         color: white;
       }
       :-webkit-autofill {
-        transition:  0.5s ;
+        transition: 0.5s;
         -webkit-text-fill-color: black !important;
       }
 

@@ -33,16 +33,10 @@ const Input = ({
         />
       ) : isNormalInput ? (
         <Container>
-          <p>
-            {label}
-          </p>
+          <p>{label}</p>
           <Content>
             {!!Icon && <Icon />}
-            <input
-              type={type === "password" ? typePassword : type}
-              {...rest}
-            />
-
+            <input type={type === "password" ? typePassword : type} {...rest} />
           </Content>
         </Container>
       ) : (
@@ -58,9 +52,9 @@ const Input = ({
               {...rest}
             />
             {type === "password" && (
-              <button type="button" onClick={() => handleTypePassword()}>
+              <span onClick={() => handleTypePassword()}>
                 {typePassword === "password" ? <HiEye /> : <HiEyeOff />}
-              </button>
+              </span>
             )}
           </Content>
         </Container>
