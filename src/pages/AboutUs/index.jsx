@@ -26,7 +26,7 @@ const AboutUs = () => {
     {
       name: "Igor Souza",
       job: "Project Owner",
-      linkedin: "#",
+      linkedin: "https://www.linkedin.com/in/sousa-igor/",
       img: "https://ca.slack-edge.com/TQZR39SET-U02ARJSS0FR-a52854ef7ff6-512",
     },
     {
