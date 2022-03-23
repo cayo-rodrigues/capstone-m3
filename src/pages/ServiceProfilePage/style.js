@@ -38,7 +38,7 @@ export const ServiceContainer = styled.main`
     align-items: center;
     span {
       font-size: 90px;
-      color: var(--whitesmoke);
+      color: var(--yellow);
       font-weight: bold;
       font-family: var(--font-title);
       letter-spacing: -7px;
@@ -273,13 +273,8 @@ export const ServiceContainer = styled.main`
 `;
 
 export const RatingContainer = styled.section`
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: -30px;
-
   span {
-    font-size: 2.3rem;
+    font-size: 2.5rem;
     transform: translateY(0.5px);
   }
 `;

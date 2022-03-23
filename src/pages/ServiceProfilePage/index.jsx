@@ -26,10 +26,16 @@ const ServiceProfilePage = () => {
   const [userInfo] = useState(
     JSON.parse(localStorage.getItem("@ProWorking:user")) || {}
   );
+
   const [userRating] = useState(
     workerProfile.ratings.find(({ userId }) => userId === userInfo.id) || {
       stars: 0,
     }
+  );
+
+  const [averageRating] = useState(
+    workerProfile.ratings.reduce((acc, rating) => acc + rating.stars, 0) /
+      workerProfile.ratings.length
   );
 
   const { occupation_areas, summary, whatsapp, user } = workerProfile;
@@ -37,7 +43,9 @@ const ServiceProfilePage = () => {
   return (
     <ServiceContainer>
       <div className="profile-header">
-        <span>PROWORKING</span>
+        <span>
+          <RatingStars workerId={+id} value={averageRating || 0} />
+        </span>
         <figure>
           <img src={DefaultUserImg} alt={name} />
         </figure>
@@ -98,8 +106,8 @@ const ServiceProfilePage = () => {
         </p>
 
         <RatingContainer>
-          <h2>Rating:</h2>
-          <RatingStars workerId={2} isEditable value={userRating.stars} />
+          <h2>Como você avalia este profissional?</h2>
+          <RatingStars workerId={+id} isEditable value={userRating.stars} />
         </RatingContainer>
 
         <h2>Comentários:</h2>

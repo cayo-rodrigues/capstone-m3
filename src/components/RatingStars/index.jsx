@@ -34,7 +34,6 @@ const RatingStars = ({ workerId, value = 0, isEditable = false }) => {
             )
             .then(() => refreshWorkers());
         } else {
-          console.log("patch");
           proWorkingApi
             .patch(
               `/ratings/${res.data[0].id}`,
