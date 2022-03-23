@@ -271,3 +271,12 @@ export const ServiceContainer = styled.main`
     }
   }
 `;
+
+export const RatingContainer = styled.section`
+  display: flex;
+  align-items: center;
+
+  h2 {
+    margin: 0;
+  }
+`;

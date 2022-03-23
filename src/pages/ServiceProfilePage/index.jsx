@@ -1,4 +1,4 @@
-import { ServiceContainer } from "./style";
+import { RatingContainer, ServiceContainer } from "./style";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { useWorkers } from "../../providers/workers";
 
@@ -9,6 +9,7 @@ import { useAuthenticated } from "../../providers/authenticated";
 import { useHistory } from "react-router-dom";
 
 import DefaultUserImg from "../../assets/profile 1.png";
+import RatingStars from "../../components/RatingStars";
 
 const ServiceProfilePage = () => {
   const { workers } = useWorkers();
@@ -86,7 +87,10 @@ const ServiceProfilePage = () => {
           <strong>Email:</strong> {user.email}
         </p>
 
-        <h2>Rating:</h2>
+        <RatingContainer>
+          <h2>Rating:</h2>
+          <RatingStars workerId={2} />
+        </RatingContainer>
 
         <h2>Comentários:</h2>
 
