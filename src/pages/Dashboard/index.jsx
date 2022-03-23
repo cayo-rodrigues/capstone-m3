@@ -21,16 +21,18 @@ const Dashboard = () => {
   const profile = JSON.parse(localStorage.getItem("@ProWorking:user"));
   const token = localStorage.getItem("@ProWorking:token");
 
+  const { workers, refreshWorkers } = useWorkers();
+  const workerProfile = workers.find(({ userId }) => userId === profile.id);
+  console.log(workerProfile);
+
   const [wrongNumber, setWrongNumber] = useState(false);
   const [error, setError] = useState(false);
-  const [List, setList] = useState([]);
-  const [cityServed, setCityServed] = useState([]);
+  const [List, setList] = useState(workerProfile.occupation_areas || []);
+  const [cityServed, setCityServed] = useState(workerProfile.cities || []);
   const [formValues, setFormValues] = useState({});
-  const [bio, setBio] = useState([]);
-  const [whatsapp, setWhatsApp] = useState([]);
-  const [isWorker, setIsWorker] = useState(false);
-
-  const { refreshWorkers } = useWorkers();
+  const [bio, setBio] = useState(workerProfile.summary || "");
+  const [whatsapp, setWhatsApp] = useState(workerProfile.whatsapp || "");
+  const [isWorker, setIsWorker] = useState(workerProfile.is_active || false);
 
   const addTodo = (todo) => {
     if (todo.length !== 0) {
@@ -158,12 +160,13 @@ const Dashboard = () => {
               </form>
 
               <div className="description">
-                <form onSubmit={registerBio}>
+                <form onSubmit={(e) => e.preventDefault()}>
                   <label>Insira seu número de Whatsapp</label>
                   {wrongNumber && <div className="error">Número errado!</div>}
                   <input
                     name="whatsapp"
                     placeholder="whatsapp"
+                    defaultValue={whatsapp}
                     onChange={(e) => {
                       setWhatsApp(e.target.value);
                       if (
@@ -175,7 +178,6 @@ const Dashboard = () => {
                       } else {
                         setWrongNumber(true);
                       }
-                      console.log(isNaN(e.target.value) === false);
                     }}
                   />
                   <label htmlFor="w3review">
@@ -187,6 +189,7 @@ const Dashboard = () => {
                     rows="4"
                     cols="50"
                     placeholder="Escreva uma descrição dos seus serviços"
+                    defaultValue={bio}
                     onChange={(e) => setBio(e.target.value)}
                   ></textarea>
                   <input
@@ -200,10 +203,7 @@ const Dashboard = () => {
                         setError(false);
 
                         const requisition = {
-                          id: profile.id,
-                          is_admin: false,
-                          is_active: true,
-                          is_worker: isWorker,
+                          is_active: isWorker,
                           summary: bio,
                           whatsapp: whatsapp,
                           cities: cityServed,
@@ -211,7 +211,7 @@ const Dashboard = () => {
                           userId: profile.id,
                         };
                         proWorkingApi
-                          .patch(`/users/${profile.id}`, requisition, {
+                          .patch(`/workers/${workerProfile.id}`, requisition, {
                             headers: {
                               Authorization: `Bearer ${token}`,
                             },
@@ -239,6 +239,7 @@ const Dashboard = () => {
                   className="checkin"
                   type="checkbox"
                   onClick={(e) => setIsWorker(e.target.checked)}
+                  defaultChecked={isWorker}
                 />
                 <p>
                   Deixe esta caixa selecionada se deseja que os serviços
