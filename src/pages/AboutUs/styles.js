@@ -1,13 +1,12 @@
 import styled from "styled-components";
 import bg from "../../assets/background/bg.svg";
 
-// lembre-se de usar html semântico
 export const Container = styled.div`
   background-image: url(${bg});
   background-size: cover;
   min-height: 100vh;
   height: 100%;
-  color: #fff;
+  color: var(--white);
   display: flex;
   justify-content: space-between;
   flex-direction: column;
@@ -34,7 +33,7 @@ export const Box = styled.div`
   width: 90vw;
   height: auto;
   border-radius: 12px;
-  background-color: #fff;
+  background-color: var(--white);
   box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.5);
   padding: 10px;
   margin-bottom: 20px;
@@ -88,17 +87,16 @@ export const Card = styled.div`
 `;
 
 export const OurTeam = styled.div`
-
   margin: 50px auto;
   max-width: 1400px;
-  h1{
+  h1 {
     font-size: 60px;
     text-align: center;
     @media (max-width: 460px) {
-        font-size: 30px;
+      font-size: 30px;
     }
   }
-  p{
+  p {
     max-width: 900px;
     padding: 0 20px;
     font-size: 20px;
@@ -106,52 +104,50 @@ export const OurTeam = styled.div`
     line-height: 1.6rem;
     margin: 40px auto 50px;
     @media (max-width: 460px) {
-        font-size: 16px;
-
+      font-size: 16px;
     }
   }
-  h3{
+  h3 {
     font-size: 40px;
     text-align: center;
     @media (max-width: 460px) {
-        font-size: 25px;
-      }
+      font-size: 25px;
+    }
   }
 
-  .linha{
+  .linha {
     height: 3px;
-    background-color: blue;
+    background-color: var(--blue);
     margin: 20px auto;
     width: 120px;
   }
-  ul{
+  ul {
     margin: 0px auto 40px;
     max-width: 1000px;
-    
+
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    justify-content:center;
+    justify-content: center;
     gap: 30px;
-    li{
+    li {
       position: relative;
       width: 290px;
       height: 290px;
       margin: 0px 0;
-      background-color: #f4f4f4;
+      background-color: var(--offwhite);
       border-radius: 30px;
       @media (max-width: 460px) {
         width: 300px;
         height: 300px;
       }
-      img{
+      img {
         object-fit: cover;
         border-radius: 0px;
         width: 100%;
         height: 100%;
-        
       }
-      div{
+      div {
         display: none;
         animation: fadeIn 0.5s;
         position: absolute;
@@ -159,41 +155,40 @@ export const OurTeam = styled.div`
         width: 100%;
         left: 0;
         padding: 10px;
-        background-color: rgba(0,0,0,0.5);
-        color: white;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: var(--white);
         text-align: center;
         transition: 1.5s;
         border-radius: 0 0 0px 0px;
-        h4{
+        h4 {
           font-size: 20px;
         }
-        p{
+        p {
           font-size: 15px;
           margin: 5px 0;
         }
-        a{
-          color: white;
-          svg{
+        a {
+          color: var(--white);
+          svg {
             width: 30px;
             height: 30px;
-            color: #ddd;
+            color: var(--lightgrey);
             transition: 0.5s all;
             cursor: pointer;
-            :hover{
+            :hover {
               transform: scale(1.4);
               transition: 0.5s all;
-              color: #fff;
+              color: var(--white);
             }
           }
         }
       }
     }
-    li:hover{
+    li:hover {
       transition: 1.5s;
-      div{
+      div {
         display: initial;
       }
     }
   }
-
-`
+`;

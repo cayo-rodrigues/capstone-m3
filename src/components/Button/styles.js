@@ -18,7 +18,7 @@ export const Container = styled.button`
         ? "var(--color-primary)"
         : "var(--color-secundary)"};
   width: ${(props) => props.width};
-  opacity: ${(props) => props.active ? 1 : 0.5};
+  opacity: ${(props) => (props.active ? 1 : 0.5)};
   :hover {
     transition: 0.5s;
     border: 2px solid var(--color-bg);
@@ -27,5 +27,4 @@ export const Container = styled.button`
   @media (max-width: 400px) {
     width: ${(props) => props.mobile};
   }
-
 `;

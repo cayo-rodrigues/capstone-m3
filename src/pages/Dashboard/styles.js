@@ -6,7 +6,7 @@ export const Container = styled.main`
   max-width: 1000px;
   width: 90%;
   padding: 20px 40px;
-  background-color: #eee;
+  background-color: var(--lightergrey);
   @media (max-width: 768px) {
     padding: 20px 15px;
     h3 {
@@ -17,10 +17,9 @@ export const Container = styled.main`
   button,
   select,
   textarea {
-    
     width: 100%;
     border: none;
-    background-color: #fff;
+    background-color: var(--white);
     border-radius: 10px;
     padding: 15px 10px;
     margin: 10px 0;
@@ -29,26 +28,26 @@ export const Container = styled.main`
     font-weight: 300;
     font-family: var(--font-text);
   }
-  textarea,input{
+  textarea,
+  input {
     text-transform: initial;
   }
-  textarea{
+  textarea {
     max-width: 100%;
     min-width: 100%;
     max-height: 200px;
     min-height: 150px;
-
   }
   input[type="submit"],
   button {
     transition: 1s all;
     text-transform: capitalize;
     font-weight: 800;
-    color: white;
+    color: var(--white);
     cursor: pointer;
     background-color: var(--color-primary);
     :hover {
-    transition: 1s all;
+      transition: 1s all;
       background-color: var(--color-aux);
     }
   }
@@ -71,9 +70,9 @@ export const Container = styled.main`
     font-weight: 600;
     text-transform: lowercase;
   }
-  .error{
+  .error {
     display: inline-block;
-    color: red;
+    color: var(--red);
     font-size: 10px;
     padding: 0 10px;
   }
@@ -99,7 +98,7 @@ export const Container = styled.main`
         padding: 10px 15px;
         color: var(--color-primary);
         margin: 10px;
-        background-color: lightblue;
+        background-color: var(--lightblue);
         border-radius: 10px;
         cursor: pointer;
         button {
