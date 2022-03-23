@@ -8,7 +8,7 @@ import BurgerMenuLink from "../BurgerMenuLink";
 import { useAuthenticated } from "../../providers/authenticated";
 import { toast } from "react-toastify";
 
-const Header = ({ className }) => {
+const Header = () => {
   const history = useHistory();
   const location = useLocation();
   const { authenticated, setAuthenticated } = useAuthenticated();
@@ -82,11 +82,14 @@ const Header = ({ className }) => {
               >
                 Dashboard
               </Link>
-              <Link to={'/'}  onClick={() =>{
-                 window.scrollTo(0, 0)
-                logOut()   
-              }}>
-              Logout
+              <Link
+                to={"/"}
+                onClick={() => {
+                  window.scrollTo(0, 0);
+                  logOut();
+                }}
+              >
+                Logout
               </Link>
             </>
           ) : (

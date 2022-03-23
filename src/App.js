@@ -10,26 +10,16 @@ import "react-toastify/dist/ReactToastify.css";
 import { Zoom } from "react-toastify";
 import BottomNavigator from "./components/BottomNavigator";
 
-
-import { useEffect } from "react";
-import { useWorkers } from "./providers/workers";
-
 const App = () => {
-  // const {refreshWorkers} = useWorkers()
-  // console.log(refreshWorkers)
-  // console.log(useWorkers())
-  // useEffect(()=>{
-  //   refreshWorkers()
-  // },[])
   return (
     <>
       <ToastContainer transition={Zoom} autoClose={2000} limit={1} />
       <GlobalStyle />
-      <Loading/>
-      <Header/>
+      <Loading />
+      <Header />
       <Routes />
       <Footer />
-      <BottomNavigator/>
+      <BottomNavigator />
     </>
   );
 };

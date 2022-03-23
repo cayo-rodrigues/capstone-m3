@@ -9,6 +9,7 @@ const ServicesPage = () => {
 
   useEffect(() => {
     refreshWorkers();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

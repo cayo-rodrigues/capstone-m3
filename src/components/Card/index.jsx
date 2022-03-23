@@ -1,7 +1,6 @@
 import { Container } from "./styles";
 import React from "react";
 
-import { useState } from "react";
 import AOS from "aos";
 import "aos/dist/aos.css"; // You can also use <link> for styles
 
@@ -18,23 +17,23 @@ AOS.init({
   anchorPlacement: "top-bottom", // defines which position of the element regarding to window should trigger the animation
 });
 
-const customStyles = {
-  content: {
-    top: "50%",
-    left: "50%",
-    right: "auto",
-    bottom: "auto",
-    marginRight: "-50%",
-    transform: "translate(-50%, -45%)",
-    width: "96%",
-    maxWidth: "600px",
-    height: "500px",
-    display: "flex",
-    justifyContent: "space-around",
-    flexDirection: "column",
-    alignItems: "center",
-  },
-};
+// const customStyles = {
+//   content: {
+//     top: "50%",
+//     left: "50%",
+//     right: "auto",
+//     bottom: "auto",
+//     marginRight: "-50%",
+//     transform: "translate(-50%, -45%)",
+//     width: "96%",
+//     maxWidth: "600px",
+//     height: "500px",
+//     display: "flex",
+//     justifyContent: "space-around",
+//     flexDirection: "column",
+//     alignItems: "center",
+//   },
+// };
 
 const Card = ({ nome, img, especialidades, locais, id }) => {
   // const [ setIsOpen] = useState(false);

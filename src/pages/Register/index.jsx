@@ -28,8 +28,7 @@ const Register = () => {
               },
             }
           )
-          .then((res) => {
-            console.log(res.data);
+          .then(() => {
             refreshWorkers();
             toast.success("Conta criada com sucesso!", {
               toastId: "toastSuccess",

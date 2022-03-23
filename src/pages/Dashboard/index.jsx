@@ -23,7 +23,6 @@ const Dashboard = () => {
 
   const { workers, refreshWorkers } = useWorkers();
   const workerProfile = workers.find(({ userId }) => userId === profile.id);
-  console.log(workerProfile);
 
   const [wrongNumber, setWrongNumber] = useState(false);
   const [error, setError] = useState(false);
@@ -220,7 +219,11 @@ const Dashboard = () => {
                             toast.success("Perfil Atualizado");
                             refreshWorkers();
                           })
-                          .catch((err) => console.log(err));
+                          .catch(() =>
+                            toast.error(
+                              "Algo deu errado :( tente novamente daqui a pouco"
+                            )
+                          );
                       } else {
                         setError(true);
                       }
