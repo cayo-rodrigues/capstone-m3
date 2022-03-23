@@ -275,8 +275,11 @@ export const ServiceContainer = styled.main`
 export const RatingContainer = styled.section`
   display: flex;
   align-items: center;
+  gap: 10px;
+  margin-bottom: -30px;
 
-  h2 {
-    margin: 0;
+  span {
+    font-size: 2.3rem;
+    transform: translateY(0.5px);
   }
 `;

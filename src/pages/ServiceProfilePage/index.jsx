@@ -20,6 +20,11 @@ const ServiceProfilePage = () => {
     (worker) => worker.user.name === name && worker.id === Number(id)
   );
 
+  const userInfo = JSON.parse(localStorage.getItem("@ProWorking:user")) || {};
+  const userRating = workerProfile.ratings.find(
+    ({ userId }) => userId === userInfo.id
+  );
+
   const { occupation_areas, summary, whatsapp, user } = workerProfile;
   const history = useHistory();
 
@@ -65,7 +70,6 @@ const ServiceProfilePage = () => {
         >
           <AiOutlineWhatsApp /> Fale Comigo
         </div>
-        {/* https://wa.me/5524998913379?text=teste */}
 
         <div
           className="icon icon-mail"
@@ -89,7 +93,7 @@ const ServiceProfilePage = () => {
 
         <RatingContainer>
           <h2>Rating:</h2>
-          <RatingStars workerId={2} />
+          <RatingStars workerId={2} isEditable value={userRating?.stars ?? 0} />
         </RatingContainer>
 
         <h2>Comentários:</h2>
