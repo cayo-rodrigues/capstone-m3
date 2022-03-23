@@ -61,26 +61,6 @@ const Dashboard = () => {
     }
   };
 
-  const registerBio = (e) => {
-    e.preventDefault();
-    const biografia = e.target[0].value;
-    setBio(biografia);
-  };
-
-  const registerWhatsapp = (e) => {
-    e.preventDefault();
-    const whats = e.target[0].value;
-    setWhatsApp(whats);
-  };
-
-  const [email, setEmail] = useState([]);
-
-  const registerEmail = (e) => {
-    e.preventDefault();
-    const mail = e.target[0].value;
-    setEmail(mail);
-  };
-
   if (!authenticated) {
     return <Redirect to={"/"} />;
   }
