@@ -1,13 +1,17 @@
 import { useEffect, useState } from "react";
+import { Redirect } from "react-router-dom";
 import ChatMessages from "../../components/ChatMessages";
 import Chats from "../../components/Chats";
 import { useUser } from "../../providers/user";
 import { chatApi } from "../../services/api";
+import { useAuthenticated } from "../../providers/authenticated";
 
 import { Container } from "./styles";
 
 const ChatPage = () => {
     const { user } = useUser();
+    const { authenticated } = useAuthenticated();
+
     const [chats, setChats] = useState([]);
     const [currentChat, setCurrentChat] = useState({});
     const [messages, setMessages] = useState([]);
@@ -18,7 +22,7 @@ const ChatPage = () => {
     const refreshChats = () => {
         const header = {
             "Project-ID": "e17e9017-bc37-4905-87cd-3c21a240adb9",
-            "User-Name": `${user.email}`,
+            "User-Name": `${user.user.email}`,
             "User-Secret": "proworking2022",
             "Content-Type": "application/json",
         };
@@ -30,7 +34,7 @@ const ChatPage = () => {
     const refreshMessages = (chatId) => {
         const header = {
             "Project-ID": "e17e9017-bc37-4905-87cd-3c21a240adb9",
-            "User-Name": `${user.email}`,
+            "User-Name": `${user.user.email}`,
             "User-Secret": "proworking2022",
             "Content-Type": "application/json",
         };
@@ -44,10 +48,9 @@ const ChatPage = () => {
     }, []);
 
     const sendMessager = () => {
-        console.log("teste1");
         const header = {
             "Project-ID": "e17e9017-bc37-4905-87cd-3c21a240adb9",
-            "User-Name": `${user.email}`,
+            "User-Name": `${user.user.email}`,
             "User-Secret": "proworking2022",
             "Content-Type": "application/json",
         };
@@ -59,6 +62,11 @@ const ChatPage = () => {
             .then(() => refreshMessages(currentChat.id))
             .then(() => setInputMessage(""));
     };
+
+    if (!authenticated) {
+        return <Redirect to={"/"} />;
+    }
+
     return (
         <Container>
             {messageIsOpen ? (

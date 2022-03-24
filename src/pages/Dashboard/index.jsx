@@ -18,8 +18,9 @@ import { Redirect } from "react-router-dom";
 const Dashboard = () => {
   const { authenticated } = useAuthenticated();
 
-  const profile = JSON.parse(localStorage.getItem("@ProWorking:user"));
-  const token = localStorage.getItem("@ProWorking:token");
+  const user = JSON.parse(localStorage.getItem("@ProWorking:user"));
+  const profile = user.user
+  const token = user.token
 
   const { workers, refreshWorkers } = useWorkers();
   const workerProfile = workers.find(({ userId }) => userId === profile.id);
