@@ -109,7 +109,7 @@ const Footer = () => {
         </div>
 
         <div data-aos="fade-up" data-aos-delay="350" className="footer-button">
-          <Button>Entre em contato</Button>
+          <Button onClick={()=>window.open("https://chatting.page/pfld2gf05vk4z3599sognbmfltyplgom")}>Entre em contato</Button>
         </div>
       </div>
       <p>

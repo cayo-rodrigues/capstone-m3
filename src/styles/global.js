@@ -34,6 +34,7 @@ export const GlobalStyle = createGlobalStyle`
     --darkblue: #00008b;
     --green: #008000;
     --darkgreen: #006400;
+    --yellow: #fff900;
     --red: #ff0000;
     --error: #e4266f;
 

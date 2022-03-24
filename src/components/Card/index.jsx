@@ -37,7 +37,7 @@ const customStyles = {
   },
 };
 
-const Card = ({ nome, img, especialidades, locais, id }) => {
+const Card = ({ nome, img, especialidades = [], locais = [], id }) => {
   let subtitle;
   const [open, setIsOpen] = useState(false);
 
@@ -67,6 +67,7 @@ const Card = ({ nome, img, especialidades, locais, id }) => {
       setIsOpen(true);
     }
   }
+  
   return (
     <Container>
       <Modal
