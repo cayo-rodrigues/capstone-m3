@@ -163,6 +163,7 @@ const Dashboard = () => {
                     Breve descrição de seus serviços:
                   </label>
                   <textarea
+                    maxLength={250}
                     id="w3review"
                     name="w3review"
                     rows="4"
@@ -171,6 +172,7 @@ const Dashboard = () => {
                     defaultValue={bio}
                     onChange={(e) => setBio(e.target.value)}
                   ></textarea>
+                  <p>{bio.length}/250</p>
                   <input
                     onClick={() => {
                       if (
