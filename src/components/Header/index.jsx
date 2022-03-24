@@ -36,12 +36,12 @@ const Header = () => {
                 Dashboard
               </BurgerMenuLink>
               <BurgerMenuLink to={"/"} handleCloseMenu={logOut}>
-                Logout
+                Sair
               </BurgerMenuLink>
             </>
           ) : (
             <>
-              <BurgerMenuLink to="/login">Login</BurgerMenuLink>
+              <BurgerMenuLink to="/login">Entrar</BurgerMenuLink>
               <BurgerMenuLink to="/register">Cadastre-se</BurgerMenuLink>
               <BurgerMenuLink
                 onClick={() => window.scrollTo(0, 0)}
@@ -89,7 +89,7 @@ const Header = () => {
                   logOut();
                 }}
               >
-                Logout
+                Sair
               </Link>
             </>
           ) : (
@@ -101,7 +101,7 @@ const Header = () => {
                 }}
                 to={"/login"}
               >
-                Login
+                Entrar
               </Link>
               <Link
                 className={

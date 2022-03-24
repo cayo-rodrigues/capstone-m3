@@ -6,6 +6,7 @@ import VerAnúncios from "../../../assets/svg/see-all-jobs.svg";
 import CriarAnuncios from "../../../assets/svg/create.svg";
 import { Redirect } from "react-router-dom";
 import { useAuthenticated } from "../../../providers/authenticated";
+
 const DashboardHomePage = () => {
   const profile = JSON.parse(localStorage.getItem("@ProWorking:user"));
 
@@ -14,6 +15,7 @@ const DashboardHomePage = () => {
   if (!authenticated) {
     return <Redirect to={"/"} />;
   }
+  
   return (
     <DashboardContainer>
       <h1>Seja bem vindo {profile.name}!! 😊 </h1>
