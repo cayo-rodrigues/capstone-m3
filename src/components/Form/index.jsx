@@ -14,10 +14,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 
 const Form = ({ isLogin, isRegister, handleSubmitCallBack }) => {
   const schemaLogin = yup.object().shape({
-    email: yup
-      .string()
-      .email("precisa ser um email válido")
-      .required("Campo Obrigatório"),
+    email: yup.string().email("Email inválido").required("Campo Obrigatório"),
     password: yup.string().required("Campo Obrigatório"),
   });
   const schemaRegister = yup.object().shape({
@@ -28,14 +25,14 @@ const Form = ({ isLogin, isRegister, handleSubmitCallBack }) => {
         /[0-9]{0}[aA-zZ]{1,99}/gm,
         "Nome deve conter pelo menos uma letra"
       ),
-    email: yup
+    email: yup.string().email("Email inválido").required("Campo Obrigatório"),
+    password: yup
       .string()
-      .email("precisa ser um email válido")
-      .required("Campo Obrigatório"),
-    password: yup.string().required("Campo Obrigatório").min(6),
+      .required("Campo Obrigatório")
+      .min(6, "Senha deve ter no mínimo 6 caracteres"),
     confirm_password: yup
       .string()
-      .oneOf([yup.ref("password"), null], "senhas devem ser iguais")
+      .oneOf([yup.ref("password"), null], "Senhas devem ser iguais")
       .required("Campo Obrigatório"),
   });
 
