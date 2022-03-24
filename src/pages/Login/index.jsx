@@ -20,10 +20,10 @@ const Login = () => {
   const history = useHistory();
 
   const handleSubmitCallBack = (dataUser) => {
+    console.log(dataUser);
     proWorkingApi
       .post("/login", dataUser)
       .then(({ data }) => {
-        console.log(data);
         handleUser(data);
         setAuthenticated(true);
         history.push("/dashboard");
@@ -45,13 +45,14 @@ const Login = () => {
 
       if (!displayName) throw new Error("O Usuario não tem Nome");
 
-      setUser({
-        name: displayName,
+      const data = {
         email: email,
-        password: "proworking2022",
-      });
+        password: "pw2022",
+      };
 
-      handleSubmitCallBack(user);
+      handleSubmitCallBack(data);
+
+      setUser({ ...data, name: displayName });
     }
   };
 

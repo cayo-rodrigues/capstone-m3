@@ -85,7 +85,7 @@ const Register = () => {
       setUser({
         name: displayName,
         email: email,
-        password: "proworking2022",
+        password: "pw2022",
       });
 
       handleSubmitCallBack(user);
