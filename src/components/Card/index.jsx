@@ -73,8 +73,8 @@ const Card = ({ nome, img, especialidades = [], locais = [], id }) => {
           <ul>
             <h3>Especialidade:</h3>
             <ul>
-              {especialidades.map((especialidade) => {
-                return <li>{especialidade}</li>;
+              {especialidades.map((especialidade, index) => {
+                return <li key={index}>{especialidade}</li>;
               })}
             </ul>
             <div className="link">
