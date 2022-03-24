@@ -1,8 +1,10 @@
-import { ServicePageContainer, SearchCity } from "./styles";
+import { ServicePageContainer, SearchCity,NotFound } from "./styles";
 import { AiOutlineSearch } from "react-icons/ai";
 import CardBox from "../../components/CardBox";
 import { useWorkers } from "../../providers/workers";
 import { useEffect, useState } from "react";
+
+import NotFoundImg from "../../assets/svg/not_found.svg";
 
 import AOS from "aos";
 import "aos/dist/aos.css"; // You can also use <link> for styles
@@ -40,20 +42,23 @@ const ServicesPage = () => {
       .join(" ");
 
     setClicked(true);
-    setSearchTitle(userInput)
+    setSearchTitle(userInput);
     setFilterWorkers(
-      workers.filter(worker=>worker.is_active).filter(
-        (worker)=>worker.user.name.toLowerCase().includes(userInput) ||
-          worker.summary.toLowerCase().includes(userInput) ||
-          worker.cities.filter(
-            ({ state, city }) =>
-              city.toLowerCase().includes(userInput) ||
-              state.toLowerCase().includes(userInput)
-          ).length ||
-          worker.occupation_areas.filter((occupation) =>
-            occupation.toLowerCase().includes(userInput)
-          ).length
-     )
+      workers
+        .filter((worker) => worker.is_active)
+        .filter(
+          (worker) =>
+            worker.user.name.toLowerCase().includes(userInput) ||
+            worker.summary.toLowerCase().includes(userInput) ||
+            worker.cities.filter(
+              ({ state, city }) =>
+                city.toLowerCase().includes(userInput) ||
+                state.toLowerCase().includes(userInput)
+            ).length ||
+            worker.occupation_areas.filter((occupation) =>
+              occupation.toLowerCase().includes(userInput)
+            ).length
+        )
     );
   };
 
@@ -67,7 +72,7 @@ const ServicesPage = () => {
             <input
               onChange={(e) => {
                 setSearch(e.target.value);
-                if(e.target.value.length===0) handleSearch('')
+                if (e.target.value.length === 0) handleSearch("");
               }}
               placeholder="Pesquisar cidade ou serviço"
             />
@@ -81,7 +86,16 @@ const ServicesPage = () => {
 
       <ServicePageContainer>
         <h2>Todos os serviços</h2>
-        <CardBox workers={filterWorkers.filter(({ is_active }) => is_active)} />
+        {filterWorkers.length !== 0 ? (
+          <CardBox
+            workers={filterWorkers.filter(({ is_active }) => is_active)}
+          />
+        ) : (
+          <NotFound>
+            <img src={NotFoundImg} alt="Não encontrado" />
+            <h3>Não foi encontrada a sua pesquisa</h3>
+          </NotFound>
+        )}
       </ServicePageContainer>
     </>
   );

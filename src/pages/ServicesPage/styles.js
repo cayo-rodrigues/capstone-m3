@@ -7,6 +7,22 @@ export const Container = styled.div`
   height: 100vh;
   display: flex;
 `;
+export const NotFound = styled.div`
+  text-align: center;
+  animation: fadeIn 1s;
+  img{
+    width: 250px;
+    height: 250px;
+    margin: 20px auto;
+  }
+  h3{
+    font-weight: 500;
+    text-align: center;
+    font-size: 14px;
+  }
+
+`
+
 
 export const ServicePageContainer = styled.main`
   margin: 60px auto;
