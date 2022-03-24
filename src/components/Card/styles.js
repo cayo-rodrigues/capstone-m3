@@ -152,7 +152,7 @@ export const Imagem = styled.img`
 export const ModalContainer = styled.div`
   border-radius: 8px;
   border: none;
-  width: 90%;
+  width: 100%;
   height: 90%;
   display: flex;
   flex-direction: column;
@@ -186,28 +186,36 @@ export const ModalContainer = styled.div`
     box-shadow: 2px 2px 11px 0px rgba(0, 0, 0, 0.75);
   }
 
+  p {
+    margin-top: 5px;
+    text-align: center;
+  }
+
   ul {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     width: 80%;
     margin: 0 auto;
     color: var(--color-secondary);
+
     > h3 {
       text-align: left;
       margin-bottom: 10px;
       width: 100%;
     }
-    > li {
-      font-size: 20px;
-      text-align: left;
+    > ul {
       width: 100%;
-      list-style: none;
+      > li {
+        font-size: 16px;
+        width: 100%;
+        text-align: left;
+      }
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
     }
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
   }
   button {
     border-radius: 100%;
@@ -221,8 +229,38 @@ export const ModalContainer = styled.div`
   }
   .link {
     margin-top: 10px;
-    text-align: left;
+    text-align: center;
     width: 100%;
+    cursor: pointer;
+  }
+  .location {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    font-size: 14px;
+    margin: 15px auto;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 80%;
+    .locationDiv {
+      text-align: center;
+      padding: 5px 8px;
+      background-color: var(--lightblue);
+      border-radius: 20px;
+      margin: 3px 1px;
+      display: inline-block;
+      max-width: 110px;
+      color: var(--color-primary);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
   }
 `;
 
