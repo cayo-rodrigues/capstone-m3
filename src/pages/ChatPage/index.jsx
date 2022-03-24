@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react";
-import Button from "../../components/Button";
-import CardMessage from "../../components/CardMessage";
-import ChatCard from "../../components/ChatCard";
 import ChatMessages from "../../components/ChatMessages";
 import Chats from "../../components/Chats";
 import { useUser } from "../../providers/user";
 import { chatApi } from "../../services/api";
 
-import { BoxChat, BoxInput, BoxMessages, Container } from "./styles";
+import { Container } from "./styles";
 
 const ChatPage = () => {
     const { user } = useUser();
