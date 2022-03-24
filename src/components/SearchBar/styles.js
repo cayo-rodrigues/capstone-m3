@@ -7,8 +7,7 @@ export const Container = styled.div`
   padding: 10px 0;
 
   .inputDiv {
-    max-width: 90%;
-    margin: 0 auto;
+    width: 98%;
     height: 44px;
     display: flex;
     align-items: center;
@@ -59,7 +58,8 @@ export const Container = styled.div`
   }
 
   @media screen and (min-width: 760px) {
-    max-width: 40%;
+    width: 35vw;
+    max-width: 600px;
     margin: 0;
   }
 `;

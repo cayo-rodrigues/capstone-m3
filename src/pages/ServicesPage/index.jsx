@@ -18,7 +18,9 @@ const ServicesPage = () => {
   return (
     <>
       <TopBar>
-        <SearchBar />
+        <div>
+          <SearchBar />
+        </div>
       </TopBar>
 
       <ServicePageContainer>

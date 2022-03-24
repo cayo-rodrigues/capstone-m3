@@ -45,7 +45,9 @@ const SearchResults = () => {
   return (
     <>
       <TopBar>
-        <SearchBar />
+        <div>
+          <SearchBar />
+        </div>
       </TopBar>
       <ServicePageContainer>
         <h1>Resultados para a pesquisa "{search}" </h1>

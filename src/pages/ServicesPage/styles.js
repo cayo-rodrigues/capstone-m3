@@ -37,11 +37,17 @@ export const ServicePageContainer = styled.main`
 export const TopBar = styled.div`
   width: 100%;
   background-color: var(--midgrey);
-  text-align: center;
+
+  > div {
+    max-width: 1440px;
+    width: 100%;
+    display: flex;
+    justify-content: right;
+  }
 
   @media screen and (min-width: 760px) {
     display: flex;
-    justify-content: right;
+    justify-content: center;
     align-items: center;
   }
 `;

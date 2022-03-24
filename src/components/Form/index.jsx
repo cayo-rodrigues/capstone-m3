@@ -11,6 +11,7 @@ import { useForm } from "react-hook-form";
 
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import GoogleButton from "../GoogleButton";
 
 const Form = ({ isLogin, isRegister, handleSubmitCallBack }) => {
   const schemaLogin = yup.object().shape({
@@ -66,7 +67,8 @@ const Form = ({ isLogin, isRegister, handleSubmitCallBack }) => {
             placeholder="Senha"
             type={"password"}
           />
-          <Button type="submit">Logar</Button>
+          <Button type="submit">Entrar</Button>
+          <GoogleButton text="Entrar com Google" />
         </FormContainer>
       )}
       {isRegister && (
@@ -108,6 +110,7 @@ const Form = ({ isLogin, isRegister, handleSubmitCallBack }) => {
           />
 
           <Button type="submit">Cadastrar</Button>
+          <GoogleButton text="Registrar com Google" />
         </FormContainer>
       )}
       <FormFooter>
