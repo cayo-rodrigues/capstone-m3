@@ -43,14 +43,11 @@ const Header = () => {
             <>
               <BurgerMenuLink to="/login">Entrar</BurgerMenuLink>
               <BurgerMenuLink to="/register">Cadastre-se</BurgerMenuLink>
-              <BurgerMenuLink
-                onClick={() => window.scrollTo(0, 0)}
-                to="/aboutus"
-              >
-                Sobre nós
-              </BurgerMenuLink>
             </>
           )}
+          <BurgerMenuLink onClick={() => window.scrollTo(0, 0)} to="/aboutus">
+            Sobre nós
+          </BurgerMenuLink>
         </BurgerMenu>
         <figure>
           <img
@@ -114,17 +111,15 @@ const Header = () => {
               >
                 Cadastre-se
               </Link>
-              <Link
-                className={
-                  location.pathname === "/aboutus" ? "currentPage" : ""
-                }
-                onClick={() => window.scrollTo(0, 0)}
-                to={"/aboutus"}
-              >
-                Sobre Nós
-              </Link>
             </>
           )}
+          <Link
+            className={location.pathname === "/aboutus" ? "currentPage" : ""}
+            onClick={() => window.scrollTo(0, 0)}
+            to={"/aboutus"}
+          >
+            Sobre Nós
+          </Link>
         </Nav>
       </ContainerHeader>
     </Container>

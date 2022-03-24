@@ -13,19 +13,6 @@ import { GoLocation } from "react-icons/go";
 import { useLocation } from "react-router-dom";
 import { useAuthenticated } from "../../providers/authenticated";
 
-import AOS from "aos";
-import "aos/dist/aos.css"; // You can also use <link> for styles
-
-AOS.init({
-  offset: 120, // offset (in px) from the original trigger point
-  delay: 0, // values from 0 to 3000, with step 50ms
-  duration: 1000, // values from 0 to 3000, with step 50ms
-  easing: "ease", // default easing for AOS animations
-  once: false, // whether animation should happen only once - while scrolling down
-  mirror: false, // whether elements should animate out while scrolling past them
-  anchorPlacement: "top-bottom", // defines which position of the element regarding to window should trigger the animation
-});
-
 const Footer = () => {
   const location = useLocation();
   const { authenticated } = useAuthenticated();
@@ -34,7 +21,7 @@ const Footer = () => {
     <FooterContainer currentPage={location.pathname}>
       <div data-aos="fade-up" className="bolaMenor"></div>
       <div data-aos="fade-up" className="bolaMaior"></div>
-      
+
       <div data-aos="fade-up" className="footer__box">
         <figure className="footer-logo">
           <img src={logo} alt="logo" />
@@ -53,7 +40,7 @@ const Footer = () => {
               </Link>{" "}
             </li>
 
-            {authenticated===false && (
+            {authenticated === false && (
               <>
                 <li>
                   <Link to="/login" onClick={() => window.scrollTo(0, 0)}>
@@ -72,7 +59,7 @@ const Footer = () => {
                 <Link to="/dashboard" onClick={() => window.scrollTo(0, 0)}>
                   Dashboard
                 </Link>{" "}
-            </li>
+              </li>
             )}
             <li>
               <Link to="/services" onClick={() => window.scrollTo(0, 0)}>
@@ -109,7 +96,15 @@ const Footer = () => {
         </div>
 
         <div data-aos="fade-up" data-aos-delay="350" className="footer-button">
-          <Button onClick={()=>window.open("https://chatting.page/pfld2gf05vk4z3599sognbmfltyplgom")}>Entre em contato</Button>
+          <Button
+            onClick={() =>
+              window.open(
+                "https://chatting.page/pfld2gf05vk4z3599sognbmfltyplgom"
+              )
+            }
+          >
+            Entre em contato
+          </Button>
         </div>
       </div>
       <p>

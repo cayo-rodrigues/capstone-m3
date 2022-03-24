@@ -2,22 +2,10 @@ import { Container, Imagem, ModalContainer } from "./styles";
 import React from "react";
 import { useState } from "react";
 import Modal from "react-modal";
-import AOS from "aos";
-import "aos/dist/aos.css"; // You can also use <link> for styles
 import whatsapp from "../../assets/Whatsapp.png";
 import email from "../../assets/Email.png";
 import DefaultUserImg from "../../assets/profile 1.png";
 import { Link } from "react-router-dom";
-
-AOS.init({
-  offset: 120, // offset (in px) from the original trigger point
-  delay: 0, // values from 0 to 3000, with step 50ms
-  duration: 1000, // values from 0 to 3000, with step 50ms
-  easing: "ease", // default easing for AOS animations
-  once: false, // whether animation should happen only once - while scrolling down
-  mirror: false, // whether elements should animate out while scrolling past them
-  anchorPlacement: "top-bottom", // defines which position of the element regarding to window should trigger the animation
-});
 
 const customStyles = {
   content: {
@@ -67,7 +55,7 @@ const Card = ({ nome, img, especialidades = [], locais = [], id }) => {
       setIsOpen(true);
     }
   }
-  
+
   return (
     <Container>
       <Modal
@@ -98,9 +86,9 @@ const Card = ({ nome, img, especialidades = [], locais = [], id }) => {
               </Link>
             </div>
           </ul>
-              
-            <p>Locais de atendimento:</p>
-            <ul className="location">
+
+          <p>Locais de atendimento:</p>
+          <ul className="location">
             {locais.slice(0, 2).map((local, index) => (
               <li className="locationDiv" key={`${local}-${index}`}>
                 {local.state}- {local.city}
@@ -135,12 +123,7 @@ const Card = ({ nome, img, especialidades = [], locais = [], id }) => {
           </span>
         </ModalContainer>
       </Modal>
-      <section
-        data-aos="fade-in"
-        data-aos-delay="150"
-        id={id}
-        onClick={(e) => openModal(e)}
-      >
+      <section id={id} onClick={(e) => openModal(e)}>
         <div className="titleAndImg">
           <h2 className="title">{nome}</h2>
           <img src={DefaultUserImg} alt="Imagem" />

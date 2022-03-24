@@ -43,7 +43,7 @@ const DashboardHomePage = () => {
           <li>
             <img src={VerAnúncios} alt="Ver anúncios" />
             <div>
-              <h3>Ver anúncios de Serviço</h3>
+              <h3>Ver seus anúncios de Serviço</h3>
             </div>
           </li>
         </Link>
