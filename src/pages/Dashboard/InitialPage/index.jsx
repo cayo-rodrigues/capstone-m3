@@ -30,20 +30,20 @@ const DashboardHomePage = () => {
           </li>
         </Link>
 
-        <Link to={"/dashboard/jobs-register"}>
+        {/* <Link to={"/dashboard/jobs-register"}>
           <li>
             <img src={CriarAnuncios} alt="Criar serviço" />
             <div>
               <h3>Criar Anúncio para Contratar Alguém</h3>
             </div>
           </li>
-        </Link>
+        </Link> */}
 
-        <Link to={"/dashboard/all-jobs"}>
+        <Link to={"/chatpage"}>
           <li>
             <img src={VerAnúncios} alt="Ver anúncios" />
             <div>
-              <h3>Ver seus anúncios de Serviço</h3>
+              <h3>Enviar mensagem direta para algum worker</h3>
             </div>
           </li>
         </Link>

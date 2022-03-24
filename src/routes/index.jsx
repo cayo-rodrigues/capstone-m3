@@ -9,6 +9,7 @@ import AboutUs from "../pages/AboutUs";
 import ServiceProfilePage from "../pages/ServiceProfilePage";
 import SearchResults from "../pages/SearchResult";
 import DashboardHomePage from "../pages/Dashboard/InitialPage";
+import ChatPage from "../pages/ChatPage";
 
 const Routes = () => {
   return (
@@ -16,13 +17,14 @@ const Routes = () => {
       <Route exact path="/" component={LandingPage} />
       <Route exact path="/aboutus" component={AboutUs} />
       <Route exact path="/services" component={ServicesPage} />
+      <Route exact path="/chatpage" component={ChatPage} />
 
-      <Route
-        exact
-        path={`/services/:id/:name`}
-        component={ServiceProfilePage}
-      />
-      <Route exact path={`/services/:search`} component={SearchResults} />
+            <Route
+                exact
+                path={`/services/:id/:name`}
+                component={ServiceProfilePage}
+            />
+            <Route exact path={`/services/:search`} component={SearchResults} />
 
       <Route exact path="/dashboard" component={DashboardHomePage} />
 

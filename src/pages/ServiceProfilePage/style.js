@@ -204,6 +204,27 @@ export const ServiceContainer = styled.main`
         }
       }
     }
+    .icon-message{
+      background-color: var(--grey);
+      box-shadow: 0px 4px 20px var(--grey);
+      width: 250px;
+      :hover {
+        background-color: var(--grey-1);
+      }
+      @media (max-width: 710px) {
+        font-size: 15px;
+        height: 35px;
+        width: 130px;
+        text-align: center;
+        margin: 10px 0 0 5px;
+        padding: 10px 0;
+        font-size: 12px;
+        svg {
+          width: 15px;
+          height: 15px;
+        }
+      }
+    }
     .comments,
     textarea {
       padding: 30px 20px;

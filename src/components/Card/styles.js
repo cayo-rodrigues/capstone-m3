@@ -3,6 +3,9 @@ import styled from "styled-components";
 export const Container = styled.div`
   .titleAndImg {
     align-items: flex-start;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
     .title {
       text-overflow: ellipsis;
       overflow: hidden;
@@ -79,18 +82,13 @@ export const Container = styled.div`
     flex-direction: column;
     justify-content: space-between;
     padding: 30px 0;
-    > div {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      width: 80%;
-      margin: 0 auto;
-      > h2 {
-        font-weight: 400;
-      }
-      > img {
-        object-fit: cover;
-      }
+    transition: all 0.3s;
+
+    :hover {
+      box-shadow: 0px 0px 30px 1px rgba(0, 255, 117, 0.3);
+      transform: scale(1.01);
+      border-radius: 20px;
+      transition: all 0.8s;
     }
   }
   section img {

@@ -43,10 +43,10 @@ const Dashboard = () => {
     }
   };
 
-  const handleTodo = (todo) => {
-    const filterTodo = List.filter((filterTodo) => filterTodo !== todo);
-    setList(filterTodo);
-  };
+	const handleTodo = (todo) => {
+		const filterTodo = List.filter((filterTodo) => filterTodo !== todo);
+		setList(filterTodo);
+	};
 
   const handleInputChange = (e) => {
     e.preventDefault();
@@ -91,55 +91,61 @@ const Dashboard = () => {
               <form className="labelStates">
                 <label>Selecione o estado que voce atende:</label>
 
-                <DropDownBrazilianStates
-                  id="state"
-                  name="state"
-                  onChange={handleInputChange}
-                ></DropDownBrazilianStates>
-              </form>
-              <form className="labelCities">
-                <label>Selecione as cidades que voce atende:</label>
+								<DropDownBrazilianStates
+									id='state'
+									name='state'
+									onChange={
+										handleInputChange
+									}></DropDownBrazilianStates>
+							</form>
+							<form className='labelCities'>
+								<label>
+									Selecione as cidades que voce atende:
+								</label>
 
-                <DropDownBrazilianCities
-                  id="city"
-                  name="city"
-                  state={formValues.state}
-                  onChange={handleInputChange}
-                ></DropDownBrazilianCities>
-                <button
-                  className="btn"
-                  type="submit"
-                  value="Send"
-                  onClick={registerLocalService}
-                >
-                  adicionar
-                </button>
+								<DropDownBrazilianCities
+									id='city'
+									name='city'
+									state={formValues.state}
+									onChange={
+										handleInputChange
+									}></DropDownBrazilianCities>
+								<button
+									className='btn'
+									type='submit'
+									value='Send'
+									onClick={registerLocalService}>
+									adicionar
+								</button>
 
-                <div className="cidades-registradas">
-                  {cityServed.length !== 0 && (
-                    <label>Cidades registradas:</label>
-                  )}
-                  <ul>
-                    {cityServed.map((item, index) => {
-                      return (
-                        <li key={index} value={item}>
-                          <button
-                            className="btn"
-                            onClick={() => {
-                              setCityServed(
-                                cityServed.filter((elem) => elem !== item)
-                              );
-                            }}
-                          >
-                            x
-                          </button>
-                          {item.city}
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </div>
-              </form>
+								<div className='cidades-registradas'>
+									{cityServed.length !== 0 && (
+										<label>Cidades registradas:</label>
+									)}
+									<ul>
+										{cityServed.map((item, index) => {
+											return (
+												<li key={index} value={item}>
+													<button
+														className='btn'
+														onClick={() => {
+															setCityServed(
+																cityServed.filter(
+																	(elem) =>
+																		elem !==
+																		item
+																)
+															);
+														}}>
+														x
+													</button>
+													{item.city}
+												</li>
+											);
+										})}
+									</ul>
+								</div>
+							</form>
 
               <div className="description">
                 <form onSubmit={(e) => e.preventDefault()}>

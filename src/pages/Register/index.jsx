@@ -1,7 +1,7 @@
 import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 import Form from "../../components/Form";
-import { proWorkingApi } from "../../services/api";
+import { proWorkingApi, chatApi } from "../../services/api";
 import { useAuthenticated } from "../../providers/authenticated";
 import { Redirect } from "react-router-dom";
 
@@ -12,6 +12,20 @@ const Register = () => {
   const history = useHistory();
   const { authenticated } = useAuthenticated();
   const { refreshWorkers } = useWorkers();
+
+  const createChatUser = (data) => {
+    const privateKey = "904cdef3-09bc-4891-80b2-6b3de0b6b1f8";
+    const dataChat = {
+      username: data.email,
+      secret: "proworking2022",
+      first_name: data.name,
+    };
+    chatApi.post("/users", dataChat, {
+      headers: {
+        "PRIVATE-KEY": privateKey,
+      },
+    }).catch(err=>console.log(`chat ${err}`));
+  };
 
   const handleSubmitCallBack = (data) => {
     delete data.confirm_password;
@@ -33,6 +47,7 @@ const Register = () => {
             toast.success("Conta criada com sucesso!", {
               toastId: "toastSuccess",
             });
+            createChatUser(data);
             history.push("/login");
           });
       })
