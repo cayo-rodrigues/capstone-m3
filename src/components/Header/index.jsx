@@ -27,6 +27,9 @@ const Header = () => {
           <BurgerMenuLink onClick={() => window.scrollTo(0, 0)} to="/services">
             Serviços
           </BurgerMenuLink>
+          <BurgerMenuLink onClick={() => window.scrollTo(0, 0)} to="/aboutus">
+            Sobre nós
+          </BurgerMenuLink>
           {authenticated ? (
             <>
               <BurgerMenuLink
@@ -45,9 +48,6 @@ const Header = () => {
               <BurgerMenuLink to="/register">Cadastre-se</BurgerMenuLink>
             </>
           )}
-          <BurgerMenuLink onClick={() => window.scrollTo(0, 0)} to="/aboutus">
-            Sobre nós
-          </BurgerMenuLink>
         </BurgerMenu>
         <figure>
           <img
@@ -67,7 +67,13 @@ const Header = () => {
           >
             Serviços
           </Link>
-
+          <Link
+            className={location.pathname === "/aboutus" ? "currentPage" : ""}
+            onClick={() => window.scrollTo(0, 0)}
+            to={"/aboutus"}
+          >
+            Sobre Nós
+          </Link>
           {authenticated ? (
             <>
               <Link
@@ -113,13 +119,6 @@ const Header = () => {
               </Link>
             </>
           )}
-          <Link
-            className={location.pathname === "/aboutus" ? "currentPage" : ""}
-            onClick={() => window.scrollTo(0, 0)}
-            to={"/aboutus"}
-          >
-            Sobre Nós
-          </Link>
         </Nav>
       </ContainerHeader>
     </Container>
