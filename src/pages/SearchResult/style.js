@@ -23,15 +23,26 @@ export const ServicePageContainer = styled.main`
 export const NotFound = styled.div`
   text-align: center;
   animation: fadeIn 1s;
-  img{
+  img {
     width: 250px;
     height: 250px;
     margin: 20px auto;
   }
-  h2{
+  h2 {
     font-weight: 500;
     text-align: center;
     font-size: 14px;
   }
+`;
 
-`
+export const TopBar = styled.div`
+  width: 100%;
+  background-color: var(--midgrey);
+  text-align: center;
+
+  @media screen and (min-width: 760px) {
+    display: flex;
+    justify-content: right;
+    align-items: center;
+  }
+`;

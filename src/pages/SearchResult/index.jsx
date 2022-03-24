@@ -1,11 +1,11 @@
-import { ServicePageContainer,NotFound } from "./style";
+import { ServicePageContainer, NotFound, TopBar } from "./style";
 
 import CardBox from "../../components/CardBox";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { useWorkers } from "../../providers/workers";
 import { useEffect, useState } from "react";
-import  NotFoundImg  from '../../assets/svg/not_found.svg'
-
+import NotFoundImg from "../../assets/svg/not_found.svg";
+import SearchBar from "../../components/SearchBar";
 
 const SearchResults = () => {
   const { workers, refreshWorkers } = useWorkers();
@@ -40,20 +40,25 @@ const SearchResults = () => {
 
     setSearchResults(filteredWorkers);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [search]);
 
   return (
-    <ServicePageContainer>
-      <h1>Resultados para a pesquisa "{search}"  </h1>
-      {searchResults.length !== 0 ? <CardBox workers={searchResults} /> : (
-        <NotFound>
-            <img src={NotFoundImg} alt='Não encontrado' />
+    <>
+      <TopBar>
+        <SearchBar />
+      </TopBar>
+      <ServicePageContainer>
+        <h1>Resultados para a pesquisa "{search}" </h1>
+        {searchResults.length !== 0 ? (
+          <CardBox workers={searchResults} />
+        ) : (
+          <NotFound>
+            <img src={NotFoundImg} alt="Não encontrado" />
             <h2>Nenhum resultado encontrado</h2>
-        </NotFound>
-      )
-
-      }
-    </ServicePageContainer>
+          </NotFound>
+        )}
+      </ServicePageContainer>
+    </>
   );
 };
 
