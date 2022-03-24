@@ -1,4 +1,3 @@
-
 import Form from "../../components/Form";
 
 import { proWorkingApi } from "../../services/api";
@@ -9,48 +8,74 @@ import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import { LoginContainer } from "./styles";
+import { useAuthGoogle } from "../../providers/authGoogle";
+
+import { firebase, auth } from "../../services/firebase";
 
 const Login = () => {
-    const { handleUser } = useUser();
-    const { authenticated, setAuthenticated } = useAuthenticated();
+  const { handleUser } = useUser();
+  const { authenticated, setAuthenticated } = useAuthenticated();
+  const { user, setUser } = useAuthGoogle();
 
-    const history = useHistory();
+  const history = useHistory();
 
-    const handleSubmitCallBack = (dataUser) => {
+  const handleSubmitCallBack = (dataUser) => {
+    proWorkingApi
+      .post("/login", dataUser)
+      .then(({ data }) => {
+        console.log(data);
+        handleUser(data);
+        setAuthenticated(true);
+        history.push("/dashboard");
+        toast.success("Login feito com sucesso");
+      })
+      .catch(() =>
+        toast.error("Email ou senha incorretos!", {
+          toastId: "toastError",
+        })
+      );
+  };
 
-        proWorkingApi
-            .post("/login", dataUser)
-            .then(({ data }) => {
-                console.log(data)
-                handleUser(data);
-                setAuthenticated(true);
-                history.push("/dashboard");
-                toast.success('Login feito com sucesso')
-            })
-            .catch(() =>
-                toast.error("Email ou senha incorretos!", {
-                    toastId: "toastError",
-                })
-            );
-    };
+  const handleClickButtonLogin = async () => {
+    const provider = new firebase.auth.GoogleAuthProvider();
 
-    if (authenticated) {
-        return <Redirect to={"/dashboard"} />;
+    const result = await auth.signInWithPopup(provider);
+    if (result.user) {
+      const { displayName, email } = result.user;
+
+      if (!displayName) throw new Error("O Usuario não tem Nome");
+
+      setUser({
+        name: displayName,
+        email: email,
+        password: "proworking2022",
+      });
+
+      handleSubmitCallBack(user);
     }
+  };
 
-    return (
-        <>
-            <LoginContainer>
-                <div className='col-left col'>
-                    <div></div>
-                </div>
+  if (authenticated) {
+    return <Redirect to={"/dashboard"} />;
+  }
 
-                <div className='col-right col'>
-                    <Form isLogin handleSubmitCallBack={handleSubmitCallBack} />
-                </div>
-            </LoginContainer>
-        </>
-    );
+  return (
+    <>
+      <LoginContainer>
+        <div className="col-left col">
+          <div></div>
+        </div>
+
+        <div className="col-right col">
+          <Form
+            isLogin
+            handleSubmitCallBack={handleSubmitCallBack}
+            handleClickButtonLogin={handleClickButtonLogin}
+          />
+        </div>
+      </LoginContainer>
+    </>
+  );
 };
 
 export default Login;

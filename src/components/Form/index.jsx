@@ -12,7 +12,13 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 
-const Form = ({ isLogin, isRegister, handleSubmitCallBack }) => {
+const Form = ({
+  isLogin,
+  isRegister,
+  handleSubmitCallBack,
+  handleClickButtonLogin,
+  handleClickButtonRegister,
+}) => {
   const schemaLogin = yup.object().shape({
     email: yup
       .string()
@@ -70,6 +76,8 @@ const Form = ({ isLogin, isRegister, handleSubmitCallBack }) => {
             type={"password"}
           />
           <Button type="submit">Logar</Button>
+
+          <Button onClick={handleClickButtonLogin}>Logar google</Button>
         </FormContainer>
       )}
       {isRegister && (
@@ -111,6 +119,9 @@ const Form = ({ isLogin, isRegister, handleSubmitCallBack }) => {
           />
 
           <Button type="submit">Cadastrar</Button>
+          <Button onClick={handleClickButtonRegister}>
+            Cadastrar com google
+          </Button>
         </FormContainer>
       )}
       <FormFooter>
