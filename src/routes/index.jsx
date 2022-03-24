@@ -9,6 +9,7 @@ import AboutUs from "../pages/AboutUs";
 import How from "../pages/How";
 import ServiceProfilePage from "../pages/ServiceProfilePage";
 import SearchResults from "../pages/SearchResult";
+import DashboardHomePage from "../pages/Dashboard/InitialPage";
 
 const Routes = () => {
   return (
@@ -25,7 +26,10 @@ const Routes = () => {
       />
       <Route exact path={`/services/:search`} component={SearchResults} />
 
-      <Route exact path="/dashboard" component={Dashboard} />
+      <Route exact path="/dashboard" component={DashboardHomePage} />
+
+      <Route exact path="/dashboard/service-register" component={Dashboard} />
+      
       <Route exact path="/login" component={Login} />
       <Route exact path="/register" component={Register} />
       <Route path="*" component={NotFoundPage} />
