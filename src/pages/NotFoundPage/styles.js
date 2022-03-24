@@ -10,8 +10,7 @@ export const Container = styled.div`
     font-size: 30px;
     width: fit-content;
     margin: 0 auto;
-    color: var(--black);
-    text-shadow: 0px 3px 3px var(--color-aux);
+    color: var(--color-aux);
   }
 
   @media screen and (min-width: 911px) {

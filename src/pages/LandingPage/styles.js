@@ -196,7 +196,7 @@ export const HowItWorks = styled.main`
       p {
         line-height: 1.8rem;
         @media (max-width: 450px) {
-          line-height: 1rem;
+          line-height: 1.7rem;
           font-size: 14px;
         }
       }
