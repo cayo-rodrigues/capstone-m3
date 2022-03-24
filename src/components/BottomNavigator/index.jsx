@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import { NavigatorContainerDiv } from "./style.js";
 
-import { AiOutlineHome, AiFillDashboard,AiOutlineLogout } from "react-icons/ai";
+import {
+  AiOutlineHome,
+  AiFillDashboard,
+  AiOutlineLogout,
+} from "react-icons/ai";
 import { MdWorkOutline } from "react-icons/md";
 import { FiLogIn } from "react-icons/fi";
 import { BiRegistered } from "react-icons/bi";
@@ -12,36 +16,30 @@ import { useAuthenticated } from "../../providers/authenticated/index.js";
 import { toast } from "react-toastify";
 import { useEffect, useState } from "react";
 
+let lastScrollTop = 0;
 
-let lastScrollTop =0
-
-
-const eventOnScroll = ()=>{
-  let scrollTop =window.pageYOffset || document.documentElement.scrollTop
-  let scrollType =false
-  if(scrollTop>lastScrollTop){
-    scrollType = true
-  }else{
-    scrollType = false
+const eventOnScroll = () => {
+  let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  let scrollType = false;
+  if (scrollTop > lastScrollTop) {
+    scrollType = true;
+  } else {
+    scrollType = false;
   }
-  lastScrollTop = scrollTop
-  return scrollType
-}
-
-
+  lastScrollTop = scrollTop;
+  return scrollType;
+};
 
 const BottomNavigator = () => {
   const location = useLocation();
-  const { authenticated,setAuthenticated } = useAuthenticated();
-  const [upOrDown,setUpOrDown] = useState(false)
+  const { authenticated, setAuthenticated } = useAuthenticated();
+  const [upOrDown, setUpOrDown] = useState(false);
 
-
-  useEffect(()=>{
-    window.addEventListener("scroll",()=> setUpOrDown( eventOnScroll() ) )
-    return ()=>window.removeEventListener("scroll",()=> setUpOrDown( eventOnScroll() ))
-  },[])
-
-
+  useEffect(() => {
+    window.addEventListener("scroll", () => setUpOrDown(eventOnScroll()));
+    return () =>
+      window.removeEventListener("scroll", () => setUpOrDown(eventOnScroll()));
+  }, []);
 
   const menuAuthenticated = [
     {
@@ -65,7 +63,7 @@ const BottomNavigator = () => {
       Icon: AiFillDashboard,
     },
     {
-      title: "Logout",
+      title: "Sair",
       path: "/",
       Icon: AiOutlineLogout,
     },
@@ -82,7 +80,7 @@ const BottomNavigator = () => {
       Icon: MdWorkOutline,
     },
     {
-      title: "Login",
+      title: "Entrar",
       path: "/login",
       Icon: FiLogIn,
     },
@@ -98,9 +96,8 @@ const BottomNavigator = () => {
     },
   ];
 
-
   return (
-    <NavigatorContainerDiv upOrDown={upOrDown} >
+    <NavigatorContainerDiv upOrDown={upOrDown}>
       <nav>
         <ul>
           {authenticated
@@ -108,15 +105,19 @@ const BottomNavigator = () => {
                 <li key={title}>
                   <Link
                     to={path}
-                    onClick={() =>{
-                       window.scrollTo(0, 0)
-                       if(title==="Logout") {
-                        setAuthenticated(false)
-                        localStorage.clear()
-                        toast("Você foi deslogado")
-                       }
-                      }}
-                    className={title!=="Logout" && location.pathname === path ? "selected" : ""}
+                    onClick={() => {
+                      window.scrollTo(0, 0);
+                      if (title === "Sair") {
+                        setAuthenticated(false);
+                        localStorage.clear();
+                        toast("Você foi deslogado");
+                      }
+                    }}
+                    className={
+                      title !== "Sair" && location.pathname === path
+                        ? "selected"
+                        : ""
+                    }
                   >
                     <div>
                       <p>
