@@ -18,7 +18,7 @@ const ChatMessages = ({
                 ))}
             </BoxMessages>
             <BoxInput>
-                <input
+                <textarea
                     placeholder='Digite sua mensagem aqui...'
                     value={inputMessage}
                     onChange={(event) => setInputMessage(event.target.value)}
