@@ -35,9 +35,10 @@ AOS.init({
 //   },
 // };
 
-const Card = ({ nome, img, especialidades=[], locais=[], id }) => {
-  // const [ setIsOpen] = useState(false);
 
+const Card = ({ nome, img, especialidades = [], locais = [], id }) => {
+
+  // const [ setIsOpen] = useState(false);
   // function openModal(e) {
   //   if (e.target.tagName === "SECTION") {
   //     setIsOpen(true);

@@ -38,7 +38,7 @@ export const ServiceContainer = styled.main`
     align-items: center;
     span {
       font-size: 90px;
-      color: var(--whitesmoke);
+      color: var(--yellow);
       font-weight: bold;
       font-family: var(--font-title);
       letter-spacing: -7px;
@@ -269,5 +269,12 @@ export const ServiceContainer = styled.main`
         width: 270px;
       }
     }
+  }
+`;
+
+export const RatingContainer = styled.section`
+  span {
+    font-size: 2.5rem;
+    transform: translateY(0.5px);
   }
 `;

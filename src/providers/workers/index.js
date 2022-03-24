@@ -13,10 +13,12 @@ export const WorkersProvider = ({ children }) => {
   }, []);
 
   const refreshWorkers = () => {
-    proWorkingApi.get("/workers?_expand=user").then(({ data }) => {
-      setWorkers(data);
-      localStorage.setItem("@ProWorking:workers", JSON.stringify(data));
-    });
+    proWorkingApi
+      .get("/workers?_expand=user&_embed=ratings&_embed=feedbacks")
+      .then(({ data }) => {
+        setWorkers(data);
+        localStorage.setItem("@ProWorking:workers", JSON.stringify(data));
+      });
   };
 
   return (
