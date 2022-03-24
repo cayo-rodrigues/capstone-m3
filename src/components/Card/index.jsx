@@ -1,9 +1,11 @@
-import { Container } from "./styles";
+import { Container, Imagem, ModalContainer } from "./styles";
 import React from "react";
-
+import { useState } from "react";
+import Modal from "react-modal";
 import AOS from "aos";
 import "aos/dist/aos.css"; // You can also use <link> for styles
-
+import whatsapp from "../../assets/Whatsapp.png";
+import email from "../../assets/Email.png";
 import DefaultUserImg from "../../assets/profile 1.png";
 import { Link } from "react-router-dom";
 
@@ -17,59 +19,76 @@ AOS.init({
   anchorPlacement: "top-bottom", // defines which position of the element regarding to window should trigger the animation
 });
 
-// const customStyles = {
-//   content: {
-//     top: "50%",
-//     left: "50%",
-//     right: "auto",
-//     bottom: "auto",
-//     marginRight: "-50%",
-//     transform: "translate(-50%, -45%)",
-//     width: "96%",
-//     maxWidth: "600px",
-//     height: "500px",
-//     display: "flex",
-//     justifyContent: "space-around",
-//     flexDirection: "column",
-//     alignItems: "center",
-//   },
-// };
-
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -45%)",
+    width: "96%",
+    maxWidth: "600px",
+    height: "500px",
+    display: "flex",
+    justifyContent: "space-around",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+};
 
 const Card = ({ nome, img, especialidades = [], locais = [], id }) => {
+  let subtitle;
+  const [open, setIsOpen] = useState(false);
 
-  // const [ setIsOpen] = useState(false);
-  // function openModal(e) {
-  //   if (e.target.tagName === "SECTION") {
-  //     setIsOpen(true);
-  //   } else if (
-  //     e.target.tagName === "LI" ||
-  //     e.target.tagName === "IMG" ||
-  //     e.target.tagName === "H2"
-  //   ) {
-  //     setIsOpen(true);
-  //   } else {
-  //     setIsOpen(true);
-  //   }
-  // }
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    subtitle.style.color = "#f00";
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
+
+  function openModal(e) {
+    if (e.target.tagName === "SECTION") {
+      setIsOpen(true);
+    } else if (
+      e.target.tagName === "LI" ||
+      e.target.tagName === "IMG" ||
+      e.target.tagName === "H2"
+    ) {
+      setIsOpen(true);
+    } else {
+      setIsOpen(true);
+    }
+  }
+  
   return (
     <Container>
-      {/* <Modal
-        isOpen={modalIsOpen}
+      <Modal
+        isOpen={open}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Example Modal"
       >
         <ModalContainer id={id} onClick={(e) => openModal(e)}>
           <div>
-            <h2>{especialidades.join(', ')}</h2>
+            <h2>{nome}</h2>
             <Imagem src={DefaultUserImg} alt="Imagem" />
-          </Div>
+          </div>
 
           <ul>
             <h3>Especialidade:</h3>
-
-            <li>{especialidades}</li>
+            <ul>
+              {especialidades.map((especialidade) => {
+                return <li>{especialidade}</li>;
+              })}
+            </ul>
             <div className="link">
               <Link
                 to={`/services/${id}/${nome}`}
@@ -79,6 +98,16 @@ const Card = ({ nome, img, especialidades = [], locais = [], id }) => {
               </Link>
             </div>
           </ul>
+              
+            <p>Locais de atendimento:</p>
+            <ul className="location">
+            {locais.slice(0, 2).map((local, index) => (
+              <li className="locationDiv" key={`${local}-${index}`}>
+                {local.state}- {local.city}
+              </li>
+            ))}
+          </ul>
+
           <span>
             <button
               onClick={() => {
@@ -105,13 +134,12 @@ const Card = ({ nome, img, especialidades = [], locais = [], id }) => {
             </button>
           </span>
         </ModalContainer>
-
-      </Modal> */}
+      </Modal>
       <section
         data-aos="fade-in"
         data-aos-delay="150"
         id={id}
-        // onClick={(e) => openModal(e)}
+        onClick={(e) => openModal(e)}
       >
         <div className="titleAndImg">
           <h2 className="title">{nome}</h2>
