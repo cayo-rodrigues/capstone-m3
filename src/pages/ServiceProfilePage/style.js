@@ -4,6 +4,9 @@ export const ServiceContainer = styled.main`
   max-width: 1400px;
   margin: 60px auto;
   animation: fadeIn 1s;
+  span {
+    color: white;
+  }
   @media (max-width: 710px) {
     margin: 10px auto 0px;
   }
@@ -230,6 +233,7 @@ export const ServiceContainer = styled.main`
           font-size: 17px;
           padding: 0;
           margin: 0;
+          margin-bottom: 3px;
         }
         p {
           padding: 0;
@@ -256,18 +260,24 @@ export const ServiceContainer = styled.main`
       min-height: 150px;
       max-height: 250px;
       position: relative;
+      margin-bottom: 3px;
+    }
+    .botaoSpan{
+      display: flex;
+      flex-direction: column;
+      
+    }
+    span {
+      margin-top: 10px;
+      color: var(--black);
+      font-size: 12px;
+      left: 0px;
+      width: 270px;
     }
     button {
+      margin: 0;
+      margin-top: 10px;
       position: relative;
-      ::after {
-        content: "Para poder comentar é necessário estar logado";
-        position: absolute;
-        color: var(--black);
-        bottom: -30px;
-        font-size: 12px;
-        left: 0px;
-        width: 270px;
-      }
     }
   }
 `;

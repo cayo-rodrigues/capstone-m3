@@ -11,7 +11,6 @@ export const Container = styled.button`
   border-radius: 26px;
   font-size: 18px;
   margin: 3px 10px;
-
   border: 2px solid
     ${(props) =>
       props.isprimary === true
