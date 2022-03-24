@@ -10,12 +10,12 @@ import { useAuthenticated } from "../../../providers/authenticated";
 const DashboardHomePage = () => {
   const profile = JSON.parse(localStorage.getItem("@ProWorking:user"));
 
-  const {authenticated} = useAuthenticated()
+  const { authenticated } = useAuthenticated();
 
   if (!authenticated) {
     return <Redirect to={"/"} />;
   }
-  
+
   return (
     <DashboardContainer>
       <h1>Seja bem vindo {profile.name}!! 😊 </h1>
@@ -24,21 +24,27 @@ const DashboardHomePage = () => {
         <Link to={"/dashboard/service-register"}>
           <li>
             <img src={Cadastro} alt="Cadastrar" />
-            <h3>Cadastrar serviço ou Atualizar perfil</h3>
+            <div>
+              <h3>Cadastrar serviço ou Atualizar perfil</h3>
+            </div>
           </li>
         </Link>
 
         <Link to={"/dashboard/jobs-register"}>
           <li>
             <img src={CriarAnuncios} alt="Criar serviço" />
-            <h3>Criar Anúncio para Contratar Alguém</h3>
+            <div>
+              <h3>Criar Anúncio para Contratar Alguém</h3>
+            </div>
           </li>
         </Link>
 
         <Link to={"/dashboard/all-jobs"}>
           <li>
             <img src={VerAnúncios} alt="Ver anúncios" />
-            <h3>Ver anúncios de Serviço</h3>
+            <div>
+              <h3>Ver anúncios de Serviço</h3>
+            </div>
           </li>
         </Link>
       </ul>
