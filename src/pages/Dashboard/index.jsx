@@ -14,15 +14,18 @@ import { useAuthenticated } from "../../providers/authenticated";
 import { useWorkers } from "../../providers/workers";
 import { toast } from "react-toastify";
 import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const Dashboard = () => {
   const { authenticated } = useAuthenticated();
+  const history = useHistory();
 
-  const profile = JSON.parse(localStorage.getItem("@ProWorking:user"));
+  const profile = JSON.parse(localStorage.getItem("@ProWorking:user")) || {};
   const token = localStorage.getItem("@ProWorking:token");
 
   const { workers, refreshWorkers } = useWorkers();
-  const workerProfile = workers.find(({ userId }) => userId === profile.id);
+  const workerProfile =
+    workers.find(({ userId }) => userId === profile.id) || {};
 
   const [wrongNumber, setWrongNumber] = useState(false);
   const [error, setError] = useState(false);
@@ -163,6 +166,7 @@ const Dashboard = () => {
                     Breve descrição de seus serviços:
                   </label>
                   <textarea
+                    maxLength={250}
                     id="w3review"
                     name="w3review"
                     rows="4"
@@ -171,6 +175,7 @@ const Dashboard = () => {
                     defaultValue={bio}
                     onChange={(e) => setBio(e.target.value)}
                   ></textarea>
+                  <p>{bio.length}/250</p>
                   <input
                     onClick={() => {
                       if (
@@ -198,6 +203,14 @@ const Dashboard = () => {
                           .then(() => {
                             toast.success("Perfil Atualizado");
                             refreshWorkers();
+                            window.scrollTo(0, 0);
+                            if (isWorker) {
+                              history.push(
+                                `/services/${workerProfile.id}/${profile.name}`
+                              );
+                            } else {
+                              history.push("/dashboard");
+                            }
                           })
                           .catch(() =>
                             toast.error(

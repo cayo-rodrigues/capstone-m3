@@ -12,6 +12,10 @@ export const GlobalStyle = createGlobalStyle`
     height: 100%;
   }
 
+  li {
+    list-style: none;
+  }
+
   :root {
     --color-primary: #002d9b;
     --color-secondary: #43568d;
@@ -25,11 +29,13 @@ export const GlobalStyle = createGlobalStyle`
     --grey: #808080;
     --lightgrey: #ddd;
     --lightergrey: #eee;
+    --midgrey: #eceff1;
     --blue: #0000ff;
     --lightblue: #add8e6;
     --darkblue: #00008b;
     --green: #008000;
     --darkgreen: #006400;
+    --yellow: #fff900;
     --red: #ff0000;
     --error: #e4266f;
 
