@@ -11,8 +11,9 @@ const RatingStars = ({ workerId, value = 0, isEditable = false }) => {
 
   const handleRating = (rating) => {
     if (!user.id) {
-      return toast.error("Faça login para deixar uma avaliação");
+      return toast.error("Faça login para avaliar");
     }
+
     proWorkingApi
       .get("/ratings", {
         params: {

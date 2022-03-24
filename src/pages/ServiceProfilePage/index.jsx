@@ -146,7 +146,7 @@ const ServiceProfilePage = () => {
           onClick={() => {
             if (authenticated) {
             } else {
-              toast.error("Faça login para poder deixar seu feedback!");
+              toast.error("Faça login para comentar");
             }
           }}
         >
