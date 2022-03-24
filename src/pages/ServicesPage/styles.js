@@ -42,6 +42,7 @@ export const SearchCity = styled.div`
     margin: 0px auto;
     min-height: 380px;
     @media (max-width: 768px) {
+    min-height: 210px;
       padding: 40px 0;
     }
   }
