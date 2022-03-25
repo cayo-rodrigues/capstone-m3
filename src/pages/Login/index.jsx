@@ -16,6 +16,7 @@ const Login = () => {
   const { handleUser } = useUser();
   const { authenticated, setAuthenticated } = useAuthenticated();
 
+
   const { user, setUser } = useAuthGoogle();
 
   const history = useHistory();
@@ -36,6 +37,7 @@ const Login = () => {
         })
       );
   };
+
 
   const handleClickButtonLogin = async () => {
     const provider = new firebase.auth.GoogleAuthProvider();
@@ -69,11 +71,13 @@ const Login = () => {
         </div>
 
         <div className="col-right col">
+
           <Form
             isLogin
             handleSubmitCallBack={handleSubmitCallBack}
             handleClickButtonLogin={handleClickButtonLogin}
           />
+
         </div>
       </LoginContainer>
     </>

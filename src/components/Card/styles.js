@@ -112,10 +112,14 @@ export const Container = styled.div`
     margin: 0 auto;
     list-style: none;
     color: var(--color-secondary);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
     > li {
       text-align: left;
       width: 80%;
     }
+
     > p {
       width: 100%;
       text-align: start;
@@ -158,6 +162,13 @@ export const ModalContainer = styled.div`
   flex-direction: column;
   justify-content: space-around;
 
+  .headerModal {
+    display: flex;
+    @media (max-width: 600px) {
+      flex-direction: column-reverse;
+    }
+  }
+
   > h3 {
     width: 60%;
   }
@@ -188,17 +199,31 @@ export const ModalContainer = styled.div`
 
   p {
     margin-top: 5px;
-    text-align: center;
+
+    text-align: left;
+    width: 80%;
+    margin: 0 auto;
+
   }
 
   ul {
     display: flex;
     flex-direction: column;
     justify-content: start;
-    align-items: center;
+
+    align-items: flex-start;
+
     width: 80%;
     margin: 0 auto;
     color: var(--color-secondary);
+
+
+    > li {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      width: 80%;
+    }
 
     > h3 {
       text-align: left;
@@ -228,6 +253,8 @@ export const ModalContainer = styled.div`
     justify-content: space-between;
   }
   .link {
+    display: flex;
+    justify-content: center;
     margin-top: 10px;
     text-align: center;
     width: 100%;
@@ -237,7 +264,9 @@ export const ModalContainer = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: center;
+
+    justify-content: flex-start;
+
     color: black;
     font-size: 14px;
     margin: 15px auto;
