@@ -152,14 +152,6 @@ const Card = ({ nome, img, especialidades = [], locais = [], id }) => {
             Ver o perfil Completo
           </Link>
         </p>
-        {/* <span>
-          <button>
-            <img src={email} alt="" />
-          </button>
-          <button>
-            <img src={whatsapp} alt="" />
-          </button>
-        </span> */}
       </section>
     </Container>
   );
