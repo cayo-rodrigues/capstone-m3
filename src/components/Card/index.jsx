@@ -76,7 +76,6 @@ const Card = ({ nome, img, especialidades, id }) => {
 
           <ul>
             <h3>Especialidade:</h3>
-
             <li>{especialidades}</li>
             <div className="link">
               <Link
