@@ -11,25 +11,37 @@ import { useForm } from "react-hook-form";
 
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import GoogleButton from "../GoogleButton";
 
-const Form = ({ isLogin, isRegister, handleSubmitCallBack }) => {
+
+const Form = ({
+  isLogin,
+  isRegister,
+  handleSubmitCallBack,
+  handleClickButtonLogin,
+  handleClickButtonRegister,
+}) => {
+
   const schemaLogin = yup.object().shape({
-    email: yup
-      .string()
-      .email("precisa ser um email válido")
-      .required("Campo Obrigatório"),
+    email: yup.string().email("Email inválido").required("Campo Obrigatório"),
     password: yup.string().required("Campo Obrigatório"),
   });
   const schemaRegister = yup.object().shape({
-    name: yup.string().required("Campo Obrigatório"),
-    email: yup
+    name: yup
       .string()
-      .email("precisa ser um email válido")
-      .required("Campo Obrigatório"),
-    password: yup.string().required("Campo Obrigatório"),
+      .required("Campo Obrigatório")
+      .matches(
+        /[0-9]{0}[aA-zZ]{1,99}/gm,
+        "Nome deve conter pelo menos uma letra"
+      ),
+    email: yup.string().email("Email inválido").required("Campo Obrigatório"),
+    password: yup
+      .string()
+      .required("Campo Obrigatório")
+      .min(6, "Senha deve ter no mínimo 6 caracteres"),
     confirm_password: yup
       .string()
-      .oneOf([yup.ref("password"), null], "senhas devem ser iguais")
+      .oneOf([yup.ref("password"), null], "Senhas devem ser iguais")
       .required("Campo Obrigatório"),
   });
 
@@ -63,7 +75,12 @@ const Form = ({ isLogin, isRegister, handleSubmitCallBack }) => {
             placeholder="Senha"
             type={"password"}
           />
-          <Button type="submit">Logar</Button>
+
+          <Button type="submit">Entrar</Button>
+          <GoogleButton
+            onClick={handleClickButtonLogin}
+            text="Entrar com Google"
+          />
         </FormContainer>
       )}
       {isRegister && (
@@ -105,6 +122,11 @@ const Form = ({ isLogin, isRegister, handleSubmitCallBack }) => {
           />
 
           <Button type="submit">Cadastrar</Button>
+
+          <GoogleButton
+            onClick={handleClickButtonRegister}
+            text="Registrar com Google"
+          />
         </FormContainer>
       )}
       <FormFooter>

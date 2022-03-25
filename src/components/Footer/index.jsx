@@ -13,19 +13,6 @@ import { GoLocation } from "react-icons/go";
 import { useLocation } from "react-router-dom";
 import { useAuthenticated } from "../../providers/authenticated";
 
-import AOS from "aos";
-import "aos/dist/aos.css";
-
-AOS.init({
-  offset: 120,
-  delay: 0,
-  duration: 1000,
-  easing: "ease",
-  once: false,
-  mirror: false,
-  anchorPlacement: "top-bottom",
-});
-
 const Footer = () => {
   const location = useLocation();
   const { authenticated } = useAuthenticated();
@@ -50,7 +37,7 @@ const Footer = () => {
             <li>
               <Link to="/" onClick={() => window.scrollTo(0, 0)}>
                 Home
-              </Link>
+              </Link>{" "}
             </li>
 
             {authenticated === false && (
@@ -58,12 +45,12 @@ const Footer = () => {
                 <li>
                   <Link to="/login" onClick={() => window.scrollTo(0, 0)}>
                     Login
-                  </Link>
+                  </Link>{" "}
                 </li>
                 <li>
                   <Link to="/register" onClick={() => window.scrollTo(0, 0)}>
                     Cadastro
-                  </Link>
+                  </Link>{" "}
                 </li>
               </>
             )}
@@ -71,19 +58,24 @@ const Footer = () => {
               <li>
                 <Link to="/dashboard" onClick={() => window.scrollTo(0, 0)}>
                   Dashboard
-                </Link>
+                </Link>{" "}
               </li>
             )}
             <li>
               <Link to="/services" onClick={() => window.scrollTo(0, 0)}>
                 Services
-              </Link>
+              </Link>{" "}
             </li>
             <li>
               <Link to="/aboutus" onClick={() => window.scrollTo(0, 0)}>
                 Sobre nós
-              </Link>
+              </Link>{" "}
             </li>
+            {/* <li>
+              <Link to="/how" onClick={() => window.scrollTo(0, 0)}>
+                Como funciona
+              </Link>{" "}
+            </li> */}
           </ul>
         </div>
 
@@ -96,19 +88,28 @@ const Footer = () => {
               <AiFillMail /> cavalo@mail.com.com.com
             </li>
             <li>
-              <GoLocation /> Curitiba, Paraná
+              {" "}
+              <GoLocation /> Curitiba, Paraná{" "}
             </li>
             <li> Kenzie Academy Brasil </li>
           </ul>
         </div>
 
         <div data-aos="fade-up" data-aos-delay="350" className="footer-button">
-          <Button>Entre em contato</Button>
+          <Button
+            onClick={() =>
+              window.open(
+                "https://chatting.page/pfld2gf05vk4z3599sognbmfltyplgom"
+              )
+            }
+          >
+            Entre em contato
+          </Button>
         </div>
       </div>
       <p>
         Desenvolvido por ProWorking 💜 | &copy; 2022 Todos os direitos
-        Reservados
+        Reservados{" "}
       </p>
     </FooterContainer>
   );

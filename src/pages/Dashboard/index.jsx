@@ -14,15 +14,20 @@ import { useAuthenticated } from "../../providers/authenticated";
 import { useWorkers } from "../../providers/workers";
 import { toast } from "react-toastify";
 import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const Dashboard = () => {
   const { authenticated } = useAuthenticated();
 
-  const profile = JSON.parse(localStorage.getItem("@ProWorking:user"));
-  const token = localStorage.getItem("@ProWorking:token");
+  const [user] = useState(
+    JSON.parse(localStorage.getItem("@ProWorking:user")) || {}
+  );
+
+  const history = useHistory();
 
   const { workers, refreshWorkers } = useWorkers();
-  const workerProfile = workers.find(({ userId }) => userId === profile.id);
+  const workerProfile =
+    workers.find(({ userId }) => userId === user.user?.id) || {};
 
   const [wrongNumber, setWrongNumber] = useState(false);
   const [error, setError] = useState(false);
@@ -73,7 +78,7 @@ const Dashboard = () => {
           <div className="childContainer">
             <div className="profile">
               <h3>
-                Olá 👋 {profile.name}, atualize ou insira as suas informações
+                Olá 👋 {user.user?.name}, atualize ou insira as suas informações
               </h3>
               <img src={picture} alt="Foto de perfil" />
             </div>
@@ -163,6 +168,7 @@ const Dashboard = () => {
                     Breve descrição de seus serviços:
                   </label>
                   <textarea
+                    maxLength={250}
                     id="w3review"
                     name="w3review"
                     rows="4"
@@ -171,6 +177,7 @@ const Dashboard = () => {
                     defaultValue={bio}
                     onChange={(e) => setBio(e.target.value)}
                   ></textarea>
+                  <p>{bio.length}/250</p>
                   <input
                     onClick={() => {
                       if (
@@ -187,17 +194,25 @@ const Dashboard = () => {
                           whatsapp: whatsapp,
                           cities: cityServed,
                           occupation_areas: List,
-                          userId: profile.id,
+                          userId: user.user?.id,
                         };
                         proWorkingApi
                           .patch(`/workers/${workerProfile.id}`, requisition, {
                             headers: {
-                              Authorization: `Bearer ${token}`,
+                              Authorization: `Bearer ${user.accessToken}`,
                             },
                           })
                           .then(() => {
                             toast.success("Perfil Atualizado");
                             refreshWorkers();
+                            window.scrollTo(0, 0);
+                            if (isWorker) {
+                              history.push(
+                                `/services/${workerProfile.id}/${user.user?.name}`
+                              );
+                            } else {
+                              history.push("/dashboard");
+                            }
                           })
                           .catch(() =>
                             toast.error(

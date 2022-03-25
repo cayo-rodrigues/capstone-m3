@@ -101,7 +101,9 @@ export const ContainerInputSearch = styled.input`
   }
 
   :focus {
-    border-color: var(--black);
+    border-top-color: var(--black);
+    border-left-color: var(--black);
+    border-bottom-color: var(--black);
     ::placeholder {
       transition: 0.5s;
       color: var(--white);

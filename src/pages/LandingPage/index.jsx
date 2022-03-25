@@ -19,20 +19,7 @@ import PeopleImg from "../../assets/svg/people_SVG.svg";
 import { AiOutlineSearch } from "react-icons/ai";
 
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-
-import AOS from "aos";
-import "aos/dist/aos.css";
 import { useState } from "react";
-
-AOS.init({
-  offset: 120,
-  delay: 0,
-  duration: 1000,
-  easing: "ease",
-  once: false,
-  mirror: false,
-  anchorPlacement: "top-bottom",
-});
 
 const LandingPage = () => {
   const history = useHistory();
@@ -107,10 +94,8 @@ const LandingPage = () => {
 
       <VideoSection>
         <iframe
-          data-aos="fade-in"
-          src="https://www.youtube.com/embed/wzUVgfQQK_4"
-          title="Proworkin"
-          frameBorder="0"
+          src="https://www.youtube.com/embed/WnzDrW6kti8"
+          title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         ></iframe>

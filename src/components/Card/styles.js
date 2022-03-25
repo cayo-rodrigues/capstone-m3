@@ -112,10 +112,14 @@ export const Container = styled.div`
     margin: 0 auto;
     list-style: none;
     color: var(--color-secondary);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
     > li {
       text-align: left;
       width: 80%;
     }
+
     > p {
       width: 100%;
       text-align: start;
@@ -152,11 +156,18 @@ export const Imagem = styled.img`
 export const ModalContainer = styled.div`
   border-radius: 8px;
   border: none;
-  width: 90%;
+  width: 100%;
   height: 90%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+
+  .headerModal {
+    display: flex;
+    @media (max-width: 600px) {
+      flex-direction: column-reverse;
+    }
+  }
 
   > h3 {
     width: 60%;
@@ -186,28 +197,50 @@ export const ModalContainer = styled.div`
     box-shadow: 2px 2px 11px 0px rgba(0, 0, 0, 0.75);
   }
 
+  p {
+    margin-top: 5px;
+
+    text-align: left;
+    width: 80%;
+    margin: 0 auto;
+
+  }
+
   ul {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    justify-content: start;
+
+    align-items: flex-start;
+
     width: 80%;
     margin: 0 auto;
     color: var(--color-secondary);
+
+
+    > li {
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
+      width: 80%;
+    }
+
     > h3 {
       text-align: left;
       margin-bottom: 10px;
       width: 100%;
     }
-    > li {
-      font-size: 20px;
-      text-align: left;
+    > ul {
       width: 100%;
-      list-style: none;
+      > li {
+        font-size: 16px;
+        width: 100%;
+        text-align: left;
+      }
+      text-overflow: ellipsis;
+      overflow: hidden;
+      white-space: nowrap;
     }
-    text-overflow: ellipsis;
-    overflow: hidden;
-    white-space: nowrap;
   }
   button {
     border-radius: 100%;
@@ -220,9 +253,43 @@ export const ModalContainer = styled.div`
     justify-content: space-between;
   }
   .link {
+    display: flex;
+    justify-content: center;
     margin-top: 10px;
-    text-align: left;
+    text-align: center;
     width: 100%;
+    cursor: pointer;
+  }
+  .location {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    justify-content: flex-start;
+
+    color: black;
+    font-size: 14px;
+    margin: 15px auto;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    flex-wrap: wrap;
+    gap: 10px;
+    width: 80%;
+    .locationDiv {
+      text-align: center;
+      padding: 5px 8px;
+      background-color: var(--lightblue);
+      border-radius: 20px;
+      margin: 3px 1px;
+      display: inline-block;
+      max-width: 110px;
+      color: var(--color-primary);
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
   }
 `;
 

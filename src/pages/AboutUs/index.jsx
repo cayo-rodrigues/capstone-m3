@@ -2,19 +2,6 @@ import { OurTeam } from "./styles";
 
 import { AiFillLinkedin } from "react-icons/ai";
 
-import AOS from "aos";
-import "aos/dist/aos.css";
-
-AOS.init({
-  offset: 120,
-  delay: 0,
-  duration: 1000,
-  easing: "ease",
-  once: false,
-  mirror: false,
-  anchorPlacement: "top-bottom",
-});
-
 const AboutUs = () => {
   const team = [
     {
