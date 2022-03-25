@@ -203,7 +203,6 @@ export const ModalContainer = styled.div`
     text-align: left;
     width: 80%;
     margin: 0 auto;
-
   }
 
   ul {
@@ -216,7 +215,6 @@ export const ModalContainer = styled.div`
     width: 80%;
     margin: 0 auto;
     color: var(--color-secondary);
-
 
     > li {
       text-overflow: ellipsis;

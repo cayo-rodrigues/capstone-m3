@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const NavigatorContainerDiv = styled.div`
   position: fixed;
-  bottom: ${props=>props.upOrDown ? "-85px" : "0"};
+  bottom: ${(props) => (props.upOrDown ? "-85px" : "0")};
   left: 0;
   width: 100%;
   background-color: var(--color-primary);
@@ -66,7 +66,7 @@ export const NavigatorContainerDiv = styled.div`
       align-items: center;
       display: flex;
       transition: 0.5s;
-      margin:  0 auto;
+      margin: 0 auto;
       background-color: var(--color-secondary);
       svg {
         border-radius: 50%;
