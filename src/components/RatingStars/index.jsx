@@ -6,11 +6,11 @@ import { Container } from "./styles";
 
 const RatingStars = ({ workerId, value = 0, isEditable = false }) => {
   const user = JSON.parse(localStorage.getItem("@ProWorking:user")) || {};
-  const token = localStorage.getItem("@ProWorking:token");
+  const { accessToken } = user;
   const { refreshWorkers } = useWorkers();
 
   const handleRating = (rating) => {
-    if (!user.id) {
+    if (!user.user) {
       return toast.error("Faça login para avaliar");
     }
 
@@ -18,7 +18,7 @@ const RatingStars = ({ workerId, value = 0, isEditable = false }) => {
       .get("/ratings", {
         params: {
           workerId,
-          userId: user.id,
+          userId: user.user.id,
         },
       })
       .then((res) => {
@@ -26,10 +26,10 @@ const RatingStars = ({ workerId, value = 0, isEditable = false }) => {
           proWorkingApi
             .post(
               "/ratings",
-              { stars: rating, workerId, userId: user.id },
+              { stars: rating, workerId, userId: user.user.id },
               {
                 headers: {
-                  Authorization: `Bearer ${token}`,
+                  Authorization: `Bearer ${accessToken}`,
                 },
               }
             )
@@ -41,7 +41,7 @@ const RatingStars = ({ workerId, value = 0, isEditable = false }) => {
               { stars: rating },
               {
                 headers: {
-                  Authorization: `Bearer ${token}`,
+                  Authorization: `Bearer ${accessToken}`,
                 },
               }
             )

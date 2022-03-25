@@ -7,11 +7,8 @@ import { AiOutlineWhatsApp, AiOutlineMail } from "react-icons/ai";
 import Button from "../../components/Button/index.jsx";
 import { useAuthenticated } from "../../providers/authenticated";
 
-import { useHistory } from "react-router-dom";
 import DefaultUserImg from "../../assets/profile 1.png";
 import { useEffect, useState } from "react";
-import { get } from "react-hook-form";
-import { Redirect } from "react-router-dom";
 
 import RatingStars from "../../components/RatingStars";
 import { toast } from "react-toastify";
@@ -24,10 +21,6 @@ const ServiceProfilePage = () => {
   const [feedbacks, setFeedbacks] = useState([]);
   const [contador, setContador] = useState(0);
 
-  const userLocal = JSON.parse(localStorage.getItem("@ProWorking:user"));
-  const profile = userLocal.user;
-  const token = userLocal.accessToken;
-
   const [workerProfile] = useState(
     workers.find(
       (worker) => worker.user.name === name && worker.id === Number(id)
@@ -39,7 +32,9 @@ const ServiceProfilePage = () => {
   );
 
   const [userRating] = useState(
-    workerProfile.ratings.find(({ userId }) => userId === userInfo.id) || {
+    workerProfile.ratings.find(
+      ({ userId }) => userId === userInfo.user?.id
+    ) || {
       stars: 0,
     }
   );
@@ -59,6 +54,7 @@ const ServiceProfilePage = () => {
 
   useEffect(() => {
     getApi();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const feedbackApi = () => {
@@ -66,18 +62,19 @@ const ServiceProfilePage = () => {
       .post(
         "feedbacks",
         {
-          userId: profile.id,
+          userId: userInfo.user.id,
           workerId: +id,
-          content: feed,
+          content: feed.trim(),
         },
         {
           headers: {
-            Authorization: `Bearer ${token}`,
+            Authorization: `Bearer ${userInfo.accessToken}`,
           },
         }
       )
       .then(() => {
         getApi();
+        setFeed("");
       });
   };
 
@@ -154,41 +151,34 @@ const ServiceProfilePage = () => {
         <h2>Comentários:</h2>
 
         {feedbacks.map((feedback) => {
-          if (feedback.workerId === +id) {
-            return (
-              <div key={feedback.id} className="comments">
-                <div className="profile-pic">
-                  <p>{feedback.user.name[0]}</p>
-                </div>
-                <div className="profile-comment">
-                  <h3>{feedback.user.name}</h3>
-                  <p>{feedback.content}</p>
-                </div>
+          return (
+            <div key={feedback.id} className="comments">
+              <div className="profile-pic">
+                <p>{feedback.user.name[0]}</p>
               </div>
-            );
-          }
+              <div className="profile-comment">
+                <h3>{feedback.user.name}</h3>
+                <p>{feedback.content}</p>
+              </div>
+            </div>
+          );
         })}
 
         <textarea
           maxLength={420}
+          value={feed}
           onChange={(e) => {
             setFeed(e.target.value);
-            setContador(e.target.value.length);
+            setContador(e.target.value.trim().length);
           }}
           placeholder="Deixe seu feedback"
         ></textarea>
         <h4>{contador}/420</h4>
         <div className="botaoSpan">
           <Button
-            onClick={(e) => {
+            onClick={() => {
               if (authenticated) {
-                feedbackApi();
-                console.log(
-                  e.target.parentElement.parentElement.childNodes[
-                    e.target.parentElement.parentElement.childElementCount-3
-                  ].value = ""
-                );
-                
+                feed.trim() && feedbackApi();
               } else {
                 toast.error("Faça login para comentar");
               }

@@ -4,9 +4,6 @@ export const ServiceContainer = styled.main`
   max-width: 1200px;
   margin: 60px auto;
   animation: fadeIn 1s;
-  span {
-    color: white;
-  }
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -278,18 +275,19 @@ export const ServiceContainer = styled.main`
       position: relative;
       margin-bottom: 3px;
     }
-    .botaoSpan{
+    .botaoSpan {
       display: flex;
       flex-direction: column;
-      
+
+      span {
+        margin-top: 10px;
+        color: var(--black);
+        font-size: 12px;
+        left: 0px;
+        width: 270px;
+      }
     }
-    span {
-      margin-top: 10px;
-      color: var(--black);
-      font-size: 12px;
-      left: 0px;
-      width: 270px;
-    }
+
     button {
       margin: 0;
       margin-top: 10px;

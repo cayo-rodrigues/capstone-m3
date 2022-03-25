@@ -18,7 +18,7 @@ const DashboardHomePage = () => {
 
   return (
     <DashboardContainer>
-      <h1>Seja bem vindo {profile.name}!! 😊 </h1>
+      <h1>Seja bem vindo {profile.user.name}!! 😊 </h1>
       <h2>O que você deseja?</h2>
       <ul>
         <Link to={"/dashboard/service-register"}>

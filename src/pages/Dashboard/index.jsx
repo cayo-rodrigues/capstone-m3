@@ -18,16 +18,16 @@ import { useHistory } from "react-router-dom";
 
 const Dashboard = () => {
   const { authenticated } = useAuthenticated();
-  
-  const user = JSON.parse(localStorage.getItem("@ProWorking:user"))
-  const profile = user.user
-  const token = user.token
+
+  const [user] = useState(
+    JSON.parse(localStorage.getItem("@ProWorking:user")) || {}
+  );
 
   const history = useHistory();
 
   const { workers, refreshWorkers } = useWorkers();
   const workerProfile =
-    workers.find(({ userId }) => userId === profile.id) || {};
+    workers.find(({ userId }) => userId === user.user?.id) || {};
 
   const [wrongNumber, setWrongNumber] = useState(false);
   const [error, setError] = useState(false);
@@ -78,7 +78,7 @@ const Dashboard = () => {
           <div className="childContainer">
             <div className="profile">
               <h3>
-                Olá 👋 {profile.name}, atualize ou insira as suas informações
+                Olá 👋 {user.user?.name}, atualize ou insira as suas informações
               </h3>
               <img src={picture} alt="Foto de perfil" />
             </div>
@@ -194,12 +194,12 @@ const Dashboard = () => {
                           whatsapp: whatsapp,
                           cities: cityServed,
                           occupation_areas: List,
-                          userId: profile.id,
+                          userId: user.user?.id,
                         };
                         proWorkingApi
                           .patch(`/workers/${workerProfile.id}`, requisition, {
                             headers: {
-                              Authorization: `Bearer ${token}`,
+                              Authorization: `Bearer ${user.accessToken}`,
                             },
                           })
                           .then(() => {
@@ -208,7 +208,7 @@ const Dashboard = () => {
                             window.scrollTo(0, 0);
                             if (isWorker) {
                               history.push(
-                                `/services/${workerProfile.id}/${profile.name}`
+                                `/services/${workerProfile.id}/${user.user?.name}`
                               );
                             } else {
                               history.push("/dashboard");
