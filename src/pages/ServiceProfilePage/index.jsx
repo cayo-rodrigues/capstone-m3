@@ -158,6 +158,11 @@ const ServiceProfilePage = () => {
             onClick={(e) => {
               if (authenticated) {
                 feedbackApi();
+                console.log(
+                  e.target.parentElement.parentElement.childNodes[
+                    e.target.parentElement.parentElement.childElementCount-3
+                  ].value = ""
+                );
                 history.push(`/services/${id}/${name}`);
               } else {
                 history.push("/login");
