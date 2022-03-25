@@ -1,29 +1,41 @@
-import Button from "../../components/Button";
-import Input from "../../components/Input";
-import { Container, ServicePageContainer } from "./styles";
-import home from "../../assets/svg/home.svg";
-import BottomNavigator from "../../components/BottomNavigator";
-
+import { ServicePageContainer, NotFound, TopBar } from "./styles";
 import CardBox from "../../components/CardBox";
 import { useWorkers } from "../../providers/workers";
+import { useEffect } from "react";
+
+import NotFoundImg from "../../assets/svg/not_found.svg";
+
+import SearchBar from "../../components/SearchBar";
 
 const ServicesPage = () => {
-  const { workers } = useWorkers()
-  return (
-    <ServicePageContainer>
-      {/* <Container>
-        <h1>
-          Bem vindo ao <span>PROWORKING</span>
-        </h1>
-        <p>Encontre o serviço que você precisa aqui!</p>
-        <Input isSearch />
-        <Button />
-        <img src={home} alt="homeimg" />
-      </Container> */}
-      <h1>Todos os serviços</h1>
-      <CardBox workers={workers}/>
+  const { workers, refreshWorkers } = useWorkers();
 
-    </ServicePageContainer>
+  useEffect(() => {
+    refreshWorkers();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return (
+    <>
+      <TopBar>
+        <div>
+          <SearchBar />
+        </div>
+      </TopBar>
+
+      <ServicePageContainer>
+        <h2>Todos os serviços</h2>
+
+        {workers.length !== 0 ? (
+          <CardBox workers={workers.filter(({ is_active }) => is_active)} />
+        ) : (
+          <NotFound>
+            <img src={NotFoundImg} alt="Não encontrado" />
+            <h3>Nenhum prestador de serviço registrado ainda</h3>
+          </NotFound>
+        )}
+      </ServicePageContainer>
+    </>
   );
 };
 

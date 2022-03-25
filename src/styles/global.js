@@ -12,6 +12,10 @@ export const GlobalStyle = createGlobalStyle`
     height: 100%;
   }
 
+  li {
+    list-style: none;
+  }
+
   :root {
     --color-primary: #002d9b;
     --color-secondary: #43568d;
@@ -19,8 +23,21 @@ export const GlobalStyle = createGlobalStyle`
     --color-bg: #8396cd;
 
     --white: #fff;
+    --whitesmoke: #f5f5f5;
+    --offwhite: #f4f4f4;
     --black: #000;
-    --error: #E4266F;
+    --grey: #808080;
+    --lightgrey: #ddd;
+    --lightergrey: #eee;
+    --midgrey: #eceff1;
+    --blue: #0000ff;
+    --lightblue: #add8e6;
+    --darkblue: #00008b;
+    --green: #008000;
+    --darkgreen: #006400;
+    --yellow: #fff900;
+    --red: #ff0000;
+    --error: #e4266f;
 
     --font-text:'Inter', sans-serif;;
     --font-title:'Montserrat', sans-serif;
@@ -34,7 +51,7 @@ export const GlobalStyle = createGlobalStyle`
     --toastify-toast-min-height: 54px;
     --toastify-toast-max-height: 54px;
     --toastify-font-family: var(--font-text);
-    
+
   }
 
   .Toastify__toast-container--top-right {
