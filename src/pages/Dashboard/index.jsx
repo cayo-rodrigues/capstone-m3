@@ -18,10 +18,12 @@ import { useHistory } from "react-router-dom";
 
 const Dashboard = () => {
   const { authenticated } = useAuthenticated();
-  const history = useHistory();
+  
+  const user = JSON.parse(localStorage.getItem("@ProWorking:user"))
+  const profile = user.user
+  const token = user.token
 
-  const profile = JSON.parse(localStorage.getItem("@ProWorking:user")) || {};
-  const token = localStorage.getItem("@ProWorking:token");
+  const history = useHistory();
 
   const { workers, refreshWorkers } = useWorkers();
   const workerProfile =

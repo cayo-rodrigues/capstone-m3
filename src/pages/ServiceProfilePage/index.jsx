@@ -1,21 +1,32 @@
 import { RatingContainer, ServiceContainer } from "./style";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { useWorkers } from "../../providers/workers";
-
+import { proWorkingApi } from "../../services/api";
 import { AiOutlineWhatsApp, AiOutlineMail } from "react-icons/ai";
 
 import Button from "../../components/Button/index.jsx";
 import { useAuthenticated } from "../../providers/authenticated";
 
+import { useHistory } from "react-router-dom";
 import DefaultUserImg from "../../assets/profile 1.png";
+import { useEffect, useState } from "react";
+import { get } from "react-hook-form";
+import { Redirect } from "react-router-dom";
+
 import RatingStars from "../../components/RatingStars";
 import { toast } from "react-toastify";
-import { useState } from "react";
 
 const ServiceProfilePage = () => {
+  const [feed, setFeed] = useState("");
   const { workers } = useWorkers();
   const { id, name } = useParams();
   const { authenticated } = useAuthenticated();
+  const [feedbacks, setFeedbacks] = useState([]);
+  const [contador, setContador] = useState(0);
+
+  const userLocal = JSON.parse(localStorage.getItem("@ProWorking:user"));
+  const profile = userLocal.user;
+  const token = userLocal.accessToken;
 
   const [workerProfile] = useState(
     workers.find(
@@ -39,6 +50,36 @@ const ServiceProfilePage = () => {
   );
 
   const { occupation_areas, summary, whatsapp, user } = workerProfile;
+
+  const getApi = () => {
+    proWorkingApi.get(`feedbacks?_expand=user&workerId=${+id}`).then((res) => {
+      setFeedbacks(res.data);
+    });
+  };
+
+  useEffect(() => {
+    getApi();
+  }, []);
+
+  const feedbackApi = () => {
+    proWorkingApi
+      .post(
+        "feedbacks",
+        {
+          userId: profile.id,
+          workerId: +id,
+          content: feed,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then(() => {
+        getApi();
+      });
+  };
 
   return (
     <ServiceContainer>
@@ -112,46 +153,51 @@ const ServiceProfilePage = () => {
 
         <h2>Comentários:</h2>
 
-        <div className="comments">
-          <div className="profile-pic">
-            <p>F</p>
-          </div>
-          <div className="profile-comment">
-            <h3>Fulaninho</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione,
-              ullam debitis eaque quae voluptatem enim molestiae! Dolorem
-              dignissimos repellendus fugit mollitia non nesciunt laboriosam
-              velit, maiores cum, facere eligendi voluptas.
-            </p>
-          </div>
-        </div>
-        <div className="comments">
-          <div className="profile-pic">
-            <p>F</p>
-          </div>
-          <div className="profile-comment">
-            <h3>Fulaninho</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione,
-              ullam debitis eaque quae voluptatem enim molestiae! Dolorem
-              dignissimos repellendus fugit mollitia non nesciunt laboriosam
-              velit, maiores cum, facere eligendi voluptas.
-            </p>
-          </div>
-        </div>
+        {feedbacks.map((feedback) => {
+          if (feedback.workerId === +id) {
+            return (
+              <div key={feedback.id} className="comments">
+                <div className="profile-pic">
+                  <p>{feedback.user.name[0]}</p>
+                </div>
+                <div className="profile-comment">
+                  <h3>{feedback.user.name}</h3>
+                  <p>{feedback.content}</p>
+                </div>
+              </div>
+            );
+          }
+        })}
 
-        <textarea placeholder="Deixe seu feedback"></textarea>
-        <Button
-          onClick={() => {
-            if (authenticated) {
-            } else {
-              toast.error("Faça login para comentar");
-            }
+        <textarea
+          maxLength={420}
+          onChange={(e) => {
+            setFeed(e.target.value);
+            setContador(e.target.value.length);
           }}
-        >
-          Enviar
-        </Button>
+          placeholder="Deixe seu feedback"
+        ></textarea>
+        <h4>{contador}/420</h4>
+        <div className="botaoSpan">
+          <Button
+            onClick={(e) => {
+              if (authenticated) {
+                feedbackApi();
+                console.log(
+                  e.target.parentElement.parentElement.childNodes[
+                    e.target.parentElement.parentElement.childElementCount-3
+                  ].value = ""
+                );
+                
+              } else {
+                toast.error("Faça login para comentar");
+              }
+            }}
+          >
+            Enviar
+          </Button>
+          <span>Para poder comentar é necessário estar logado</span>
+        </div>
       </div>
     </ServiceContainer>
   );
