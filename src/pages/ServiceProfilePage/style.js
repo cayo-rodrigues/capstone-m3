@@ -1,12 +1,17 @@
 import styled from "styled-components";
 
 export const ServiceContainer = styled.main`
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 60px auto;
   animation: fadeIn 1s;
   span {
     color: white;
   }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
   @media (max-width: 710px) {
     margin: 10px auto 0px;
   }
@@ -40,28 +45,32 @@ export const ServiceContainer = styled.main`
     justify-content: center;
     align-items: center;
     span {
-      font-size: 90px;
-      color: var(--whitesmoke);
+      font-size: 60px;
+      color: var(--yellow);
       font-weight: bold;
       font-family: var(--font-title);
-      letter-spacing: -7px;
+      transform: translateY(1px);
       @media (max-width: 710px) {
         font-size: 45px;
+        transform: translateY(-1px);
       }
     }
     width: 97%;
-    height: 200px;
+    height: 130px;
     border-radius: 50px 50px 0px 0px;
-    margin: 40px auto 0px;
+    margin: 0 auto;
     background-color: var(--color-aux);
     position: relative;
     @media (max-width: 710px) {
       height: 150px;
       margin: 10px auto 0px;
     }
+    @media (min-width: 660px) {
+      height: 130px;
+    }
     figure {
       position: absolute;
-      bottom: -60px;
+      bottom: -70px;
       left: 15%;
       background-color: var(--white);
       border-radius: 50%;
@@ -70,11 +79,17 @@ export const ServiceContainer = styled.main`
       justify-content: center;
       img {
         padding: 5px;
-        width: 140px;
-        height: 140px;
+        width: 120px;
+        height: 120px;
         border-radius: 50%;
         object-fit: cover;
         cursor: pointer;
+      }
+      @media (min-width: 1024px) {
+        img {
+          width: 130px;
+          height: 130px;
+        }
       }
       @media (max-width: 710px) {
         bottom: -50px;
@@ -87,19 +102,20 @@ export const ServiceContainer = styled.main`
   }
   .profile-content {
     background-color: var(--whitesmoke);
-    padding: 100px 60px 40px 140px;
-    margin: 0px 20px 40px;
+    padding: 100px 110px 40px;
+    margin-bottom: 70px;
+    width: 97%;
     border-radius: 0 0 50px 50px;
     @media (max-width: 710px) {
-      padding: 60px 10px 20px;
+      padding: 60px 25px 20px;
     }
     .profile-tittle {
       margin: 0px 0 50px;
       h1 {
-        font-size: 35px;
+        font-size: 2rem;
       }
       p {
-        font-size: 30px;
+        font-size: 1.5rem;
         font-weight: 300;
         text-transform: capitalize;
       }
@@ -114,14 +130,14 @@ export const ServiceContainer = styled.main`
       }
     }
     h2 {
-      font-size: 30px;
+      font-size: 1.6rem;
       margin: 30px 0;
       @media (max-width: 710px) {
         font-size: 20px;
       }
     }
     p {
-      font-size: 22px;
+      font-size: 1.2rem;
       margin: 15px 0 0 0px;
       @media (max-width: 710px) {
         font-size: 14px;
@@ -278,6 +294,17 @@ export const ServiceContainer = styled.main`
       margin: 0;
       margin-top: 10px;
       position: relative;
+    }
+  }
+`;
+
+export const RatingContainer = styled.section`
+  span {
+    font-size: 1.8rem;
+    transform: translateY(0.5px);
+
+    @media screen and (min-width: 711px) {
+      font-size: 2.5rem;
     }
   }
 `;

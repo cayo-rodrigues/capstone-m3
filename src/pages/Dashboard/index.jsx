@@ -14,6 +14,7 @@ import { useAuthenticated } from "../../providers/authenticated";
 import { useWorkers } from "../../providers/workers";
 import { toast } from "react-toastify";
 import { Redirect } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const Dashboard = () => {
   const { authenticated } = useAuthenticated();
@@ -22,8 +23,11 @@ const Dashboard = () => {
   const profile = user.user
   const token = user.token
 
+  const history = useHistory();
+
   const { workers, refreshWorkers } = useWorkers();
-  const workerProfile = workers.find(({ userId }) => userId === profile.id);
+  const workerProfile =
+    workers.find(({ userId }) => userId === profile.id) || {};
 
   const [wrongNumber, setWrongNumber] = useState(false);
   const [error, setError] = useState(false);
@@ -201,6 +205,14 @@ const Dashboard = () => {
                           .then(() => {
                             toast.success("Perfil Atualizado");
                             refreshWorkers();
+                            window.scrollTo(0, 0);
+                            if (isWorker) {
+                              history.push(
+                                `/services/${workerProfile.id}/${profile.name}`
+                              );
+                            } else {
+                              history.push("/dashboard");
+                            }
                           })
                           .catch(() =>
                             toast.error(

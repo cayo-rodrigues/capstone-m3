@@ -93,12 +93,19 @@ export const Container = styled.div`
     justify-content: space-between;
     max-width: 560px;
     margin: 30px 0 0 0;
+
+    button {
+      height: 41.59px;
+      margin: 0;
+      border-radius: 0 26px 26px 0;
+      box-shadow: 5px 4px 4px rgb(0 0 0 / 50%);
+
+      @media screen and (min-width: 851px) {
+        height: 43.59px;
+      }
+    }
   }
-  button {
-    margin: 0;
-    border-radius: 0 26px 26px 0;
-    box-shadow: 5px 4px 4px rgb(0 0 0 / 50%);
-  }
+
   @media (max-width: 850px) {
     flex-direction: column;
     justify-content: center;
@@ -189,7 +196,7 @@ export const HowItWorks = styled.main`
       p {
         line-height: 1.8rem;
         @media (max-width: 450px) {
-          line-height: 1rem;
+          line-height: 1.7rem;
           font-size: 14px;
         }
       }

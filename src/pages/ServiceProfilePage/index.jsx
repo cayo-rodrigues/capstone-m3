@@ -1,4 +1,4 @@
-import { ServiceContainer } from "./style";
+import { RatingContainer, ServiceContainer } from "./style";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { useWorkers } from "../../providers/workers";
 import { proWorkingApi } from "../../services/api";
@@ -6,11 +6,15 @@ import { AiOutlineWhatsApp, AiOutlineMail } from "react-icons/ai";
 
 import Button from "../../components/Button/index.jsx";
 import { useAuthenticated } from "../../providers/authenticated";
+
 import { useHistory } from "react-router-dom";
 import DefaultUserImg from "../../assets/profile 1.png";
 import { useEffect, useState } from "react";
 import { get } from "react-hook-form";
 import { Redirect } from "react-router-dom";
+
+import RatingStars from "../../components/RatingStars";
+import { toast } from "react-toastify";
 
 const ServiceProfilePage = () => {
   const [feed, setFeed] = useState("");
@@ -24,12 +28,28 @@ const ServiceProfilePage = () => {
   const profile = userLocal.user;
   const token = userLocal.accessToken;
 
-  const workerProfile = workers.find(
-    (worker) => worker.user.name === name && worker.id === Number(id)
+  const [workerProfile] = useState(
+    workers.find(
+      (worker) => worker.user.name === name && worker.id === Number(id)
+    )
+  );
+
+  const [userInfo] = useState(
+    JSON.parse(localStorage.getItem("@ProWorking:user")) || {}
+  );
+
+  const [userRating] = useState(
+    workerProfile.ratings.find(({ userId }) => userId === userInfo.id) || {
+      stars: 0,
+    }
+  );
+
+  const [averageRating] = useState(
+    workerProfile.ratings.reduce((acc, rating) => acc + rating.stars, 0) /
+      workerProfile.ratings.length
   );
 
   const { occupation_areas, summary, whatsapp, user } = workerProfile;
-  const history = useHistory();
 
   const getApi = () => {
     proWorkingApi.get(`feedbacks?_expand=user&workerId=${+id}`).then((res) => {
@@ -64,7 +84,9 @@ const ServiceProfilePage = () => {
   return (
     <ServiceContainer>
       <div className="profile-header">
-        <span>PROWORKING</span>
+        <span>
+          <RatingStars workerId={+id} value={averageRating || 0} />
+        </span>
         <figure>
           <img src={DefaultUserImg} alt={name} />
         </figure>
@@ -103,7 +125,6 @@ const ServiceProfilePage = () => {
         >
           <AiOutlineWhatsApp /> Fale Comigo
         </div>
-        {/* https://wa.me/5524998913379?text=teste */}
 
         <div
           className="icon icon-mail"
@@ -125,9 +146,13 @@ const ServiceProfilePage = () => {
           <strong>Email:</strong> {user.email}
         </p>
 
-        <h2>Rating:</h2>
+        <RatingContainer>
+          <h2>Como você avalia este profissional?</h2>
+          <RatingStars workerId={+id} isEditable value={userRating.stars} />
+        </RatingContainer>
 
         <h2>Comentários:</h2>
+
         {feedbacks.map((feedback) => {
           if (feedback.workerId === +id) {
             return (
@@ -163,9 +188,9 @@ const ServiceProfilePage = () => {
                     e.target.parentElement.parentElement.childElementCount-3
                   ].value = ""
                 );
-                history.push(`/services/${id}/${name}`);
+                
               } else {
-                history.push("/login");
+                toast.error("Faça login para comentar");
               }
             }}
           >

@@ -4,7 +4,7 @@ export const FormContainer = styled.div`
   background-color: var(--white);
   padding: 20px;
   border-radius: 20px;
-  margin: 0 auto;
+  margin: 40px auto 0;
   box-shadow: 5px 5px 14px 5px rgb(0, 0, 0, 0.3);
   max-width: 310px;
   animation: fadeIn 1s;
@@ -19,7 +19,7 @@ export const FormContainer = styled.div`
     text-align: center;
     margin: 20px auto 0;
     width: 100%;
-    padding: 10px;
+    padding: 0 10px;
   }
 `;
 export const FormFooter = styled.p`
