@@ -77,14 +77,6 @@ const Card = ({ nome, img, especialidades, id }) => {
           <ul>
             <h3>Especialidade:</h3>
             <li>{especialidades}</li>
-            <div className="link">
-              <Link
-                to={`/services/${id}/${nome}`}
-                onClick={() => window.scrollTo(0, 0)}
-              >
-                Ver o perfil completo
-              </Link>
-            </div>
           </ul>
           <span>
             <button
@@ -111,6 +103,14 @@ const Card = ({ nome, img, especialidades, id }) => {
               <Imagem src={whatsapp} alt="" />
             </button>
           </span>
+          <div className="link">
+            <Link
+              to={`/services/${id}/${nome}`}
+              onClick={() => window.scrollTo(0, 0)}
+            >
+              Ver o perfil completo
+            </Link>
+          </div>
         </ModalContainer>
         <BotaoFechar onClick={closeModal}>X</BotaoFechar>
       </Modal>

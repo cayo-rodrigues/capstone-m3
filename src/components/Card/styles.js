@@ -156,8 +156,10 @@ export const ModalContainer = styled.div`
     justify-content: space-between;
   }
   .link {
+    display: flex;
+    justify-content: center;
     margin-top: 10px;
-    text-align: left;
+    text-align: center;
     width: 100%;
   }
 `;
