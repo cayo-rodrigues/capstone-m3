@@ -8,14 +8,20 @@ import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 
 import { LoginContainer } from "./styles";
+import { useAuthGoogle } from "../../providers/authGoogle";
+
+import { firebase, auth } from "../../services/firebase";
 
 const Login = () => {
   const { handleUser } = useUser();
   const { authenticated, setAuthenticated } = useAuthenticated();
 
+  const { user, setUser } = useAuthGoogle();
+
   const history = useHistory();
 
   const handleSubmitCallBack = (dataUser) => {
+
     proWorkingApi
       .post("/login", dataUser)
       .then(({ data }) => {
@@ -31,6 +37,26 @@ const Login = () => {
       );
   };
 
+  const handleClickButtonLogin = async () => {
+    const provider = new firebase.auth.GoogleAuthProvider();
+
+    const result = await auth.signInWithPopup(provider);
+    if (result.user) {
+      const { displayName, email } = result.user;
+
+      if (!displayName) throw new Error("O Usuario não tem Nome");
+
+      const data = {
+        email: email,
+        password: "pw2022",
+      };
+
+      handleSubmitCallBack(data);
+
+      setUser({ ...data, name: displayName });
+    }
+  };
+
   if (authenticated) {
     return <Redirect to={"/dashboard"} />;
   }
@@ -43,7 +69,11 @@ const Login = () => {
         </div>
 
         <div className="col-right col">
-          <Form isLogin handleSubmitCallBack={handleSubmitCallBack} />
+          <Form
+            isLogin
+            handleSubmitCallBack={handleSubmitCallBack}
+            handleClickButtonLogin={handleClickButtonLogin}
+          />
         </div>
       </LoginContainer>
     </>
