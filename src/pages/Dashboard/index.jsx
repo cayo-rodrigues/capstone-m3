@@ -219,6 +219,7 @@ const Dashboard = () => {
                                 );
                               }, 750);
                             } else {
+                              toast.success("Perfil Atualizado");
                               history.push("/dashboard");
                             }
                           })
