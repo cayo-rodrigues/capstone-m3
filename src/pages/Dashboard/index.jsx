@@ -203,13 +203,15 @@ const Dashboard = () => {
                             },
                           })
                           .then(() => {
-                            toast.success("Perfil Atualizado");
                             refreshWorkers();
-                            window.scrollTo(0, 0);
                             if (isWorker) {
-                              history.push(
-                                `/services/${workerProfile.id}/${user.user?.name}`
-                              );
+                              setTimeout(() => {
+                                toast.success("Perfil Atualizado");
+                                window.scrollTo(0, 0);
+                                history.push(
+                                  `/services/${workerProfile.id}/${user.user?.name}`
+                                );
+                              }, 750);
                             } else {
                               history.push("/dashboard");
                             }
