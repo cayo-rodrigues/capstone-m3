@@ -64,7 +64,7 @@ const ServiceProfilePage = () => {
                 .put("/chats/", data, { headers: header })
                 .then(() => history.push("/chat"));
         } else {
-            toast.info("Faça login para usar o chat!", {
+            toast("Faça login para usar o chat!", {
                 toastId: "toastfyInfo",
             });
         }
@@ -135,7 +135,7 @@ const ServiceProfilePage = () => {
                 </div>
 
                 <div className='icon icon-message' onClick={() => initChat()}>
-                    <TiMessage /> Messagem Direta
+                    <TiMessage /> Menssagem Direta
                 </div>
 
                 <h2>Informações do Perfil</h2>

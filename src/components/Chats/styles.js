@@ -12,7 +12,7 @@ export const Container = styled.div`
   .col-left {
     flex-basis: 30%;
 
-    min-width: 480px;
+    min-width: 350px;
     height: 100vh;
     overflow-y: auto;
     z-index: 20;
@@ -35,6 +35,7 @@ export const Container = styled.div`
     h2{
         padding: 5px;
         font-weight: 400;
+        font-size:15px ;
         text-align: center;
         background-color: #e1e1e1;
     }
@@ -50,7 +51,7 @@ export const Container = styled.div`
         width: 100%;
         background-color: #fff;
         color: black;
-        font-size: 18px;
+        font-size: 13px;
         padding: 8px 0 8px 35px ;
         font-weight: bold;
         border-bottom: 2px solid #e1e1e1;

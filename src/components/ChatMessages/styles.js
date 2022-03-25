@@ -93,7 +93,7 @@ export const BoxMessages = styled.div`
   border-bottom: 3px solid var(--darkblue);
   
   word-break: break-all;
-  font-size: 20px;
+  font-size: 13px;
 `;
 
 export const BoxInput = styled.div`
