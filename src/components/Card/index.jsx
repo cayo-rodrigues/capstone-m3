@@ -1,4 +1,3 @@
-
 import { BotaoFechar, Container, Imagem, ModalContainer } from "./styles";
 import React from "react";
 import { useState } from "react";
@@ -60,35 +59,69 @@ const Card = ({ nome, img, especialidades = [], locais = [], id }) => {
 
   return (
     <Container>
-      <Modal
-        isOpen={open}
-        onRequestClose={closeModal}
-        style={customStyles}
-        contentLabel="Example Modal"
-        ariaHideApp={false}
-      >
-        <ModalContainer id={id} onClick={(e) => openModal(e)}>
+      <>
+        <Modal
+          isOpen={open}
+          onRequestClose={closeModal}
+          style={customStyles}
+          contentLabel="Example Modal"
+          ariaHideApp={false}
+        >
+          <ModalContainer id={id} onClick={(e) => openModal(e)}>
+            <div className="headerModal">
+              <h2>{nome}</h2>
+              <Imagem src={DefaultUserImg} alt="Imagem" />
+            </div>
 
-          <div className="headerModal">
-            <h2>{nome}</h2>
-            <Imagem src={DefaultUserImg} alt="Imagem" />
-          </div>
+            <ul>
+              <h3>Especialidades:</h3>
 
-          <ul>
-            <h3>Especialidades:</h3>
+              {especialidades.map((especialidade, index) => {
+                if (index < 4) {
+                  return <li key={index}>{especialidade}</li>;
+                }
+                if (index === 4) {
+                  return <li key={index}>...</li>;
+                }
+              })}
+            </ul>
 
+            <p>Locais de atendimento:</p>
+            <ul className="location">
+              {locais.slice(0, 2).map((local, index) => (
+                <li className="locationDiv" key={`${local}-${index}`}>
+                  {local.state}- {local.city}
+                </li>
+              ))}
+            </ul>
 
-            {especialidades.map((especialidade, index) => {
-              if(index < 4){
-                return <li key={index}>{especialidade}</li>;
-              }
-              if (index === 4){
-                return <li>...</li>
-              }
-            })}
-          </ul>
+            <span>
+              <button
+                onClick={() => {
+                  const subject = "Anúncio do site Proworking";
+                  const body = "Gostaria de conversar sobre...";
+                  window.open(
+                    `mailto:${email}?subject=${subject}&body=${body}`
+                  );
+                }}
+              >
+                <Imagem src={email} alt="" />
+              </button>
+              <button
+                onClick={() => {
+                  const text =
+                    "Vi seu perfil na Proworking, gostaria de conversar sobre o trabalho";
+                  const tel = whatsapp
+                    .split("")
+                    .filter((letter) => !isNaN(letter) && letter !== " ")
+                    .join("");
 
-           
+                  window.open(`https://wa.me/${tel}?text=${text}`);
+                }}
+              >
+                <Imagem src={whatsapp} alt="" />
+              </button>
+            </span>
             <div className="link">
               <Link
                 to={`/services/${id}/${nome}`}
@@ -97,87 +130,43 @@ const Card = ({ nome, img, especialidades = [], locais = [], id }) => {
                 Ver o perfil completo
               </Link>
             </div>
+          </ModalContainer>
+
+          <BotaoFechar onClick={closeModal} className="botaoFechar">
+            X
+          </BotaoFechar>
+        </Modal>
+        <section id={id} onClick={(e) => openModal(e)}>
+          <div className="titleAndImg">
+            <h2 className="title">{nome}</h2>
+            <img src={DefaultUserImg} alt="Imagem" />
+          </div>
+
+          <ul className="occupation_areas">
+            {especialidades.slice(0, 2).map((especialidade, index) => (
+              <li key={index}>{especialidade}</li>
+            ))}
+            {especialidades.length > 2 && <li>...</li>}
           </ul>
 
-          <p>Locais de atendimento:</p>
           <ul className="location">
+            <p>Locais de atendimento:</p>
             {locais.slice(0, 2).map((local, index) => (
               <li className="locationDiv" key={`${local}-${index}`}>
                 {local.state}- {local.city}
               </li>
             ))}
           </ul>
-
-          <span>
-            <button
-              onClick={() => {
-                const subject = "Anúncio do site Proworking";
-                const body = "Gostaria de conversar sobre...";
-                window.open(`mailto:${email}?subject=${subject}&body=${body}`);
-              }}
-            >
-              <Imagem src={email} alt="" />
-            </button>
-            <button
-              onClick={() => {
-                const text =
-                  "Vi seu perfil na Proworking, gostaria de conversar sobre o trabalho";
-                const tel = whatsapp
-                  .split("")
-                  .filter((letter) => !isNaN(letter) && letter !== " ")
-                  .join("");
-
-                window.open(`https://wa.me/${tel}?text=${text}`);
-              }}
-            >
-              <Imagem src={whatsapp} alt="" />
-            </button>
-          </span>
-          <div className="link">
+          <p className="link">
             <Link
               to={`/services/${id}/${nome}`}
               onClick={() => window.scrollTo(0, 0)}
             >
-              Ver o perfil completo
+              Ver o perfil Completo
             </Link>
-          </div>
-        </ModalContainer>
-
-          <BotaoFechar onClick={closeModal} className="botaoFechar">
-            X
-          </BotaoFechar>
-
-      </Modal>
-      <section id={id} onClick={(e) => openModal(e)}>
-        <div className="titleAndImg">
-          <h2 className="title">{nome}</h2>
-          <img src={DefaultUserImg} alt="Imagem" />
-        </div>
-
-        <ul className="occupation_areas">
-          {especialidades.slice(0, 2).map((especialidade, index) => (
-            <li key={index}>{especialidade}</li>
-          ))}
-          {especialidades.length > 2 && <li>...</li>}
-        </ul>
-
-        <ul className="location">
-          <p>Locais de atendimento:</p>
-          {locais.slice(0, 2).map((local, index) => (
-            <li className="locationDiv" key={`${local}-${index}`}>
-              {local.state}- {local.city}
-            </li>
-          ))}
-        </ul>
-        <p className="link">
-          <Link
-            to={`/services/${id}/${nome}`}
-            onClick={() => window.scrollTo(0, 0)}
-          >
-            Ver o perfil Completo
-          </Link>
-        </p>
-      </section>
+          </p>
+        </section>
+      </>
     </Container>
   );
 };
