@@ -22,6 +22,7 @@ const Register = () => {
   const handleSubmitCallBack = (data) => {
     delete data.confirm_password;
     console.log(data);
+
     proWorkingApi
       .post("/register", { ...data, is_active: true, is_admin: false })
       .then((res) => {
@@ -40,11 +41,13 @@ const Register = () => {
             toast.success("Conta criada com sucesso!", {
               toastId: "toastSuccess",
             });
+
             if (!!user) {
               loginGoogle(data);
             } else {
               history.push("/login");
             }
+
           });
       })
       .catch(() => {
@@ -54,7 +57,8 @@ const Register = () => {
       });
   };
 
-  console.log(user);
+
+
 
   const loginGoogle = (dataUser) => {
     proWorkingApi

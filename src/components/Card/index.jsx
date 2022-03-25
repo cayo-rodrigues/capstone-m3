@@ -1,6 +1,8 @@
-import { Container, Imagem, ModalContainer } from "./styles";
+
+import { BotaoFechar, Container, Imagem, ModalContainer } from "./styles";
 import React from "react";
 import { useState } from "react";
+
 import Modal from "react-modal";
 import whatsapp from "../../assets/Whatsapp.png";
 import email from "../../assets/Email.png";
@@ -63,19 +65,29 @@ const Card = ({ nome, img, especialidades = [], locais = [], id }) => {
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Example Modal"
+        ariaHideApp={false}
       >
         <ModalContainer id={id} onClick={(e) => openModal(e)}>
-          <div>
+
+          <div className="headerModal">
             <h2>{nome}</h2>
             <Imagem src={DefaultUserImg} alt="Imagem" />
           </div>
 
           <ul>
             <h3>Especialidades:</h3>
-           
-              {especialidades.map((especialidade, index) => {
+
+
+            {especialidades.map((especialidade, index) => {
+              if(index < 4){
                 return <li key={index}>{especialidade}</li>;
-              })}
+              }
+              if (index === 4){
+                return <li>...</li>
+              }
+            })}
+          </ul>
+
            
             <div className="link">
               <Link
@@ -121,7 +133,20 @@ const Card = ({ nome, img, especialidades = [], locais = [], id }) => {
               <Imagem src={whatsapp} alt="" />
             </button>
           </span>
+          <div className="link">
+            <Link
+              to={`/services/${id}/${nome}`}
+              onClick={() => window.scrollTo(0, 0)}
+            >
+              Ver o perfil completo
+            </Link>
+          </div>
         </ModalContainer>
+
+          <BotaoFechar onClick={closeModal} className="botaoFechar">
+            X
+          </BotaoFechar>
+
       </Modal>
       <section id={id} onClick={(e) => openModal(e)}>
         <div className="titleAndImg">

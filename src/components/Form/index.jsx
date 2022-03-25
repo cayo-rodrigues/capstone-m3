@@ -13,6 +13,7 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import GoogleButton from "../GoogleButton";
 
+
 const Form = ({
   isLogin,
   isRegister,
@@ -20,6 +21,7 @@ const Form = ({
   handleClickButtonLogin,
   handleClickButtonRegister,
 }) => {
+
   const schemaLogin = yup.object().shape({
     email: yup.string().email("Email inválido").required("Campo Obrigatório"),
     password: yup.string().required("Campo Obrigatório"),
