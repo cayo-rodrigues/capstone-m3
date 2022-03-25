@@ -90,7 +90,10 @@ const Dashboard = () => {
             </div>
             <TodoList List={List} handleTodo={handleTodo} />
             <div className="contato">
-              <form className="labelStates">
+              <form
+                onSubmit={(e) => e.preventDefault()}
+                className="labelStates"
+              >
                 <label>Selecione o estado que voce atende:</label>
 
                 <DropDownBrazilianStates
@@ -99,7 +102,10 @@ const Dashboard = () => {
                   onChange={handleInputChange}
                 ></DropDownBrazilianStates>
               </form>
-              <form className="labelCities">
+              <form
+                onSubmit={(e) => e.preventDefault()}
+                className="labelCities"
+              >
                 <label>Selecione as cidades que voce atende:</label>
 
                 <DropDownBrazilianCities
