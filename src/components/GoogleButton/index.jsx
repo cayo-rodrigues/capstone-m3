@@ -1,9 +1,9 @@
 import { FcGoogle } from "react-icons/fc";
 import { Container } from "./styles";
 
-const GoogleButton = ({ text }) => {
+const GoogleButton = ({ text, ...rest }) => {
   return (
-    <Container>
+    <Container {...rest} type="button">
       <FcGoogle /> {text}
     </Container>
   );

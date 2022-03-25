@@ -74,10 +74,11 @@ const Form = ({
             type={"password"}
           />
 
-          <Button onClick={handleClickButtonLogin}>Logar google</Button>
           <Button type="submit">Entrar</Button>
-          <GoogleButton text="Entrar com Google" />
-
+          <GoogleButton
+            onClick={handleClickButtonLogin}
+            text="Entrar com Google"
+          />
         </FormContainer>
       )}
       {isRegister && (
@@ -120,11 +121,10 @@ const Form = ({
 
           <Button type="submit">Cadastrar</Button>
 
-          <Button onClick={handleClickButtonRegister}>
-            Cadastrar com google
-          </Button>
-          <GoogleButton text="Registrar com Google" />
-
+          <GoogleButton
+            onClick={handleClickButtonRegister}
+            text="Registrar com Google"
+          />
         </FormContainer>
       )}
       <FormFooter>

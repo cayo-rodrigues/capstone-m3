@@ -94,12 +94,8 @@ const LandingPage = () => {
 
       <VideoSection>
         <iframe
-          data-aos="fade-in"
-          // width="1077"
-          // height="680"
-          src="https://www.youtube.com/embed/wzUVgfQQK_4"
-          title="Proworkin"
-          frameBorder="0"
+          src="https://www.youtube.com/embed/WnzDrW6kti8"
+          title="YouTube video player"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowFullScreen
         ></iframe>
