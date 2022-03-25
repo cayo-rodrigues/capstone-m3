@@ -1,25 +1,11 @@
-import { Container, Imagem, ModalContainer, Div, BotaoFechar } from "./styles";
+import { BotaoFechar, Container, Imagem, ModalContainer } from "./styles";
+import React from "react";
+import { useState, useEffect } from "react";
+import Modal from "react-modal";
 import whatsapp from "../../assets/Whatsapp.png";
 import email from "../../assets/Email.png";
-import React from "react";
-import Modal from "react-modal";
-import { useState } from "react";
-import * as Ripple from "react-flip-box";
-import AOS from "aos";
-import "aos/dist/aos.css"; // You can also use <link> for styles
-
 import DefaultUserImg from "../../assets/profile 1.png";
 import { Link } from "react-router-dom";
-
-AOS.init({
-  offset: 120, // offset (in px) from the original trigger point
-  delay: 0, // values from 0 to 3000, with step 50ms
-  duration: 1000, // values from 0 to 3000, with step 50ms
-  easing: "ease", // default easing for AOS animations
-  once: false, // whether animation should happen only once - while scrolling down
-  mirror: false, // whether elements should animate out while scrolling past them
-  anchorPlacement: "top-bottom", // defines which position of the element regarding to window should trigger the animation
-});
 
 const customStyles = {
   content: {
@@ -39,8 +25,26 @@ const customStyles = {
   },
 };
 
-const Card = ({ nome, img, especialidades, id }) => {
-  const [modalIsOpen, setIsOpen] = useState(false);
+const Card = ({ nome, img, especialidades = [], locais = [], id }) => {
+  let subtitle;
+  const [open, setIsOpen] = useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    subtitle.style.color = "#f00";
+  }
+
+  useEffect(() => {},[open])
+
+  function closeModal() {
+    console.log("oi")
+    setIsOpen(false);
+    console.log(open)
+  }
 
   function openModal(e) {
     if (e.target.tagName === "SECTION") {
@@ -56,28 +60,42 @@ const Card = ({ nome, img, especialidades, id }) => {
     }
   }
 
-  function closeModal() {
-    setIsOpen(false);
-  }
-
   return (
     <Container>
       <Modal
-        isOpen={modalIsOpen}
+        isOpen={open}
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="Example Modal"
+        ariaHideApp={false}
       >
         <ModalContainer id={id} onClick={(e) => openModal(e)}>
-          <Div>
+          <div className="headerModal">
             <h2>{nome}</h2>
             <Imagem src={DefaultUserImg} alt="Imagem" />
-          </Div>
+          </div>
 
           <ul>
-            <h3>Especialidade:</h3>
-            <li>{especialidades}</li>
+            <h3>Especialidades:</h3>
+
+            {especialidades.map((especialidade, index) => {
+              if(index < 4){
+                return <li key={index}>{especialidade}</li>;
+              }
+              if (index === 4){
+                return <li>...</li>
+              }
+            })}
           </ul>
+          <p>Locais de atendimento:</p>
+          <ul className="location">
+            {locais.slice(0, 2).map((local, index) => (
+              <li className="locationDiv" key={`${local}-${index}`}>
+                {local.state}- {local.city}
+              </li>
+            ))}
+          </ul>
+
           <span>
             <button
               onClick={() => {
@@ -112,47 +130,39 @@ const Card = ({ nome, img, especialidades, id }) => {
             </Link>
           </div>
         </ModalContainer>
-        <BotaoFechar onClick={closeModal}>X</BotaoFechar>
+          <BotaoFechar onClick={closeModal} className="botaoFechar">
+            X
+          </BotaoFechar>
       </Modal>
-      <section
-        data-aos="fade-in"
-        data-aos-delay="150"
-        id={id}
-        onClick={(e) => openModal(e)}
-      >
-        <div>
-          <h2>{nome}</h2>
+      <section id={id} onClick={(e) => openModal(e)}>
+        <div className="titleAndImg">
+          <h2 className="title">{nome}</h2>
           <img src={DefaultUserImg} alt="Imagem" />
         </div>
 
-        <ul>
-          <p>
-            <strong>Especialidade:</strong>{" "}
-          </p>
-          <li>{especialidades}</li>
-          {/* {especialidades?.map((especialidade, index) => {
-            if (index < 4) {
-              return <li key={especialidade}>{especialidade}</li>;
-            }
-            if (index === 4) {
-              return <p>...</p>;
-            }
-          })} */}
+        <ul className="occupation_areas">
+          {especialidades.slice(0, 2).map((especialidade, index) => (
+            <li key={index}>{especialidade}</li>
+          ))}
+          {especialidades.length > 2 && <li>...</li>}
         </ul>
-        <span>
-          <button
-            onClick={() => {
-              const subject = "Anúncio do site Proworking";
-              const body = "Gostaria de conversar sobre...";
-              window.open(`mailto:${email}?subject=${subject}&body=${body}`);
-            }}
+
+        <ul className="location">
+          <p>Locais de atendimento:</p>
+          {locais.slice(0, 2).map((local, index) => (
+            <li className="locationDiv" key={`${local}-${index}`}>
+              {local.state}- {local.city}
+            </li>
+          ))}
+        </ul>
+        <p className="link">
+          <Link
+            to={`/services/${id}/${nome}`}
+            onClick={() => window.scrollTo(0, 0)}
           >
-            <img src={email} alt="" />
-          </button>
-          <button>
-            <img src={whatsapp} alt="" />
-          </button>
-        </span>
+            Ver o perfil Completo
+          </Link>
+        </p>
       </section>
     </Container>
   );

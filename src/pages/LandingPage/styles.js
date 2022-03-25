@@ -1,15 +1,7 @@
 import styled from "styled-components";
 
 import bgHome from "../../assets/svg/home.svg";
-import bg from '../../assets/background/bg.svg'
-
-// lembre-se de usar html semântico
 export const LandPageContainer = styled.div`
-
-  /* background-size: cover;
-  background-repeat: no-repeat;
-  background:url(${bg}) ; */
-
   margin: 0;
 `;
 
@@ -45,7 +37,7 @@ export const Container = styled.div`
       font-size: 76px;
       font-weight: bold;
       display: block;
-      color: #000;
+      color: var(--black);
       @media (max-width: 868px) {
         font-size: 46px;
         letter-spacing: initial;
@@ -77,8 +69,7 @@ export const Container = styled.div`
     }
     @media (max-width: 868px) {
       flex-basis: 100%;
-      animation: fadeIn 1s ;
-
+      animation: fadeIn 1s;
     }
   }
   .col-right {
@@ -100,15 +91,21 @@ export const Container = styled.div`
     align-items: center;
     align-content: center;
     justify-content: space-between;
-    /* flex-direction: column; */
     max-width: 560px;
     margin: 30px 0 0 0;
+
+    button {
+      height: 41.59px;
+      margin: 0;
+      border-radius: 0 26px 26px 0;
+      box-shadow: 5px 4px 4px rgb(0 0 0 / 50%);
+
+      @media screen and (min-width: 851px) {
+        height: 43.59px;
+      }
+    }
   }
-  button {
-    margin: 0;
-    border-radius: 0 26px 26px 0;
-    box-shadow: 5px 4px 4px rgb(0 0 0 / 50%);
-  }
+
   @media (max-width: 850px) {
     flex-direction: column;
     justify-content: center;
@@ -151,10 +148,10 @@ export const HowItWorks = styled.main`
   background-color: var(--color-primary);
   margin: 80px 0 40px;
   padding: 30px;
-  color:var(--white);
-  @media (max-width:450px){
+  color: var(--white);
+  @media (max-width: 450px) {
     margin: 10px 0 10px;
-    padding:23px 20px ;
+    padding: 23px 20px;
   }
   .container {
     margin: 80px auto;
@@ -166,13 +163,13 @@ export const HowItWorks = styled.main`
       flex-basis: 50%;
       position: relative;
 
-      img{
+      img {
         bottom: 0;
         left: 0;
         width: 80%;
         position: absolute;
       }
-      @media (max-width:850px){
+      @media (max-width: 850px) {
         display: none;
       }
     }
@@ -181,32 +178,30 @@ export const HowItWorks = styled.main`
       h3 {
         text-align: start;
         font-size: 50px;
-        margin: 0 0 24px 0 ;
-        @media (max-width:850px){
+        margin: 0 0 24px 0;
+        @media (max-width: 850px) {
           font-size: 36px;
         }
-        @media (max-width:450px){
+        @media (max-width: 450px) {
           font-size: 22px;
         }
       }
-      h4{
+      h4 {
         font-size: 30px;
         padding: 10px 0;
-        @media (max-width:450px){
+        @media (max-width: 450px) {
           font-size: 18px;
         }
       }
       p {
         line-height: 1.8rem;
-        @media (max-width:450px){
-          line-height: 1rem;
+        @media (max-width: 450px) {
+          line-height: 1.7rem;
           font-size: 14px;
-          
         }
       }
-      @media (max-width:850px){
-        flex-basis:100%;
-
+      @media (max-width: 850px) {
+        flex-basis: 100%;
       }
     }
   }
@@ -215,69 +210,66 @@ export const VideoSection = styled.section`
   max-width: 1400px;
   margin: 150px auto;
   text-align: center;
-  iframe{
+  iframe {
     margin: 0 auto;
     max-width: 1060px;
     width: 90%;
     min-height: 500px;
-    @media (max-width:850px) {
+    @media (max-width: 850px) {
       min-height: 300px;
     }
   }
-
-`
+`;
 export const CategorySection = styled.section`
   max-width: 1400px;
   margin: 40px auto 80px;
-  .linha{
+  .linha {
     height: 3px;
     width: 100px;
     background-color: var(--color-primary);
     margin: 20px auto;
   }
-  h3{
+  h3 {
     text-align: center;
     font-size: 40px;
-    @media (max-width:768px) {
+    @media (max-width: 768px) {
       font-size: 20px;
     }
   }
-  ul{
+  ul {
     display: flex;
     justify-content: center;
     gap: 5px;
     flex-wrap: wrap;
     list-style: none;
     margin: 20px auto;
-    li{
-      background-color:#eee ;
+    li {
+      background-color: var(--lightergrey);
       border-radius: 20px;
       text-align: center;
       margin: 10px;
       width: 140px;
       padding: 10px 10px 25px;
       box-sizing: initial;
-      transition:1s all;
+      transition: 1s all;
       cursor: pointer;
-      @media (max-width:768px) {
+      @media (max-width: 768px) {
         width: 115px;
       }
-      :hover{
-        transition:1s all;
+      :hover {
+        transition: 1s all;
         transform: scale(1.1);
       }
-      img{
+      img {
         width: 120px;
         height: 120px;
         object-fit: contain;
       }
-      p{
-        color: #000;
+      p {
+        color: var(--black);
         font-size: 10px;
         font-weight: bold;
       }
     }
   }
-  
-
-`
+`;

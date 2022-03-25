@@ -1,6 +1,5 @@
 import { Container, ContainerHeader, Nav } from "./styles";
 
-import Button from "../Button/index.jsx";
 import logo from "../../assets/svg/logoProWorking 2.svg";
 import { useHistory, useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -9,9 +8,7 @@ import BurgerMenuLink from "../BurgerMenuLink";
 import { useAuthenticated } from "../../providers/authenticated";
 import { toast } from "react-toastify";
 
-import { FiLogIn } from "react-icons/fi";
-
-const Header = ({ className }) => {
+const Header = () => {
   const history = useHistory();
   const location = useLocation();
   const { authenticated, setAuthenticated } = useAuthenticated();
@@ -30,6 +27,9 @@ const Header = ({ className }) => {
           <BurgerMenuLink onClick={() => window.scrollTo(0, 0)} to="/services">
             Serviços
           </BurgerMenuLink>
+          <BurgerMenuLink onClick={() => window.scrollTo(0, 0)} to="/aboutus">
+            Sobre nós
+          </BurgerMenuLink>
           {authenticated ? (
             <>
               <BurgerMenuLink
@@ -39,19 +39,13 @@ const Header = ({ className }) => {
                 Dashboard
               </BurgerMenuLink>
               <BurgerMenuLink to={"/"} handleCloseMenu={logOut}>
-                Logout
+                Sair
               </BurgerMenuLink>
             </>
           ) : (
             <>
-              <BurgerMenuLink to="/login">Login</BurgerMenuLink>
+              <BurgerMenuLink to="/login">Entrar</BurgerMenuLink>
               <BurgerMenuLink to="/register">Cadastre-se</BurgerMenuLink>
-              <BurgerMenuLink
-                onClick={() => window.scrollTo(0, 0)}
-                to="/aboutus"
-              >
-                Sobre nós
-              </BurgerMenuLink>
             </>
           )}
         </BurgerMenu>
@@ -68,26 +62,38 @@ const Header = ({ className }) => {
         <Nav>
           <Link
             className={location.pathname === "/services" ? "currentPage" : ""}
-            //onClick={() => history.push("/services")}
             onClick={() => window.scrollTo(0, 0)}
             to={"/services"}
           >
             Serviços
           </Link>
-
+          <Link
+            className={location.pathname === "/aboutus" ? "currentPage" : ""}
+            onClick={() => window.scrollTo(0, 0)}
+            to={"/aboutus"}
+          >
+            Sobre Nós
+          </Link>
           {authenticated ? (
             <>
               <Link
                 className={
                   location.pathname === "/dashboard" ? "currentPage" : ""
                 }
-                //onClick={() => history.push("/dashboard")}
                 onClick={() => window.scrollTo(0, 0)}
                 to={"/dashboard"}
               >
                 Dashboard
               </Link>
-              Logout
+              <Link
+                to={"/"}
+                onClick={() => {
+                  window.scrollTo(0, 0);
+                  logOut();
+                }}
+              >
+                Sair
+              </Link>
             </>
           ) : (
             <>
@@ -95,33 +101,21 @@ const Header = ({ className }) => {
                 className={location.pathname === "/login" ? "currentPage" : ""}
                 onClick={() => {
                   window.scrollTo(0, 0);
-                  // history.push("/login");
                 }}
                 to={"/login"}
               >
-                Login
+                Entrar
               </Link>
               <Link
                 className={
                   location.pathname === "/register" ? "currentPage" : ""
                 }
                 onClick={() => {
-                  // history.push("/register");
                   window.scrollTo(0, 0);
                 }}
                 to={"/register"}
               >
                 Cadastre-se
-              </Link>
-              <Link
-                className={
-                  location.pathname === "/aboutus" ? "currentPage" : ""
-                }
-                //onClick={() => history.push("/aboutus")}
-                onClick={() => window.scrollTo(0, 0)}
-                to={"/aboutus"}
-              >
-                Sobre Nós
               </Link>
             </>
           )}
