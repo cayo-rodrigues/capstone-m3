@@ -6,16 +6,15 @@ import Login from "../pages/Login";
 import NotFoundPage from "../pages/NotFoundPage";
 import Register from "../pages/Register";
 import AboutUs from "../pages/AboutUs";
-import How from "../pages/How";
 import ServiceProfilePage from "../pages/ServiceProfilePage";
 import SearchResults from "../pages/SearchResult";
+import DashboardHomePage from "../pages/Dashboard/InitialPage";
 
 const Routes = () => {
   return (
     <Switch>
       <Route exact path="/" component={LandingPage} />
       <Route exact path="/aboutus" component={AboutUs} />
-      <Route exact path="/how" component={How} />
       <Route exact path="/services" component={ServicesPage} />
 
       <Route
@@ -25,7 +24,10 @@ const Routes = () => {
       />
       <Route exact path={`/services/:search`} component={SearchResults} />
 
-      <Route exact path="/dashboard" component={Dashboard} />
+      <Route exact path="/dashboard" component={DashboardHomePage} />
+
+      <Route exact path="/dashboard/service-register" component={Dashboard} />
+
       <Route exact path="/login" component={Login} />
       <Route exact path="/register" component={Register} />
       <Route path="*" component={NotFoundPage} />

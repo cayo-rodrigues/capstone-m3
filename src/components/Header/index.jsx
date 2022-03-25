@@ -27,6 +27,9 @@ const Header = () => {
           <BurgerMenuLink onClick={() => window.scrollTo(0, 0)} to="/services">
             Serviços
           </BurgerMenuLink>
+          <BurgerMenuLink onClick={() => window.scrollTo(0, 0)} to="/aboutus">
+            Sobre nós
+          </BurgerMenuLink>
           {authenticated ? (
             <>
               <BurgerMenuLink
@@ -36,19 +39,13 @@ const Header = () => {
                 Dashboard
               </BurgerMenuLink>
               <BurgerMenuLink to={"/"} handleCloseMenu={logOut}>
-                Logout
+                Sair
               </BurgerMenuLink>
             </>
           ) : (
             <>
-              <BurgerMenuLink to="/login">Login</BurgerMenuLink>
+              <BurgerMenuLink to="/login">Entrar</BurgerMenuLink>
               <BurgerMenuLink to="/register">Cadastre-se</BurgerMenuLink>
-              <BurgerMenuLink
-                onClick={() => window.scrollTo(0, 0)}
-                to="/aboutus"
-              >
-                Sobre nós
-              </BurgerMenuLink>
             </>
           )}
         </BurgerMenu>
@@ -70,7 +67,13 @@ const Header = () => {
           >
             Serviços
           </Link>
-
+          <Link
+            className={location.pathname === "/aboutus" ? "currentPage" : ""}
+            onClick={() => window.scrollTo(0, 0)}
+            to={"/aboutus"}
+          >
+            Sobre Nós
+          </Link>
           {authenticated ? (
             <>
               <Link
@@ -89,7 +92,7 @@ const Header = () => {
                   logOut();
                 }}
               >
-                Logout
+                Sair
               </Link>
             </>
           ) : (
@@ -101,7 +104,7 @@ const Header = () => {
                 }}
                 to={"/login"}
               >
-                Login
+                Entrar
               </Link>
               <Link
                 className={
@@ -113,15 +116,6 @@ const Header = () => {
                 to={"/register"}
               >
                 Cadastre-se
-              </Link>
-              <Link
-                className={
-                  location.pathname === "/aboutus" ? "currentPage" : ""
-                }
-                onClick={() => window.scrollTo(0, 0)}
-                to={"/aboutus"}
-              >
-                Sobre Nós
               </Link>
             </>
           )}

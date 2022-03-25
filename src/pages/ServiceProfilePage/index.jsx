@@ -1,31 +1,89 @@
-import { ServiceContainer } from "./style";
+import { RatingContainer, ServiceContainer } from "./style";
 import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { useWorkers } from "../../providers/workers";
-
+import { proWorkingApi } from "../../services/api";
 import { AiOutlineWhatsApp, AiOutlineMail } from "react-icons/ai";
 
 import Button from "../../components/Button/index.jsx";
 import { useAuthenticated } from "../../providers/authenticated";
-import { useHistory } from "react-router-dom";
 
 import DefaultUserImg from "../../assets/profile 1.png";
+import { useEffect, useState } from "react";
+
+import RatingStars from "../../components/RatingStars";
+import { toast } from "react-toastify";
 
 const ServiceProfilePage = () => {
+  const [feed, setFeed] = useState("");
   const { workers } = useWorkers();
   const { id, name } = useParams();
   const { authenticated } = useAuthenticated();
+  const [feedbacks, setFeedbacks] = useState([]);
+  const [contador, setContador] = useState(0);
 
-  const workerProfile = workers.find(
-    (worker) => worker.user.name === name && worker.id === Number(id)
+  const [workerProfile] = useState(
+    workers.find(
+      (worker) => worker.user.name === name && worker.id === Number(id)
+    )
+  );
+
+  const [userInfo] = useState(
+    JSON.parse(localStorage.getItem("@ProWorking:user")) || {}
+  );
+
+  const [userRating] = useState(
+    workerProfile.ratings.find(
+      ({ userId }) => userId === userInfo.user?.id
+    ) || {
+      stars: 0,
+    }
+  );
+
+  const [averageRating] = useState(
+    workerProfile.ratings.reduce((acc, rating) => acc + rating.stars, 0) /
+      workerProfile.ratings.length
   );
 
   const { occupation_areas, summary, whatsapp, user } = workerProfile;
-  const history = useHistory();
+
+  const getApi = () => {
+    proWorkingApi.get(`feedbacks?_expand=user&workerId=${+id}`).then((res) => {
+      setFeedbacks(res.data);
+    });
+  };
+
+  useEffect(() => {
+    getApi();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const feedbackApi = () => {
+    proWorkingApi
+      .post(
+        "feedbacks",
+        {
+          userId: userInfo.user.id,
+          workerId: +id,
+          content: feed.trim(),
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${userInfo.accessToken}`,
+          },
+        }
+      )
+      .then(() => {
+        getApi();
+        setFeed("");
+      });
+  };
 
   return (
     <ServiceContainer>
       <div className="profile-header">
-        <span>PROWORKING</span>
+        <span>
+          <RatingStars workerId={+id} value={averageRating || 0} />
+        </span>
         <figure>
           <img src={DefaultUserImg} alt={name} />
         </figure>
@@ -64,7 +122,6 @@ const ServiceProfilePage = () => {
         >
           <AiOutlineWhatsApp /> Fale Comigo
         </div>
-        {/* https://wa.me/5524998913379?text=teste */}
 
         <div
           className="icon icon-mail"
@@ -86,50 +143,51 @@ const ServiceProfilePage = () => {
           <strong>Email:</strong> {user.email}
         </p>
 
-        <h2>Rating:</h2>
+        <RatingContainer>
+          <h2>Como você avalia este profissional?</h2>
+          <RatingStars workerId={+id} isEditable value={userRating.stars} />
+        </RatingContainer>
 
         <h2>Comentários:</h2>
 
-        <div className="comments">
-          <div className="profile-pic">
-            <p>F</p>
-          </div>
-          <div className="profile-comment">
-            <h3>Fulaninho</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione,
-              ullam debitis eaque quae voluptatem enim molestiae! Dolorem
-              dignissimos repellendus fugit mollitia non nesciunt laboriosam
-              velit, maiores cum, facere eligendi voluptas.
-            </p>
-          </div>
-        </div>
-        <div className="comments">
-          <div className="profile-pic">
-            <p>F</p>
-          </div>
-          <div className="profile-comment">
-            <h3>Fulaninho</h3>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione,
-              ullam debitis eaque quae voluptatem enim molestiae! Dolorem
-              dignissimos repellendus fugit mollitia non nesciunt laboriosam
-              velit, maiores cum, facere eligendi voluptas.
-            </p>
-          </div>
-        </div>
+        {feedbacks.map((feedback) => {
+          return (
+            <div key={feedback.id} className="comments">
+              <div className="profile-pic">
+                <p>{feedback.user.name[0]}</p>
+              </div>
+              <div className="profile-comment">
+                <h3>{feedback.user.name}</h3>
+                <p>{feedback.content}</p>
+              </div>
+            </div>
+          );
+        })}
 
-        <textarea placeholder="Deixe seu feedback"></textarea>
-        <Button
-          onClick={() => {
-            if (authenticated) {
-            } else {
-              history.push("/login");
-            }
+        <textarea
+          maxLength={420}
+          value={feed}
+          onChange={(e) => {
+            setFeed(e.target.value);
+            setContador(e.target.value.trim().length);
           }}
-        >
-          Enviar
-        </Button>
+          placeholder="Deixe seu feedback"
+        ></textarea>
+        <h4>{contador}/420</h4>
+        <div className="botaoSpan">
+          <Button
+            onClick={() => {
+              if (authenticated) {
+                feed.trim() && feedbackApi();
+              } else {
+                toast.error("Faça login para comentar");
+              }
+            }}
+          >
+            Enviar
+          </Button>
+          <span>Para poder comentar é necessário estar logado</span>
+        </div>
       </div>
     </ServiceContainer>
   );

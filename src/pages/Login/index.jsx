@@ -15,12 +15,13 @@ import { firebase, auth } from "../../services/firebase";
 const Login = () => {
   const { handleUser } = useUser();
   const { authenticated, setAuthenticated } = useAuthenticated();
+
   const { user, setUser } = useAuthGoogle();
 
   const history = useHistory();
 
   const handleSubmitCallBack = (dataUser) => {
-    console.log(dataUser);
+
     proWorkingApi
       .post("/login", dataUser)
       .then(({ data }) => {

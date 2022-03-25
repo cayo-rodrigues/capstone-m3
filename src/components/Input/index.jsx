@@ -27,10 +27,7 @@ const Input = ({
   return (
     <>
       {isSearch ? (
-        <ContainerInputSearch
-          {...rest}
-          placeholder="PESQUISE AQUI POR UM SERVIÇO"
-        />
+        <ContainerInputSearch {...rest} placeholder="PESQUISE AQUI" />
       ) : isNormalInput ? (
         <Container>
           <p>{label}</p>

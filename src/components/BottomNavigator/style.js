@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const NavigatorContainerDiv = styled.div`
   position: fixed;
-  bottom: 0;
+  bottom: ${props=>props.upOrDown ? "-85px" : "0"};
   left: 0;
   width: 100%;
   background-color: var(--color-primary);
@@ -24,6 +24,7 @@ export const NavigatorContainerDiv = styled.div`
     align-items: flex-start;
     padding: 10px;
     li {
+      flex-basis: 20%;
       transition: 0.5s;
       text-align: center;
       :hover {
@@ -32,9 +33,9 @@ export const NavigatorContainerDiv = styled.div`
         }
       }
       svg {
-        width: 25px;
+        width: 21px;
         transition: 0.5s;
-        height: 25px;
+        height: 21px;
       }
     }
   }
@@ -53,16 +54,19 @@ export const NavigatorContainerDiv = styled.div`
       border-radius: 50%;
       position: relative;
       z-index: 12;
+      max-width: 52px;
+      margin: 0 auto;
     }
     p {
       border-radius: 50%;
       padding: 4px;
-      width: 45px;
-      height: 45px;
+      width: 42px;
+      height: 42px;
       justify-content: center;
       align-items: center;
       display: flex;
       transition: 0.5s;
+      margin:  0 auto;
       background-color: var(--color-secondary);
       svg {
         border-radius: 50%;
