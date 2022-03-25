@@ -37,7 +37,7 @@ const Footer = () => {
             <li>
               <Link to="/" onClick={() => window.scrollTo(0, 0)}>
                 Home
-              </Link>{" "}
+              </Link>
             </li>
 
             {authenticated === false && (
@@ -45,12 +45,12 @@ const Footer = () => {
                 <li>
                   <Link to="/login" onClick={() => window.scrollTo(0, 0)}>
                     Login
-                  </Link>{" "}
+                  </Link>
                 </li>
                 <li>
                   <Link to="/register" onClick={() => window.scrollTo(0, 0)}>
                     Cadastro
-                  </Link>{" "}
+                  </Link>
                 </li>
               </>
             )}
@@ -58,24 +58,19 @@ const Footer = () => {
               <li>
                 <Link to="/dashboard" onClick={() => window.scrollTo(0, 0)}>
                   Dashboard
-                </Link>{" "}
+                </Link>
               </li>
             )}
             <li>
               <Link to="/services" onClick={() => window.scrollTo(0, 0)}>
                 Services
-              </Link>{" "}
+              </Link>
             </li>
             <li>
               <Link to="/aboutus" onClick={() => window.scrollTo(0, 0)}>
                 Sobre nós
-              </Link>{" "}
+              </Link>
             </li>
-            {/* <li>
-              <Link to="/how" onClick={() => window.scrollTo(0, 0)}>
-                Como funciona
-              </Link>{" "}
-            </li> */}
           </ul>
         </div>
 
@@ -88,8 +83,7 @@ const Footer = () => {
               <AiFillMail /> cavalo@mail.com.com.com
             </li>
             <li>
-              {" "}
-              <GoLocation /> Curitiba, Paraná{" "}
+              <GoLocation /> Curitiba, Paraná
             </li>
             <li> Kenzie Academy Brasil </li>
           </ul>
@@ -109,7 +103,7 @@ const Footer = () => {
       </div>
       <p>
         Desenvolvido por ProWorking 💜 | &copy; 2022 Todos os direitos
-        Reservados{" "}
+        Reservados
       </p>
     </FooterContainer>
   );

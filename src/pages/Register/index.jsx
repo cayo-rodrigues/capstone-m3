@@ -21,7 +21,6 @@ const Register = () => {
 
   const handleSubmitCallBack = (data) => {
     delete data.confirm_password;
-    console.log(data);
 
     proWorkingApi
       .post("/register", { ...data, is_active: true, is_admin: false })
@@ -60,7 +59,6 @@ const Register = () => {
     proWorkingApi
       .post("/login", dataUser)
       .then(({ data }) => {
-        console.log(data);
         handleUser(data);
         setAuthenticated(true);
         history.push("/dashboard");

@@ -27,17 +27,7 @@ const customStyles = {
 };
 
 const Card = ({ nome, img, especialidades = [], locais = [], id }) => {
-  let subtitle;
   const [open, setIsOpen] = useState(false);
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    subtitle.style.color = "#f00";
-  }
 
   function closeModal() {
     setIsOpen(false);
@@ -76,14 +66,10 @@ const Card = ({ nome, img, especialidades = [], locais = [], id }) => {
             <ul>
               <h3>Especialidades:</h3>
 
-              {especialidades.map((especialidade, index) => {
-                if (index < 4) {
-                  return <li key={index}>{especialidade}</li>;
-                }
-                if (index === 4) {
-                  return <li key={index}>...</li>;
-                }
+              {especialidades.slice(0, 4).map((especialidade, index) => {
+                return <li key={index}>{especialidade}</li>;
               })}
+              {especialidades.length > 4 && <li>...</li>}
             </ul>
 
             <p>Locais de atendimento:</p>

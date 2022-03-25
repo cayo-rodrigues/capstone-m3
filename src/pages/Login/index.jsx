@@ -15,7 +15,7 @@ const Login = () => {
   const { handleUser } = useUser();
   const { authenticated, setAuthenticated } = useAuthenticated();
 
-  const { user, setUser } = useAuthGoogle();
+  const { setUser } = useAuthGoogle();
 
   const history = useHistory();
 
