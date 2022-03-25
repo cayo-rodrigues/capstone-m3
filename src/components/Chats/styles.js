@@ -39,6 +39,11 @@ export const Container = styled.div`
         text-align: center;
         background-color: #e1e1e1;
     }
+    .usuario{
+        font-weight: bold;
+        border-bottom: 1px solid var(--white);
+        color: var(--color-primary);
+    }
     .recent-open {
       /* height: 360px;
       overflow-y: auto; */
@@ -84,14 +89,26 @@ export const Container = styled.div`
   .col-right {
       position: relative;
       display: flex;
+      overflow-y: auto;
       justify-content: flex-end;
       flex-direction: column;
     flex-basis: 70%;
     background-color: #f3f3f3;
     min-height: 100vh;
     height: 100vh;
+    .current-Chat{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height:50px;
+        padding: 15px;
+        background-color: #000;
+        color: white;
+    }
     @media (max-width:1000px) {
-        display: none;
+        /* display: none;
+        width: 100%;
+        min-height: 100vh; */
     }
   }
 `;

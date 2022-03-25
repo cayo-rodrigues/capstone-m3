@@ -5,12 +5,26 @@ export const BoxChat = styled.div`
   display: flex;
   flex-direction: column;
   background-color: var(--whitesmoke);
+  
+  @media (max-width:1000px) {
 
+ 
+  }
   > button {
     margin: 0 auto;
     border: none;
     background-color: var(--color-aux);
     color: var(--white);
+  }
+  .current-chat-user{
+    position: absolute;
+    top: 0;
+    left: 100px;
+    height:30px;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    font-size: 14px;
   }
   .voltarChat {
     position: absolute;
@@ -33,7 +47,7 @@ export const BoxChat = styled.div`
   }
   .voltarChat{
     right: 0;
-    z-index: 300;
+    z-index: 10;
     
   }
 

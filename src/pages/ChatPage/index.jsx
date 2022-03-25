@@ -62,7 +62,7 @@ const ChatPage = () => {
 
   useEffect(() => {
     refreshChats();
-  }, []);
+  }, [currentChat]);
 
   const sendMessager = () => {
     const header = {
@@ -111,6 +111,7 @@ const ChatPage = () => {
           setCurrentChat={setCurrentChat}
           setMessageIsOpen={setMessageIsOpen}
           
+          refreshChats={refreshChats}
           messages={messages}
           inputMessage={inputMessage}
           setInputMessage={setInputMessage}

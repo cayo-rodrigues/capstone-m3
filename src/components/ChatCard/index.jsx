@@ -5,6 +5,7 @@ const ChatCard = ({
   refreshMessages,
   setCurrentChat,
   setMessageIsOpen,
+  setCurrentChatUser
 }) => {
   const newDate = new Date(chat.last_message.created);
   const fortedDate = newDate.toLocaleString("pt-BR", {
@@ -17,13 +18,14 @@ const ChatCard = ({
         setCurrentChat(chat);
         refreshMessages(chat.id);
         setMessageIsOpen(true);
+        setCurrentChatUser(chat.title)
       }}
     >
       <div>
         <h3>{chat.title}</h3>
         <p>{chat.last_message.text}</p>
       </div>
-
+      
       <span>{fortedDate}</span>
     </ContainerChat>
   );

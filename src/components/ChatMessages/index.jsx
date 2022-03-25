@@ -11,10 +11,13 @@ const ChatMessages = ({
     setInputMessage,
     sendMessager,
     setMessageIsOpen,
+
 }) => {
     const history = useHistory()
+
     return (
         <BoxChat>
+            {/* <div className="current-chat-user">{currentChatUser}</div> */}
             <button className="voltarChat" onClick={() =>{
                 setMessageIsOpen(false)
                 history.push('/')

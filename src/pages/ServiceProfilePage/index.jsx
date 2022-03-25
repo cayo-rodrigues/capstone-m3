@@ -56,7 +56,7 @@ const ServiceProfilePage = () => {
         };
         const data = {
             usernames: [userInfo.user.email, user.email],
-            title: `${userInfo.user.name}/${user.name}`,
+            title: `${user.name}`,
             is_direct_chat: false,
         };
         if (authenticated) {
@@ -135,7 +135,7 @@ const ServiceProfilePage = () => {
                 </div>
 
                 <div className='icon icon-message' onClick={() => initChat()}>
-                    <TiMessage /> Menssagem Direta
+                    <TiMessage /> Mensagem Direta
                 </div>
 
                 <h2>Informações do Perfil</h2>
