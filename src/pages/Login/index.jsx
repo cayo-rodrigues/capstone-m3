@@ -9,20 +9,17 @@ import { toast } from "react-toastify";
 
 import { LoginContainer } from "./styles";
 import { useAuthGoogle } from "../../providers/authGoogle";
-
-import { firebase, auth } from "../../services/firebase";
+import { auth, firebase } from "../../services/firebase";
 
 const Login = () => {
   const { handleUser } = useUser();
   const { authenticated, setAuthenticated } = useAuthenticated();
-
 
   const { user, setUser } = useAuthGoogle();
 
   const history = useHistory();
 
   const handleSubmitCallBack = (dataUser) => {
-
     proWorkingApi
       .post("/login", dataUser)
       .then(({ data }) => {
@@ -37,7 +34,6 @@ const Login = () => {
         })
       );
   };
-
 
   const handleClickButtonLogin = async () => {
     const provider = new firebase.auth.GoogleAuthProvider();
@@ -71,13 +67,11 @@ const Login = () => {
         </div>
 
         <div className="col-right col">
-
           <Form
             isLogin
             handleSubmitCallBack={handleSubmitCallBack}
             handleClickButtonLogin={handleClickButtonLogin}
           />
-
         </div>
       </LoginContainer>
     </>

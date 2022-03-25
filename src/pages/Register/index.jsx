@@ -47,7 +47,6 @@ const Register = () => {
             } else {
               history.push("/login");
             }
-
           });
       })
       .catch(() => {
@@ -56,9 +55,6 @@ const Register = () => {
         });
       });
   };
-
-
-
 
   const loginGoogle = (dataUser) => {
     proWorkingApi
