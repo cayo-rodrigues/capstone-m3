@@ -199,19 +199,24 @@ export const ModalContainer = styled.div`
 
   p {
     margin-top: 5px;
+
     text-align: left;
     width: 80%;
     margin: 0 auto;
+
   }
 
   ul {
     display: flex;
     flex-direction: column;
     justify-content: start;
+
     align-items: flex-start;
+
     width: 80%;
     margin: 0 auto;
     color: var(--color-secondary);
+
 
     > li {
       text-overflow: ellipsis;
@@ -219,6 +224,7 @@ export const ModalContainer = styled.div`
       white-space: nowrap;
       width: 80%;
     }
+
     > h3 {
       text-align: left;
       margin-bottom: 10px;
@@ -258,7 +264,9 @@ export const ModalContainer = styled.div`
     display: flex;
     flex-direction: row;
     align-items: center;
+
     justify-content: flex-start;
+
     color: black;
     font-size: 14px;
     margin: 15px auto;

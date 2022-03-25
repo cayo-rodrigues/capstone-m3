@@ -13,7 +13,15 @@ import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import GoogleButton from "../GoogleButton";
 
-const Form = ({ isLogin, isRegister, handleSubmitCallBack }) => {
+
+const Form = ({
+  isLogin,
+  isRegister,
+  handleSubmitCallBack,
+  handleClickButtonLogin,
+  handleClickButtonRegister,
+}) => {
+
   const schemaLogin = yup.object().shape({
     email: yup.string().email("Email inválido").required("Campo Obrigatório"),
     password: yup.string().required("Campo Obrigatório"),
@@ -67,8 +75,11 @@ const Form = ({ isLogin, isRegister, handleSubmitCallBack }) => {
             placeholder="Senha"
             type={"password"}
           />
+
+          <Button onClick={handleClickButtonLogin}>Logar google</Button>
           <Button type="submit">Entrar</Button>
           <GoogleButton text="Entrar com Google" />
+
         </FormContainer>
       )}
       {isRegister && (
@@ -110,7 +121,12 @@ const Form = ({ isLogin, isRegister, handleSubmitCallBack }) => {
           />
 
           <Button type="submit">Cadastrar</Button>
+
+          <Button onClick={handleClickButtonRegister}>
+            Cadastrar com google
+          </Button>
           <GoogleButton text="Registrar com Google" />
+
         </FormContainer>
       )}
       <FormFooter>

@@ -1,6 +1,8 @@
+
 import { BotaoFechar, Container, Imagem, ModalContainer } from "./styles";
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+
 import Modal from "react-modal";
 import whatsapp from "../../assets/Whatsapp.png";
 import email from "../../assets/Email.png";
@@ -38,12 +40,8 @@ const Card = ({ nome, img, especialidades = [], locais = [], id }) => {
     subtitle.style.color = "#f00";
   }
 
-  useEffect(() => {},[open])
-
   function closeModal() {
-    console.log("oi")
     setIsOpen(false);
-    console.log(open)
   }
 
   function openModal(e) {
@@ -70,6 +68,7 @@ const Card = ({ nome, img, especialidades = [], locais = [], id }) => {
         ariaHideApp={false}
       >
         <ModalContainer id={id} onClick={(e) => openModal(e)}>
+
           <div className="headerModal">
             <h2>{nome}</h2>
             <Imagem src={DefaultUserImg} alt="Imagem" />
@@ -77,6 +76,7 @@ const Card = ({ nome, img, especialidades = [], locais = [], id }) => {
 
           <ul>
             <h3>Especialidades:</h3>
+
 
             {especialidades.map((especialidade, index) => {
               if(index < 4){
@@ -87,6 +87,18 @@ const Card = ({ nome, img, especialidades = [], locais = [], id }) => {
               }
             })}
           </ul>
+
+           
+            <div className="link">
+              <Link
+                to={`/services/${id}/${nome}`}
+                onClick={() => window.scrollTo(0, 0)}
+              >
+                Ver o perfil completo
+              </Link>
+            </div>
+          </ul>
+
           <p>Locais de atendimento:</p>
           <ul className="location">
             {locais.slice(0, 2).map((local, index) => (
@@ -130,9 +142,11 @@ const Card = ({ nome, img, especialidades = [], locais = [], id }) => {
             </Link>
           </div>
         </ModalContainer>
+
           <BotaoFechar onClick={closeModal} className="botaoFechar">
             X
           </BotaoFechar>
+
       </Modal>
       <section id={id} onClick={(e) => openModal(e)}>
         <div className="titleAndImg">
