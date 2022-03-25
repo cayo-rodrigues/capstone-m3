@@ -14,16 +14,19 @@ const SearchBar = () => {
 
   return (
     <Container>
+
+
       <div className="inputDiv">
         <input
           onKeyDown={(e) => e.key === "Enter" && handleSearch(search)}
           onChange={(e) => setSearch(e.target.value.trim())}
           placeholder="Pesquisar"
-        />
+          />
         <button onClick={() => handleSearch(search)}>
           <AiOutlineSearch />
         </button>
       </div>
+      
     </Container>
   );
 };

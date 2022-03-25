@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { useWorkers } from "../../providers/workers";
 import { useUser } from "../../providers/user";
 import { chatApi } from "../../services/api";
+import { toast } from "react-toastify";
 
 import { AiOutlineWhatsApp, AiOutlineMail } from "react-icons/ai";
 import { TiMessage } from "react-icons/ti";
@@ -12,7 +13,7 @@ import { useAuthenticated } from "../../providers/authenticated";
 
 import DefaultUserImg from "../../assets/profile 1.png";
 import RatingStars from "../../components/RatingStars";
-import { toast } from "react-toastify";
+
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
 
@@ -23,9 +24,6 @@ const ServiceProfilePage = () => {
     const { authenticated } = useAuthenticated();
     const { user: userInfo } = useUser();
 
-    console.log(userInfo);
-    console.log(workers);
-    
     const workerProfile = workers.find(
       (worker) => worker.user.name === name && worker.id === Number(id)
   );
@@ -52,18 +50,24 @@ const ServiceProfilePage = () => {
     const initChat = () => {
         const header = {
             "Project-ID": "e17e9017-bc37-4905-87cd-3c21a240adb9",
-            "User-Name": `${userInfo.email}`,
+            "User-Name": `${userInfo.user.email}`,
             "User-Secret": "proworking2022",
             "Content-Type": "application/json",
         };
         const data = {
-            usernames: [userInfo.email, user.email],
-            title: `${userInfo.name}/${user.name}`,
-            is_direct_chat: true,
+            usernames: [userInfo.user.email, user.email],
+            title: `${userInfo.user.name}/${user.name}`,
+            is_direct_chat: false,
         };
-        chatApi
-            .put("/chats/", data, { headers: header })
-            .then(() => history.push("/chat"));
+        if (authenticated) {
+            chatApi
+                .put("/chats/", data, { headers: header })
+                .then(() => history.push("/chat"));
+        } else {
+            toast.info("Faça login para usar o chat!", {
+                toastId: "toastfyInfo",
+            });
+        }
     };
 
     return (

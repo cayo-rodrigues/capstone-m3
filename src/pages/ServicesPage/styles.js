@@ -36,8 +36,14 @@ export const ServicePageContainer = styled.main`
 
 export const TopBar = styled.div`
   width: 100%;
+  
   background-color: var(--midgrey);
   text-align: center;
+  .search-container{
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  
 
   @media screen and (min-width: 760px) {
     display: flex;

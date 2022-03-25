@@ -4,28 +4,46 @@ export const ContainerChat = styled.li`
   * {
     margin: 0 auto;
   }
+  cursor: pointer;
   display: flex;
   align-items: flex-start;
-  flex-direction: column;
+  /* flex-direction: column; */
   justify-content: center;
   align-content: center;
   width: 100%;
-  max-width: 100vw;
+  margin: 0 auto;
+  min-height: 70px;
   word-break: break-all;
   padding: 10px;
-  margin-top: 5px;
-  border-bottom: 2px solid var(--grey);
-  border-radius: 10px;
-  background-color: var(--lightgrey);
+  margin-top: 0px;
+  border-bottom: 1px solid #e1e1e1;
+  border-radius: 0px;
+  color: #000;
   list-style: none;
+  background-color:#fff;
+  transition: 1s all;
+  :hover{
+    background-color: var(--color-primary);
+    transition: 1s all;
+    color: white;
+  }
   > h3 {
     font-size: 18px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    max-width: 200px;
   }
   > p {
     color: var(--grey);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   }
   > span {
-    color: var(--grey);
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
   }
   @media (min-width: 768px) {
     align-content: flex-start;

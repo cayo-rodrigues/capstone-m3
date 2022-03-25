@@ -18,7 +18,10 @@ const ServicesPage = () => {
   return (
     <>
       <TopBar>
+        <div className="search-container">
         <SearchBar />
+
+        </div>
       </TopBar>
 
       <ServicePageContainer>

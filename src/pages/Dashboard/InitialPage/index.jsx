@@ -21,7 +21,7 @@ const DashboardHomePage = () => {
       <h1>Seja bem vindo {profile.name}!! 😊 </h1>
       <h2>O que você deseja?</h2>
       <ul>
-        <Link to={"/dashboard/service-register"}>
+        <Link to={"/dashboard/service-register"} onClick={()=>window.scrollTo(0,0)}>
           <li>
             <img src={Cadastro} alt="Cadastrar" />
             <div>
@@ -39,7 +39,7 @@ const DashboardHomePage = () => {
           </li>
         </Link> */}
 
-        <Link to={"/chatpage"}>
+        <Link to={"/chat"}>
           <li>
             <img src={VerAnúncios} alt="Ver anúncios" />
             <div>

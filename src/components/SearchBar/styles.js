@@ -2,17 +2,18 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100%;
-  max-width: 900px;
+  max-width: 400px;
   margin: 0px auto;
   padding: 10px 0;
 
   .inputDiv {
-    max-width: 90%;
+    max-width: 400px;
+    width: 95%;
     margin: 0 auto;
     height: 44px;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    align-items: flex-start;
+    justify-content: center;
     background: var(--white);
     border-radius: 30px;
     border: 2px solid transparent;
@@ -59,7 +60,7 @@ export const Container = styled.div`
   }
 
   @media screen and (min-width: 760px) {
-    max-width: 40%;
+   
     margin: 0;
   }
 `;

@@ -10,7 +10,6 @@ const ChatCard = ({
   const fortedDate = newDate.toLocaleString("pt-BR", {
     timeZone: "America/Sao_Paulo",
   });
-  
 
   return (
     <ContainerChat
@@ -20,8 +19,11 @@ const ChatCard = ({
         setMessageIsOpen(true);
       }}
     >
-      <h3>{chat.title}</h3>
-      <p>{chat.last_message.text}</p>
+      <div>
+        <h3>{chat.title}</h3>
+        <p>{chat.last_message.text}</p>
+      </div>
+
       <span>{fortedDate}</span>
     </ContainerChat>
   );

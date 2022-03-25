@@ -1,6 +1,9 @@
-import Button from "../Button";
+
 import CardMessage from "../CardMessage";
-import { BoxChat, BoxInput, BoxMessages } from "./styles";
+import { BoxChat } from "./styles";
+
+import {IoSendSharp} from 'react-icons/io5'
+import { useHistory } from "react-router-dom";
 
 const ChatMessages = ({
     messages,
@@ -9,22 +12,27 @@ const ChatMessages = ({
     sendMessager,
     setMessageIsOpen,
 }) => {
+    const history = useHistory()
     return (
         <BoxChat>
-            <button onClick={() => setMessageIsOpen(false)}>{"<"}</button>
-            <BoxMessages>
+            <button className="voltarChat" onClick={() =>{
+                setMessageIsOpen(false)
+                history.push('/')
+            }}>{"Voltar"}</button>
+
+            <div className="box-messages">
                 {messages.map((message) => (
                     <CardMessage key={message.id} message={message} />
                 ))}
-            </BoxMessages>
-            <BoxInput>
-                <textarea
+            </div>
+            <div className="boxInput">
+                <input
                     placeholder='Digite sua mensagem aqui...'
                     value={inputMessage}
                     onChange={(event) => setInputMessage(event.target.value)}
                 />
-                <Button onClick={() => sendMessager()}>Enviar</Button>
-            </BoxInput>
+                <button onClick={() => sendMessager()}><IoSendSharp/></button>
+            </div>
         </BoxChat>
     );
 };

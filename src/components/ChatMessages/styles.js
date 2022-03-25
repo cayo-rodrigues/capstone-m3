@@ -1,52 +1,101 @@
 import styled from "styled-components";
 
 export const BoxChat = styled.div`
-  border: 1px solid;
-  width: 100%;
-  min-height: 60vh;
+  border: 0px solid;
   display: flex;
   flex-direction: column;
   background-color: var(--whitesmoke);
+
   > button {
-    border-radius: 50%;
-    width: 20vw;
-    height: 20vw;
-    padding: 15px;
-    font-size: 28px;
     margin: 0 auto;
-    margin-top: 10px;
     border: none;
     background-color: var(--color-aux);
     color: var(--white);
   }
+  .voltarChat {
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    font-size: 20px;
+    transition: 1s;
+    border-radius: 0;
+    :hover {
+      background-color: white;
+      color: black;
+      transition: 1s;
+    }
+  }
+  .voltarChat{
+    right: 0;
+    z-index: 300;
+    
+  }
+
+  .boxInput {
+    /* position: absolute;
+    bottom: 0;
+    left: 0; */
+    padding: 10px;
+    width: 100%;
+    background-color: #e2e2e2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    > input {
+      font-size: 18px;
+      padding: 5px;
+      border-radius: 5px;
+      width: 90%;
+      padding: 15px;
+      margin: 0 5px;
+      border: 0px;
+      border-radius: 33px;
+    }
+    > button {
+      width: 50px;
+      height: 50px;
+      border: 0;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--color-primary);
+      color: white;
+
+      transition: 1s;
+      box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+      :hover {
+        transition: 1s;
+        background-color: var(--color-aux);
+      }
+      svg {
+        width: 50%;
+        height: 50%;
+      }
+    }
+  }
+  .box-messages{
+    height: 100%;
+    border: 0;
+    padding: 25px;
+  }
+
+
 `;
 
 export const BoxMessages = styled.div`
   border-bottom: 3px solid var(--darkblue);
-  max-width: 100vw;
-  height: 100%;
-  padding: 15px;
+  
   word-break: break-all;
   font-size: 20px;
 `;
 
 export const BoxInput = styled.div`
   align-self: flex-end;
-  width: 100%;
-  margin-top: 10px;
-  > textarea {
-    font-size: 18px;
-    padding: 5px;
-    line-height: 40px;
-    min-width: 90vw;
-    margin: 10px;
-    box-shadow: inset 0 0 1em var(--color-bg);
-    border-radius: 5px;
-  }
-  > button {
-    position: relative;
-    left: 20vw;
-    margin-bottom: 30px;
-    box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
-  }
 `;

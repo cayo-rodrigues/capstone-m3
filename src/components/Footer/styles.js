@@ -7,7 +7,7 @@ export const FooterContainer = styled.footer`
   margin: 0 auto;
   width: 98%;
   display: ${({ currentPage }) =>
-    currentPage === "/login" || currentPage === "/register" ? "none" : "block"};
+    currentPage === "/login" || currentPage === "/register" || currentPage==='/chat' ? "none" : "block"};
 
   @media (max-width: 660px) {
     width: 100%;

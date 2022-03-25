@@ -20,8 +20,9 @@ const Dashboard = () => {
   const { authenticated } = useAuthenticated();
   const history = useHistory();
 
-  const profile = JSON.parse(localStorage.getItem("@ProWorking:user")) || {};
-  const token = localStorage.getItem("@ProWorking:token");
+  const user = JSON.parse(localStorage.getItem("@ProWorking:user"));
+  const profile = user.user
+  const token = user.accessToken
 
   const { workers, refreshWorkers } = useWorkers();
   const workerProfile =

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Container = styled.div`
   background-color: var(--color-aux);
   display: ${({ currentPage }) =>
-    currentPage === "/login" || currentPage === "/register" ? "none" : "flex"};
+    currentPage === "/login" || currentPage === "/register" || currentPage==='/chat' ? "none" : "flex"};
   top: 0;
   left: 0;
   position: sticky;
