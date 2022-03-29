@@ -53,6 +53,7 @@ const ServiceProfilePage = () => {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     getApi();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);

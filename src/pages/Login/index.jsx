@@ -10,8 +10,13 @@ import { toast } from "react-toastify";
 import { LoginContainer } from "./styles";
 import { useAuthGoogle } from "../../providers/authGoogle";
 import { auth, firebase } from "../../services/firebase";
+import { useEffect } from "react";
 
 const Login = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const { handleUser } = useUser();
   const { authenticated, setAuthenticated } = useAuthenticated();
 

@@ -6,8 +6,13 @@ import VerAnúncios from "../../../assets/svg/see-all-jobs.svg";
 import CriarAnuncios from "../../../assets/svg/create.svg";
 import { Redirect } from "react-router-dom";
 import { useAuthenticated } from "../../../providers/authenticated";
+import { useEffect } from "react";
 
 const DashboardHomePage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const profile = JSON.parse(localStorage.getItem("@ProWorking:user"));
 
   const { authenticated } = useAuthenticated();

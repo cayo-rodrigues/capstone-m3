@@ -1,8 +1,13 @@
 import { OurTeam } from "./styles";
 
 import { AiFillLinkedin } from "react-icons/ai";
+import { useEffect } from "react";
 
 const AboutUs = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const team = [
     {
       name: "Cayo Rodrigues",

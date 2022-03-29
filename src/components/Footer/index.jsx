@@ -35,41 +35,29 @@ const Footer = () => {
         <div data-aos="fade-up" data-aos-delay="150" className="footer-pages">
           <ul>
             <li>
-              <Link to="/" onClick={() => window.scrollTo(0, 0)}>
-                Home
-              </Link>
+              <Link to="/">Home</Link>
             </li>
 
             {authenticated === false && (
               <>
                 <li>
-                  <Link to="/login" onClick={() => window.scrollTo(0, 0)}>
-                    Login
-                  </Link>
+                  <Link to="/login">Login</Link>
                 </li>
                 <li>
-                  <Link to="/register" onClick={() => window.scrollTo(0, 0)}>
-                    Cadastro
-                  </Link>
+                  <Link to="/register">Cadastro</Link>
                 </li>
               </>
             )}
             {authenticated && (
               <li>
-                <Link to="/dashboard" onClick={() => window.scrollTo(0, 0)}>
-                  Dashboard
-                </Link>
+                <Link to="/dashboard">Dashboard</Link>
               </li>
             )}
             <li>
-              <Link to="/services" onClick={() => window.scrollTo(0, 0)}>
-                Services
-              </Link>
+              <Link to="/services">Services</Link>
             </li>
             <li>
-              <Link to="/aboutus" onClick={() => window.scrollTo(0, 0)}>
-                Sobre nós
-              </Link>
+              <Link to="/aboutus">Sobre nós</Link>
             </li>
           </ul>
         </div>

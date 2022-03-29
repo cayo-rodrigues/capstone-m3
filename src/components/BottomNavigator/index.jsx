@@ -106,7 +106,6 @@ const BottomNavigator = () => {
                   <Link
                     to={path}
                     onClick={() => {
-                      window.scrollTo(0, 0);
                       if (title === "Sair") {
                         setAuthenticated(false);
                         localStorage.clear();
@@ -131,7 +130,6 @@ const BottomNavigator = () => {
             : menuNotAuthenticated.map(({ title, Icon, path }) => (
                 <li key={title}>
                   <Link
-                    onClick={() => window.scrollTo(0, 0)}
                     to={path}
                     className={location.pathname === path ? "selected" : ""}
                   >

@@ -8,6 +8,10 @@ import NotFoundImg from "../../assets/svg/not_found.svg";
 import SearchBar from "../../components/SearchBar";
 
 const SearchResults = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const { workers, refreshWorkers } = useWorkers();
   const { search } = useParams();
   const [searchResults, setSearchResults] = useState([]);

@@ -109,12 +109,7 @@ const Card = ({ nome, img, especialidades = [], locais = [], id }) => {
               </button>
             </span>
             <div className="link">
-              <Link
-                to={`/services/${id}/${nome}`}
-                onClick={() => window.scrollTo(0, 0)}
-              >
-                Ver o perfil completo
-              </Link>
+              <Link to={`/services/${id}/${nome}`}>Ver o perfil completo</Link>
             </div>
           </ModalContainer>
 
@@ -144,12 +139,7 @@ const Card = ({ nome, img, especialidades = [], locais = [], id }) => {
             ))}
           </ul>
           <p className="link">
-            <Link
-              to={`/services/${id}/${nome}`}
-              onClick={() => window.scrollTo(0, 0)}
-            >
-              Ver o perfil Completo
-            </Link>
+            <Link to={`/services/${id}/${nome}`}>Ver o perfil Completo</Link>
           </p>
         </section>
       </>

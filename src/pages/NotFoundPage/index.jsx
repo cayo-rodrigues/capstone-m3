@@ -1,7 +1,12 @@
 import { Container, ImgContainer } from "./styles";
 import Img404 from "../../assets/svg/404.svg";
+import { useEffect } from "react";
 
 const NotFoundPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <>
       <Container>

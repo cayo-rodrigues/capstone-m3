@@ -11,8 +11,13 @@ import { useWorkers } from "../../providers/workers";
 import { firebase, auth } from "../../services/firebase";
 import { useAuthGoogle } from "../../providers/authGoogle";
 import { useUser } from "../../providers/user";
+import { useEffect } from "react";
 
 const Register = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const history = useHistory();
   const { authenticated, setAuthenticated } = useAuthenticated();
   const { refreshWorkers } = useWorkers();

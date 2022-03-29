@@ -19,9 +19,13 @@ import PeopleImg from "../../assets/svg/people_SVG.svg";
 import { AiOutlineSearch } from "react-icons/ai";
 
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const LandingPage = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const history = useHistory();
   const [inputText, setInputText] = useState("");
 

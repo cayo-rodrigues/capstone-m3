@@ -3,7 +3,7 @@ import picture from "../../assets/profile 1.png";
 
 import DropDownBrazilianCities from "../../components/DropDownBrazilianCities";
 import DropDownBrazilianStates from "../../components/DropDownBrazilianStates";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Form from "../../components/FormService/Form";
 import TodoList from "../../components/FormService/TodoList";
 
@@ -17,6 +17,10 @@ import { Redirect } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
 const Dashboard = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const { authenticated } = useAuthenticated();
 
   const [user] = useState(
@@ -213,7 +217,6 @@ const Dashboard = () => {
                             if (isWorker) {
                               setTimeout(() => {
                                 toast.success("Perfil Atualizado");
-                                window.scrollTo(0, 0);
                                 history.push(
                                   `/services/${workerProfile.id}/${user.user?.name}`
                                 );

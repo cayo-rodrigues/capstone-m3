@@ -24,20 +24,11 @@ const Header = () => {
     <Container currentPage={location.pathname}>
       <ContainerHeader>
         <BurgerMenu>
-          <BurgerMenuLink onClick={() => window.scrollTo(0, 0)} to="/services">
-            Serviços
-          </BurgerMenuLink>
-          <BurgerMenuLink onClick={() => window.scrollTo(0, 0)} to="/aboutus">
-            Sobre nós
-          </BurgerMenuLink>
+          <BurgerMenuLink to="/services">Serviços</BurgerMenuLink>
+          <BurgerMenuLink to="/aboutus">Sobre nós</BurgerMenuLink>
           {authenticated ? (
             <>
-              <BurgerMenuLink
-                onClick={() => window.scrollTo(0, 0)}
-                to="/dashboard"
-              >
-                Dashboard
-              </BurgerMenuLink>
+              <BurgerMenuLink to="/dashboard">Dashboard</BurgerMenuLink>
               <BurgerMenuLink to={"/"} handleCloseMenu={logOut}>
                 Sair
               </BurgerMenuLink>
@@ -54,7 +45,6 @@ const Header = () => {
             src={logo}
             alt="Logo"
             onClick={() => {
-              window.scrollTo(0, 0);
               history.push("/");
             }}
           />
@@ -62,14 +52,12 @@ const Header = () => {
         <Nav>
           <Link
             className={location.pathname === "/services" ? "currentPage" : ""}
-            onClick={() => window.scrollTo(0, 0)}
             to={"/services"}
           >
             Serviços
           </Link>
           <Link
             className={location.pathname === "/aboutus" ? "currentPage" : ""}
-            onClick={() => window.scrollTo(0, 0)}
             to={"/aboutus"}
           >
             Sobre Nós
@@ -80,18 +68,11 @@ const Header = () => {
                 className={
                   location.pathname === "/dashboard" ? "currentPage" : ""
                 }
-                onClick={() => window.scrollTo(0, 0)}
                 to={"/dashboard"}
               >
                 Dashboard
               </Link>
-              <Link
-                to={"/"}
-                onClick={() => {
-                  window.scrollTo(0, 0);
-                  logOut();
-                }}
-              >
+              <Link to={"/"} onClick={logOut}>
                 Sair
               </Link>
             </>
@@ -99,9 +80,6 @@ const Header = () => {
             <>
               <Link
                 className={location.pathname === "/login" ? "currentPage" : ""}
-                onClick={() => {
-                  window.scrollTo(0, 0);
-                }}
                 to={"/login"}
               >
                 Entrar
@@ -110,9 +88,6 @@ const Header = () => {
                 className={
                   location.pathname === "/register" ? "currentPage" : ""
                 }
-                onClick={() => {
-                  window.scrollTo(0, 0);
-                }}
                 to={"/register"}
               >
                 Cadastre-se
