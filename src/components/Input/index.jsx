@@ -38,9 +38,7 @@ const Input = ({
         </Container>
       ) : (
         <Container>
-          <p>
-            {label} {!!error && <span> - {error}</span>}
-          </p>
+          <p>{label}</p>
           <Content>
             {!!Icon && <Icon />}
             <input
@@ -54,6 +52,7 @@ const Input = ({
               </span>
             )}
           </Content>
+          <section>{!!error && <span> {error}</span>}</section>
         </Container>
       )}
     </>

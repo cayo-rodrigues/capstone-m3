@@ -1,9 +1,18 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  section {
+    font-size: 11px;
+    margin: 0;
+    padding: 0;
+    height: 8px;
+    padding-left: 4px;
+    color: var(--red);
+    padding: 5px;
+  }
   p {
     padding-left: 16px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
     span {
       color: var(--error);
     }

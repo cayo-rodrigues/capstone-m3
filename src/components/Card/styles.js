@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  cursor: pointer;
   .titleAndImg {
     align-items: flex-start;
     .title {
@@ -138,6 +139,20 @@ export const Container = styled.div`
     display: flex;
     justify-content: space-between;
   }
+  :hover {
+    animation: gradient 3s infinite;
+    transform: scale(1.05);
+  }
+  @keyframes gradient {
+    0% {
+      transform: rotateY(0deg);
+    }
+    100% {
+      transform: rotateY(180deg);
+      
+    }
+  }
+
 `;
 
 export const Imagem = styled.img`
@@ -203,7 +218,6 @@ export const ModalContainer = styled.div`
     text-align: left;
     width: 80%;
     margin: 0 auto;
-
   }
 
   ul {
@@ -216,7 +230,6 @@ export const ModalContainer = styled.div`
     width: 80%;
     margin: 0 auto;
     color: var(--color-secondary);
-
 
     > li {
       text-overflow: ellipsis;

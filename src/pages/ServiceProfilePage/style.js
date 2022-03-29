@@ -136,6 +136,8 @@ export const ServiceContainer = styled.main`
     p {
       font-size: 1.2rem;
       margin: 15px 0 0 0px;
+      text-overflow: ellipsis;
+      overflow: hidden;
       @media (max-width: 710px) {
         font-size: 14px;
       }
