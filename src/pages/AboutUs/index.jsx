@@ -58,8 +58,8 @@ const AboutUs = () => {
         <p data-aos="fade-up">
           O projeto ProWorking foi criado para agilizar e facilitar a
           contratação de pessoas em serviços informais. O projeto foi criado
-          pelos os estudantes em desenvolvimento web da Kenzie Academy Brasil, e
-          representa o projeto final do módulo M3 do curso fullstack.
+          por estudantes em desenvolvimento web da Kenzie Academy Brasil, e
+          representa o projeto final do terceiro módulo do curso fullstack.
         </p>
         <h3 data-aos="fade-up" data-aos-delay="150">
           Nosso Time Dev
